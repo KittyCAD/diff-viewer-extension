@@ -31,6 +31,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:13.5.0"],\
+            ["@types/chrome", "npm:0.0.212"],\
             ["@types/jest", "npm:27.5.2"],\
             ["@types/node", "npm:16.18.12"],\
             ["@types/react", "npm:18.0.27"],\
@@ -4288,6 +4289,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/chrome", [\
+        ["npm:0.0.212", {\
+          "packageLocation": "./.yarn/cache/@types-chrome-npm-0.0.212-c9427f941a-0b6082e18b.zip/node_modules/@types/chrome/",\
+          "packageDependencies": [\
+            ["@types/chrome", "npm:0.0.212"],\
+            ["@types/filesystem", "npm:0.0.32"],\
+            ["@types/har-format", "npm:1.2.10"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/connect", [\
         ["npm:3.4.35", {\
           "packageLocation": "./.yarn/cache/@types-connect-npm-3.4.35-7337eee0a3-fe81351470.zip/node_modules/@types/connect/",\
@@ -4379,12 +4391,40 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/filesystem", [\
+        ["npm:0.0.32", {\
+          "packageLocation": "./.yarn/cache/@types-filesystem-npm-0.0.32-f9e6035fd6-4b9079d200.zip/node_modules/@types/filesystem/",\
+          "packageDependencies": [\
+            ["@types/filesystem", "npm:0.0.32"],\
+            ["@types/filewriter", "npm:0.0.29"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/filewriter", [\
+        ["npm:0.0.29", {\
+          "packageLocation": "./.yarn/cache/@types-filewriter-npm-0.0.29-08151cd903-0c58aa875c.zip/node_modules/@types/filewriter/",\
+          "packageDependencies": [\
+            ["@types/filewriter", "npm:0.0.29"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/graceful-fs", [\
         ["npm:4.1.6", {\
           "packageLocation": "./.yarn/cache/@types-graceful-fs-npm-4.1.6-1eadcf742d-c3070ccdc9.zip/node_modules/@types/graceful-fs/",\
           "packageDependencies": [\
             ["@types/graceful-fs", "npm:4.1.6"],\
             ["@types/node", "npm:18.11.19"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/har-format", [\
+        ["npm:1.2.10", {\
+          "packageLocation": "./.yarn/cache/@types-har-format-npm-1.2.10-5a11b22f1e-14c0118d80.zip/node_modules/@types/har-format/",\
+          "packageDependencies": [\
+            ["@types/har-format", "npm:1.2.10"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7524,6 +7564,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:13.5.0"],\
+            ["@types/chrome", "npm:0.0.212"],\
             ["@types/jest", "npm:27.5.2"],\
             ["@types/node", "npm:16.18.12"],\
             ["@types/react", "npm:18.0.27"],\
