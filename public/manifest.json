@@ -7,12 +7,23 @@
     "default_popup": "index.html",
     "default_title": "Open the popup"
   },
-  "permissions": [
-    "activeTab"
-  ],
   "icons": {
     "16": "logo192.png",
     "48": "logo192.png",
     "128": "logo192.png"
-  }
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "optional_permissions": [
+    "https://github.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["./static/js/content.js"],
+      "all_frames": false,
+      "run_at": "document_end"
+    }
+  ]
 }

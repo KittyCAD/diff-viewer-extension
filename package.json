@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "INLINE_RUNTIME_CHUNK=false craco build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.0.0",
     "@types/chrome": "^0.0.212",
     "@types/testing-library__jest-dom": "^5.14.5",
     "eslint": "^8.33.0",
