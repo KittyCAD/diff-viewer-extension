@@ -41,6 +41,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.33.0"],\
             ["eslint-config-react-app", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.0.1"],\
             ["eslint-plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.32.2"],\
+            ["github-injection", "npm:1.1.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
             ["react-scripts", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.0.1"],\
@@ -7751,6 +7752,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.33.0"],\
             ["eslint-config-react-app", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.0.1"],\
             ["eslint-plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.32.2"],\
+            ["github-injection", "npm:1.1.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
             ["react-scripts", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.0.1"],\
@@ -9410,6 +9412,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["get-symbol-description", "npm:1.0.0"],\
             ["call-bind", "npm:1.0.2"],\
             ["get-intrinsic", "npm:1.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["github-injection", [\
+        ["npm:1.1.0", {\
+          "packageLocation": "./.yarn/cache/github-injection-npm-1.1.0-55347d2522-7b4badf7fd.zip/node_modules/github-injection/",\
+          "packageDependencies": [\
+            ["github-injection", "npm:1.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\

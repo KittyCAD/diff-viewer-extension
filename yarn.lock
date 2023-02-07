@@ -5254,6 +5254,7 @@ __metadata:
     eslint: ^8.33.0
     eslint-config-react-app: ^7.0.1
     eslint-plugin-react: ^7.32.2
+    github-injection: ^1.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-scripts: 5.0.1
@@ -6603,6 +6604,13 @@ __metadata:
     call-bind: ^1.0.2
     get-intrinsic: ^1.1.1
   checksum: 9ceff8fe968f9270a37a1f73bf3f1f7bda69ca80f4f80850670e0e7b9444ff99323f7ac52f96567f8b5f5fbe7ac717a0d81d3407c7313e82810c6199446a5247
+  languageName: node
+  linkType: hard
+
+"github-injection@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "github-injection@npm:1.1.0"
+  checksum: 7b4badf7fdafd171553f65987511d6ce1668ddb704a3e94403070dad9d789f155d2715d3f61609f8567faf5193ede48ac10d2a4951e60c46819547a30fc2310f
   languageName: node
   linkType: hard
 

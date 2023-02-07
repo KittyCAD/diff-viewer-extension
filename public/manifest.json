@@ -13,10 +13,9 @@
     "128": "logo192.png"
   },
   "permissions": [
-    "activeTab"
-  ],
-  "optional_permissions": [
-    "https://github.com/*"
+    "storage",
+    "https://github.com/",
+    "https://api.github.com/"
   ],
   "content_scripts": [
     {
