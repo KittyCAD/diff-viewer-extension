@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Diff Viewer Chrome Extension
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Injects @kittycad/lib powered visual diffs for supported CAD files in GitHub Pull Requests.
 
 ## Available Scripts
 
