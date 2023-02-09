@@ -9,8 +9,8 @@ const gitHubInjection = require("github-injection")
 const GITHUB_TOKEN = ""
 
 function getElements(document: Document): HTMLElement[] {
-    const fileTypeSelectors = Array.from(supportedSrcFormats).map(t => `[data-file-type=".${t}"]`)
-    const selector = `:is(${fileTypeSelectors.join(",")}) .js-file-content`
+    const fileTypeSelectors = Array.from(supportedSrcFormats).map(t => `.file[data-file-type=".${t}"]`)
+    const selector = fileTypeSelectors.join(", ")
     return [...document.querySelectorAll(selector)].map(n => n as HTMLElement)
 }
 
@@ -22,15 +22,24 @@ async function getPullData(octokit: Octokit, owner: string, repo: string, pull: 
 
 async function injectPullDiff(owner: string, repo: string, pull: number, document: Document) {
     const octokit = new Octokit({ auth: GITHUB_TOKEN })
-    const supportedFiles = await getPullData(octokit, owner, repo, pull)
-    console.log(`Found ${supportedFiles.length} supported files with the API`)
+    const apiFiles = await getPullData(octokit, owner, repo, pull)
+    console.log(`Found ${apiFiles.length} supported files with the API`)
 
-    const elements = getElements(window.document)
+    const elements = getElements(document)
     console.log(`Found ${elements.length} elements in the web page`)
     
-    // fake diff injection
-    for (const element of elements) {
-        element.innerHTML = "kittycad material"
+    // match and diff injection
+    for (const [index, element] of elements.entries()) {
+        const apiFile = apiFiles[index]
+        const titleElement = element.querySelector(".file-info a[title]") as HTMLElement
+        const filename = titleElement.getAttribute("title")
+        if (filename !== apiFile.filename) {
+            console.log(element, apiFile)
+            console.error("Couldn't match API file with a diff element on the page. Aborting.")
+            return
+        }
+        const diffElement = element.querySelector(".js-file-content") as HTMLElement
+        diffElement.innerHTML = `TODO: insert diff here for ${filename}]`
     }
 }
 
