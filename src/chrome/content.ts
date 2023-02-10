@@ -1,12 +1,11 @@
 import { Octokit } from "@octokit/rest"
 import { supportedSrcFormats } from "./diff"
+import { getStorageToken } from "./storage"
 
 // https://github.com/OctoLinker/injection
 // maintained by octolinker, makes sure pages that are loaded through pjax are available for injection
 // no ts support
 const gitHubInjection = require("github-injection")
-
-const GITHUB_TOKEN = ""
 
 function getElements(document: Document): HTMLElement[] {
     const fileTypeSelectors = Array.from(supportedSrcFormats).map(t => `.file[data-file-type=".${t}"]`)
@@ -21,7 +20,7 @@ async function getPullData(octokit: Octokit, owner: string, repo: string, pull: 
 
 
 async function injectPullDiff(owner: string, repo: string, pull: number, document: Document) {
-    const octokit = new Octokit({ auth: GITHUB_TOKEN })
+    const octokit = new Octokit({ auth: await getStorageToken() })
     const apiFiles = await getPullData(octokit, owner, repo, pull)
     console.log(`Found ${apiFiles.length} supported files with the API`)
 
