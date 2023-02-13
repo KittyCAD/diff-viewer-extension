@@ -1,6 +1,5 @@
-import { Octokit } from "@octokit/rest"
 import { supportedSrcFormats } from "./diff"
-import { getStorageToken } from "./storage"
+import { MessageIds } from "./messages"
 
 // https://github.com/OctoLinker/injection
 // maintained by octolinker, makes sure pages that are loaded through pjax are available for injection
@@ -13,15 +12,18 @@ function getElements(document: Document): HTMLElement[] {
     return [...document.querySelectorAll(selector)].map(n => n as HTMLElement)
 }
 
-async function getPullData(octokit: Octokit, owner: string, repo: string, pull: number) {
-    const files = (await octokit.rest.pulls.listFiles({ owner, repo, pull_number: pull })).data
-    return files.filter(f => supportedSrcFormats.has(f.filename.split(".").pop() || ""))
+async function getPullData(owner: string, repo: string, pull: number) {
+    const message = {
+        id: MessageIds.GetPullFiles,
+        owner, repo, pull,
+    }
+    return await chrome.runtime.sendMessage<any, { filename: string }[]>(message)
 }
 
 
 async function injectPullDiff(owner: string, repo: string, pull: number, document: Document) {
-    const octokit = new Octokit({ auth: await getStorageToken() })
-    const apiFiles = await getPullData(octokit, owner, repo, pull)
+    const allApiFiles = await getPullData(owner, repo, pull)
+    const apiFiles = allApiFiles.filter(f => supportedSrcFormats.has(f.filename.split(".").pop() || ""))
     console.log(`Found ${apiFiles.length} supported files with the API`)
 
     const elements = getElements(document)
