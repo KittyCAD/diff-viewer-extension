@@ -1,10 +1,7 @@
-import { Octokit } from "@octokit/rest";
 import { useEffect, useState } from "react";
 import "./App.css";
-import { getStorageToken, setStorageToken } from "./chrome/storage";
-import { components } from "@octokit/openapi-types";
-
-type User = components["schemas"]["simple-user"];
+import { Message, MessageIds, User } from "./chrome/types";
+import { setStorageToken } from "./chrome/storage";
 
 function TokenForm({ onToken }: { onToken: (token: string) => void }) {
   const [token, setToken] = useState("")
@@ -50,12 +47,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<User>();
 
-  async function getUser() {
+  async function fetchUser() {
     try {
-      const auth = await getStorageToken()
-      const octokit = new Octokit({ auth })
-      const user = await octokit.rest.users.getAuthenticated()
-      setUser(user.data)
+      const user = await chrome.runtime.sendMessage<Message, User>({ id: MessageIds.GetGitHubUser })
+      setUser(user)
       setLoading(false)
     } catch (e) {
       console.log(e)
@@ -72,11 +67,11 @@ function App() {
 
   async function onToken(token: string) {
     await setStorageToken(token)
-    await getUser()
+    await fetchUser()
   }
 
   useEffect(() => {
-    getUser()
+    fetchUser()
   })
 
   return (

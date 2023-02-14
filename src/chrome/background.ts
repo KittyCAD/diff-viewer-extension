@@ -2,23 +2,31 @@
 import { Client, users } from "@kittycad/lib"
 import { User_type } from "@kittycad/lib/dist/types/src/models";
 import { Octokit } from "@octokit/rest";
-import { MessageIds } from "./messages";
+import { DiffEntry, Message, MessageGetPullFilesData, MessageIds, MessageResponse, User } from "./types";
 import { getStorageToken } from "./storage";
 
 let kittycad: Client;
 let octokit: Octokit;
 
 async function initAPIs() {
-    kittycad = new Client("c2703952-ad53-470e-a51a-71fafad1a16d");
-    const kittycadResponse = await users.get_user_self({ client: kittycad })
-    console.log(`Logged in on kittycad.io as ${(kittycadResponse as User_type).email}`)
+    try {
+        kittycad = new Client("<REVOKEDTOKEN>")
+        const kittycadResponse = await users.get_user_self({ client: kittycad })
+        console.log(`Logged in on kittycad.io as ${(kittycadResponse as User_type).email}`)
+    } catch (e) {
+        console.error("Couldn't initiate the kittycad api client")
+    }
 
-    octokit = new Octokit({ auth: await getStorageToken() })
-    const octokitResponse = await octokit.rest.users.getAuthenticated()
-    console.log(`Logged in on github.com as ${octokitResponse.data.login}`)
+    try {
+        octokit = new Octokit({ auth: await getStorageToken() })
+        const octokitResponse = await octokit.rest.users.getAuthenticated()
+        console.log(`Logged in on github.com as ${octokitResponse.data.login}`)
+    } catch (e) {
+        console.error("Couldn't initiate the github api client")
+    }
 }
 
-async function getPullFiles(owner: string, repo: string, pull: number) {
+async function getGitHubPullFiles(owner: string, repo: string, pull: number): Promise<DiffEntry[]> {
     if (!octokit) {
         throw Error("Octokit client undefined")
     }
@@ -26,13 +34,27 @@ async function getPullFiles(owner: string, repo: string, pull: number) {
     return response.data
 }
 
+async function getGitHubUser(): Promise<User> {
+    if (!octokit) {
+        throw Error("Octokit client undefined")
+    }
+    const reponse = await octokit.rest.users.getAuthenticated()
+    return reponse.data
+}
+
 initAPIs()
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message: Message, sender: chrome.runtime.MessageSender,
+                                      sendResponse: (response: MessageResponse) => void) => {
     console.log(`Received ${message.id} from ${sender.id}`)
     if (message.id === MessageIds.GetPullFiles) {
-        const { owner, repo, pull } = message
-        getPullFiles(owner, repo, pull).then(r => sendResponse(r))
+        const { owner, repo, pull } = message.data as MessageGetPullFilesData
+        getGitHubPullFiles(owner, repo, pull).then(r => sendResponse(r))
+        return true
+    }
+
+    if (message.id === MessageIds.GetGitHubUser) {
+        getGitHubUser().then(r => sendResponse(r))
         return true
     }
 })

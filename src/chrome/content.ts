@@ -1,5 +1,5 @@
 import { supportedSrcFormats } from "./diff"
-import { MessageIds } from "./messages"
+import { DiffEntry, Message, MessageIds } from "./types"
 
 // https://github.com/OctoLinker/injection
 // maintained by octolinker, makes sure pages that are loaded through pjax are available for injection
@@ -13,11 +13,11 @@ function getElements(document: Document): HTMLElement[] {
 }
 
 async function getPullData(owner: string, repo: string, pull: number) {
-    const message = {
+    const message: Message = {
         id: MessageIds.GetPullFiles,
-        owner, repo, pull,
+        data: { owner, repo, pull },
     }
-    return await chrome.runtime.sendMessage<any, { filename: string }[]>(message)
+    return await chrome.runtime.sendMessage<Message, DiffEntry[]>(message)
 }
 
 
