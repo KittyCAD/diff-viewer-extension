@@ -26,14 +26,16 @@ function TokenForm({ service, onToken }: { service: string, onToken: (token: str
 function UserCard({ login, avatar, name, onSignOut }: { login: string, avatar: string, name: string | undefined | null, onSignOut: () => void }) {
   return (
     <div className="py-8 px-8 max-w-sm mx-auto space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+      {avatar &&
       <img className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0" src={avatar} alt="Woman's Face" />
+      }
       <div className="text-center space-y-2 sm:text-left">
         <div className="space-y-0.5">
           <p className="text-lg text-black font-semibold">
-            {name}
+            {name || "KittyCAD"}
           </p>
           <p className="text-slate-500 font-medium">
-            @{login}
+            {login}
           </p>
         </div>
         <button className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
@@ -100,7 +102,7 @@ function App() {
         <div>
           {
           githubUser ?
-          <UserCard name={githubUser.name} login={githubUser.login} avatar={githubUser.avatar_url}
+          <UserCard name={githubUser.name} login={"@" + githubUser.login} avatar={githubUser.avatar_url}
                     onSignOut={async () => { await onSignOut(MessageIds.SaveGithubToken); setGithubUser(undefined) }} />
         : <TokenForm service="GitHub"
                      onToken={async (token) => { await onToken(MessageIds.SaveGithubToken, token); await fetchGithubUser() }} />
