@@ -8,7 +8,8 @@ export type User = components["schemas"]["simple-user"];
 
 export enum MessageIds {
     GetPullFiles = "GetPullFiles",
-    GetGitHubUser = "GetGitHubUser"
+    GetGitHubUser = "GetGitHubUser",
+    SaveGitHubToken = "SaveGitHubToken"
 }
 
 
@@ -20,9 +21,13 @@ export type MessageGetPullFilesData = {
     pull: number
 }
 
-export type Message = {
-    id: MessageIds
-    data?: MessageGetPullFilesData
+export type MessageSaveGitHubToken = {
+    token: string
 }
 
-export type MessageResponse = DiffEntry[] | User
+export type Message = {
+    id: MessageIds
+    data?: MessageGetPullFilesData | MessageSaveGitHubToken
+}
+
+export type MessageResponse = DiffEntry[] | User | MessageSaveGitHubToken | Error

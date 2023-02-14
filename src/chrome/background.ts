@@ -2,8 +2,8 @@
 import { Client, users } from "@kittycad/lib"
 import { User_type } from "@kittycad/lib/dist/types/src/models";
 import { Octokit } from "@octokit/rest";
-import { DiffEntry, Message, MessageGetPullFilesData, MessageIds, MessageResponse, User } from "./types";
-import { getStorageToken } from "./storage";
+import { DiffEntry, Message, MessageGetPullFilesData, MessageIds, MessageResponse, MessageSaveGitHubToken, User } from "./types";
+import { getStorageToken, setStorageToken } from "./storage";
 
 let kittycad: Client;
 let octokit: Octokit;
@@ -42,6 +42,11 @@ async function getGitHubUser(): Promise<User> {
     return reponse.data
 }
 
+async function saveGitHubToken(token: string): Promise<void> {
+    await setStorageToken(token)
+    await initAPIs()
+}
+
 initAPIs()
 
 chrome.runtime.onMessage.addListener((message: Message, sender: chrome.runtime.MessageSender,
@@ -49,12 +54,18 @@ chrome.runtime.onMessage.addListener((message: Message, sender: chrome.runtime.M
     console.log(`Received ${message.id} from ${sender.id}`)
     if (message.id === MessageIds.GetPullFiles) {
         const { owner, repo, pull } = message.data as MessageGetPullFilesData
-        getGitHubPullFiles(owner, repo, pull).then(r => sendResponse(r))
+        getGitHubPullFiles(owner, repo, pull).then(r => sendResponse(r)).catch(e => sendResponse(e))
         return true
     }
 
     if (message.id === MessageIds.GetGitHubUser) {
-        getGitHubUser().then(r => sendResponse(r))
+        getGitHubUser().then(r => sendResponse(r)).catch(e => sendResponse(e))
+        return true
+    }
+
+    if (message.id === MessageIds.SaveGitHubToken) {
+        const { token } = message.data as MessageSaveGitHubToken
+        saveGitHubToken(token).then(() => sendResponse({ token })).catch(e => sendResponse(e))
         return true
     }
 })

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Message, MessageIds, User } from "./chrome/types";
-import { setStorageToken } from "./chrome/storage";
+import { MessageIds, User } from "./chrome/types";
 
 function TokenForm({ onToken }: { onToken: (token: string) => void }) {
   const [token, setToken] = useState("")
@@ -49,11 +48,13 @@ function App() {
 
   async function fetchUser() {
     try {
-      const user = await chrome.runtime.sendMessage<Message, User>({ id: MessageIds.GetGitHubUser })
+      const response = await chrome.runtime.sendMessage({ id: MessageIds.GetGitHubUser })
+      if (Object.keys(response).length === 0) throw Error("no response")
+      const user = response as User
       setUser(user)
       setLoading(false)
     } catch (e) {
-      console.log(e)
+      console.error(e)
       setLoading(false)
       setUser(undefined)
     }
@@ -61,18 +62,20 @@ function App() {
 
   async function onSignOut() {
     setLoading(true)
-    await setStorageToken("")
+    await chrome.runtime.sendMessage({ id: MessageIds.SaveGitHubToken, data: { token: "" }})
+    setUser(undefined)
     setLoading(false)
   }
 
   async function onToken(token: string) {
-    await setStorageToken(token)
+    const response = await chrome.runtime.sendMessage({ id: MessageIds.SaveGitHubToken, data: { token }})
+    console.log("onToken", response)
     await fetchUser()
   }
 
   useEffect(() => {
     fetchUser()
-  })
+  }, [])
 
   return (
     <div className="bg-slate-100 w-96 h-96">
