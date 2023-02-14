@@ -2,70 +2,99 @@
 import { Client, users } from "@kittycad/lib"
 import { User_type } from "@kittycad/lib/dist/types/src/models";
 import { Octokit } from "@octokit/rest";
-import { DiffEntry, Message, MessageGetPullFilesData, MessageIds, MessageResponse, MessageSaveGitHubToken, User } from "./types";
-import { getStorageToken, setStorageToken } from "./storage";
+import { DiffEntry, Message, MessageGetGithubPullFilesData, MessageIds, MessageResponse, MessageSaveGithubToken as MessageSaveToken, User } from "./types";
+import { getStorageGithubToken, getStorageKittycadToken, setStorageGithubToken, setStorageKittycadToken } from "./storage";
 
 let kittycad: Client;
-let octokit: Octokit;
+let github: Octokit;
 
-async function initAPIs() {
+function checkClient(client: Client | Octokit) {
+    if (!client) {
+        throw Error("Uninitialized API client")
+    }
+}
+
+async function initKittycadApi() {
     try {
-        kittycad = new Client("<REVOKEDTOKEN>")
+        kittycad = new Client(await getStorageKittycadToken())
         const kittycadResponse = await users.get_user_self({ client: kittycad })
         console.log(`Logged in on kittycad.io as ${(kittycadResponse as User_type).email}`)
     } catch (e) {
         console.error("Couldn't initiate the kittycad api client")
     }
+}
 
+async function initGithubApi() {
     try {
-        octokit = new Octokit({ auth: await getStorageToken() })
-        const octokitResponse = await octokit.rest.users.getAuthenticated()
+        github = new Octokit({ auth: await getStorageGithubToken() })
+        const octokitResponse = await github.rest.users.getAuthenticated()
         console.log(`Logged in on github.com as ${octokitResponse.data.login}`)
     } catch (e) {
         console.error("Couldn't initiate the github api client")
     }
 }
 
-async function getGitHubPullFiles(owner: string, repo: string, pull: number): Promise<DiffEntry[]> {
-    if (!octokit) {
-        throw Error("Octokit client undefined")
-    }
-    const response = await octokit.rest.pulls.listFiles({ owner, repo, pull_number: pull })
+async function getGithubPullFiles(owner: string, repo: string, pull: number): Promise<DiffEntry[]> {
+    checkClient(github)
+    const response = await github.rest.pulls.listFiles({ owner, repo, pull_number: pull })
     return response.data
 }
 
-async function getGitHubUser(): Promise<User> {
-    if (!octokit) {
-        throw Error("Octokit client undefined")
-    }
-    const reponse = await octokit.rest.users.getAuthenticated()
+async function getGithubUser(): Promise<User> {
+    checkClient(github)
+    const reponse = await github.rest.users.getAuthenticated()
     return reponse.data
 }
 
-async function saveGitHubToken(token: string): Promise<void> {
-    await setStorageToken(token)
-    await initAPIs()
+async function getKittycadUser(): Promise<User_type> {
+    checkClient(kittycad)
+    const response = await users.get_user_self({ client: kittycad })
+    return response as User_type
 }
 
-initAPIs()
+async function saveGithubToken(token: string): Promise<void> {
+    await setStorageGithubToken(token)
+    await initGithubApi()
+}
+
+async function saveKittycadToken(token: string): Promise<void> {
+    await setStorageKittycadToken(token)
+    await initKittycadApi()
+}
+
+(async () => {
+    await initGithubApi()
+    await initKittycadApi()
+})()
 
 chrome.runtime.onMessage.addListener((message: Message, sender: chrome.runtime.MessageSender,
                                       sendResponse: (response: MessageResponse) => void) => {
     console.log(`Received ${message.id} from ${sender.id}`)
-    if (message.id === MessageIds.GetPullFiles) {
-        const { owner, repo, pull } = message.data as MessageGetPullFilesData
-        getGitHubPullFiles(owner, repo, pull).then(r => sendResponse(r)).catch(e => sendResponse(e))
+    if (message.id === MessageIds.GetGithubPullFiles) {
+        const { owner, repo, pull } = message.data as MessageGetGithubPullFilesData 
+        getGithubPullFiles(owner, repo, pull).then(r => sendResponse(r)).catch(e => sendResponse(e))
         return true
     }
 
-    if (message.id === MessageIds.GetGitHubUser) {
-        getGitHubUser().then(r => sendResponse(r)).catch(e => sendResponse(e))
+    if (message.id === MessageIds.GetGithubUser) {
+        getGithubUser().then(r => sendResponse(r)).catch(e => sendResponse(e))
         return true
     }
 
-    if (message.id === MessageIds.SaveGitHubToken) {
-        const { token } = message.data as MessageSaveGitHubToken
-        saveGitHubToken(token).then(() => sendResponse({ token })).catch(e => sendResponse(e))
+    if (message.id === MessageIds.GetKittycadUser) {
+        getKittycadUser().then(r => sendResponse(r)).catch(e => sendResponse(e))
+        return true
+    }
+
+    if (message.id === MessageIds.SaveGithubToken) {
+        const { token } = message.data as MessageSaveToken
+        saveGithubToken(token).then(() => sendResponse({ token })).catch(e => sendResponse(e))
+        return true
+    }
+
+    if (message.id === MessageIds.SaveKittycadToken) {
+        const { token } = message.data as MessageSaveToken
+        saveKittycadToken(token).then(() => sendResponse({ token })).catch(e => sendResponse(e))
         return true
     }
 })

@@ -1,3 +1,4 @@
+import { User_type } from "@kittycad/lib/dist/types/src/models";
 import { components } from "@octokit/openapi-types";
 
 // octokit
@@ -7,27 +8,29 @@ export type User = components["schemas"]["simple-user"];
 
 
 export enum MessageIds {
-    GetPullFiles = "GetPullFiles",
-    GetGitHubUser = "GetGitHubUser",
-    SaveGitHubToken = "SaveGitHubToken"
+    GetGithubPullFiles = "GetPullFiles",
+    GetGithubUser = "GetGitHubUser",
+    SaveGithubToken = "SaveGitHubToken",
+    SaveKittycadToken = "SaveKittyCadToken",
+    GetKittycadUser = "GetKittyCadUser"
 }
 
 
 // chrome
 
-export type MessageGetPullFilesData = {
+export type MessageGetGithubPullFilesData = {
     owner: string
     repo: string
     pull: number
 }
 
-export type MessageSaveGitHubToken = {
+export type MessageSaveGithubToken = {
     token: string
 }
 
 export type Message = {
     id: MessageIds
-    data?: MessageGetPullFilesData | MessageSaveGitHubToken
+    data?: MessageGetGithubPullFilesData | MessageSaveGithubToken
 }
 
-export type MessageResponse = DiffEntry[] | User | MessageSaveGitHubToken | Error
+export type MessageResponse = DiffEntry[] | User | User_type | MessageSaveGithubToken | Error

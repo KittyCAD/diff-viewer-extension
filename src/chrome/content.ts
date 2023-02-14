@@ -14,7 +14,7 @@ function getElements(document: Document): HTMLElement[] {
 
 async function getPullData(owner: string, repo: string, pull: number) {
     const message: Message = {
-        id: MessageIds.GetPullFiles,
+        id: MessageIds.GetGithubPullFiles,
         data: { owner, repo, pull },
     }
     return await chrome.runtime.sendMessage<Message, DiffEntry[]>(message)

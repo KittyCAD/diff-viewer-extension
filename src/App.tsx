@@ -1,16 +1,19 @@
+import { User_type } from "@kittycad/lib/dist/types/src/models";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { MessageIds, User } from "./chrome/types";
 
-function TokenForm({ onToken }: { onToken: (token: string) => void }) {
+function TokenForm({ service, onToken }: { service: string, onToken: (token: string) => void }) {
   const [token, setToken] = useState("")
 
   return (
     <div className="p-6">
       <p className="text-lg font-medium">
-        Enter a GitHub Token
+        Enter a {service} Token
       </p>
+      {service === "GitHub" &&
       <p>With `repo` permissions</p>
+      }
       <div className="py-2">
         <input value={token} onChange={(e) => setToken(e.target.value)} type="text"></input>
       </div>
@@ -44,47 +47,73 @@ function UserCard({ login, avatar, name, onSignOut }: { login: string, avatar: s
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<User>();
+  const [githubUser, setGithubUser] = useState<User>();
+  const [kittycadUser, setKittycadUser] = useState<User_type>();
 
-  async function fetchUser() {
+  async function fetchGithubUser() {
     try {
-      const response = await chrome.runtime.sendMessage({ id: MessageIds.GetGitHubUser })
+      const response = await chrome.runtime.sendMessage({ id: MessageIds.GetGithubUser })
       if (Object.keys(response).length === 0) throw Error("no response")
       const user = response as User
-      setUser(user)
+      setGithubUser(user)
       setLoading(false)
     } catch (e) {
       console.error(e)
       setLoading(false)
-      setUser(undefined)
+      setGithubUser(undefined)
     }
   }
 
-  async function onSignOut() {
+  async function fetchKittycadUser() {
+    try {
+      const response = await chrome.runtime.sendMessage({ id: MessageIds.GetKittycadUser })
+      if (Object.keys(response).length === 0) throw Error("no response")
+      const user = response as User_type
+      setKittycadUser(user)
+      setLoading(false)
+    } catch (e) {
+      console.error(e)
+      setLoading(false)
+      setKittycadUser(undefined)
+    }
+  }
+
+  async function onSignOut(id: MessageIds) {
     setLoading(true)
-    await chrome.runtime.sendMessage({ id: MessageIds.SaveGitHubToken, data: { token: "" }})
-    setUser(undefined)
+    await chrome.runtime.sendMessage({ id, data: { token: "" }})
     setLoading(false)
   }
 
-  async function onToken(token: string) {
-    const response = await chrome.runtime.sendMessage({ id: MessageIds.SaveGitHubToken, data: { token }})
-    console.log("onToken", response)
-    await fetchUser()
+  async function onToken(id: MessageIds, token: string) {
+    const response = await chrome.runtime.sendMessage({ id, data: { token }})
+    console.log(response)
   }
 
   useEffect(() => {
-    fetchUser()
+    fetchGithubUser()
+    fetchKittycadUser()
   }, [])
 
   return (
     <div className="bg-slate-100 w-96 h-96">
       {loading ? null : (
-        user ?
-          <UserCard name={user.name} login={user.login} avatar={user.avatar_url} onSignOut={onSignOut} />
-        : <TokenForm onToken={onToken} />
-        )
-      }
+        <div>
+          {
+          githubUser ?
+          <UserCard name={githubUser.name} login={githubUser.login} avatar={githubUser.avatar_url}
+                    onSignOut={async () => { await onSignOut(MessageIds.SaveGithubToken); setGithubUser(undefined) }} />
+        : <TokenForm service="GitHub"
+                     onToken={async (token) => { await onToken(MessageIds.SaveGithubToken, token); await fetchGithubUser() }} />
+          }
+          {
+          kittycadUser ?
+          <UserCard name={kittycadUser.name} login={kittycadUser.email} avatar={kittycadUser.image}
+                    onSignOut={async () => { await onSignOut(MessageIds.SaveKittycadToken); setKittycadUser(undefined) }} />
+        : <TokenForm service="KittyCAD"
+                     onToken={async (token) => { await onToken(MessageIds.SaveKittycadToken, token); await fetchKittycadUser() }} />
+          }
+        </div>
+      )}
     </div>
   )
 }
