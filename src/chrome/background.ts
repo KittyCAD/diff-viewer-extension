@@ -2,8 +2,9 @@
 import { Client, users } from "@kittycad/lib"
 import { User_type } from "@kittycad/lib/dist/types/src/models";
 import { Octokit } from "@octokit/rest";
-import { DiffEntry, Message, MessageGetGithubPullFilesData, MessageIds, MessageResponse, MessageSaveGithubToken as MessageSaveToken, User } from "./types";
+import { DiffEntry, Message, MessageGetFileDiff, MessageGetGithubPullFilesData, MessageIds, MessageResponse, MessageSaveGithubToken as MessageSaveToken, Pull, User } from "./types";
 import { getStorageGithubToken, getStorageKittycadToken, setStorageGithubToken, setStorageKittycadToken } from "./storage";
+import { downloadFile } from "./diff";
 
 let kittycad: Client;
 let github: Octokit;
@@ -34,6 +35,12 @@ async function initGithubApi() {
     }
 }
 
+async function getGithubPull(owner: string, repo: string, pull: number): Promise<Pull> {
+    checkClient(github)
+    const response = await github.rest.pulls.get({ owner, repo, pull_number: pull })
+    return response.data
+}
+
 async function getGithubPullFiles(owner: string, repo: string, pull: number): Promise<DiffEntry[]> {
     checkClient(github)
     const response = await github.rest.pulls.listFiles({ owner, repo, pull_number: pull })
@@ -50,6 +57,17 @@ async function getKittycadUser(): Promise<User_type> {
     checkClient(kittycad)
     const response = await users.get_user_self({ client: kittycad })
     return response as User_type
+}
+
+async function getFileDiff(owner: string, repo: string, sha: string, parentSha: string, file: DiffEntry) {
+    checkClient(kittycad)
+    checkClient(github)
+    console.log(file)
+    const { filename, status } = file
+    if (status === "modified") {
+        const streamBefore = await downloadFile(github, owner, repo, sha, filename)
+        const streamAfter = await downloadFile(github, owner, repo, parentSha, filename)
+    }
 }
 
 async function saveGithubToken(token: string): Promise<void> {
@@ -76,6 +94,12 @@ chrome.runtime.onMessage.addListener((message: Message, sender: chrome.runtime.M
         return true
     }
 
+    if (message.id === MessageIds.GetGithubPull) {
+        const { owner, repo, pull } = message.data as MessageGetGithubPullFilesData 
+        getGithubPull(owner, repo, pull).then(r => sendResponse(r)).catch(e => sendResponse(e))
+        return true
+    }
+
     if (message.id === MessageIds.GetGithubUser) {
         getGithubUser().then(r => sendResponse(r)).catch(e => sendResponse(e))
         return true
@@ -95,6 +119,12 @@ chrome.runtime.onMessage.addListener((message: Message, sender: chrome.runtime.M
     if (message.id === MessageIds.SaveKittycadToken) {
         const { token } = message.data as MessageSaveToken
         saveKittycadToken(token).then(() => sendResponse({ token })).catch(e => sendResponse(e))
+        return true
+    }
+
+    if (message.id === MessageIds.GetFileDiff) {
+        const { owner, repo, sha, parentSha, file } = message.data as MessageGetFileDiff
+        getFileDiff(owner, repo, sha, parentSha, file).then(() => sendResponse()).catch(e => sendResponse(e))
         return true
     }
 })
