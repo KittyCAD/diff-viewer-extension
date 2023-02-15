@@ -1,5 +1,5 @@
 import { supportedSrcFormats } from "./diff"
-import { DiffEntry, Message, MessageIds, Pull } from "./types"
+import { DiffEntry, FileDiff, Message, MessageIds, Pull } from "./types"
 
 // https://github.com/OctoLinker/injection
 // maintained by octolinker, makes sure pages that are loaded through pjax are available for injection
@@ -33,7 +33,7 @@ async function getFileDiff(owner: string, repo: string, sha: string, parentSha: 
         id: MessageIds.GetFileDiff,
         data: { owner, repo, sha, parentSha, file },
     }
-    return await chrome.runtime.sendMessage<Message, void>(message)
+    return await chrome.runtime.sendMessage<Message, FileDiff>(message)
 }
 
 async function injectPullDiff(owner: string, repo: string, pull: number, document: Document) {
@@ -57,8 +57,9 @@ async function injectPullDiff(owner: string, repo: string, pull: number, documen
             return
         }
         const diffElement = element.querySelector(".js-file-content") as HTMLElement
-        diffElement.innerHTML = `TODO: insert diff here for ${filename}]`
-        await getFileDiff(owner, repo, sha, parentSha, apiFile)
+        const fileDiff = await getFileDiff(owner, repo, sha, parentSha, apiFile)
+        // TODO: inject threejs scenes!
+        diffElement.innerHTML = `Before STL: ${atob(fileDiff.before || "").slice(0, 200)}... <br><br> After STL: ${atob(fileDiff.after || "").slice(0, 200)}...`
     }
 }
 

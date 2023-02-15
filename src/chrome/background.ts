@@ -2,9 +2,9 @@
 import { Client, users } from "@kittycad/lib"
 import { User_type } from "@kittycad/lib/dist/types/src/models";
 import { Octokit } from "@octokit/rest";
-import { DiffEntry, Message, MessageGetFileDiff, MessageGetGithubPullFilesData, MessageIds, MessageResponse, MessageSaveGithubToken as MessageSaveToken, Pull, User } from "./types";
+import { DiffEntry, FileDiff, Message, MessageGetFileDiff, MessageGetGithubPullFilesData, MessageIds, MessageResponse, MessageSaveGithubToken as MessageSaveToken, Pull, User } from "./types";
 import { getStorageGithubToken, getStorageKittycadToken, setStorageGithubToken, setStorageKittycadToken } from "./storage";
-import { downloadFile } from "./diff";
+import { convert, downloadFile, supportedSrcFormats } from "./diff";
 
 let kittycad: Client;
 let github: Octokit;
@@ -59,15 +59,38 @@ async function getKittycadUser(): Promise<User_type> {
     return response as User_type
 }
 
-async function getFileDiff(owner: string, repo: string, sha: string, parentSha: string, file: DiffEntry) {
+async function getFileDiff(owner: string, repo: string,
+                           sha: string, parentSha: string, file: DiffEntry): Promise<FileDiff> {
     checkClient(kittycad)
     checkClient(github)
     console.log(file)
     const { filename, status } = file
-    if (status === "modified") {
-        const streamBefore = await downloadFile(github, owner, repo, sha, filename)
-        const streamAfter = await downloadFile(github, owner, repo, parentSha, filename)
+    const extension = filename.split(".").pop()
+    if (!extension || !supportedSrcFormats.has(extension)) {
+        throw Error(`Unsupported extension. Given ${extension}, was expecting ${supportedSrcFormats.values()}`)
     }
+
+    if (status === "modified") {
+        const beforeBlob = await downloadFile(github, owner, repo, sha, filename)
+        const before = await convert(kittycad, beforeBlob, extension)
+        const afterBlob = await downloadFile(github, owner, repo, parentSha, filename)
+        const after = await convert(kittycad, afterBlob, extension)
+        return { before, after }
+    }
+
+    if (status === "added") {
+        const blob = await downloadFile(github, owner, repo, sha, filename)
+        const after = await convert(kittycad, blob, extension)
+        return { after }
+    }
+
+    if (status === "removed") {
+        const blob = await downloadFile(github, owner, repo, parentSha, filename)
+        const before = await convert(kittycad, blob, extension)
+        return { before }
+    }
+
+    throw Error(`Unsupported status: ${status}`)
 }
 
 async function saveGithubToken(token: string): Promise<void> {
@@ -124,7 +147,7 @@ chrome.runtime.onMessage.addListener((message: Message, sender: chrome.runtime.M
 
     if (message.id === MessageIds.GetFileDiff) {
         const { owner, repo, sha, parentSha, file } = message.data as MessageGetFileDiff
-        getFileDiff(owner, repo, sha, parentSha, file).then(() => sendResponse()).catch(e => sendResponse(e))
+        getFileDiff(owner, repo, sha, parentSha, file).then((r) => sendResponse(r)).catch(e => sendResponse(e))
         return true
     }
 })
