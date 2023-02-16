@@ -5,6 +5,7 @@
   "dependencies": {
     "@kittycad/lib": "^0.0.19",
     "@octokit/rest": "^19.0.7",
+    "@primer/react": "^35.19.0",
     "@react-three/drei": "^9.56.24",
     "@react-three/fiber": "^8.11.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -18,7 +19,9 @@
     "github-injection": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "^5.3.6",
     "three": "^0.149.0",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"

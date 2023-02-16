@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 import "@react-three/fiber"
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei"
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader"
 import { BufferGeometry } from "three"
-import { Canvas } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber"
+import { Box, ThemeProvider } from "@primer/react"
 
 function ModelView({ file }: { file: string }): React.ReactElement {
     const [geometry, setGeometry] = useState<BufferGeometry>()
@@ -31,19 +32,19 @@ export type CadDiffProps = {
 
 export function CadDiff({ before, after }: CadDiffProps): React.ReactElement {
     return (
-        <div>
-            {before &&
-            <div>
-                <h1>Before</h1>
-                <ModelView file={before} />
-            </div>
-            }
-            {after &&
-            <div>
-                <h1>After</h1>
-                <ModelView file={after} />
-            </div>
-            }
-        </div>
+        <ThemeProvider>
+            <Box display="flex">
+                <Box flexGrow={1}>
+                    {before &&
+                        <ModelView file={before} />
+                    }
+                </Box>
+                <Box flexGrow={1} borderLeftWidth={1} borderLeftColor="border.default" borderLeftStyle="solid">
+                    {after &&
+                        <ModelView file={after} />
+                    }
+                </Box>
+            </Box>
+        </ThemeProvider>
     )
 }
