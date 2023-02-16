@@ -1,3 +1,6 @@
+import React from "react"
+import { createRoot } from "react-dom/client"
+import { CadDiff } from "../components/CadDiff"
 import { supportedSrcFormats } from "./diff"
 import { DiffEntry, FileDiff, Message, MessageIds, Pull } from "./types"
 
@@ -58,8 +61,7 @@ async function injectPullDiff(owner: string, repo: string, pull: number, documen
         }
         const diffElement = element.querySelector(".js-file-content") as HTMLElement
         const fileDiff = await getFileDiff(owner, repo, sha, parentSha, apiFile)
-        // TODO: inject threejs scenes!
-        diffElement.innerHTML = `Before STL: ${atob(fileDiff.before || "").slice(0, 200)}... <br><br> After STL: ${atob(fileDiff.after || "").slice(0, 200)}...`
+        createRoot(diffElement).render(React.createElement(CadDiff, fileDiff))
     }
 }
 
