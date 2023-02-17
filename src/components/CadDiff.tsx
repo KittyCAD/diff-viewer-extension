@@ -5,6 +5,7 @@ import { STLLoader } from "three/examples/jsm/loaders/STLLoader"
 import { BufferGeometry } from "three"
 import { Canvas } from "@react-three/fiber"
 import { Box, ThemeProvider, useTheme } from "@primer/react"
+import { FileDiff } from "../chrome/types"
 
 function ModelView({ file }: { file: string }): React.ReactElement {
   const { theme } = useTheme()
@@ -26,10 +27,7 @@ function ModelView({ file }: { file: string }): React.ReactElement {
   )
 }
 
-export type CadDiffProps = {
-  before?: string
-  after?: string
-}
+export type CadDiffProps = FileDiff;
 
 export function CadDiff({ before, after }: CadDiffProps): React.ReactElement {
   return (

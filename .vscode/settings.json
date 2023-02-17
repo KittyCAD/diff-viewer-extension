@@ -8,5 +8,6 @@
   "eslint.nodePath": ".yarn/sdks",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.disableAutomaticTypeAcquisition": false
+  "typescript.disableAutomaticTypeAcquisition": false,
+  "editor.tabSize": 2
 }
