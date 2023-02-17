@@ -33,7 +33,7 @@ export type CadDiffProps = {
 
 export function CadDiff({ before, after }: CadDiffProps): React.ReactElement {
   return (
-    <ThemeProvider>
+    <ThemeProvider colorMode="auto">
       <Box display="flex" height={300}>
         <Box flexGrow={1} backgroundColor="danger.subtle">
           {before &&
