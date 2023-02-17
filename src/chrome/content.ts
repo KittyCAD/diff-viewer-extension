@@ -1,6 +1,7 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { CadDiff } from "../components/CadDiff"
+import { Loading } from "../components/Loading"
 import { supportedSrcFormats } from "./diff"
 import { DiffEntry, FileDiff, Message, MessageIds, Pull } from "./types"
 
@@ -60,8 +61,10 @@ async function injectPullDiff(owner: string, repo: string, pull: number, documen
             return
         }
         const diffElement = element.querySelector(".js-file-content") as HTMLElement
+        const diffElementRoot = createRoot(diffElement)
+        diffElementRoot.render(React.createElement(Loading))
         const fileDiff = await getFileDiff(owner, repo, sha, parentSha, apiFile)
-        createRoot(diffElement).render(React.createElement(CadDiff, fileDiff))
+        diffElementRoot.render(React.createElement(CadDiff, fileDiff))
     }
 }
 
