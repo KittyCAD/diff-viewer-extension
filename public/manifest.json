@@ -1,0 +1,36 @@
+{
+  "name": "KittyCAD Diff Viewer",
+  "description": "KittyCAD Diff Viewer Chrome Extension",
+  "version": "0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Open the popup"
+  },
+  "icons": {
+    "16": "logo192.png",
+    "48": "logo192.png",
+    "128": "logo192.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://github.com/",
+    "https://api.github.com/",
+    "https://media.githubusercontent.com/",
+    "https://api.kittycad.io/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["./static/js/content.js"],
+      "all_frames": false,
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "./static/js/background.js",
+    "type": "module"
+  }
+}
