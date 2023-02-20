@@ -1,12 +1,14 @@
 import { Box, ThemeProvider } from "@primer/react";
 import { useEffect, useState } from "react";
 import { KittycadUser, MessageIds, User } from "./chrome/types";
+import { Loading } from "./components/Loading";
 import { TokenForm } from "./components/TokenForm";
 import { UserCard } from "./components/UserCard";
 
 function App() {
   const [githubUser, setGithubUser] = useState<User>();
   const [kittycadUser, setKittycadUser] = useState<KittycadUser>();
+  const [firstInitDone, setFirstInitDone] = useState(false);
 
   async function fetchGithubUser() {
     try {
@@ -37,31 +39,39 @@ function App() {
   }
 
   useEffect(() => {
-    fetchGithubUser()
-    fetchKittycadUser()
+    (async () => {
+      await fetchGithubUser()
+      await fetchKittycadUser()
+      setFirstInitDone(true)
+    })()
   }, [])
 
   return (
     <ThemeProvider colorMode="auto">
       <Box backgroundColor="canvas.default" width={300} p={4}>
-        <Box>
-          {githubUser ?
-            <UserCard login={"@" + githubUser.login} avatar={githubUser.avatar_url}
-              onSignOut={async () => { await onToken(MessageIds.SaveGithubToken, ""); setGithubUser(undefined) }} />
-            :
-            <TokenForm service="GitHub"
-              onToken={async (token) => { await onToken(MessageIds.SaveGithubToken, token); await fetchGithubUser() }} />
-          }
-        </Box>
-        <Box mt={4}>
-          {kittycadUser ?
-            <UserCard login={kittycadUser.email} avatar={kittycadUser.image || "https://kittycad.io/logo-green.png"}
-              onSignOut={async () => { await onToken(MessageIds.SaveKittycadToken, ""); setKittycadUser(undefined) }} />
-            :
-            <TokenForm service="KittyCAD"
-              onToken={async (token) => { await onToken(MessageIds.SaveKittycadToken, token); await fetchKittycadUser() }} />
-          }
-        </Box>
+        {firstInitDone ?
+          <Box>
+            <Box>
+              {githubUser ?
+                <UserCard login={"@" + githubUser.login} avatar={githubUser.avatar_url}
+                  onSignOut={async () => { await onToken(MessageIds.SaveGithubToken, ""); setGithubUser(undefined) }} />
+                :
+                <TokenForm service="GitHub"
+                  onToken={async (token) => { await onToken(MessageIds.SaveGithubToken, token); await fetchGithubUser() }} />
+              }
+            </Box>
+            <Box mt={4}>
+              {kittycadUser ?
+                <UserCard login={kittycadUser.email} avatar={kittycadUser.image || "https://kittycad.io/logo-green.png"}
+                  onSignOut={async () => { await onToken(MessageIds.SaveKittycadToken, ""); setKittycadUser(undefined) }} />
+                :
+                <TokenForm service="KittyCAD"
+                  onToken={async (token) => { await onToken(MessageIds.SaveKittycadToken, token); await fetchKittycadUser() }} />
+              }
+            </Box>
+          </Box>
+          : <Loading />
+        }
       </Box>
     </ThemeProvider>
   )
