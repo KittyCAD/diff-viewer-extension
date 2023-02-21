@@ -1,8 +1,7 @@
-import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { TokenForm } from './TokenForm';
+import { fireEvent, render, screen } from "@testing-library/react";
+import { TokenForm } from "./TokenForm";
 
-it('renders a token form', () => {
+it("renders a token form and checks its callback", () => {
   const service = "service"
   const token = "token"
   const callback = jest.fn()
