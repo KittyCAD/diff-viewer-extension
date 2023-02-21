@@ -1,10 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', async () => {
+test('renders settings popup with both save buttons', async () => {
   render(<App />);
   
   // Waiting for loading
+  // expect `ReferenceError: chrome is not defined` in this context
   await waitFor(() => screen.findByText(/github token/i))
   
   // GitHub and KittyCAD buttons
