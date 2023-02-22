@@ -38,6 +38,11 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "three/examples/jsm": "<rootDir>/jest.mockundefined.js"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
