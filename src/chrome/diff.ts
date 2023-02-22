@@ -3,17 +3,17 @@ import { Client, file } from '@kittycad/lib'
 import { ContentFile } from "./types"
 import { FileExportFormat_type, FileImportFormat_type } from "@kittycad/lib/dist/types/src/models"
 
-
 // TODO: check if we could get that from the library
 export const supportedSrcFormats = new Set(["dae", "dxf", "fbx", "obj", "obj_nomtl", "step", "stl", "svg"])
 
-
 export async function downloadFile(octokit: Octokit, owner: string, repo: string,
-                                   ref: string, path: string): Promise<string> {
+    ref: string, path: string): Promise<string> {
     // First get some info on the blob with the Contents api
     // TODO: remove no-cache for prod, this is to make sure back to back query work as the download_url token is short-lived
-    const content = await octokit.rest.repos.getContent({ owner, repo, path, ref,
-                                                          request: { cache: "reload" } })
+    const content = await octokit.rest.repos.getContent({
+        owner, repo, path, ref,
+        request: { cache: "reload" }
+    })
     const contentFile = content.data as ContentFile
 
     if (!contentFile.download_url) {
@@ -23,7 +23,7 @@ export async function downloadFile(octokit: Octokit, owner: string, repo: string
     // Then actually use the download_url (that supports LFS files and has a direct download token) to write the file
     console.log(`Downloading ${contentFile.download_url}...`)
     const response = await fetch(contentFile.download_url)
-    if (!response.ok) throw new Error(`unexpected response ${response.statusText}`)
+    if (!response.ok) throw response
     return await response.text()
 }
 

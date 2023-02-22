@@ -11,3 +11,15 @@ global.CSS = {
     return false
   }),
 }
+
+global.chrome = {
+  runtime: {
+    sendMessage: jest.fn(),
+  },
+  storage: {
+    local: {
+      set: jest.fn(),
+      get: jest.fn(),
+    }
+  }
+}

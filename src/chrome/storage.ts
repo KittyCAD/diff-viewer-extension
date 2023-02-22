@@ -7,7 +7,7 @@ function setStorage(key: TokenKeys, value: string): Promise<void> {
     return chrome.storage.local.set({ [key]: value })
 }
 
-export function getStorage(key: TokenKeys): Promise<string> {
+function getStorage(key: TokenKeys): Promise<string> {
     return new Promise<string>((resolve, reject) => {
         chrome.storage.local.get([key], (result) => {
             if (result && result[key]) {
