@@ -1,12 +1,12 @@
 import { Octokit } from "@octokit/rest"
 import { Client, file } from '@kittycad/lib'
-import { ContentFile } from "./types"
+import { ContentFile, DiffEntry, FileDiff } from "./types"
 import { FileExportFormat_type, FileImportFormat_type } from "@kittycad/lib/dist/types/src/models"
 
 // TODO: check if we could get that from the library
 export const supportedSrcFormats = new Set(["dae", "dxf", "fbx", "obj", "obj_nomtl", "step", "stl", "svg"])
 
-export async function downloadFile(octokit: Octokit, owner: string, repo: string,
+async function downloadFile(octokit: Octokit, owner: string, repo: string,
     ref: string, path: string): Promise<string> {
     // First get some info on the blob with the Contents api
     // TODO: remove no-cache for prod, this is to make sure back to back query work as the download_url token is short-lived
@@ -27,7 +27,7 @@ export async function downloadFile(octokit: Octokit, owner: string, repo: string
     return await response.text()
 }
 
-export async function convert(client: Client, body: string, srcFormat: string, outputFormat = "stl") {
+async function convert(client: Client, body: string, srcFormat: string, outputFormat = "stl") {
     const response = await file.create_file_conversion({
         client, body,
         src_format: srcFormat as FileImportFormat_type,
@@ -38,4 +38,35 @@ export async function convert(client: Client, body: string, srcFormat: string, o
     console.log(`File conversion id: ${id}`)
     console.log(`File conversion status: ${status}`)
     return output
+}
+
+export async function getFileDiff(github: Octokit, kittycad: Client, owner: string, repo: string,
+                           sha: string, parentSha: string, file: DiffEntry): Promise<FileDiff> {
+    const { filename, status } = file
+    const extension = filename.split(".").pop()
+    if (!extension || !supportedSrcFormats.has(extension)) {
+        throw Error(`Unsupported extension. Given ${extension}, was expecting ${supportedSrcFormats.values()}`)
+    }
+
+    if (status === "modified") {
+        const beforeBlob = await downloadFile(github, owner, repo, sha, filename)
+        const before = await convert(kittycad, beforeBlob, extension)
+        const afterBlob = await downloadFile(github, owner, repo, parentSha, filename)
+        const after = await convert(kittycad, afterBlob, extension)
+        return { before, after }
+    }
+
+    if (status === "added") {
+        const blob = await downloadFile(github, owner, repo, sha, filename)
+        const after = await convert(kittycad, blob, extension)
+        return { after }
+    }
+
+    if (status === "removed") {
+        const blob = await downloadFile(github, owner, repo, parentSha, filename)
+        const before = await convert(kittycad, blob, extension)
+        return { before }
+    }
+
+    throw Error(`Unsupported status: ${status}`)
 }

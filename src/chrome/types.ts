@@ -44,13 +44,13 @@ export type MessageGetFileDiff = {
     file: DiffEntry
 }
 
-export type MessageSaveGithubToken = {
+export type MessageSaveToken = {
     token: string
 }
 
 export type Message = {
     id: MessageIds
-    data?: MessageGetGithubPullFilesData | MessageSaveGithubToken | MessageGetFileDiff
+    data?: MessageGetGithubPullFilesData | MessageSaveToken | MessageGetFileDiff
 }
 
-export type MessageResponse = DiffEntry[] | Pull | User | KittycadUser | MessageSaveGithubToken | FileDiff | Error | void
+export type MessageResponse = DiffEntry[] | Pull | User | KittycadUser | MessageSaveToken | FileDiff | Error | void
