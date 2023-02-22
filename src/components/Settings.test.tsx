@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import App from "./App";
+import { Settings } from "./Settings";
 
 it("renders settings popup with both save buttons", async () => {
-  render(<App />);
+  render(<Settings />);
   
   // Waiting for loading
   // expect `ReferenceError: chrome is not defined` in this context

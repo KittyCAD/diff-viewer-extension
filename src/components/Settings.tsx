@@ -1,11 +1,11 @@
 import { Box, ThemeProvider } from "@primer/react";
 import { useEffect, useState } from "react";
-import { KittycadUser, MessageIds, User } from "./chrome/types";
-import { Loading } from "./components/Loading";
-import { TokenForm } from "./components/TokenForm";
-import { UserCard } from "./components/UserCard";
+import { KittycadUser, MessageIds, User } from "../chrome/types";
+import { Loading } from "./Loading";
+import { TokenForm } from "./TokenForm";
+import { UserCard } from "./UserCard";
 
-function App() {
+export function Settings() {
   const [githubUser, setGithubUser] = useState<User>();
   const [kittycadUser, setKittycadUser] = useState<KittycadUser>();
   const [firstInitDone, setFirstInitDone] = useState(false);
@@ -57,7 +57,7 @@ function App() {
                   onSignOut={async () => { await onToken(MessageIds.SaveGithubToken, ""); setGithubUser(undefined) }} />
                 :
                 <TokenForm service="GitHub"
-                  onToken={async (token) => { await onToken(MessageIds.SaveGithubToken, token); await fetchGithubUser() }} />
+                  onToken={async (token: string) => { await onToken(MessageIds.SaveGithubToken, token); await fetchGithubUser() }} />
               }
             </Box>
             <Box mt={4}>
@@ -66,7 +66,7 @@ function App() {
                   onSignOut={async () => { await onToken(MessageIds.SaveKittycadToken, ""); setKittycadUser(undefined) }} />
                 :
                 <TokenForm service="KittyCAD"
-                  onToken={async (token) => { await onToken(MessageIds.SaveKittycadToken, token); await fetchKittycadUser() }} />
+                  onToken={async (token: string) => { await onToken(MessageIds.SaveKittycadToken, token); await fetchKittycadUser() }} />
               }
             </Box>
           </Box>
@@ -76,5 +76,3 @@ function App() {
     </ThemeProvider>
   )
 }
-
-export default App;
