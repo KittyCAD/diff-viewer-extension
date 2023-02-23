@@ -1,4 +1,4 @@
-import { FileDiff } from "./types";
+import { DiffEntry } from "./types";
 import { getElementFilename, getGithubUrlParams, getInjectablePullElements, getWebPullElements } from "./web"
 
 const githubPullHtmlSnippet = `
@@ -21,7 +21,7 @@ const githubPullHtmlSnippet = `
 const parser = new DOMParser();
 const githubPullHtmlDocument = parser.parseFromString(githubPullHtmlSnippet, "text/html");
 
-const githubPullFilesSample = [
+const githubPullFilesSample: DiffEntry[] = [
   {
     "sha": "2f35d962a711bea7a8bf57481b8717f7dedbe1c5",
     "filename": "samples/file_center_of_mass/output.obj",
@@ -33,7 +33,7 @@ const githubPullFilesSample = [
     "raw_url": "https://github.com/KittyCAD/litterbox/raw/11510a02d8294cac5943b8ebdc416170f5b738b5/samples%2Ffile_center_of_mass%2Foutput.obj",
     "contents_url": "https://api.github.com/repos/KittyCAD/litterbox/contents/samples%2Ffile_center_of_mass%2Foutput.obj?ref=11510a02d8294cac5943b8ebdc416170f5b738b5",
     "patch": "@@ -1,3 +1,3 @@\n version https://git-lfs.github.com/spec/v1\n-oid sha256:2a07f53add3eee88b80a0bbe0412cf91df3d3bd9d45934ce849e0440eff90ee1\n-size 62122\n+oid sha256:0c0eb961e7e0589d83693335408b90d3b8adae9f4054c3e396c6eedbc5ed16ec\n+size 62545"
-  } as FileDiff,
+  },
 ]
 
 it("gets params out of a github pull request link", () => {
