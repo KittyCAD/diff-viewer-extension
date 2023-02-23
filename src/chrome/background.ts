@@ -37,23 +37,22 @@ async function saveKittycadTokenAndReload(token: string): Promise<void> {
     await initKittycadApi()
 }
 
-
 (async () => {
     await initKittycadApi()
     await initGithubApi()
 })()
 
 chrome.runtime.onMessage.addListener((message: Message, sender: chrome.runtime.MessageSender,
-                                      sendResponse: (response: MessageResponse) => void) => {
+    sendResponse: (response: MessageResponse) => void) => {
     console.log(`Received ${message.id} from ${sender.id}`)
     if (message.id === MessageIds.GetGithubPullFiles) {
-        const { owner, repo, pull } = message.data as MessageGetGithubPullFilesData 
+        const { owner, repo, pull } = message.data as MessageGetGithubPullFilesData
         github.rest.pulls.listFiles({ owner, repo, pull_number: pull }).then(r => sendResponse(r.data)).catch(e => sendResponse(e))
         return true
     }
 
     if (message.id === MessageIds.GetGithubPull) {
-        const { owner, repo, pull } = message.data as MessageGetGithubPullFilesData 
+        const { owner, repo, pull } = message.data as MessageGetGithubPullFilesData
         github.rest.pulls.get({ owner, repo, pull_number: pull }).then(r => sendResponse(r.data)).catch(e => sendResponse(e))
         return true
     }
