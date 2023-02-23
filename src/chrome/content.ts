@@ -2,7 +2,7 @@ import React from "react"
 import { createRoot } from "react-dom/client"
 import { CadDiff } from "../components/CadDiff"
 import { Loading } from "../components/Loading"
-import { supportedSrcFormats } from "./diff"
+import { isFilenameSupported } from "./diff"
 import { DiffEntry, FileDiff, Message, MessageIds, Pull } from "./types"
 import { getGithubUrlParams, getWebPullElements, getInjectablePullElements } from "./web"
 
@@ -11,33 +11,12 @@ import { getGithubUrlParams, getWebPullElements, getInjectablePullElements } fro
 // no ts support
 const gitHubInjection = require("github-injection")
 
-async function getApiPull(owner: string, repo: string, pull: number) {
-    const message: Message = {
-        id: MessageIds.GetGithubPull,
-        data: { owner, repo, pull },
-    }
-    return await chrome.runtime.sendMessage<Message, Pull>(message)
-}
-
-async function getApiPullFiles(owner: string, repo: string, pull: number) {
-    const message: Message = {
+async function injectPullDiff(owner: string, repo: string, pull: number, document: Document) {
+    const allApiFiles = await chrome.runtime.sendMessage<Message, DiffEntry[]>({
         id: MessageIds.GetGithubPullFiles,
         data: { owner, repo, pull },
-    }
-    return await chrome.runtime.sendMessage<Message, DiffEntry[]>(message)
-}
-
-async function getFileDiff(owner: string, repo: string, sha: string, parentSha: string, file: DiffEntry) {
-    const message: Message = {
-        id: MessageIds.GetFileDiff,
-        data: { owner, repo, sha, parentSha, file },
-    }
-    return await chrome.runtime.sendMessage<Message, FileDiff>(message)
-}
-
-async function injectPullDiff(owner: string, repo: string, pull: number, document: Document) {
-    const allApiFiles = await getApiPullFiles(owner, repo, pull)
-    const apiFiles = allApiFiles.filter(f => supportedSrcFormats.has(f.filename.split(".").pop() || ""))
+    })
+    const apiFiles = allApiFiles.filter(f => isFilenameSupported(f.filename))
     console.log(`Found ${apiFiles.length} supported files with the API`)
 
     const elements = getWebPullElements(document)
@@ -48,11 +27,17 @@ async function injectPullDiff(owner: string, repo: string, pull: number, documen
         createRoot(element).render(React.createElement(Loading))
     }
 
-    const pullData = await getApiPull(owner, repo, pull)
+    const pullData = await chrome.runtime.sendMessage<Message, Pull>({
+        id: MessageIds.GetGithubPull,
+        data: { owner, repo, pull },
+    });
     const sha = pullData.head.sha
     const parentSha = pullData.base.sha
     for (const { element, file } of injectableElements) {
-        const fileDiff = await getFileDiff(owner, repo, sha, parentSha, file)
+        const fileDiff =  await chrome.runtime.sendMessage<Message, FileDiff>({
+            id: MessageIds.GetFileDiff,
+            data: { owner, repo, sha, parentSha, file },
+        })
         createRoot(element).render(React.createElement(CadDiff, fileDiff))
     }
 }
@@ -64,6 +49,6 @@ gitHubInjection(async () => {
         return
     }
     const { owner, repo, pull } = params
-    console.log("Found pull request", owner, repo, pull)
+    console.log("Found pull request URL", owner, repo, pull)
     injectPullDiff(owner, repo, pull, window.document)
 })

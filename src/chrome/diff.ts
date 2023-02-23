@@ -6,6 +6,15 @@ import { FileExportFormat_type, FileImportFormat_type } from "@kittycad/lib/dist
 // TODO: check if we could get that from the library
 export const supportedSrcFormats = new Set(["dae", "dxf", "fbx", "obj", "obj_nomtl", "step", "stl", "svg"])
 
+export function isFilenameSupported(filename: string) {
+    const parts = filename.split(".")
+    if (parts.length <= 1) {
+        return false
+    }
+
+    return supportedSrcFormats.has(parts.pop()!)
+}
+
 async function downloadFile(octokit: Octokit, owner: string, repo: string,
     ref: string, path: string): Promise<string> {
     // First get some info on the blob with the Contents api
