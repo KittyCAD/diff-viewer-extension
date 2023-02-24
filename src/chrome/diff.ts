@@ -15,7 +15,7 @@ export function isFilenameSupported(filename: string) {
     return supportedSrcFormats.has(parts.pop()!)
 }
 
-async function downloadFile(octokit: Octokit, owner: string, repo: string,
+export async function downloadFile(octokit: Octokit, owner: string, repo: string,
     ref: string, path: string): Promise<string> {
     // First get some info on the blob with the Contents api
     // TODO: remove no-cache for prod, this is to make sure back to back query work as the download_url token is short-lived

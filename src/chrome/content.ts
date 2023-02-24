@@ -49,6 +49,10 @@ gitHubInjection(async () => {
         return
     }
     const { owner, repo, pull } = params
-    console.log("Found pull request URL", owner, repo, pull)
-    injectPullDiff(owner, repo, pull, window.document)
+    console.log("Found pull request diff URL", owner, repo, pull)
+    try {
+        await injectPullDiff(owner, repo, pull, window.document)
+    } catch (e) {
+        console.error(e)
+    }
 })
