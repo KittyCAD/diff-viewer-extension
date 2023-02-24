@@ -18,7 +18,8 @@ function ModelView({ file }: { file: string }): React.ReactElement {
   }, [file])
   return (
     <Canvas>
-      <ambientLight />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
       <mesh geometry={geometry}>
         <meshStandardMaterial color={theme?.colors.fg.default} />
       </mesh>
