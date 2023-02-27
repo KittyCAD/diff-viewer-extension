@@ -9,7 +9,7 @@ export type GithubUrlParams = {
 
 export function getGithubUrlParams(url: string): GithubUrlParams {
     // TODO: support commit diff
-    const pullRe = /https:\/\/github\.com\/(\w+)\/(\w+)\/pull\/(\d+)\/files/
+    const pullRe = /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/pull\/(\d+)\/files/
     const result = pullRe.exec(url)
     if (!result) {
         return undefined

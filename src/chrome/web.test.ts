@@ -36,17 +36,21 @@ const githubPullFilesSample: DiffEntry[] = [
   },
 ]
 
-it("gets params out of a github pull request link", () => {
-  expect(getGithubUrlParams("http://google.com")).toBeUndefined()
-  expect(getGithubUrlParams("https://github.com/KittyCAD/litterbox")).toBeUndefined()
+describe("Function getGithubUrlParams", () => {
+  it("gets params out of a valid github pull request link", () => {
+    const pullUrl = "https://github.com/KittyCAD/kittycad.ts/pull/67/files"
+    const params = getGithubUrlParams(pullUrl)
+    expect(params).toBeDefined()
+    const { owner, repo, pull } = params!
+    expect(owner).toEqual("KittyCAD")
+    expect(repo).toEqual("kittycad.ts")
+    expect(pull).toEqual(67)
+  })
 
-  const pullUrl = "https://github.com/KittyCAD/litterbox/pull/95/files"
-  const params = getGithubUrlParams(pullUrl)
-  expect(params).toBeDefined()
-  const { owner, repo, pull } = params!
-  expect(owner).toEqual("KittyCAD")
-  expect(repo).toEqual("litterbox")
-  expect(pull).toEqual(95)
+  it("doesn't match other URLs", () => {
+    expect(getGithubUrlParams("http://google.com")).toBeUndefined()
+    expect(getGithubUrlParams("https://github.com/KittyCAD/litterbox")).toBeUndefined()
+  })
 })
 
 it("finds web elements for supported files", () => {
