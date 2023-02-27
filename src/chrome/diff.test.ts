@@ -7,11 +7,19 @@ it("checks if the filename has a supported extension", () => {
   expect(isFilenameSupported("supported.obj")).toBe(true)
 })
 
-it("downloads a public regular github file", async () => {
-  const github = new Octokit()
-  // https://github.com/KittyCAD/kittycad.ts/blob/0c61ffe45d8b2c72b3d98600e9c50a8a404226b9/example.obj
-  const response = await downloadFile(github, "KittyCAD", "kittycad.ts", "0c61ffe45d8b2c72b3d98600e9c50a8a404226b9", "example.obj")
-  expect(response).toHaveLength(37077)
-})
+describe("Function downloadFile", () => {
 
-// TODO: add test for LFS file download
+  it("downloads a public regular github file", async () => {
+    const github = new Octokit()
+    // https://github.com/KittyCAD/kittycad.ts/blob/0c61ffe45d8b2c72b3d98600e9c50a8a404226b9/example.obj
+    const response = await downloadFile(github, "KittyCAD", "kittycad.ts", "0c61ffe45d8b2c72b3d98600e9c50a8a404226b9", "example.obj")
+    expect(response).toHaveLength(37077)
+  })
+
+  it("downloads a public LFS github file", async () => {
+    const github = new Octokit()
+    // https://github.com/pierremtb/SwGitExample/be3e3897450f28b4166fa1039db06e7d0351dc9b/main/Part1.SLDPRT
+    const response = await downloadFile(github, "pierremtb", "SwGitExample", "be3e3897450f28b4166fa1039db06e7d0351dc9b", "Part1.SLDPRT")
+    expect(response).toHaveLength(70702)
+  })
+})
