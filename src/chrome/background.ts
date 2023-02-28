@@ -26,7 +26,7 @@ async function initGithubApi() {
         const octokitResponse = await github.rest.users.getAuthenticated()
         console.log(`Logged in on github.com as ${octokitResponse.data.login}`)
     } catch (e) {
-        console.error('Couldnt initiate the github api client')
+        console.log('Couldnt initiate the github api client')
     }
 }
 
@@ -40,7 +40,7 @@ async function initKittycadApi() {
             }`
         )
     } catch (e) {
-        console.error("Couldn't initiate the kittycad api client")
+        console.log("Couldn't initiate the kittycad api client")
     }
 }
 
