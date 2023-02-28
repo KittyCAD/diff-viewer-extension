@@ -18,6 +18,7 @@ describe('Function downloadFile', () => {
             '0c61ffe45d8b2c72b3d98600e9c50a8a404226b9',
             'example.obj'
         )
+        // TODO: add hash validation or something like that
         expect(response).toHaveLength(37077)
     })
 
@@ -31,6 +32,7 @@ describe('Function downloadFile', () => {
             'be3e3897450f28b4166fa1039db06e7d0351dc9b',
             'Part1.SLDPRT'
         )
+        // TODO: add hash validation or something like that
         expect(response).toHaveLength(70702)
     })
 })
