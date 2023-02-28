@@ -5,7 +5,6 @@ it('renders settings popup with both save buttons', async () => {
     render(<Settings />)
 
     // Waiting for loading
-    // expect `ReferenceError: chrome is not defined` in this context
     await waitFor(() => screen.findByText(/github token/i))
 
     // GitHub and KittyCAD buttons
