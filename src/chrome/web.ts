@@ -43,7 +43,7 @@ export function getInjectablePullElements(
 ) {
     if (elements.length !== files.length) {
         throw Error(
-            `elements and files have different lendth. Got ${elements.length} and ${files.length}`
+            `elements and files have different length. Got ${elements.length} and ${files.length}`
         )
     }
 
