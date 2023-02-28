@@ -12,6 +12,7 @@ global.CSS = {
     }),
 }
 
+// TODO: improve/replace chrome mocks
 global.chrome = {
     runtime: {
         sendMessage: jest.fn(),
