@@ -34,13 +34,12 @@ export async function downloadFile(
     path: string
 ): Promise<string> {
     // First get some info on the blob with the Contents api
-    // TODO: remove no-cache for prod, this is to make sure back to back query work as the download_url token is short-lived
     const content = await octokit.rest.repos.getContent({
         owner,
         repo,
         path,
         ref,
-        request: { cache: 'reload' },
+        request: { cache: 'reload' }, // download_url provides a token that seems very short-lived
     })
     const contentFile = content.data as ContentFile
 
@@ -48,7 +47,7 @@ export async function downloadFile(
         throw Error(`No download URL associated with ${path} at ${ref}`)
     }
 
-    // Then actually use the download_url (that supports LFS files and has a direct download token) to write the file
+    // Then actually use the download_url (that supports LFS files and has a token) to write the file
     console.log(`Downloading ${contentFile.download_url}...`)
     const response = await fetch(contentFile.download_url)
     if (!response.ok) throw response
@@ -61,6 +60,7 @@ async function convert(
     srcFormat: string,
     outputFormat = 'stl'
 ) {
+    // TODO: think about the best output format for visual diff injection, now defaults to STL
     const response = await file.create_file_conversion({
         client,
         body,
@@ -79,6 +79,7 @@ export async function getFileDiff(
     kittycad: Client,
     owner: string,
     repo: string,
+
     sha: string,
     parentSha: string,
     file: DiffEntry
