@@ -1,15 +1,18 @@
-import { supportedSrcFormats } from "./diff"
-import { DiffEntry } from "./types"
+import { supportedSrcFormats } from './diff'
+import { DiffEntry } from './types'
 
-export type GithubUrlParams = {
-   owner: string
-   repo: string
-   pull: number 
-} | undefined
+export type GithubUrlParams =
+    | {
+          owner: string
+          repo: string
+          pull: number
+      }
+    | undefined
 
 export function getGithubUrlParams(url: string): GithubUrlParams {
     // TODO: support commit diff
-    const pullRe = /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/pull\/(\d+)\/files/
+    const pullRe =
+        /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/pull\/(\d+)\/files/
     const result = pullRe.exec(url)
     if (!result) {
         return undefined
@@ -20,19 +23,28 @@ export function getGithubUrlParams(url: string): GithubUrlParams {
 }
 
 export function getWebPullElements(document: Document): HTMLElement[] {
-    const fileTypeSelectors = Array.from(supportedSrcFormats).map(t => `.file[data-file-type=".${t}"]`)
-    const selector = fileTypeSelectors.join(", ")
+    const fileTypeSelectors = Array.from(supportedSrcFormats).map(
+        t => `.file[data-file-type=".${t}"]`
+    )
+    const selector = fileTypeSelectors.join(', ')
     return [...document.querySelectorAll(selector)].map(n => n as HTMLElement)
 }
 
 export function getElementFilename(element: HTMLElement) {
-    const titleElement = element.querySelector(".file-info a[title]") as HTMLElement
-    return titleElement.getAttribute("title")
+    const titleElement = element.querySelector(
+        '.file-info a[title]'
+    ) as HTMLElement
+    return titleElement.getAttribute('title')
 }
 
-export function getInjectablePullElements(elements: HTMLElement[], files: DiffEntry[]) {
+export function getInjectablePullElements(
+    elements: HTMLElement[],
+    files: DiffEntry[]
+) {
     if (elements.length !== files.length) {
-        throw Error(`elements and files have different lendth. Got ${elements.length} and ${files.length}`)
+        throw Error(
+            `elements and files have different lendth. Got ${elements.length} and ${files.length}`
+        )
     }
 
     const injectableElements = []
@@ -40,9 +52,13 @@ export function getInjectablePullElements(elements: HTMLElement[], files: DiffEn
         const apiFile = files[index]
         const filename = getElementFilename(element)
         if (filename !== apiFile.filename) {
-            throw Error("Couldn't match API file with a diff element on the page. Aborting.")
+            throw Error(
+                "Couldn't match API file with a diff element on the page. Aborting."
+            )
         }
-        const diffElement = element.querySelector(".js-file-content") as HTMLElement
+        const diffElement = element.querySelector(
+            '.js-file-content'
+        ) as HTMLElement
         injectableElements.push({ element: diffElement, file: apiFile })
     }
 

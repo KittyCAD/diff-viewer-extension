@@ -1,17 +1,26 @@
-import React from "react"
-import { createRoot } from "react-dom/client"
-import { CadDiff } from "../components/CadDiff"
-import { Loading } from "../components/Loading"
-import { isFilenameSupported } from "./diff"
-import { DiffEntry, FileDiff, Message, MessageIds, Pull } from "./types"
-import { getGithubUrlParams, getWebPullElements, getInjectablePullElements } from "./web"
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { CadDiff } from '../components/CadDiff'
+import { Loading } from '../components/Loading'
+import { isFilenameSupported } from './diff'
+import { DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
+import {
+    getGithubUrlParams,
+    getWebPullElements,
+    getInjectablePullElements,
+} from './web'
 
 // https://github.com/OctoLinker/injection
 // maintained by octolinker, makes sure pages that are loaded through pjax are available for injection
 // no ts support
-const gitHubInjection = require("github-injection")
+const gitHubInjection = require('github-injection')
 
-async function injectPullDiff(owner: string, repo: string, pull: number, document: Document) {
+async function injectPullDiff(
+    owner: string,
+    repo: string,
+    pull: number,
+    document: Document
+) {
     const allApiFiles = await chrome.runtime.sendMessage<Message, DiffEntry[]>({
         id: MessageIds.GetGithubPullFiles,
         data: { owner, repo, pull },
@@ -30,11 +39,11 @@ async function injectPullDiff(owner: string, repo: string, pull: number, documen
     const pullData = await chrome.runtime.sendMessage<Message, Pull>({
         id: MessageIds.GetGithubPull,
         data: { owner, repo, pull },
-    });
+    })
     const sha = pullData.head.sha
     const parentSha = pullData.base.sha
     for (const { element, file } of injectableElements) {
-        const fileDiff =  await chrome.runtime.sendMessage<Message, FileDiff>({
+        const fileDiff = await chrome.runtime.sendMessage<Message, FileDiff>({
             id: MessageIds.GetFileDiff,
             data: { owner, repo, sha, parentSha, file },
         })
@@ -49,7 +58,7 @@ gitHubInjection(async () => {
         return
     }
     const { owner, repo, pull } = params
-    console.log("Found pull request diff URL", owner, repo, pull)
+    console.log('Found pull request diff URL', owner, repo, pull)
     try {
         await injectPullDiff(owner, repo, pull, window.document)
     } catch (e) {

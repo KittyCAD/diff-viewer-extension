@@ -1,6 +1,6 @@
 enum TokenKeys {
-    Github = "gtk",
-    Kittycad = "ktk",
+    Github = 'gtk',
+    Kittycad = 'ktk',
 }
 
 function setStorage(key: TokenKeys, value: string): Promise<void> {
@@ -9,11 +9,11 @@ function setStorage(key: TokenKeys, value: string): Promise<void> {
 
 function getStorage(key: TokenKeys): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-        chrome.storage.local.get([key], (result) => {
+        chrome.storage.local.get([key], result => {
             if (result && result[key]) {
                 resolve(result[key])
             } else {
-                reject("Empty token")
+                reject('Empty token')
             }
         })
     })

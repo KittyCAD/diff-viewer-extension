@@ -1,17 +1,16 @@
-import { User_type } from "@kittycad/lib/dist/types/src/models";
-import { components } from "@octokit/openapi-types";
+import { User_type } from '@kittycad/lib/dist/types/src/models'
+import { components } from '@octokit/openapi-types'
 
 // kittycad
- 
+
 export type KittycadUser = User_type
 
 // octokit
 
-export type DiffEntry = components["schemas"]["diff-entry"]
-export type ContentFile = components["schemas"]["content-file"]
-export type User = components["schemas"]["simple-user"];
-export type Pull = components["schemas"]["pull-request"]
-
+export type DiffEntry = components['schemas']['diff-entry']
+export type ContentFile = components['schemas']['content-file']
+export type User = components['schemas']['simple-user']
+export type Pull = components['schemas']['pull-request']
 
 // chrome extension
 
@@ -21,13 +20,13 @@ export type FileDiff = {
 }
 
 export enum MessageIds {
-    GetGithubPullFiles = "GetPullFiles",
-    GetGithubUser = "GetGitHubUser",
-    SaveGithubToken = "SaveGitHubToken",
-    SaveKittycadToken = "SaveKittyCadToken",
-    GetKittycadUser = "GetKittyCadUser",
-    GetFileDiff = "GetFileDiff",
-    GetGithubPull = "GetGithubPull"
+    GetGithubPullFiles = 'GetPullFiles',
+    GetGithubUser = 'GetGitHubUser',
+    SaveGithubToken = 'SaveGitHubToken',
+    SaveKittycadToken = 'SaveKittyCadToken',
+    GetKittycadUser = 'GetKittyCadUser',
+    GetFileDiff = 'GetFileDiff',
+    GetGithubPull = 'GetGithubPull',
 }
 
 export type MessageGetGithubPullFilesData = {
@@ -53,4 +52,12 @@ export type Message = {
     data?: MessageGetGithubPullFilesData | MessageSaveToken | MessageGetFileDiff
 }
 
-export type MessageResponse = DiffEntry[] | Pull | User | KittycadUser | MessageSaveToken | FileDiff | Error | void
+export type MessageResponse =
+    | DiffEntry[]
+    | Pull
+    | User
+    | KittycadUser
+    | MessageSaveToken
+    | FileDiff
+    | Error
+    | void
