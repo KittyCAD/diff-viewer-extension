@@ -8,16 +8,14 @@ The project was setup as a Create-React-App boilerplate, with yarn as package ma
 
 https://craco.js.org/ is used to extend the default CRA configs.
 
-In the project directory, you can run:
-
+From the project directory:
 
 ### `yarn build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The generated `build` directory may then be added to Chrome with the __Load unpacked__ button at [chrome://extensions](). This needs to be done everytime there's a change.
-
+The generated `build` directory may then be added to Chrome with the **Load unpacked** button at [chrome://extensions](). This needs to be done everytime there's a change.
 
 ### `yarn start`
 
