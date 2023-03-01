@@ -4,11 +4,21 @@ Injects @kittycad/lib powered visual diffs for supported CAD files in GitHub Pul
 
 ## Available Scripts
 
-The project was setup as a Create-React-App boilerplate, with yarn as package manager and TypeScript.
+The project was setup as a Create-React-App boilerplate, with Node 16, yarn 3 as package manager and TypeScript.
 
 https://craco.js.org/ is used to extend the default CRA configs.
 
 From the project directory:
+
+### `yarn install`
+
+Installs all the dependencies needed to build and test the project.
+
+If needed: VS Code requires an additional step to make sure it works with Yarn PnP (more info [here](https://yarnpkg.com/getting-started/editor-sdks#vscode))
+
+```
+yarn dlx @yarnpkg/sdks vscode
+```
 
 ### `yarn build`
 
