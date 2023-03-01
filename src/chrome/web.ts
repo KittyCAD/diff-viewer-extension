@@ -1,4 +1,4 @@
-import { supportedSrcFormats } from './diff'
+import { isFilenameSupported, supportedSrcFormats } from './diff'
 import { DiffEntry } from './types'
 
 export type GithubPullUrlParams = {
@@ -52,17 +52,23 @@ export function getElementFilename(element: HTMLElement) {
     return titleElement.getAttribute('title')
 }
 
-export function getInjectablePullElements(
-    elements: HTMLElement[],
+export function getInjectableDiffElements(
+    document: Document,
     files: DiffEntry[]
 ) {
+    const supportedFiles = files.filter(f => isFilenameSupported(f.filename))
+    console.log(`Found ${supportedFiles.length} supported files with the API`)
+
+    const elements = getWebPullElements(document)
+    console.log(`Found ${elements.length} elements in the web page`)
+
     if (elements.length !== files.length) {
         throw Error(
             `elements and files have different length. Got ${elements.length} and ${files.length}`
         )
     }
 
-    const injectableElements = []
+    const injectableElements: { element: HTMLElement; file: DiffEntry }[] = []
     for (const [index, element] of elements.entries()) {
         const apiFile = files[index]
         const filename = getElementFilename(element)

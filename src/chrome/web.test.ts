@@ -3,7 +3,7 @@ import {
     getElementFilename,
     getGithubCommitUrlParams,
     getGithubPullUrlParams,
-    getInjectablePullElements,
+    getInjectableDiffElements,
     getWebPullElements,
 } from './web'
 
@@ -99,9 +99,8 @@ it('finds the filename of a supported file element', () => {
 })
 
 it('finds injectable elements from html and api results', () => {
-    const elements = getWebPullElements(githubPullHtmlDocument)
-    const injectableElements = getInjectablePullElements(
-        elements,
+    const injectableElements = getInjectableDiffElements(
+        githubPullHtmlDocument,
         githubPullFilesSample
     )
     expect(injectableElements).toHaveLength(1)

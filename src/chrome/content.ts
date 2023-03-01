@@ -2,12 +2,10 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { CadDiff } from '../components/CadDiff'
 import { Loading } from '../components/Loading'
-import { isFilenameSupported } from './diff'
 import { Commit, DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
-    getWebPullElements,
-    getInjectablePullElements,
+    getInjectableDiffElements,
     getGithubCommitUrlParams,
 } from './web'
 
@@ -24,16 +22,7 @@ async function injectDiff(
     files: DiffEntry[],
     document: Document
 ) {
-    const supportedFiles = files.filter(f => isFilenameSupported(f.filename))
-    console.log(`Found ${supportedFiles.length} supported files with the API`)
-
-    const elements = getWebPullElements(document)
-    console.log(`Found ${elements.length} elements in the web page`)
-
-    const injectableElements = getInjectablePullElements(
-        elements,
-        supportedFiles
-    )
+    const injectableElements = getInjectableDiffElements(document, files)
     for (const { element } of injectableElements) {
         createRoot(element).render(React.createElement(Loading))
     }
