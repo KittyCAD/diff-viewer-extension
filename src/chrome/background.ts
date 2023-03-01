@@ -4,6 +4,7 @@ import {
     KittycadUser,
     Message,
     MessageGetFileDiff,
+    MessageGetGithubCommitData,
     MessageGetGithubPullFilesData,
     MessageIds,
     MessageResponse,
@@ -81,6 +82,16 @@ chrome.runtime.onMessage.addListener(
                 message.data as MessageGetGithubPullFilesData
             github.rest.pulls
                 .get({ owner, repo, pull_number: pull })
+                .then(r => sendResponse(r.data))
+                .catch(e => sendResponse(e))
+            return true
+        }
+
+        if (message.id === MessageIds.GetGithubCommit) {
+            const { owner, repo, sha } =
+                message.data as MessageGetGithubCommitData
+            github.rest.repos
+                .getCommit({ owner, repo, ref: sha })
                 .then(r => sendResponse(r.data))
                 .catch(e => sendResponse(e))
             return true

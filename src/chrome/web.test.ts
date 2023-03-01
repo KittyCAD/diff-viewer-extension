@@ -1,7 +1,8 @@
 import { DiffEntry } from './types'
 import {
     getElementFilename,
-    getGithubUrlParams,
+    getGithubCommitUrlParams,
+    getGithubPullUrlParams,
     getInjectablePullElements,
     getWebPullElements,
 } from './web'
@@ -47,10 +48,10 @@ const githubPullFilesSample: DiffEntry[] = [
     },
 ]
 
-describe('Function getGithubUrlParams', () => {
+describe('Function getGithubPullUrlParams', () => {
     it('gets params out of a valid github pull request link', () => {
-        const pullUrl = 'https://github.com/KittyCAD/kittycad.ts/pull/67/files'
-        const params = getGithubUrlParams(pullUrl)
+        const url = 'https://github.com/KittyCAD/kittycad.ts/pull/67/files'
+        const params = getGithubPullUrlParams(url)
         expect(params).toBeDefined()
         const { owner, repo, pull } = params!
         expect(owner).toEqual('KittyCAD')
@@ -59,10 +60,30 @@ describe('Function getGithubUrlParams', () => {
     })
 
     it("doesn't match other URLs", () => {
-        expect(getGithubUrlParams('http://google.com')).toBeUndefined()
-        expect(
-            getGithubUrlParams('https://github.com/KittyCAD/litterbox')
-        ).toBeUndefined()
+        expect(() => getGithubPullUrlParams('http://google.com')).toThrowError()
+        expect(() =>
+            getGithubPullUrlParams('https://github.com/KittyCAD/litterbox')
+        ).toThrowError()
+    })
+})
+
+describe('Function getGithubCommitUrlParams', () => {
+    it('gets params out of a valid github commit link', () => {
+        const url =
+            'https://github.com/KittyCAD/litterbox/commit/4ddf899550addf41d6bf1b790ce79e46501411b3'
+        const params = getGithubCommitUrlParams(url)
+        expect(params).toBeDefined()
+        const { owner, repo, sha } = params!
+        expect(owner).toEqual('KittyCAD')
+        expect(repo).toEqual('litterbox')
+        expect(sha).toEqual('4ddf899550addf41d6bf1b790ce79e46501411b3')
+    })
+
+    it("doesn't match other URLs", () => {
+        expect(() => getGithubPullUrlParams('http://google.com')).toThrowError()
+        expect(() =>
+            getGithubPullUrlParams('https://github.com/KittyCAD/litterbox')
+        ).toThrowError()
     })
 })
 

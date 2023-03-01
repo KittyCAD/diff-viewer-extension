@@ -1,25 +1,40 @@
 import { supportedSrcFormats } from './diff'
 import { DiffEntry } from './types'
 
-export type GithubUrlParams =
-    | {
-          owner: string
-          repo: string
-          pull: number
-      }
-    | undefined
+export type GithubPullUrlParams = {
+    owner: string
+    repo: string
+    pull: number
+}
 
-export function getGithubUrlParams(url: string): GithubUrlParams {
-    // TODO: support commit diff
+export function getGithubPullUrlParams(url: string): GithubPullUrlParams {
     const pullRe =
         /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/pull\/(\d+)\/files/
     const result = pullRe.exec(url)
     if (!result) {
-        return undefined
+        throw Error('URL is not a supported Github Pull Request URL')
     }
 
     const [, owner, repo, pull] = result
     return { owner, repo, pull: parseInt(pull) }
+}
+
+export type GithubCommitUrlParams = {
+    owner: string
+    repo: string
+    sha: string
+}
+
+export function getGithubCommitUrlParams(url: string): GithubCommitUrlParams {
+    const pullRe =
+        /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/commit\/(\w+)/
+    const result = pullRe.exec(url)
+    if (!result) {
+        throw Error('URL is not a supported Github Commit URL')
+    }
+
+    const [, owner, repo, sha] = result
+    return { owner, repo, sha }
 }
 
 export function getWebPullElements(document: Document): HTMLElement[] {
