@@ -16,33 +16,28 @@ import {
 // no ts support
 const gitHubInjection = require('github-injection')
 
-async function injectPullDiff(
+async function injectDiff(
     owner: string,
     repo: string,
-    pull: number,
+    sha: string,
+    parentSha: string,
+    files: DiffEntry[],
     document: Document
 ) {
-    const allApiFiles = await chrome.runtime.sendMessage<Message, DiffEntry[]>({
-        id: MessageIds.GetGithubPullFiles,
-        data: { owner, repo, pull },
-    })
-    const apiFiles = allApiFiles.filter(f => isFilenameSupported(f.filename))
-    console.log(`Found ${apiFiles.length} supported files with the API`)
+    const supportedFiles = files.filter(f => isFilenameSupported(f.filename))
+    console.log(`Found ${supportedFiles.length} supported files with the API`)
 
     const elements = getWebPullElements(document)
     console.log(`Found ${elements.length} elements in the web page`)
 
-    const injectableElements = getInjectablePullElements(elements, apiFiles)
+    const injectableElements = getInjectablePullElements(
+        elements,
+        supportedFiles
+    )
     for (const { element } of injectableElements) {
         createRoot(element).render(React.createElement(Loading))
     }
 
-    const pullData = await chrome.runtime.sendMessage<Message, Pull>({
-        id: MessageIds.GetGithubPull,
-        data: { owner, repo, pull },
-    })
-    const sha = pullData.head.sha
-    const parentSha = pullData.base.sha
     for (const { element, file } of injectableElements) {
         const fileDiff = await chrome.runtime.sendMessage<Message, FileDiff>({
             id: MessageIds.GetFileDiff,
@@ -50,6 +45,25 @@ async function injectPullDiff(
         })
         createRoot(element).render(React.createElement(CadDiff, fileDiff))
     }
+}
+
+async function injectPullDiff(
+    owner: string,
+    repo: string,
+    pull: number,
+    document: Document
+) {
+    const files = await chrome.runtime.sendMessage<Message, DiffEntry[]>({
+        id: MessageIds.GetGithubPullFiles,
+        data: { owner, repo, pull },
+    })
+    const pullData = await chrome.runtime.sendMessage<Message, Pull>({
+        id: MessageIds.GetGithubPull,
+        data: { owner, repo, pull },
+    })
+    const sha = pullData.head.sha
+    const parentSha = pullData.base.sha
+    await injectDiff(owner, repo, sha, parentSha, files, document)
 }
 
 async function injectCommitDiff(
@@ -63,27 +77,9 @@ async function injectCommitDiff(
         data: { owner, repo, sha },
     })
     if (!commit.files) throw Error('Found no file changes in commit')
-    const apiFiles = commit.files.filter(f => isFilenameSupported(f.filename))
-    console.log(`Found ${apiFiles.length} supported files with the API`)
-
-    const elements = getWebPullElements(document)
-    console.log(`Found ${elements.length} elements in the web page`)
-
-    const injectableElements = getInjectablePullElements(elements, apiFiles)
-    for (const { element } of injectableElements) {
-        createRoot(element).render(React.createElement(Loading))
-    }
-
-    if (!commit.parents.length)
-        throw Error("Found no commit parent, can't compute diff")
+    if (!commit.parents.length) throw Error('Found no commit parent')
     const parentSha = commit.parents[0].sha
-    for (const { element, file } of injectableElements) {
-        const fileDiff = await chrome.runtime.sendMessage<Message, FileDiff>({
-            id: MessageIds.GetFileDiff,
-            data: { owner, repo, sha, parentSha, file },
-        })
-        createRoot(element).render(React.createElement(CadDiff, fileDiff))
-    }
+    injectDiff(owner, repo, sha, parentSha, commit.files, document)
 }
 
 gitHubInjection(async () => {
