@@ -7,15 +7,16 @@ export type GithubPullUrlParams = {
     pull: number
 }
 
-export function getGithubPullUrlParams(url: string): GithubPullUrlParams {
+export function getGithubPullUrlParams(url: string): GithubPullUrlParams | undefined {
     const pullRe =
         /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/pull\/(\d+)\/files/
     const result = pullRe.exec(url)
     if (!result) {
-        throw Error('URL is not a supported Github Pull Request URL')
+        return undefined
     }
 
     const [, owner, repo, pull] = result
+    console.log("Found a supported Github Pull Request URL:", owner, repo, pull)
     return { owner, repo, pull: parseInt(pull) }
 }
 
@@ -25,15 +26,16 @@ export type GithubCommitUrlParams = {
     sha: string
 }
 
-export function getGithubCommitUrlParams(url: string): GithubCommitUrlParams {
+export function getGithubCommitUrlParams(url: string): GithubCommitUrlParams | undefined {
     const pullRe =
         /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/commit\/(\w+)/
     const result = pullRe.exec(url)
     if (!result) {
-        throw Error('URL is not a supported Github Commit URL')
+        return undefined
     }
 
     const [, owner, repo, sha] = result
+    console.log("Found a supported Github Commit URL:", owner, repo, sha)
     return { owner, repo, sha }
 }
 

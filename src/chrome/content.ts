@@ -22,12 +22,12 @@ async function injectDiff(
     files: DiffEntry[],
     document: Document
 ) {
-    const injectableElements = mapInjectableDiffElements(document, files)
-    for (const { element } of injectableElements) {
+    const map = mapInjectableDiffElements(document, files)
+    for (const { element } of map) {
         createRoot(element).render(React.createElement(Loading))
     }
 
-    for (const { element, file } of injectableElements) {
+    for (const { element, file } of map) {
         const fileDiff = await chrome.runtime.sendMessage<Message, FileDiff>({
             id: MessageIds.GetFileDiff,
             data: { owner, repo, sha, parentSha, file },
@@ -72,23 +72,18 @@ async function injectCommitDiff(
 }
 
 gitHubInjection(async () => {
-    try {
-        const { owner, repo, pull } = getGithubPullUrlParams(
-            window.location.href
-        )
+    const url = window.location.href
+    const pullParams = getGithubPullUrlParams(url)
+    if (pullParams) {
+        const { owner, repo, pull } = pullParams
         await injectPullDiff(owner, repo, pull, window.document)
         return
-    } catch (e) {
-        console.log(e)
     }
 
-    try {
-        const { owner, repo, sha } = getGithubCommitUrlParams(
-            window.location.href
-        )
+    const commitParams = getGithubCommitUrlParams(url)
+    if (commitParams) {
+        const { owner, repo, sha } = commitParams
         await injectCommitDiff(owner, repo, sha, window.document)
         return
-    } catch (e) {
-        console.log(e)
     }
 })

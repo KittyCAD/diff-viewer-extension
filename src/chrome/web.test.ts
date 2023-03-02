@@ -117,10 +117,10 @@ describe('Function getGithubPullUrlParams', () => {
     })
 
     it("doesn't match other URLs", () => {
-        expect(() => getGithubPullUrlParams('http://google.com')).toThrowError()
-        expect(() =>
+        expect(getGithubPullUrlParams('http://google.com')).toBeUndefined()
+        expect(
             getGithubPullUrlParams('https://github.com/KittyCAD/litterbox')
-        ).toThrowError()
+        ).toBeUndefined()
     })
 })
 
@@ -137,10 +137,10 @@ describe('Function getGithubCommitUrlParams', () => {
     })
 
     it("doesn't match other URLs", () => {
-        expect(() => getGithubPullUrlParams('http://google.com')).toThrowError()
-        expect(() =>
+        expect(getGithubPullUrlParams('http://google.com')).toBeUndefined()
+        expect(
             getGithubPullUrlParams('https://github.com/KittyCAD/litterbox')
-        ).toThrowError()
+        ).toBeUndefined()
     })
 })
 
