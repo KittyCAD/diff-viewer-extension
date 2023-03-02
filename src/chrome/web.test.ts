@@ -8,43 +8,43 @@ import {
 } from './web'
 
 const githubPullHtmlSnippet = `
-<div class="file js-file js-details-container js-targetable-element show-inline-notes" data-file-type=".json" data-file-deleted="false" data-tagsearch-path="samples/file_center_of_mass/output.json" data-tagsearch-lang="JSON" data-targets="diff-file-filter.diffEntries">
-  <div class="file-header d-flex flex-md-row flex-column flex-md-items-center file-header--expandable js-file-header js-skip-tagsearch " data-path="samples/file_center_of_mass/output.json" data-short-path="d89089c" data-anchor="diff-d89089cdcbd5a582129d743fc2075f581b836b24449a9121741fb0cf3a0d2d6a" data-file-type=".json" data-file-deleted="false">
-    <div class="file-info flex-auto min-width-0 mb-md-0 mb-2">
+<div class="file" data-file-type=".json">
+  <div class="file-header">
+    <div class="file-info">
       <span class="Truncate">
-        <a title="samples/file_center_of_mass/output.json" class="Link--primary Truncate-text" href="#diff-d89089cdcbd5a582129d743fc2075f581b836b24449a9121741fb0cf3a0d2d6a">samples/file_center_of_mass/output.json</a>
+        <a title="samples/file_center_of_mass/output.json">samples/file_center_of_mass/output.json</a>
       </span>
     </div>
-  <div class="js-file-content Details-content--hidden position-relative" data-hydro-view="{&quot;event_type&quot;:&quot;pull_request.select_diff_range&quot;,&quot;payload&quot;:{&quot;actor_id&quot;:10795683,&quot;pull_request_id&quot;:null,&quot;repository_id&quot;:null,&quot;diff_type&quot;:&quot;UNIFIED&quot;,&quot;whitespace_ignored&quot;:false,&quot;originating_url&quot;:&quot;https://github.com/KittyCAD/litterbox/commit/4ddf899550addf41d6bf1b790ce79e46501411b3&quot;,&quot;user_id&quot;:10795683}}" data-hydro-view-hmac="b6535795e68e5dd0e53ae9bd5b04079139f4936d41dd643d1aefcf398e9a685e">
+  <div class="js-file-content">
     <div class="data highlight js-blob-wrapper" style="">
-        text diff
+        // was a code diff
     </div>
   </div>
 </div>
 
-<div class="file js-file js-details-container js-targetable-element show-inline-notes Details Details--on open js-tagsearch-file" data-file-type=".obj">
-  <div class="file-header d-flex flex-md-row flex-column flex-md-items-center file-header--expandable js-file-header js-skip-tagsearch sticky-file-header js-position-sticky js-position-sticky-stacked">
-    <div class="file-info flex-auto min-width-0 mb-md-0 mb-2">
+<div class="file" data-file-type=".obj">
+  <div class="file-header">
+    <div class="file-info">
       <span class="Truncate">
-        <a title="samples/file_center_of_mass/output.obj" class="Link--primary Truncate-text" href="#diff-5f8df244900f6383db3354c02b8a984a044b272e6bfe4cacc1ec8d4892ad3e21">samples/file_center_of_mass/output.obj</a>
+        <a title="samples/file_center_of_mass/output.obj">samples/file_center_of_mass/output.obj</a>
       </span>
     </div>
   </div>
-  <div class="js-file-content Details-content--hidden position-relative">
+  <div class="js-file-content">
     <div class="data highlight empty">
       Git LFS file not shown
     </div>
   </div>
 </div>
 
-<div class="file js-file js-details-container js-targetable-element show-inline-notes" data-file-type=".obj" data-file-deleted="false" data-tagsearch-path="seesaw.obj" data-tagsearch-lang="Wavefront Object" data-targets="diff-file-filter.diffEntries">
-  <div class="file-header d-flex flex-md-row flex-column flex-md-items-center file-header--expandable js-file-header js-skip-tagsearch  sticky-file-header js-position-sticky js-position-sticky-stacked" data-path="seesaw.obj" data-short-path="30a5515" data-anchor="diff-30a55156d01e06636625268d21e631c64adbfb6f4943a36279f622b6547aea67" data-file-type=".obj" data-file-deleted="false" data-original-top="60px" style="top: 60px !important;">
-    <div class="file-info flex-auto min-width-0 mb-md-0 mb-2">
+<div class="file" data-file-type=".obj">
+  <div class="file-header">
+    <div class="file-info">
       <span class="Truncate">
-        <a title="seesaw.obj" class="Link--primary Truncate-text" href="#diff-30a55156d01e06636625268d21e631c64adbfb6f4943a36279f622b6547aea67">seesaw.obj</a>
+        <a title="seesaw.obj">seesaw.obj</a>
       </span>
     </div>
-  <div class="js-file-content Details-content--hidden position-relative">
+  <div class="js-file-content">
     <div class="data highlight empty">
       Git LFS file not shown
     </div>
