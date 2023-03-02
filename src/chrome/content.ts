@@ -78,6 +78,7 @@ gitHubInjection(async () => {
         )
         console.log('Found pull request diff URL', owner, repo, pull)
         await injectPullDiff(owner, repo, pull, window.document)
+        return
     } catch (e) {
         console.log(e)
     }
@@ -88,6 +89,7 @@ gitHubInjection(async () => {
         )
         console.log('Found pull request commit URL', owner, repo, sha)
         await injectCommitDiff(owner, repo, sha, window.document)
+        return
     } catch (e) {
         console.log(e)
     }
