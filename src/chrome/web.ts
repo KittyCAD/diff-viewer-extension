@@ -7,7 +7,9 @@ export type GithubPullUrlParams = {
     pull: number
 }
 
-export function getGithubPullUrlParams(url: string): GithubPullUrlParams | undefined {
+export function getGithubPullUrlParams(
+    url: string
+): GithubPullUrlParams | undefined {
     const pullRe =
         /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/pull\/(\d+)\/files/
     const result = pullRe.exec(url)
@@ -16,7 +18,7 @@ export function getGithubPullUrlParams(url: string): GithubPullUrlParams | undef
     }
 
     const [, owner, repo, pull] = result
-    console.log("Found a supported Github Pull Request URL:", owner, repo, pull)
+    console.log('Found a supported Github Pull Request URL:', owner, repo, pull)
     return { owner, repo, pull: parseInt(pull) }
 }
 
@@ -26,7 +28,9 @@ export type GithubCommitUrlParams = {
     sha: string
 }
 
-export function getGithubCommitUrlParams(url: string): GithubCommitUrlParams | undefined {
+export function getGithubCommitUrlParams(
+    url: string
+): GithubCommitUrlParams | undefined {
     const pullRe =
         /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/commit\/(\w+)/
     const result = pullRe.exec(url)
@@ -35,7 +39,7 @@ export function getGithubCommitUrlParams(url: string): GithubCommitUrlParams | u
     }
 
     const [, owner, repo, sha] = result
-    console.log("Found a supported Github Commit URL:", owner, repo, sha)
+    console.log('Found a supported Github Commit URL:', owner, repo, sha)
     return { owner, repo, sha }
 }
 
