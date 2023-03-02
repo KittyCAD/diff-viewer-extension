@@ -37,7 +37,7 @@ export function getGithubCommitUrlParams(url: string): GithubCommitUrlParams {
     return { owner, repo, sha }
 }
 
-export function getWebPullElements(document: Document): HTMLElement[] {
+export function getSupportedWebDiffElements(document: Document): HTMLElement[] {
     const fileTypeSelectors = Array.from(supportedSrcFormats).map(
         t => `.file[data-file-type=".${t}"]`
     )
@@ -52,25 +52,25 @@ export function getElementFilename(element: HTMLElement) {
     return titleElement.getAttribute('title')
 }
 
-export function getInjectableDiffElements(
+export function mapInjectableDiffElements(
     document: Document,
     files: DiffEntry[]
 ) {
     const supportedFiles = files.filter(f => isFilenameSupported(f.filename))
     console.log(`Found ${supportedFiles.length} supported files with the API`)
 
-    const elements = getWebPullElements(document)
-    console.log(`Found ${elements.length} elements in the web page`)
+    const supportedElements = getSupportedWebDiffElements(document)
+    console.log(`Found ${supportedElements.length} elements in the web page`)
 
-    if (elements.length !== files.length) {
+    if (supportedElements.length !== supportedFiles.length) {
         throw Error(
-            `elements and files have different length. Got ${elements.length} and ${files.length}`
+            `elements and files have different length. Got ${supportedElements.length} and ${files.length}`
         )
     }
 
     const injectableElements: { element: HTMLElement; file: DiffEntry }[] = []
-    for (const [index, element] of elements.entries()) {
-        const apiFile = files[index]
+    for (const [index, element] of supportedElements.entries()) {
+        const apiFile = supportedFiles[index]
         const filename = getElementFilename(element)
         if (filename !== apiFile.filename) {
             throw Error(

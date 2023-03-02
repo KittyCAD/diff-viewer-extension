@@ -5,7 +5,7 @@ import { Loading } from '../components/Loading'
 import { Commit, DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
-    getInjectableDiffElements,
+    mapInjectableDiffElements,
     getGithubCommitUrlParams,
 } from './web'
 
@@ -22,7 +22,7 @@ async function injectDiff(
     files: DiffEntry[],
     document: Document
 ) {
-    const injectableElements = getInjectableDiffElements(document, files)
+    const injectableElements = mapInjectableDiffElements(document, files)
     for (const { element } of injectableElements) {
         createRoot(element).render(React.createElement(Loading))
     }
@@ -76,7 +76,6 @@ gitHubInjection(async () => {
         const { owner, repo, pull } = getGithubPullUrlParams(
             window.location.href
         )
-        console.log('Found pull request diff URL', owner, repo, pull)
         await injectPullDiff(owner, repo, pull, window.document)
         return
     } catch (e) {
@@ -87,7 +86,6 @@ gitHubInjection(async () => {
         const { owner, repo, sha } = getGithubCommitUrlParams(
             window.location.href
         )
-        console.log('Found pull request commit URL', owner, repo, sha)
         await injectCommitDiff(owner, repo, sha, window.document)
         return
     } catch (e) {
