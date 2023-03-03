@@ -2,12 +2,11 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { CadDiff } from '../components/CadDiff'
 import { Loading } from '../components/Loading'
-import { isFilenameSupported } from './diff'
-import { DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
+import { Commit, DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
 import {
-    getGithubUrlParams,
-    getWebPullElements,
-    getInjectablePullElements,
+    getGithubPullUrlParams,
+    mapInjectableDiffElements,
+    getGithubCommitUrlParams,
 } from './web'
 
 // https://github.com/OctoLinker/injection
@@ -15,34 +14,20 @@ import {
 // no ts support
 const gitHubInjection = require('github-injection')
 
-async function injectPullDiff(
+async function injectDiff(
     owner: string,
     repo: string,
-    pull: number,
+    sha: string,
+    parentSha: string,
+    files: DiffEntry[],
     document: Document
 ) {
-    const allApiFiles = await chrome.runtime.sendMessage<Message, DiffEntry[]>({
-        id: MessageIds.GetGithubPullFiles,
-        data: { owner, repo, pull },
-    })
-    const apiFiles = allApiFiles.filter(f => isFilenameSupported(f.filename))
-    console.log(`Found ${apiFiles.length} supported files with the API`)
-
-    const elements = getWebPullElements(document)
-    console.log(`Found ${elements.length} elements in the web page`)
-
-    const injectableElements = getInjectablePullElements(elements, apiFiles)
-    for (const { element } of injectableElements) {
+    const map = mapInjectableDiffElements(document, files)
+    for (const { element } of map) {
         createRoot(element).render(React.createElement(Loading))
     }
 
-    const pullData = await chrome.runtime.sendMessage<Message, Pull>({
-        id: MessageIds.GetGithubPull,
-        data: { owner, repo, pull },
-    })
-    const sha = pullData.head.sha
-    const parentSha = pullData.base.sha
-    for (const { element, file } of injectableElements) {
+    for (const { element, file } of map) {
         const fileDiff = await chrome.runtime.sendMessage<Message, FileDiff>({
             id: MessageIds.GetFileDiff,
             data: { owner, repo, sha, parentSha, file },
@@ -51,17 +36,54 @@ async function injectPullDiff(
     }
 }
 
+async function injectPullDiff(
+    owner: string,
+    repo: string,
+    pull: number,
+    document: Document
+) {
+    const files = await chrome.runtime.sendMessage<Message, DiffEntry[]>({
+        id: MessageIds.GetGithubPullFiles,
+        data: { owner, repo, pull },
+    })
+    const pullData = await chrome.runtime.sendMessage<Message, Pull>({
+        id: MessageIds.GetGithubPull,
+        data: { owner, repo, pull },
+    })
+    const sha = pullData.head.sha
+    const parentSha = pullData.base.sha
+    await injectDiff(owner, repo, sha, parentSha, files, document)
+}
+
+async function injectCommitDiff(
+    owner: string,
+    repo: string,
+    sha: string,
+    document: Document
+) {
+    const commit = await chrome.runtime.sendMessage<Message, Commit>({
+        id: MessageIds.GetGithubCommit,
+        data: { owner, repo, sha },
+    })
+    if (!commit.files) throw Error('Found no file changes in commit')
+    if (!commit.parents.length) throw Error('Found no commit parent')
+    const parentSha = commit.parents[0].sha
+    injectDiff(owner, repo, sha, parentSha, commit.files, document)
+}
+
 gitHubInjection(async () => {
-    const params = getGithubUrlParams(window.location.href)
-    if (!params) {
-        console.log("URL doesn't match pull request pattern.")
+    const url = window.location.href
+    const pullParams = getGithubPullUrlParams(url)
+    if (pullParams) {
+        const { owner, repo, pull } = pullParams
+        await injectPullDiff(owner, repo, pull, window.document)
         return
     }
-    const { owner, repo, pull } = params
-    console.log('Found pull request diff URL', owner, repo, pull)
-    try {
-        await injectPullDiff(owner, repo, pull, window.document)
-    } catch (e) {
-        console.error(e)
+
+    const commitParams = getGithubCommitUrlParams(url)
+    if (commitParams) {
+        const { owner, repo, sha } = commitParams
+        await injectCommitDiff(owner, repo, sha, window.document)
+        return
     }
 })

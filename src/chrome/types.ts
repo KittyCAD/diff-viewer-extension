@@ -11,6 +11,7 @@ export type DiffEntry = components['schemas']['diff-entry']
 export type ContentFile = components['schemas']['content-file']
 export type User = components['schemas']['simple-user']
 export type Pull = components['schemas']['pull-request']
+export type Commit = components['schemas']['commit']
 
 // chrome extension
 
@@ -27,12 +28,19 @@ export enum MessageIds {
     GetKittycadUser = 'GetKittyCadUser',
     GetFileDiff = 'GetFileDiff',
     GetGithubPull = 'GetGithubPull',
+    GetGithubCommit = 'GetGithubCommit',
 }
 
 export type MessageGetGithubPullFilesData = {
     owner: string
     repo: string
     pull: number
+}
+
+export type MessageGetGithubCommitData = {
+    owner: string
+    repo: string
+    sha: string
 }
 
 export type MessageGetFileDiff = {
@@ -49,12 +57,17 @@ export type MessageSaveToken = {
 
 export type Message = {
     id: MessageIds
-    data?: MessageGetGithubPullFilesData | MessageSaveToken | MessageGetFileDiff
+    data?:
+        | MessageGetGithubPullFilesData
+        | MessageGetGithubCommitData
+        | MessageSaveToken
+        | MessageGetFileDiff
 }
 
 export type MessageResponse =
     | DiffEntry[]
     | Pull
+    | Commit
     | User
     | KittycadUser
     | MessageSaveToken

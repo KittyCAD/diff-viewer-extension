@@ -23,3 +23,7 @@ jobs:
             - run: yarn build
 
             - run: yarn test
+
+            - uses: actions/upload-artifact@v3
+              with:
+                  path: build
