@@ -46,7 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:13.5.0"],\
             ["@types/chrome", "npm:0.0.212"],\
             ["@types/jest", "npm:29.4.0"],\
-            ["@types/node", "npm:16.18.12"],\
+            ["@types/node", "npm:18.14.5"],\
             ["@types/react", "npm:18.0.27"],\
             ["@types/react-dom", "npm:18.0.10"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
@@ -5453,17 +5453,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/node", [\
-        ["npm:16.18.12", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-16.18.12-74fb2c13d9-fc32711824.zip/node_modules/@types/node/",\
-          "packageDependencies": [\
-            ["@types/node", "npm:16.18.12"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:18.11.19", {\
           "packageLocation": "./.yarn/cache/@types-node-npm-18.11.19-dd4a5b3ed6-d7cd19fcfc.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:18.11.19"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:18.14.5", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-18.14.5-3400879add-415fb0edc1.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:18.14.5"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8890,7 +8890,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:13.5.0"],\
             ["@types/chrome", "npm:0.0.212"],\
             ["@types/jest", "npm:29.4.0"],\
-            ["@types/node", "npm:16.18.12"],\
+            ["@types/node", "npm:18.14.5"],\
             ["@types/react", "npm:18.0.27"],\
             ["@types/react-dom", "npm:18.0.10"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
