@@ -3,11 +3,11 @@ import '@react-three/fiber'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
 import { BufferGeometry } from 'three'
 import { Canvas } from '@react-three/fiber'
-import CameraControls from './CameraControls'
-import OrthoPerspectiveCamera from './OrthoPerspectiveCamera'
-import Model from './Model'
+import { WireframeModel } from './WireframeModel'
+import { Camera } from './Camera'
+import { CameraControls } from './CameraControls'
 
-export type ViewerSTLProps = {
+type Props = {
     file: string
     faceColor: string
     edgeColor: string
@@ -19,9 +19,9 @@ export function ViewerSTL({
     faceColor,
     edgeColor,
     dashEdgeColor,
-}: ViewerSTLProps) {
-    const newCameraRef = useRef<any>()
+}: Props) {
     const [geometry, setGeometry] = useState<BufferGeometry>()
+    const cameraRef = useRef<any>()
     useEffect(() => {
         const loader = new STLLoader()
         const geometry = loader.parse(atob(file))
@@ -31,16 +31,16 @@ export function ViewerSTL({
     return (
         <Canvas dpr={[1, 2]} shadows>
             {typeof window !== 'undefined' && geometry && (
-                <Model
+                <WireframeModel
                     geometry={geometry}
-                    cameraRef={newCameraRef}
+                    cameraRef={cameraRef}
                     faceColor={faceColor}
                     edgeColor={edgeColor}
                     dashEdgeColor={dashEdgeColor}
                 />
             )}
-            <CameraControls cameraRef={newCameraRef} />
-            {geometry && <OrthoPerspectiveCamera geometry={geometry} />}
+            <CameraControls cameraRef={cameraRef} />
+            {geometry && <Camera geometry={geometry} />}
         </Canvas>
     )
 }

@@ -1,9 +1,8 @@
-import React, {  } from 'react'
+import React from 'react'
 import '@react-three/fiber'
 import { Box, ThemeProvider, useTheme } from '@primer/react'
-import { FileDiff } from '../chrome/types'
-import { ViewerSTL } from './Viewer3D/ViewerSTL'
-
+import { FileDiff } from '../../chrome/types'
+import { ViewerSTL } from './ViewerSTL'
 
 type CadDiffThemedProps = FileDiff
 
