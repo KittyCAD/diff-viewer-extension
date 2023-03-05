@@ -5,21 +5,19 @@ import { BufferGeometry, DoubleSide } from 'three'
 import { EdgesGeometry, Vector3 } from 'three'
 import { calculateFovFactor } from './Camera'
 
-interface Props {
-    cameraRef: MutableRefObject<any>
-    geometry: BufferGeometry
-    faceColor: string
-    edgeColor: string
-    dashEdgeColor: string
+export type WireframeColors = {
+    face: string
+    edge: string
+    dashEdge: string
 }
 
-export function WireframeModel({
-    geometry,
-    cameraRef,
-    faceColor,
-    edgeColor,
-    dashEdgeColor,
-}: Props) {
+type Props = {
+    cameraRef: MutableRefObject<any>
+    geometry: BufferGeometry
+    colors: WireframeColors
+}
+
+export function WireframeModel({ geometry, cameraRef, colors }: Props) {
     const groupRef = useRef<any>()
     const camera = useThree(state => state.camera)
     const canvasHeight = useThree(state => state.size.height)
@@ -63,7 +61,7 @@ export function WireframeModel({
                     geometry={geometry}
                 >
                     <meshBasicMaterial
-                        color={faceColor}
+                        color={colors.face}
                         side={DoubleSide}
                         depthTest={true}
                     />
@@ -74,7 +72,7 @@ export function WireframeModel({
                     onUpdate={line => line.computeLineDistances()}
                 >
                     <lineDashedMaterial
-                        color={dashEdgeColor}
+                        color={colors.dashEdge}
                         dashSize={5}
                         gapSize={4}
                         scale={40}
@@ -82,7 +80,7 @@ export function WireframeModel({
                     />
                 </lineSegments>
                 <lineSegments geometry={edges} renderOrder={100}>
-                    <lineBasicMaterial color={edgeColor} depthTest={true} />
+                    <lineBasicMaterial color={colors.edge} depthTest={true} />
                 </lineSegments>
             </group>
         </Suspense>
