@@ -1,7 +1,7 @@
 import { OrthographicCamera, PerspectiveCamera } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { BufferGeometry, Vector3 } from 'three/src/Three'
+import { BufferGeometry, Vector3 } from 'three'
 
 interface Props {
     geometry: BufferGeometry
