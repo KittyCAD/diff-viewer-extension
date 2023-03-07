@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: End-to-end Playwright Tests
 on:
     push:
         branches: [main]
@@ -15,14 +15,11 @@ jobs:
               with:
                   node-version: 16
 
-            - name: Install dependencies
-              run: yarn
+            - run: yarn install
 
-            - name: Install Playwright Browsers
-              run: yarn playwright install --with-deps
+            - run: yarn playwright install --with-deps
 
-            - name: Run Playwright tests
-              run: yarn playwright test
+            - run: yarn playwright test
 
             - uses: actions/upload-artifact@v3
               if: always()
