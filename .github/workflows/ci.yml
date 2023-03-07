@@ -24,6 +24,13 @@ jobs:
 
             - run: yarn test
 
+            - name: e2e tests
+              run: |
+                  yarn playwright install --with-deps
+                  yarn playwright test
+
             - uses: actions/upload-artifact@v3
               with:
-                  path: build
+                  path: |
+                      build
+                      playwright-report
