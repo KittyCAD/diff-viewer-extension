@@ -31,6 +31,7 @@ export function Settings() {
             })
             if (Object.keys(response).length === 0) throw Error('no response')
             const user = response as KittycadUser
+            if (!user.email) throw Error('empty user account')
             setKittycadUser(user)
         } catch (e) {
             console.error(e)

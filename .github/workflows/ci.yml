@@ -24,7 +24,7 @@ jobs:
 
             - run: yarn test
 
-            - name: e2e tests
+            - name: Run playwright e2e tests
               run: |
                   yarn playwright install --with-deps
                   yarn playwright test

@@ -1,4 +1,4 @@
-// fixtures.ts
+// From https://playwright.dev/docs/chrome-extensions#testing
 import { test as base, chromium, type BrowserContext } from '@playwright/test'
 import path from 'path'
 
