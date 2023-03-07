@@ -11,6 +11,7 @@ export const test = base.extend<{
         const context = await chromium.launchPersistentContext('', {
             headless: false,
             args: [
+                `--headless=new`, // the new headless arg for chrome v109+. Use '--headless=chrome' as arg for browsers v94-108.
                 `--disable-extensions-except=${pathToExtension}`,
                 `--load-extension=${pathToExtension}`,
             ],
