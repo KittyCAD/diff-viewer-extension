@@ -55,6 +55,10 @@ export type MessageSaveToken = {
     token: string
 }
 
+export type MessageError = {
+    error: Error
+}
+
 export type Message = {
     id: MessageIds
     data?:
@@ -72,5 +76,5 @@ export type MessageResponse =
     | KittycadUser
     | MessageSaveToken
     | FileDiff
-    | Error
+    | MessageError
     | void

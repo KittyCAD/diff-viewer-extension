@@ -1,6 +1,12 @@
 import { Box, ThemeProvider } from '@primer/react'
 import { useEffect, useState } from 'react'
-import { KittycadUser, MessageIds, User } from '../../chrome/types'
+import {
+    KittycadUser,
+    Message,
+    MessageError,
+    MessageIds,
+    User,
+} from '../../chrome/types'
 import { Loading } from '../Loading'
 import { TokenForm } from './TokenForm'
 import { UserCard } from './UserCard'
@@ -15,9 +21,8 @@ export function Settings() {
             const response = await chrome.runtime.sendMessage({
                 id: MessageIds.GetGithubUser,
             })
-            if (Object.keys(response).length === 0) throw Error('no response')
-            const user = response as User
-            setGithubUser(user)
+            if ('error' in response) throw response.error
+            setGithubUser(response as User)
         } catch (e) {
             console.error(e)
             setGithubUser(undefined)
@@ -29,10 +34,8 @@ export function Settings() {
             const response = await chrome.runtime.sendMessage({
                 id: MessageIds.GetKittycadUser,
             })
-            if (Object.keys(response).length === 0) throw Error('no response')
-            const user = response as KittycadUser
-            if (!user.email) throw Error('empty user account')
-            setKittycadUser(user)
+            if ('error' in response) throw response.error
+            setKittycadUser(response as KittycadUser)
         } catch (e) {
             console.error(e)
             setKittycadUser(undefined)
