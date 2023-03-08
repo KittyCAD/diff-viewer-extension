@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { CadDiff } from '../components/CadDiff'
+import { CadDiff } from '../components/diff/CadDiff'
 import { Loading } from '../components/Loading'
 import { Commit, DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
 import {
