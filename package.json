@@ -9,7 +9,7 @@
         "@octokit/rest": "^19.0.7",
         "@octokit/types": "^9.0.0",
         "@primer/react": "^35.20.0",
-        "@react-three/drei": "^9.56.24",
+        "@react-three/drei": "^9.57.1",
         "@react-three/fiber": "^8.11.1",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^14.0.0",
