@@ -1,12 +1,6 @@
 import { Box, ThemeProvider } from '@primer/react'
 import { useEffect, useState } from 'react'
-import {
-    KittycadUser,
-    Message,
-    MessageError,
-    MessageIds,
-    User,
-} from '../../chrome/types'
+import { KittycadUser, MessageIds, User } from '../../chrome/types'
 import { Loading } from '../Loading'
 import { TokenForm } from './TokenForm'
 import { UserCard } from './UserCard'
