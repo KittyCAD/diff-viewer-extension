@@ -1,10 +1,18 @@
 // From https://playwright.dev/docs/chrome-extensions#testing
-import { test as base, chromium, type BrowserContext } from '@playwright/test'
+import {
+    test as base,
+    chromium,
+    Worker,
+    type BrowserContext,
+} from '@playwright/test'
 import path from 'path'
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 export const test = base.extend<{
     context: BrowserContext
     extensionId: string
+    background: Worker
 }>({
     context: async ({}, use) => {
         const pathToExtension = path.join(__dirname, '..', 'build')
@@ -19,8 +27,23 @@ export const test = base.extend<{
         await use(context)
         await context.close()
     },
+    background: async ({ context }, use) => {
+        let [background] = context.serviceWorkers()
+        if (!background)
+            background = await context.waitForEvent('serviceworker')
+
+        const githubToken = process.env.GITHUB_TOKEN
+        const kittycadToken = process.env.KITTYCAD_TOKEN
+        await background.evaluate(
+            async ([githubToken, kittycadToken]) => {
+                await chrome.storage.local.set({ gtk: githubToken })
+                await chrome.storage.local.set({ ktk: kittycadToken })
+            },
+            [githubToken, kittycadToken]
+        )
+        await use(background)
+    },
     extensionId: async ({ context }, use) => {
-        // for manifest v3:
         let [background] = context.serviceWorkers()
         if (!background)
             background = await context.waitForEvent('serviceworker')

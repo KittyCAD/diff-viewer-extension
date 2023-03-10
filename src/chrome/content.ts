@@ -76,6 +76,7 @@ gitHubInjection(async () => {
     const pullParams = getGithubPullUrlParams(url)
     if (pullParams) {
         const { owner, repo, pull } = pullParams
+        console.log('Found PR diff: ', owner, repo, pull)
         await injectPullDiff(owner, repo, pull, window.document)
         return
     }
@@ -83,6 +84,7 @@ gitHubInjection(async () => {
     const commitParams = getGithubCommitUrlParams(url)
     if (commitParams) {
         const { owner, repo, sha } = commitParams
+        console.log('Found commit diff: ', owner, repo, sha)
         await injectCommitDiff(owner, repo, sha, window.document)
         return
     }
