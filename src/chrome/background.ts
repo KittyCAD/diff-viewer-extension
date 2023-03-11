@@ -38,7 +38,7 @@ async function initKittycadApi() {
         const response = await users.get_user_self({ client: kittycad })
         if ('error_code' in response) throw response
         const { email } = response
-        if (!email) throw Error("Empty user, token is probably wrong")
+        if (!email) throw Error('Empty user, token is probably wrong')
         console.log(`Logged in on kittycad.io as ${email}`)
     } catch (e) {
         console.log("Couldn't initiate the kittycad api client")
@@ -72,7 +72,7 @@ export function checkClientAndReject(
 
 ;(async () => {
     // Helps for e2e tests
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 1000))
     await initKittycadApi()
     await initGithubApi()
 })()
