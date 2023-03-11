@@ -25,6 +25,9 @@ jobs:
             - run: yarn test
 
             - name: Run playwright e2e tests
+              env:
+                GITHUB_TOKEN: ${{secrets.GLOBAL_PAT}}
+                KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
               run: |
                   yarn playwright install --with-deps
                   yarn playwright test
