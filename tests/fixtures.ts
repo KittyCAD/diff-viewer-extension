@@ -36,8 +36,10 @@ export const test = base.extend<{
         const kittycadToken = process.env.KITTYCAD_TOKEN
         await background.evaluate(
             async ([githubToken, kittycadToken]) => {
-                await chrome.storage.local.set({ gtk: githubToken })
-                await chrome.storage.local.set({ ktk: kittycadToken })
+                await chrome.storage.local.set({
+                    ktk: kittycadToken,
+                    gtk: githubToken,
+                })
             },
             [githubToken, kittycadToken]
         )

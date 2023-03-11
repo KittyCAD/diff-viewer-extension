@@ -63,8 +63,7 @@ export function checkClientAndReject(
     callback: (response: MessageResponse) => void
 ) {
     if (!client) {
-        const error = Error("Client wasn't initialized")
-        callback({ error })
+        callback({ error: "Client wasn't initialized" })
         return true
     }
 
@@ -72,6 +71,8 @@ export function checkClientAndReject(
 }
 
 ;(async () => {
+    // Helps for e2e tests
+    await new Promise(resolve => setTimeout(resolve, 1000));
     await initKittycadApi()
     await initGithubApi()
 })()

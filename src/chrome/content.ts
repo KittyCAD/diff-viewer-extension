@@ -2,7 +2,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { CadDiff } from '../components/diff/CadDiff'
 import { Loading } from '../components/Loading'
-import { Commit, DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
+import { Commit, DiffEntry, FileDiff, Message, MessageError, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
     mapInjectableDiffElements,
@@ -28,11 +28,16 @@ async function injectDiff(
     }
 
     for (const { element, file } of map) {
-        const fileDiff = await chrome.runtime.sendMessage<Message, FileDiff>({
+        const response = await chrome.runtime.sendMessage({
             id: MessageIds.GetFileDiff,
             data: { owner, repo, sha, parentSha, file },
         })
-        createRoot(element).render(React.createElement(CadDiff, fileDiff))
+        if ('error' in response) {
+            console.log(response.error)
+        } else {
+            const diff = response as FileDiff
+            createRoot(element).render(React.createElement(CadDiff, diff))
+        }
     }
 }
 
