@@ -19,7 +19,7 @@ export const test = base.extend<{
         const context = await chromium.launchPersistentContext('', {
             headless: false,
             args: [
-                `--headless=new`, // the new headless arg for chrome v109+. Use '--headless=chrome' as arg for browsers v94-108.
+                `--headless=new`, // the new headless arg for chrome v109+
                 `--disable-extensions-except=${pathToExtension}`,
                 `--load-extension=${pathToExtension}`,
             ],
@@ -32,18 +32,9 @@ export const test = base.extend<{
         if (!background)
             background = await context.waitForEvent('serviceworker')
 
+        // Wait for the chrome object to be available
         await new Promise(resolve => setTimeout(resolve, 100))
-        const githubToken = process.env.GITHUB_TOKEN
-        const kittycadToken = process.env.KITTYCAD_TOKEN
-        await background.evaluate(
-            async ([githubToken, kittycadToken]) => {
-                await chrome.storage.local.set({
-                    ktk: kittycadToken,
-                    gtk: githubToken,
-                })
-            },
-            [githubToken, kittycadToken]
-        )
+
         await use(background)
     },
     extensionId: async ({ background }, use) => {
