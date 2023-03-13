@@ -46,7 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.4.3"],\
             ["@types/chrome", "npm:0.0.220"],\
             ["@types/jest", "npm:29.4.0"],\
-            ["@types/node", "npm:18.14.6"],\
+            ["@types/node", "npm:18.15.1"],\
             ["@types/react", "npm:18.0.27"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
@@ -5468,10 +5468,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:18.14.6", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-18.14.6-7d0665d471-2f88f482ca.zip/node_modules/@types/node/",\
+        ["npm:18.15.1", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-18.15.1-9afe26ff55-c63a407869.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:18.14.6"]\
+            ["@types/node", "npm:18.15.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8898,7 +8898,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.4.3"],\
             ["@types/chrome", "npm:0.0.220"],\
             ["@types/jest", "npm:29.4.0"],\
-            ["@types/node", "npm:18.14.6"],\
+            ["@types/node", "npm:18.15.1"],\
             ["@types/react", "npm:18.0.27"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
