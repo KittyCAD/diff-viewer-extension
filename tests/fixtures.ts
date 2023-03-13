@@ -13,13 +13,14 @@ export const test = base.extend<{
     context: BrowserContext
     extensionId: string
     background: Worker
+    authorizedBackground: Worker
 }>({
     context: async ({}, use) => {
         const pathToExtension = path.join(__dirname, '..', 'build')
         const context = await chromium.launchPersistentContext('', {
             headless: false,
             args: [
-                `--headless=new`, // the new headless arg for chrome v109+
+                `--headless=new`, // headless mode that allows for extensions
                 `--disable-extensions-except=${pathToExtension}`,
                 `--load-extension=${pathToExtension}`,
             ],
@@ -34,7 +35,24 @@ export const test = base.extend<{
 
         // Wait for the chrome object to be available
         await new Promise(resolve => setTimeout(resolve, 100))
+        await use(background)
+    },
+    authorizedBackground: async ({ background }, use) => {
+        // Load the env tokens in storage for auth
+        const githubToken = process.env.GITHUB_TOKEN
+        const kittycadToken = process.env.KITTYCAD_TOKEN
+        await background.evaluate(
+            async ([githubToken, kittycadToken]) => {
+                await chrome.storage.local.set({
+                    ktk: kittycadToken,
+                    gtk: githubToken,
+                })
+            },
+            [githubToken, kittycadToken]
+        )
 
+        // Wait for background auth
+        await new Promise(resolve => setTimeout(resolve, 2000))
         await use(background)
     },
     extensionId: async ({ background }, use) => {
