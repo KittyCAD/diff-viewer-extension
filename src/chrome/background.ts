@@ -58,7 +58,7 @@ async function saveKittycadTokenAndReload(token: string): Promise<void> {
     await initKittycadApi()
 }
 
-export function checkClientAndReject(
+function checkClientAndReject(
     client: Octokit | Client | undefined,
     callback: (response: MessageResponse) => void
 ) {
