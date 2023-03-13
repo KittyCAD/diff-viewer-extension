@@ -59,7 +59,7 @@ async function saveKittycadTokenAndReload(token: string): Promise<void> {
 }
 
 ;(async () => {
-    // Delay to allow for external storage sets before auto-auth
+    // Delay to allow for external storage sets before auth, like in e2e
     await new Promise(resolve => setTimeout(resolve, 1000))
     await initKittycadApi()
     await initGithubApi()

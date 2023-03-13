@@ -44,8 +44,8 @@ export const test = base.extend<{
         await background.evaluate(
             async ([githubToken, kittycadToken]) => {
                 await chrome.storage.local.set({
-                    ktk: kittycadToken,
-                    gtk: githubToken,
+                    ktk: kittycadToken, // from src/chrome/storage.ts
+                    gtk: githubToken, // from src/chrome/storage.ts
                 })
             },
             [githubToken, kittycadToken]
