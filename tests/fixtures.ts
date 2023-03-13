@@ -32,6 +32,7 @@ export const test = base.extend<{
         if (!background)
             background = await context.waitForEvent('serviceworker')
 
+        await new Promise(resolve => setTimeout(resolve, 100))
         const githubToken = process.env.GITHUB_TOKEN
         const kittycadToken = process.env.KITTYCAD_TOKEN
         await background.evaluate(
@@ -45,11 +46,7 @@ export const test = base.extend<{
         )
         await use(background)
     },
-    extensionId: async ({ context }, use) => {
-        let [background] = context.serviceWorkers()
-        if (!background)
-            background = await context.waitForEvent('serviceworker')
-
+    extensionId: async ({ background }, use) => {
         const extensionId = background.url().split('/')[2]
         await use(extensionId)
     },
