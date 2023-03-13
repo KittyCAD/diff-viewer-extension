@@ -65,8 +65,7 @@ async function saveKittycadTokenAndReload(token: string): Promise<void> {
     await initGithubApi()
 })()
 
-const noGithubError = 'Github client is undefined'
-const noKittycadError = 'KittyCAD client is undefined'
+const noClientError = new Error('API client is undefined')
 
 chrome.runtime.onMessage.addListener(
     (
@@ -77,7 +76,7 @@ chrome.runtime.onMessage.addListener(
         console.log(`Received ${message.id} from ${sender.id}`)
         if (message.id === MessageIds.GetGithubPullFiles) {
             if (!github) {
-                sendResponse({ error: noGithubError })
+                sendResponse({ error: noClientError })
                 return false
             }
             const { owner, repo, pull } =
@@ -91,7 +90,7 @@ chrome.runtime.onMessage.addListener(
 
         if (message.id === MessageIds.GetGithubPull) {
             if (!github) {
-                sendResponse({ error: noGithubError })
+                sendResponse({ error: noClientError })
                 return false
             }
             const { owner, repo, pull } =
@@ -105,7 +104,7 @@ chrome.runtime.onMessage.addListener(
 
         if (message.id === MessageIds.GetGithubCommit) {
             if (!github) {
-                sendResponse({ error: noGithubError })
+                sendResponse({ error: noClientError })
                 return false
             }
             const { owner, repo, sha } =
@@ -119,7 +118,7 @@ chrome.runtime.onMessage.addListener(
 
         if (message.id === MessageIds.GetGithubUser) {
             if (!github) {
-                sendResponse({ error: noGithubError })
+                sendResponse({ error: noClientError })
                 return false
             }
             github.rest.users
@@ -131,7 +130,7 @@ chrome.runtime.onMessage.addListener(
 
         if (message.id === MessageIds.GetKittycadUser) {
             if (!kittycad) {
-                sendResponse({ error: noKittycadError })
+                sendResponse({ error: noClientError })
                 return false
             }
             users
@@ -159,14 +158,12 @@ chrome.runtime.onMessage.addListener(
 
         if (message.id === MessageIds.GetFileDiff) {
             if (!kittycad || !github) {
-                sendResponse({
-                    error: `${noGithubError} or ${noKittycadError}`,
-                })
+                sendResponse({ error: noClientError })
                 return false
             }
             const { owner, repo, sha, parentSha, file } =
                 message.data as MessageGetFileDiff
-            getFileDiff(github!, kittycad!, owner, repo, sha, parentSha, file)
+            getFileDiff(github, kittycad, owner, repo, sha, parentSha, file)
                 .then(r => sendResponse(r))
                 .catch(error => sendResponse({ error }))
             return true

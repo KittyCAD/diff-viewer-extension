@@ -29,11 +29,9 @@ jobs:
                 GITHUB_TOKEN: ${{secrets.GLOBAL_PAT}}
                 KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
               run: |
-                  yarn playwright install --with-deps
+                  yarn playwright install chromium --with-deps
                   yarn playwright test
 
             - uses: actions/upload-artifact@v3
               with:
-                  path: |
-                      build
-                      playwright-report
+                  path: build
