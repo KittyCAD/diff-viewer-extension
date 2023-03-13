@@ -71,7 +71,7 @@ export function checkClientAndReject(
 }
 
 ;(async () => {
-    // Helps for e2e tests
+    // Delay to allow for external storage sets before auto-auth
     await new Promise(resolve => setTimeout(resolve, 1000))
     await initKittycadApi()
     await initGithubApi()
