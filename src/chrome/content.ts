@@ -28,11 +28,21 @@ async function injectDiff(
     }
 
     for (const { element, file } of map) {
-        const fileDiff = await chrome.runtime.sendMessage<Message, FileDiff>({
-            id: MessageIds.GetFileDiff,
-            data: { owner, repo, sha, parentSha, file },
-        })
-        createRoot(element).render(React.createElement(CadDiff, fileDiff))
+        chrome.runtime
+            .sendMessage({
+                id: MessageIds.GetFileDiff,
+                data: { owner, repo, sha, parentSha, file },
+            })
+            .then(response => {
+                if ('error' in response) {
+                    console.log(response.error)
+                } else {
+                    const diff = response as FileDiff
+                    createRoot(element).render(
+                        React.createElement(CadDiff, diff)
+                    )
+                }
+            })
     }
 }
 
@@ -68,7 +78,7 @@ async function injectCommitDiff(
     if (!commit.files) throw Error('Found no file changes in commit')
     if (!commit.parents.length) throw Error('Found no commit parent')
     const parentSha = commit.parents[0].sha
-    injectDiff(owner, repo, sha, parentSha, commit.files, document)
+    await injectDiff(owner, repo, sha, parentSha, commit.files, document)
 }
 
 gitHubInjection(async () => {
