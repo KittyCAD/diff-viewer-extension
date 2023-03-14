@@ -24,7 +24,10 @@ test('pull request diff with an .obj file', async ({
     page.on('console', msg => console.log(msg.text()))
 
     await page.goto('https://github.com/KittyCAD/kittycad.ts/pull/3/files')
-    await page.waitForSelector('.js-file-content canvas')
+    const element = await page.waitForSelector('.js-file-content canvas')
+    await page.waitForTimeout(1000) // making sure the element fully settled in
+    const screenshot = await element.screenshot()
+    expect(screenshot).toMatchSnapshot()
 })
 
 test('commit diff with an .obj file', async ({
@@ -36,5 +39,8 @@ test('commit diff with an .obj file', async ({
     await page.goto(
         'https://github.com/KittyCAD/kittycad.ts/commit/08b50ee5a23b3ae7dd7b19383f14bbd520079cc1'
     )
-    await page.waitForSelector('.js-file-content canvas')
+    const element = await page.waitForSelector('.js-file-content canvas')
+    await page.waitForTimeout(1000) // making sure the element fully settled in
+    const screenshot = await element.screenshot()
+    expect(screenshot).toMatchSnapshot()
 })
