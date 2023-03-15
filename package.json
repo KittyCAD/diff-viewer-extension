@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "@craco/craco": "^7.0.0",
+        "@craco/craco": "^7.1.0",
         "@kittycad/lib": "^0.0.19",
         "@octokit/openapi-types": "^16.0.0",
         "@octokit/rest": "^19.0.7",
