@@ -1,5 +1,5 @@
 import React from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, Root } from 'react-dom/client'
 import { CadDiff } from '../components/diff/CadDiff'
 import { Loading } from '../components/Loading'
 import { Commit, DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
@@ -23,11 +23,10 @@ async function injectDiff(
     document: Document
 ) {
     const map = mapInjectableDiffElements(document, files)
-    for (const { element } of map) {
-        createRoot(element).render(React.createElement(Loading))
-    }
-
     for (const { element, file } of map) {
+        const root = createRoot(element)
+        root.render(React.createElement(Loading))
+
         chrome.runtime
             .sendMessage({
                 id: MessageIds.GetFileDiff,
@@ -38,9 +37,7 @@ async function injectDiff(
                     console.log(response.error)
                 } else {
                     const diff = response as FileDiff
-                    createRoot(element).render(
-                        React.createElement(CadDiff, diff)
-                    )
+                    root.render(React.createElement(CadDiff, diff))
                 }
             })
     }
