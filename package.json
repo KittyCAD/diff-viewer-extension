@@ -34,6 +34,7 @@
         "start": "react-scripts start",
         "build": "INLINE_RUNTIME_CHUNK=false craco build",
         "test": "react-scripts test",
+        "e2e": "yarn build && yarn playwright test",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
@@ -68,6 +69,8 @@
         ]
     },
     "devDependencies": {
+        "@playwright/test": "^1.31.2",
+        "dotenv": "^16.0.3",
         "eslint": "^8.35.0",
         "eslint-config-prettier": "^8.6.0",
         "eslint-config-react-app": "^7.0.1",
