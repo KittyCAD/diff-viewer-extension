@@ -1,13 +1,11 @@
 import React from 'react'
-import { createPortal } from 'react-dom'
-import { createRoot } from 'react-dom/client'
-import { CadDiff, CadDiffProps } from '../components/diff/CadDiff'
-import { Loading } from '../components/Loading'
-import { Commit, DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
+import { CadDiffPage } from '../components/diff/CadDiffPage'
+import { Commit, DiffEntry, Message, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
     mapInjectableDiffElements,
     getGithubCommitUrlParams,
+    createReactRoot,
 } from './web'
 
 // https://github.com/OctoLinker/injection
@@ -24,34 +22,15 @@ async function injectDiff(
     document: Document
 ) {
     const map = mapInjectableDiffElements(document, files)
-    const node = document.createElement('div')
-    document.body.appendChild(node)
-    const root = createRoot(node)
-
-    const loaders = map.map(m =>
-        createPortal(React.createElement(Loading), m.element)
-    )
-    root.render(loaders)
-
-    const promises = map.map(m =>
-        chrome.runtime.sendMessage({
-            id: MessageIds.GetFileDiff,
-            data: { owner, repo, sha, parentSha, file: m.file },
-        })
-    )
-    const elements = map.map(m => m.element)
-    Promise.all(promises).then(responses => {
-        const diffs = []
-        for (const [key, response] of responses.entries()) {
-            if ('error' in response) {
-                console.log(response.error)
-            } else {
-                const diff = React.createElement(CadDiff, response as FileDiff)
-                diffs.push(createPortal(diff, elements[key]))
-            }
-        }
-        root.render(diffs)
+    const root = createReactRoot(document)
+    const cadDiffPage = React.createElement(CadDiffPage, {
+        owner,
+        repo,
+        sha,
+        parentSha,
+        map,
     })
+    root.render(cadDiffPage)
 }
 
 async function injectPullDiff(

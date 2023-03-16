@@ -1,3 +1,4 @@
+import { createRoot, Root } from 'react-dom/client'
 import { isFilenameSupported, supportedSrcFormats } from './diff'
 import { DiffEntry } from './types'
 
@@ -86,8 +87,23 @@ export function mapInjectableDiffElements(
         const diffElement = element.querySelector(
             '.js-file-content'
         ) as HTMLElement
+        // TODO: group and keep those instaed for rich/text diff toggle
+        for (const child of diffElement.childNodes) {
+            child.remove()
+        }
         injectableElements.push({ element: diffElement, file: apiFile })
     }
 
     return injectableElements
+}
+
+export function createReactRoot(
+    document: Document,
+    id: string = 'kittycad-root'
+): Root {
+    // TODO: there's probably a better way than this to create a root?
+    const node = document.createElement('div')
+    node.id = id
+    document.body.appendChild(node)
+    return createRoot(node)
 }
