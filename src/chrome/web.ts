@@ -77,21 +77,14 @@ export function mapInjectableDiffElements(
 
     const injectableElements: { element: HTMLElement; file: DiffEntry }[] = []
     for (const [index, element] of supportedElements.entries()) {
-        const apiFile = supportedFiles[index]
+        const file = supportedFiles[index]
         const filename = getElementFilename(element)
-        if (filename !== apiFile.filename) {
+        if (filename !== file.filename) {
             throw Error(
                 "Couldn't match API file with a diff element on the page. Aborting."
             )
         }
-        const diffElement = element.querySelector(
-            '.js-file-content'
-        ) as HTMLElement
-        // TODO: group and keep those instaed for rich/text diff toggle
-        for (const child of diffElement.childNodes) {
-            child.remove()
-        }
-        injectableElements.push({ element: diffElement, file: apiFile })
+        injectableElements.push({ element, file })
     }
 
     return injectableElements

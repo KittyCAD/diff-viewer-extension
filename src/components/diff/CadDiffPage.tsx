@@ -22,13 +22,15 @@ function CadDiffPortal({
     parentSha: string
 }): React.ReactElement {
     const [diff, setDiff] = useState<FileDiff>()
-    const [firstRun, setFirstRun] = useState(true)
+    const [diffElement, setDiffElement] = useState<HTMLElement>()
     useEffect(() => {
-        if (firstRun) {
-            for (const e of element.childNodes) {
-                e.remove()
-            }
-            setFirstRun(false)
+        const diffElement = element.querySelector(
+            '.js-file-content'
+        ) as HTMLElement
+        setDiffElement(diffElement)
+        // TODO: don't clean up once the rich/source toggle is added
+        for (const e of diffElement.childNodes) {
+            e.remove()
         }
         ;(async () => {
             const response = await chrome.runtime.sendMessage({
@@ -41,17 +43,18 @@ function CadDiffPortal({
                 setDiff(response as FileDiff)
             }
         })()
-    }, [firstRun, element, file, owner, repo, sha, parentSha])
+    }, [element, diffElement, file, owner, repo, sha, parentSha])
     return (
         <>
-            {createPortal(
-                diff ? (
-                    <CadDiff before={diff.before} after={diff.after} />
-                ) : (
-                    <Loading />
-                ),
-                element
-            )}
+            {diffElement &&
+                createPortal(
+                    diff ? (
+                        <CadDiff before={diff.before} after={diff.after} />
+                    ) : (
+                        <Loading />
+                    ),
+                    diffElement
+                )}
         </>
     )
 }
