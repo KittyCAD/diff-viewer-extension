@@ -23,11 +23,16 @@ function CadDiffPortal({
 }): React.ReactElement {
     const [diff, setDiff] = useState<FileDiff>()
     const [diffElement, setDiffElement] = useState<HTMLElement>()
+    const [toolbarElement, setToolbarElement] = useState<HTMLElement>()
     useEffect(() => {
         const diffElement = element.querySelector(
             '.js-file-content'
         ) as HTMLElement
         setDiffElement(diffElement)
+        const toolbarElement = element.querySelector(
+            '.file-info'
+        ) as HTMLElement
+        setToolbarElement(toolbarElement)
         // TODO: don't clean up once the rich/source toggle is added
         for (const e of diffElement.childNodes) {
             e.remove()
@@ -54,6 +59,11 @@ function CadDiffPortal({
                         <Loading />
                     ),
                     diffElement
+                )}
+            {toolbarElement &&
+                createPortal(
+                    "test",
+                    toolbarElement
                 )}
         </>
     )
