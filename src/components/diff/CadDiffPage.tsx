@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { ThemeProvider } from '@primer/react'
+import { ButtonGroup, IconButton, ThemeProvider } from '@primer/react'
+import { PackageIcon, CodeIcon } from '@primer/octicons-react'
 import { DiffEntry, FileDiff, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
@@ -22,8 +23,43 @@ function CadDiffPortal({
     parentSha: string
 }): React.ReactElement {
     const [diff, setDiff] = useState<FileDiff>()
+    const [richSelected, setRichSelected] = useState(false)
     const [diffElement, setDiffElement] = useState<HTMLElement>()
     const [toolbarElement, setToolbarElement] = useState<HTMLElement>()
+    const [sourceNodes, setSourceNodes] = useState<Element[]>()
+
+    function collectSourceNodes(element: HTMLElement) {
+        const nodes = []
+        for (const n of element.children) {
+            nodes.push(n)
+        }
+        setSourceNodes(nodes)
+    }
+
+    const hideSourceNodes = useCallback(() => {
+        if (!sourceNodes) return
+        for (const n of sourceNodes) {
+            ;(n as HTMLElement).style.display = 'none'
+        }
+    }, [sourceNodes])
+
+    const showSourceNodes = useCallback(() => {
+        if (!sourceNodes) return
+        for (const n of sourceNodes) {
+            ;(n as HTMLElement).style.display = 'block'
+        }
+    }, [sourceNodes])
+
+    function selectSourceDiff() {
+        showSourceNodes()
+        setRichSelected(true)
+    }
+
+    function selectRichDiff() {
+        hideSourceNodes()
+        setRichSelected(false)
+    }
+
     useEffect(() => {
         const diffElement = element.querySelector(
             '.js-file-content'
@@ -33,10 +69,12 @@ function CadDiffPortal({
             '.file-info'
         ) as HTMLElement
         setToolbarElement(toolbarElement)
-        // TODO: don't clean up once the rich/source toggle is added
-        for (const e of diffElement.childNodes) {
-            e.remove()
-        }
+
+        collectSourceNodes(diffElement)
+        hideSourceNodes()
+    }, [element, diffElement, hideSourceNodes])
+
+    useEffect(() => {
         ;(async () => {
             const response = await chrome.runtime.sendMessage({
                 id: MessageIds.GetFileDiff,
@@ -48,10 +86,12 @@ function CadDiffPortal({
                 setDiff(response as FileDiff)
             }
         })()
-    }, [element, diffElement, file, owner, repo, sha, parentSha])
+    }, [file, owner, repo, sha, parentSha])
+
     return (
         <>
             {diffElement &&
+                !richSelected &&
                 createPortal(
                     diff ? (
                         <CadDiff before={diff.before} after={diff.after} />
@@ -62,7 +102,22 @@ function CadDiffPortal({
                 )}
             {toolbarElement &&
                 createPortal(
-                    "test",
+                    <ButtonGroup sx={{ float: 'right' }}>
+                        <IconButton
+                            aria-label="Show original diff"
+                            icon={CodeIcon}
+                            disabled={!diff}
+                            onClick={selectSourceDiff}
+                            sx={{ bg: richSelected ? 'transparent' : 'neutral.muted' }}
+                        />
+                        <IconButton
+                            aria-label="Show KittyCAD 3D diff"
+                            icon={PackageIcon}
+                            disabled={!diff}
+                            onClick={selectRichDiff}
+                            sx={{ bg: !richSelected ? 'transparent' : 'neutral.muted' }}
+                        />
+                    </ButtonGroup>,
                     toolbarElement
                 )}
         </>
