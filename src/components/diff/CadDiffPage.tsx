@@ -53,7 +53,7 @@ function CadDiffPortal({
         setSourceNodes(nodes)
         nodes.map(n => ((n as HTMLElement).style.display = 'none'))
         setRichSelected(true)
-    }, [])
+    }, [element])
 
     useEffect(() => {
         ;(async () => {
