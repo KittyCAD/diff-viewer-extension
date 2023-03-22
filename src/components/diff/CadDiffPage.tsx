@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
 import { Box, ButtonGroup, IconButton, ThemeProvider } from '@primer/react'
 import { PackageIcon, CodeIcon } from '@primer/octicons-react'
