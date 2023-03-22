@@ -23,20 +23,10 @@ function CadDiffPortal({
     parentSha: string
 }): React.ReactElement {
     const [diff, setDiff] = useState<FileDiff>()
-    const [richSelected, setRichSelected] = useState(false)
+    const [richSelected, setRichSelected] = useState(true)
     const [diffElement, setDiffElement] = useState<HTMLElement>()
     const [toolbarElement, setToolbarElement] = useState<HTMLElement>()
-    const [sourceNodes, setSourceNodes] = useState<HTMLElement[]>([])
-
-    function selectSourceDiff() {
-        sourceNodes.map(n => (n.style.display = 'block'))
-        setRichSelected(false)
-    }
-
-    function selectRichDiff() {
-        sourceNodes.map(n => (n.style.display = 'none'))
-        setRichSelected(true)
-    }
+    const [sourceElements, setSourceElements] = useState<HTMLElement[]>([])
 
     useEffect(() => {
         const diffElement = element.querySelector(
@@ -49,10 +39,9 @@ function CadDiffPortal({
         ) as HTMLElement
         setToolbarElement(toolbarElement)
 
-        const nodes = Array.from(diffElement.children) as HTMLElement[]
-        setSourceNodes(nodes)
-        nodes.map(n => ((n as HTMLElement).style.display = 'none'))
-        setRichSelected(true)
+        const sourceElements = Array.from(diffElement.children) as HTMLElement[]
+        sourceElements.map(n => (n.style.display = 'none'))
+        setSourceElements(sourceElements)
     }, [element])
 
     useEffect(() => {
@@ -89,7 +78,12 @@ function CadDiffPortal({
                             aria-label="Show original diff"
                             icon={CodeIcon}
                             disabled={!diff}
-                            onClick={() => selectSourceDiff()}
+                            onClick={() => {
+                                sourceElements.map(
+                                    n => (n.style.display = 'block')
+                                )
+                                setRichSelected(false)
+                            }}
                             sx={{
                                 bg: richSelected
                                     ? 'transparent'
@@ -100,7 +94,12 @@ function CadDiffPortal({
                             aria-label="Show KittyCAD 3D diff"
                             icon={PackageIcon}
                             disabled={!diff}
-                            onClick={() => selectRichDiff()}
+                            onClick={() => {
+                                sourceElements.map(
+                                    n => (n.style.display = 'non')
+                                )
+                                setRichSelected(true)
+                            }}
                             sx={{
                                 bg: !richSelected
                                     ? 'transparent'
