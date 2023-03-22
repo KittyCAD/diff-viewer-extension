@@ -1,12 +1,11 @@
 import React from 'react'
-import { createRoot } from 'react-dom/client'
-import { CadDiff } from '../components/diff/CadDiff'
-import { Loading } from '../components/Loading'
-import { Commit, DiffEntry, FileDiff, Message, MessageIds, Pull } from './types'
+import { CadDiffPage } from '../components/diff/CadDiffPage'
+import { Commit, DiffEntry, Message, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
     mapInjectableDiffElements,
     getGithubCommitUrlParams,
+    createReactRoot,
 } from './web'
 
 // https://github.com/OctoLinker/injection
@@ -23,22 +22,15 @@ async function injectDiff(
     document: Document
 ) {
     const map = mapInjectableDiffElements(document, files)
-    for (const { element } of map) {
-        createRoot(element).render(React.createElement(Loading))
-    }
-
-    for (const { element, file } of map) {
-        const response = await chrome.runtime.sendMessage({
-            id: MessageIds.GetFileDiff,
-            data: { owner, repo, sha, parentSha, file },
-        })
-        if ('error' in response) {
-            console.log(response.error)
-        } else {
-            const diff = response as FileDiff
-            createRoot(element).render(React.createElement(CadDiff, diff))
-        }
-    }
+    const root = createReactRoot(document)
+    const cadDiffPage = React.createElement(CadDiffPage, {
+        owner,
+        repo,
+        sha,
+        parentSha,
+        map,
+    })
+    root.render(cadDiffPage)
 }
 
 async function injectPullDiff(
@@ -73,7 +65,7 @@ async function injectCommitDiff(
     if (!commit.files) throw Error('Found no file changes in commit')
     if (!commit.parents.length) throw Error('Found no commit parent')
     const parentSha = commit.parents[0].sha
-    injectDiff(owner, repo, sha, parentSha, commit.files, document)
+    await injectDiff(owner, repo, sha, parentSha, commit.files, document)
 }
 
 gitHubInjection(async () => {

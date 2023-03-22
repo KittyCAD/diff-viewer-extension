@@ -1,3 +1,4 @@
+import React from 'react'
 import { DiffEntry } from './types'
 import {
     getElementFilename,
@@ -5,6 +6,7 @@ import {
     getGithubPullUrlParams,
     mapInjectableDiffElements,
     getSupportedWebDiffElements,
+    createReactRoot,
 } from './web'
 
 const githubPullHtmlSnippet = `
@@ -164,4 +166,10 @@ it('finds injectable elements from html and api results', () => {
     const { element, file } = injectableElements[0]
     expect(element).toBeDefined()
     expect(file).toBeDefined()
+})
+
+it('adds a div element, creates a react root inside, and can render', () => {
+    const root = createReactRoot(document)
+    expect(root).toBeDefined()
+    expect(() => root.render(React.createElement('a'))).not.toThrow()
 })

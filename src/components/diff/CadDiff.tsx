@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, ThemeProvider, useTheme } from '@primer/react'
+import { Box, useTheme } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
@@ -24,12 +24,7 @@ function ViewerSTL({ file, colors }: ViewerSTLProps) {
     return geomety ? <Viewer3D geometry={geomety} colors={colors} /> : null
 }
 
-type CadDiffThemedProps = FileDiff
-
-function CadDiffInternals({
-    before,
-    after,
-}: CadDiffThemedProps): React.ReactElement {
+export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     const { theme } = useTheme()
     const beforeColors: WireframeColors = {
         face: theme?.colors.fg.default,
@@ -56,15 +51,5 @@ function CadDiffInternals({
                 {after && <ViewerSTL file={after} colors={afterColors} />}
             </Box>
         </Box>
-    )
-}
-
-export type CadDiffProps = FileDiff
-
-export function CadDiff({ before, after }: CadDiffProps): React.ReactElement {
-    return (
-        <ThemeProvider colorMode="auto">
-            <CadDiffInternals before={before} after={after} />
-        </ThemeProvider>
     )
 }
