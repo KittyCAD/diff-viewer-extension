@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { ButtonGroup, IconButton, ThemeProvider } from '@primer/react'
+import { Box, ButtonGroup, IconButton, ThemeProvider } from '@primer/react'
 import { PackageIcon, CodeIcon } from '@primer/octicons-react'
 import { DiffEntry, FileDiff, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
@@ -26,38 +26,16 @@ function CadDiffPortal({
     const [richSelected, setRichSelected] = useState(false)
     const [diffElement, setDiffElement] = useState<HTMLElement>()
     const [toolbarElement, setToolbarElement] = useState<HTMLElement>()
-    const [sourceNodes, setSourceNodes] = useState<Element[]>()
-
-    function collectSourceNodes(element: HTMLElement) {
-        const nodes = []
-        for (const n of element.children) {
-            nodes.push(n)
-        }
-        setSourceNodes(nodes)
-    }
-
-    const hideSourceNodes = useCallback(() => {
-        if (!sourceNodes) return
-        for (const n of sourceNodes) {
-            ;(n as HTMLElement).style.display = 'none'
-        }
-    }, [sourceNodes])
-
-    const showSourceNodes = useCallback(() => {
-        if (!sourceNodes) return
-        for (const n of sourceNodes) {
-            ;(n as HTMLElement).style.display = 'block'
-        }
-    }, [sourceNodes])
+    const [sourceNodes, setSourceNodes] = useState<HTMLElement[]>([])
 
     function selectSourceDiff() {
-        showSourceNodes()
-        setRichSelected(true)
+        sourceNodes.map(n => (n.style.display = 'block'))
+        setRichSelected(false)
     }
 
     function selectRichDiff() {
-        hideSourceNodes()
-        setRichSelected(false)
+        sourceNodes.map(n => (n.style.display = 'none'))
+        setRichSelected(true)
     }
 
     useEffect(() => {
@@ -65,14 +43,17 @@ function CadDiffPortal({
             '.js-file-content'
         ) as HTMLElement
         setDiffElement(diffElement)
+
         const toolbarElement = element.querySelector(
             '.file-info'
         ) as HTMLElement
         setToolbarElement(toolbarElement)
 
-        collectSourceNodes(diffElement)
-        hideSourceNodes()
-    }, [element, diffElement, hideSourceNodes])
+        const nodes = Array.from(diffElement.children) as HTMLElement[]
+        setSourceNodes(nodes)
+        nodes.map(n => ((n as HTMLElement).style.display = 'none'))
+        setRichSelected(true)
+    }, [])
 
     useEffect(() => {
         ;(async () => {
@@ -91,13 +72,14 @@ function CadDiffPortal({
     return (
         <>
             {diffElement &&
-                !richSelected &&
                 createPortal(
-                    diff ? (
-                        <CadDiff before={diff.before} after={diff.after} />
-                    ) : (
-                        <Loading />
-                    ),
+                    <Box sx={{ display: richSelected ? 'block' : 'none' }}>
+                        {diff ? (
+                            <CadDiff before={diff.before} after={diff.after} />
+                        ) : (
+                            <Loading />
+                        )}
+                    </Box>,
                     diffElement
                 )}
             {toolbarElement &&
@@ -107,15 +89,23 @@ function CadDiffPortal({
                             aria-label="Show original diff"
                             icon={CodeIcon}
                             disabled={!diff}
-                            onClick={selectSourceDiff}
-                            sx={{ bg: richSelected ? 'transparent' : 'neutral.muted' }}
+                            onClick={() => selectSourceDiff()}
+                            sx={{
+                                bg: richSelected
+                                    ? 'transparent'
+                                    : 'neutral.muted',
+                            }}
                         />
                         <IconButton
                             aria-label="Show KittyCAD 3D diff"
                             icon={PackageIcon}
                             disabled={!diff}
-                            onClick={selectRichDiff}
-                            sx={{ bg: !richSelected ? 'transparent' : 'neutral.muted' }}
+                            onClick={() => selectRichDiff()}
+                            sx={{
+                                bg: !richSelected
+                                    ? 'transparent'
+                                    : 'neutral.muted',
+                            }}
                         />
                     </ButtonGroup>,
                     toolbarElement
