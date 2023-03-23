@@ -1,3 +1,4 @@
+import { Page } from '@playwright/test'
 import { test, expect } from './fixtures'
 
 test('popup page', async ({ page, extensionId }) => {
@@ -17,16 +18,31 @@ test('authorized popup page', async ({
     await expect(page.locator('button')).toHaveCount(2)
 })
 
+async function getDiffScreenshot(page: Page, url: string) {
+    page.on('console', msg => console.log(msg.text()))
+
+    // pull request with only one supported file (.obj)
+    await page.goto(url)
+
+    // waiting for the canvas (that holds the diff) to show up
+    await page.waitForSelector(
+        '.js-file[data-file-type=".obj"] .js-file-content canvas'
+    )
+
+    // screenshot the file diff with its toolbar
+    const element = await page.waitForSelector(
+        '.js-file[data-file-type=".obj"]'
+    )
+    await page.waitForTimeout(1000) // making sure the element fully settled in
+    return await element.screenshot()
+}
+
 test('pull request diff with an .obj file', async ({
     page,
     authorizedBackground,
 }) => {
-    page.on('console', msg => console.log(msg.text()))
-
-    await page.goto('https://github.com/KittyCAD/kittycad.ts/pull/3/files')
-    const element = await page.waitForSelector('.js-file-content canvas')
-    await page.waitForTimeout(1000) // making sure the element fully settled in
-    const screenshot = await element.screenshot()
+    const url = 'https://github.com/KittyCAD/kittycad.ts/pull/3/files'
+    const screenshot = await getDiffScreenshot(page, url)
     expect(screenshot).toMatchSnapshot()
 })
 
@@ -34,13 +50,8 @@ test('commit diff with an .obj file', async ({
     page,
     authorizedBackground,
 }) => {
-    page.on('console', msg => console.log(msg.text()))
-
-    await page.goto(
+    const url =
         'https://github.com/KittyCAD/kittycad.ts/commit/08b50ee5a23b3ae7dd7b19383f14bbd520079cc1'
-    )
-    const element = await page.waitForSelector('.js-file-content canvas')
-    await page.waitForTimeout(1000) // making sure the element fully settled in
-    const screenshot = await element.screenshot()
+    const screenshot = await getDiffScreenshot(page, url)
     expect(screenshot).toMatchSnapshot()
 })
