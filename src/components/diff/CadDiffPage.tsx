@@ -2,16 +2,13 @@ import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
 import {
     Box,
-    ButtonGroup,
-    IconButton,
     ThemeProvider,
-    Tooltip,
 } from '@primer/react'
-import { PackageIcon, CodeIcon } from '@primer/octicons-react'
 import { DiffEntry, FileDiff, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
 import { CadDiff } from './CadDiff'
+import { SourceRichToggle } from './SourceRichToggle'
 
 function CadDiffPortal({
     element,
@@ -67,61 +64,18 @@ function CadDiffPortal({
         <>
             {toolbarContainer &&
                 createPortal(
-                    <ButtonGroup sx={{ float: 'right', mr: '-8px' }}>
-                        <Tooltip
-                            aria-label="Display the source diff"
-                            direction="w"
-                            sx={{ height: '32px' }}
-                        >
-                            <IconButton
-                                aria-label="Display the source diff"
-                                icon={CodeIcon}
-                                disabled={!richDiff}
-                                onClick={() => {
-                                    sourceElements.map(
-                                        n => (n.style.display = 'block')
-                                    )
-                                    setRichSelected(false)
-                                }}
-                                sx={{
-                                    bg: !richSelected
-                                        ? 'transparent'
-                                        : 'neutral.subtle',
-                                    borderTopRightRadius: 0,
-                                    borderBottomRightRadius: 0,
-                                    borderRight: 'none',
-                                    color: 'fg.subtle',
-                                    width: '40px',
-                                }}
-                            />
-                        </Tooltip>
-                        <Tooltip
-                            aria-label="Display the rich diff"
-                            direction="w"
-                            sx={{ height: '32px' }}
-                        >
-                            <IconButton
-                                aria-label="Display the rich diff"
-                                icon={PackageIcon}
-                                disabled={!richDiff}
-                                onClick={() => {
-                                    sourceElements.map(
-                                        n => (n.style.display = 'none')
-                                    )
-                                    setRichSelected(true)
-                                }}
-                                sx={{
-                                    bg: richSelected
-                                        ? 'transparent'
-                                        : 'neutral.subtle',
-                                    borderTopLeftRadius: 0,
-                                    borderBottomLeftRadius: 0,
-                                    color: 'fg.subtle',
-                                    width: '40px',
-                                }}
-                            />
-                        </Tooltip>
-                    </ButtonGroup>,
+                    <SourceRichToggle
+                        disabled={!richDiff}
+                        richSelected={richSelected}
+                        onSourceSelected={() => {
+                            sourceElements.map(n => (n.style.display = 'block'))
+                            setRichSelected(false)
+                        }}
+                        onRichSelected={() => {
+                            sourceElements.map(n => (n.style.display = 'none'))
+                            setRichSelected(true)
+                        }}
+                    />,
                     toolbarContainer
                 )}
             {diffContainer &&
