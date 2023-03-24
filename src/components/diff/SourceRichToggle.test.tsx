@@ -27,12 +27,7 @@ it('renders a source-rich diff toggle and checks its callbacks', async () => {
 })
 
 it('renders a disbaled source-rich diff toggle', async () => {
-    render(
-        <SourceRichToggle
-            disabled={true}
-            richSelected={true}
-        />
-    )
+    render(<SourceRichToggle disabled={true} richSelected={true} />)
 
     const [sourceButton, richButton] = await screen.findAllByRole('button')
     expect(sourceButton).toBeDisabled()

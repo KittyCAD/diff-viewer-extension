@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import {
-    Box,
-    ThemeProvider,
-} from '@primer/react'
+import { Box, ThemeProvider } from '@primer/react'
 import { DiffEntry, FileDiff, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'

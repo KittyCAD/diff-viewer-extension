@@ -18,10 +18,8 @@ test('authorized popup page', async ({
     await expect(page.locator('button')).toHaveCount(2)
 })
 
-async function getDiffScreenshot(page: Page, url: string) {
+async function getFirstDiffScreenshot(page: Page, url: string) {
     page.on('console', msg => console.log(msg.text()))
-
-    // pull request with only one supported file (.obj)
     await page.goto(url)
 
     // waiting for the canvas (that holds the diff) to show up
@@ -42,7 +40,7 @@ test('pull request diff with an .obj file', async ({
     authorizedBackground,
 }) => {
     const url = 'https://github.com/KittyCAD/kittycad.ts/pull/3/files'
-    const screenshot = await getDiffScreenshot(page, url)
+    const screenshot = await getFirstDiffScreenshot(page, url)
     expect(screenshot).toMatchSnapshot()
 })
 
@@ -52,6 +50,6 @@ test('commit diff with an .obj file', async ({
 }) => {
     const url =
         'https://github.com/KittyCAD/kittycad.ts/commit/08b50ee5a23b3ae7dd7b19383f14bbd520079cc1'
-    const screenshot = await getDiffScreenshot(page, url)
+    const screenshot = await getFirstDiffScreenshot(page, url)
     expect(screenshot).toMatchSnapshot()
 })
