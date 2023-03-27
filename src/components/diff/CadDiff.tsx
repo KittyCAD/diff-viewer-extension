@@ -6,6 +6,7 @@ import { Viewer3D } from './Viewer3D'
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
 import { BufferGeometry } from 'three'
 import { WireframeColors } from './WireframeModel'
+import { Buffer } from 'buffer'
 
 type ViewerSTLProps = {
     file: string
@@ -16,7 +17,7 @@ function ViewerSTL({ file, colors }: ViewerSTLProps) {
     const [geomety, setGeometry] = useState<BufferGeometry>()
     useEffect(() => {
         const loader = new STLLoader()
-        const buffer = window.atob(file)
+        const buffer = Buffer.from(file, 'base64').toString()
         const geometry = loader.parse(buffer)
         console.log(`Model ${geometry.id} loaded`)
         setGeometry(geometry)

@@ -5,6 +5,7 @@ import {
     FileExportFormat_type,
     FileImportFormat_type,
 } from '@kittycad/lib/dist/types/src/models'
+import { Buffer } from 'buffer'
 
 // TODO: check if we could get that from the library
 export const supportedSrcFormats = new Set([
@@ -51,7 +52,13 @@ export async function downloadFile(
     console.log(`Downloading ${contentFile.download_url}...`)
     const response = await fetch(contentFile.download_url)
     if (!response.ok) throw response
-    return await response.text()
+    const body = await response.text()
+    console.log(`${contentFile.name} encoding: ${contentFile.encoding}`)
+    if (contentFile.encoding !== 'base64') {
+        console.log("Changed to base64")
+        return Buffer.from(body).toString('base64')
+    }
+    return body
 }
 
 async function convert(
@@ -60,6 +67,11 @@ async function convert(
     srcFormat: string,
     outputFormat = 'stl'
 ) {
+    if (srcFormat === outputFormat) {
+        console.log('No conversion done: srcFormat and outputFormat are equal')
+        return body
+    }
+
     // TODO: think about the best output format for visual diff injection, now defaults to STL
     const response = await file.create_file_conversion({
         client,
@@ -115,6 +127,7 @@ export async function getFileDiff(
     if (status === 'added') {
         const blob = await downloadFile(github, owner, repo, sha, filename)
         const after = await convert(kittycad, blob, extension)
+        console.log({ after })
         return { after }
     }
 
