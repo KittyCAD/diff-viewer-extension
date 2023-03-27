@@ -71,7 +71,7 @@ export function mapInjectableDiffElements(
 
     if (supportedElements.length !== supportedFiles.length) {
         throw Error(
-            `elements and files have different length. Got ${supportedElements.length} and ${files.length}`
+            `elements and files have different length. Got ${supportedElements.length} and ${supportedFiles.length}`
         )
     }
 
