@@ -2524,6 +2524,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@primer/octicons-react@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "@primer/octicons-react@npm:18.2.0"
+  peerDependencies:
+    react: ">=15"
+  checksum: 95f1770f44628b3e0fe93133a89c615a14c2353af6074cf172e95200dd553c4171db418ce858dbbd6b5699431a5e51007cce325207836e209f6fe3ead0ba3758
+  languageName: node
+  linkType: hard
+
 "@primer/primitives@npm:7.10.0":
   version: 7.10.0
   resolution: "@primer/primitives@npm:7.10.0"
@@ -6106,6 +6115,7 @@ __metadata:
     "@octokit/rest": ^19.0.7
     "@octokit/types": ^9.0.0
     "@playwright/test": ^1.31.2
+    "@primer/octicons-react": ^18.2.0
     "@primer/react": ^35.20.0
     "@react-three/drei": ^9.57.1
     "@react-three/fiber": ^8.11.1

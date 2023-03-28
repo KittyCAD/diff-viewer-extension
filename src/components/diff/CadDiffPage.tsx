@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { ThemeProvider } from '@primer/react'
+import { Box, ThemeProvider } from '@primer/react'
 import { DiffEntry, FileDiff, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
 import { CadDiff } from './CadDiff'
+import { SourceRichToggle } from './SourceRichToggle'
 
 function CadDiffPortal({
     element,
@@ -21,17 +22,28 @@ function CadDiffPortal({
     sha: string
     parentSha: string
 }): React.ReactElement {
-    const [diff, setDiff] = useState<FileDiff>()
-    const [diffElement, setDiffElement] = useState<HTMLElement>()
+    const [richDiff, setRichDiff] = useState<FileDiff>()
+    const [richSelected, setRichSelected] = useState(true)
+    const [toolbarContainer, setToolbarContainer] = useState<HTMLElement>()
+    const [diffContainer, setDiffContainer] = useState<HTMLElement>()
+    const [sourceElements, setSourceElements] = useState<HTMLElement[]>([])
+
     useEffect(() => {
-        const diffElement = element.querySelector(
-            '.js-file-content'
-        ) as HTMLElement
-        setDiffElement(diffElement)
-        // TODO: don't clean up once the rich/source toggle is added
-        for (const e of diffElement.childNodes) {
-            e.remove()
+        const toolbar = element.querySelector<HTMLElement>('.file-info')
+        if (toolbar != null) {
+            setToolbarContainer(toolbar)
         }
+
+        const diff = element.querySelector<HTMLElement>('.js-file-content')
+        if (diff != null) {
+            setDiffContainer(diff)
+            const sourceElements = Array.from(diff.children) as HTMLElement[]
+            sourceElements.map(n => (n.style.display = 'none'))
+            setSourceElements(sourceElements)
+        }
+    }, [element])
+
+    useEffect(() => {
         ;(async () => {
             const response = await chrome.runtime.sendMessage({
                 id: MessageIds.GetFileDiff,
@@ -40,20 +52,42 @@ function CadDiffPortal({
             if ('error' in response) {
                 console.log(response.error)
             } else {
-                setDiff(response as FileDiff)
+                setRichDiff(response as FileDiff)
             }
         })()
-    }, [element, diffElement, file, owner, repo, sha, parentSha])
+    }, [file, owner, repo, sha, parentSha])
+
     return (
         <>
-            {diffElement &&
+            {toolbarContainer &&
                 createPortal(
-                    diff ? (
-                        <CadDiff before={diff.before} after={diff.after} />
-                    ) : (
-                        <Loading />
-                    ),
-                    diffElement
+                    <SourceRichToggle
+                        disabled={!richDiff}
+                        richSelected={richSelected}
+                        onSourceSelected={() => {
+                            sourceElements.map(n => (n.style.display = 'block'))
+                            setRichSelected(false)
+                        }}
+                        onRichSelected={() => {
+                            sourceElements.map(n => (n.style.display = 'none'))
+                            setRichSelected(true)
+                        }}
+                    />,
+                    toolbarContainer
+                )}
+            {diffContainer &&
+                createPortal(
+                    <Box sx={{ display: richSelected ? 'block' : 'none' }}>
+                        {richDiff ? (
+                            <CadDiff
+                                before={richDiff.before}
+                                after={richDiff.after}
+                            />
+                        ) : (
+                            <Loading />
+                        )}
+                    </Box>,
+                    diffContainer
                 )}
         </>
     )
