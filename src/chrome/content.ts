@@ -39,14 +39,19 @@ async function injectPullDiff(
     pull: number,
     document: Document
 ) {
-    const files = await chrome.runtime.sendMessage<Message, DiffEntry[]>({
+    const filesResponse = await chrome.runtime.sendMessage({
         id: MessageIds.GetGithubPullFiles,
         data: { owner, repo, pull },
     })
-    const pullData = await chrome.runtime.sendMessage<Message, Pull>({
+    if ('error' in filesResponse) throw filesResponse.error
+    const files = filesResponse as DiffEntry[]
+    const pullDataResponse = await chrome.runtime.sendMessage({
         id: MessageIds.GetGithubPull,
         data: { owner, repo, pull },
     })
+    if ('error' in pullDataResponse) throw pullDataResponse.error
+    const pullData = pullDataResponse as Pull
+    console.log(pullData)
     const sha = pullData.head.sha
     const parentSha = pullData.base.sha
     await injectDiff(owner, repo, sha, parentSha, files, document)
@@ -58,10 +63,12 @@ async function injectCommitDiff(
     sha: string,
     document: Document
 ) {
-    const commit = await chrome.runtime.sendMessage<Message, Commit>({
+    const response = await chrome.runtime.sendMessage({
         id: MessageIds.GetGithubCommit,
         data: { owner, repo, sha },
     })
+    if ('error' in response) throw response.error
+    const commit = response as Commit
     if (!commit.files) throw Error('Found no file changes in commit')
     if (!commit.parents.length) throw Error('Found no commit parent')
     const parentSha = commit.parents[0].sha
