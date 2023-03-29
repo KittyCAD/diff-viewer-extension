@@ -2655,15 +2655,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.57.1":
-  version: 9.57.1
-  resolution: "@react-three/drei@npm:9.57.1"
+"@react-three/drei@npm:^9.58.5":
+  version: 9.58.5
+  resolution: "@react-three/drei@npm:9.58.5"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@react-spring/three": ~9.6.1
     "@use-gesture/react": ^10.2.24
-    camera-controls: ^2.1.0
-    detect-gpu: ^5.0.10
+    camera-controls: ^2.3.1
+    detect-gpu: ^5.0.14
     glsl-noise: ^0.0.0
     lodash.clamp: ^4.0.3
     lodash.omit: ^4.5.0
@@ -2687,7 +2687,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: f1336a5734e22e94cb4d4b48b83e4213ba109d06483ab247c48d1e0bb214a65e9c6c3400e3e766910a2684dc8ce9a06c0e602f60e965645e68214df811e4662f
+  checksum: fe1f42fc95a2bc1cae05a14fb61a9272a72f4de434625b8e4c74e83a98731c2a746c3e31d9dce5a775b0d23a47c52c30dcc8fda9d0968d8a970c316d4758f29e
   languageName: node
   linkType: hard
 
@@ -5034,12 +5034,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"camera-controls@npm:^2.1.0":
-  version: 2.3.1
-  resolution: "camera-controls@npm:2.3.1"
+"camera-controls@npm:^2.3.1":
+  version: 2.3.3
+  resolution: "camera-controls@npm:2.3.3"
   peerDependencies:
     three: ">=0.126.1"
-  checksum: c8474d482baed52588aebb9e9bdebdb6d5beb7524efa3a596e3fead0ea8ed969d37b46002f81d51d53141a474b6a71c7e5faec276dc05e43013c23ac379f9575
+  checksum: 4e6ac54968050c1e8a68f9eedcd2d6fdb88230fd8449ab0ca2550a997afab1730816cefb555e750f52f92d0bfc64f6547e1de11a16a7be32797b5b79fa946ac8
   languageName: node
   linkType: hard
 
@@ -6028,12 +6028,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"detect-gpu@npm:^5.0.10":
-  version: 5.0.14
-  resolution: "detect-gpu@npm:5.0.14"
+"detect-gpu@npm:^5.0.14":
+  version: 5.0.17
+  resolution: "detect-gpu@npm:5.0.17"
   dependencies:
     webgl-constants: ^1.1.1
-  checksum: f458585f61e55f5abec837c9ff742b9f25cb29af1c84decc0fa93c5c1c20335cbc3757506a7a727bff69fba106cce8ba395aca751a05536d533903f46eede860
+  checksum: 3d9ccdf65d15221b44dc26382458512ca8460dfa61f86e491b10796e8582f3eff5696faf001aba7b6406f48b6be43db3e1fade9b17b9c91c5719fb27a60d4f15
   languageName: node
   linkType: hard
 
@@ -6110,7 +6110,7 @@ __metadata:
     "@playwright/test": ^1.31.2
     "@primer/octicons-react": ^18.2.0
     "@primer/react": ^35.20.0
-    "@react-three/drei": ^9.57.1
+    "@react-three/drei": ^9.58.5
     "@react-three/fiber": ^8.11.1
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^14.0.0
