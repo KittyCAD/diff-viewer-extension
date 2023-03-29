@@ -19,7 +19,7 @@ export const extensionToSrcFormat: {
     // stl  disabled for now as there's some GitHub support for them already, see #40
 }
 
-export function isFilenameSupported(filename: string) {
+export function isFilenameSupported(filename: string): boolean{
     const extension = filename.split('.').pop()
     return !!(extension && extensionToSrcFormat[extension])
 }
