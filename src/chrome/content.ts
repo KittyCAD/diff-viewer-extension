@@ -1,6 +1,6 @@
 import React from 'react'
 import { CadDiffPage } from '../components/diff/CadDiffPage'
-import { Commit, DiffEntry, Message, MessageIds, Pull } from './types'
+import { Commit, DiffEntry, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
     mapInjectableDiffElements,
