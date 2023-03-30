@@ -1,5 +1,5 @@
 import { createRoot, Root } from 'react-dom/client'
-import { isFilenameSupported, supportedSrcFormats } from './diff'
+import { isFilenameSupported, extensionToSrcFormat } from './diff'
 import { DiffEntry } from './types'
 
 export type GithubPullUrlParams = {
@@ -45,7 +45,7 @@ export function getGithubCommitUrlParams(
 }
 
 export function getSupportedWebDiffElements(document: Document): HTMLElement[] {
-    const fileTypeSelectors = Array.from(supportedSrcFormats).map(
+    const fileTypeSelectors = Object.keys(extensionToSrcFormat).map(
         t => `.file[data-file-type=".${t}"]`
     )
     const selector = fileTypeSelectors.join(', ')

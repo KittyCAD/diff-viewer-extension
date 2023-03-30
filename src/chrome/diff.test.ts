@@ -4,7 +4,10 @@ import { downloadFile, isFilenameSupported } from './diff'
 it('checks if the filename has a supported extension', () => {
     expect(isFilenameSupported('noextension')).toBe(false)
     expect(isFilenameSupported('unsupported.txt')).toBe(false)
+    expect(isFilenameSupported('unsupported.stl')).toBe(false)
     expect(isFilenameSupported('supported.obj')).toBe(true)
+    expect(isFilenameSupported('supported.stp')).toBe(true)
+    expect(isFilenameSupported('supported.step')).toBe(true)
 })
 
 describe('Function downloadFile', () => {
