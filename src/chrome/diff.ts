@@ -5,6 +5,7 @@ import {
     FileExportFormat_type,
     FileImportFormat_type,
 } from '@kittycad/lib/dist/types/src/models'
+import { Buffer } from 'buffer'
 
 export const extensionToSrcFormat: {
     [extension: string]: FileImportFormat_type
@@ -62,7 +63,7 @@ async function convert(
         console.log(
             'Skipping conversion, as extension is equal to outputFormat'
         )
-        return btoa(body)
+        return Buffer.from(body).toString('base64')
     }
     const response = await file.create_file_conversion({
         client,

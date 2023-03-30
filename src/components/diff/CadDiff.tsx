@@ -6,12 +6,13 @@ import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { BufferGeometry, Mesh } from 'three'
 import { WireframeColors } from './WireframeModel'
+import { Buffer } from 'buffer'
 
 function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
     const [geomety, setGeometry] = useState<BufferGeometry>()
     useEffect(() => {
         const loader = new OBJLoader()
-        const buffer = window.atob(file)
+        const buffer = Buffer.from(file, 'base64').toString()
         const group = loader.parse(buffer)
         console.log(`Model ${group.id} loaded`)
         const geometry = (group.children[0] as Mesh)?.geometry
