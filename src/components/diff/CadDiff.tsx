@@ -37,12 +37,13 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
         dashEdge: theme?.colors.success.subtle,
     }
     return (
-        <Box display="flex" height={300}>
-            <Box flexGrow={1} backgroundColor="danger.subtle">
+        <Box display="flex" height={300} overflow="hidden" minWidth={0}>
+            <Box flexGrow={1} minWidth={0} backgroundColor="danger.subtle">
                 {before && <ViewerSTL file={before} colors={beforeColors} />}
             </Box>
             <Box
                 flexGrow={1}
+                minWidth={0}
                 backgroundColor="success.subtle"
                 borderLeftWidth={1}
                 borderLeftColor="border.default"
