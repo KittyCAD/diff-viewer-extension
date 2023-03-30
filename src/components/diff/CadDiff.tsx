@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, useTheme } from '@primer/react'
+import { Box, useTheme, Text } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
@@ -17,11 +17,15 @@ function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
         console.log(`Model ${group.id} loaded`)
         console.log(group)
         const geometry = (group.children[0] as Mesh)?.geometry
-        if (geometry) {
-            setGeometry(geometry)
-        }
+        setGeometry(geometry)
     }, [file])
-    return geometry ? <Viewer3D geometry={geometry} colors={colors} /> : null
+    return geometry ? (
+        <Viewer3D geometry={geometry} colors={colors} />
+    ) : (
+        <Box p={3}>
+            <Text>Sorry, the rich diff can't be displayed for this file.</Text>
+        </Box>
+    )
 }
 
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
