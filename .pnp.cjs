@@ -56,7 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["buffer", "npm:6.0.3"],\
             ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.37.0"],\
-            ["eslint-config-prettier", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.7.0"],\
+            ["eslint-config-prettier", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.8.0"],\
             ["eslint-config-react-app", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.0.1"],\
             ["eslint-plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.32.2"],\
             ["github-injection", "npm:1.1.0"],\
@@ -9018,7 +9018,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["buffer", "npm:6.0.3"],\
             ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.37.0"],\
-            ["eslint-config-prettier", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.7.0"],\
+            ["eslint-config-prettier", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.8.0"],\
             ["eslint-config-react-app", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.0.1"],\
             ["eslint-plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.32.2"],\
             ["github-injection", "npm:1.1.0"],\
@@ -9604,17 +9604,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["eslint-config-prettier", [\
-        ["npm:8.7.0", {\
-          "packageLocation": "./.yarn/cache/eslint-config-prettier-npm-8.7.0-9cfc221aac-b05bc7f229.zip/node_modules/eslint-config-prettier/",\
+        ["npm:8.8.0", {\
+          "packageLocation": "./.yarn/cache/eslint-config-prettier-npm-8.8.0-f1bf18b9b1-1e94c3882c.zip/node_modules/eslint-config-prettier/",\
           "packageDependencies": [\
-            ["eslint-config-prettier", "npm:8.7.0"]\
+            ["eslint-config-prettier", "npm:8.8.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.7.0", {\
-          "packageLocation": "./.yarn/__virtual__/eslint-config-prettier-virtual-7f0d31615e/0/cache/eslint-config-prettier-npm-8.7.0-9cfc221aac-b05bc7f229.zip/node_modules/eslint-config-prettier/",\
+        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.8.0", {\
+          "packageLocation": "./.yarn/__virtual__/eslint-config-prettier-virtual-f68ca55630/0/cache/eslint-config-prettier-npm-8.8.0-f1bf18b9b1-1e94c3882c.zip/node_modules/eslint-config-prettier/",\
           "packageDependencies": [\
-            ["eslint-config-prettier", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.7.0"],\
+            ["eslint-config-prettier", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.8.0"],\
             ["@types/eslint", null],\
             ["eslint", "npm:8.37.0"]\
           ],\
