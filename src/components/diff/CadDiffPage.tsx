@@ -32,6 +32,14 @@ function CadDiffPortal({
         const toolbar = element.querySelector<HTMLElement>('.file-info')
         if (toolbar != null) {
             setToolbarContainer(toolbar)
+
+            // STL files might have a toggle already
+            const existingToggle = element.querySelector<HTMLElement>(
+                '.js-prose-diff-toggle-form'
+            )
+            if (existingToggle) {
+                existingToggle.style.display = 'none'
+            }
         }
 
         const diff = element.querySelector<HTMLElement>('.js-file-content')

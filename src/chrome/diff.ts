@@ -5,25 +5,24 @@ import {
     FileExportFormat_type,
     FileImportFormat_type,
 } from '@kittycad/lib/dist/types/src/models'
+import { Buffer } from 'buffer'
 
-// TODO: check if we could get that from the library
-export const supportedSrcFormats = new Set([
-    'dae',
-    'dxf',
-    'fbx',
-    'obj',
-    'step',
-    'stl',
-    'svg',
-])
+export const extensionToSrcFormat: {
+    [extension: string]: FileImportFormat_type
+} = {
+    dae: 'dae',
+    dxf: 'dxf',
+    fbx: 'fbx',
+    obj: 'obj',
+    stl: 'stl',
+    stp: 'step',
+    step: 'step',
+    svg: 'svg',
+}
 
-export function isFilenameSupported(filename: string) {
-    const parts = filename.split('.')
-    if (parts.length <= 1) {
-        return false
-    }
-
-    return supportedSrcFormats.has(parts.pop()!)
+export function isFilenameSupported(filename: string): boolean {
+    const extension = filename.split('.').pop()
+    return !!(extension && extensionToSrcFormat[extension])
 }
 
 export async function downloadFile(
@@ -57,14 +56,19 @@ export async function downloadFile(
 async function convert(
     client: Client,
     body: string,
-    srcFormat: string,
-    outputFormat = 'stl'
+    extension: string,
+    outputFormat = 'obj'
 ) {
-    // TODO: think about the best output format for visual diff injection, now defaults to STL
+    if (extension === outputFormat) {
+        console.log(
+            'Skipping conversion, as extension is equal to outputFormat'
+        )
+        return Buffer.from(body).toString('base64')
+    }
     const response = await file.create_file_conversion({
         client,
         body,
-        src_format: srcFormat as FileImportFormat_type,
+        src_format: extensionToSrcFormat[extension],
         output_format: outputFormat as FileExportFormat_type,
     })
     if ('error_code' in response) throw response
@@ -86,9 +90,11 @@ export async function getFileDiff(
 ): Promise<FileDiff> {
     const { filename, status } = file
     const extension = filename.split('.').pop()
-    if (!extension || !supportedSrcFormats.has(extension)) {
+    if (!extension || !extensionToSrcFormat[extension]) {
         throw Error(
-            `Unsupported extension. Given ${extension}, was expecting ${supportedSrcFormats.values()}`
+            `Unsupported extension. Given ${extension}, was expecting ${Object.keys(
+                extensionToSrcFormat
+            )}`
         )
     }
 
