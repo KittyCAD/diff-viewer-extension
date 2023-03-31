@@ -53,7 +53,6 @@ async function injectPullDiff(
     })
     if ('error' in pullDataResponse) throw pullDataResponse.error
     const pullData = pullDataResponse as Pull
-    console.log(pullData)
     const sha = pullData.head.sha
     const parentSha = pullData.base.sha
     await injectDiff(owner, repo, sha, parentSha, files, document)
