@@ -5,21 +5,22 @@ import {
     FileExportFormat_type,
     FileImportFormat_type,
 } from '@kittycad/lib/dist/types/src/models'
+import { Buffer } from 'buffer'
 
 export const extensionToSrcFormat: {
     [extension: string]: FileImportFormat_type
 } = {
-    'dae': 'dae',
-    'dxf': 'dxf',
-    'fbx': 'fbx',
-    'obj': 'obj',
-    'stp': 'step',
-    'step': 'step',
-    'svg': 'svg',
-    // stl  disabled for now as there's some GitHub support for them already, see #40
+    dae: 'dae',
+    dxf: 'dxf',
+    fbx: 'fbx',
+    obj: 'obj',
+    stl: 'stl',
+    stp: 'step',
+    step: 'step',
+    svg: 'svg',
 }
 
-export function isFilenameSupported(filename: string): boolean{
+export function isFilenameSupported(filename: string): boolean {
     const extension = filename.split('.').pop()
     return !!(extension && extensionToSrcFormat[extension])
 }
@@ -56,9 +57,14 @@ async function convert(
     client: Client,
     body: string,
     extension: string,
-    outputFormat = 'stl'
+    outputFormat = 'obj'
 ) {
-    // TODO: think about the best output format for visual diff injection, now defaults to STL
+    if (extension === outputFormat) {
+        console.log(
+            'Skipping conversion, as extension is equal to outputFormat'
+        )
+        return Buffer.from(body).toString('base64')
+    }
     const response = await file.create_file_conversion({
         client,
         body,
@@ -86,7 +92,9 @@ export async function getFileDiff(
     const extension = filename.split('.').pop()
     if (!extension || !extensionToSrcFormat[extension]) {
         throw Error(
-            `Unsupported extension. Given ${extension}, was expecting ${Object.keys(extensionToSrcFormat)}`
+            `Unsupported extension. Given ${extension}, was expecting ${Object.keys(
+                extensionToSrcFormat
+            )}`
         )
     }
 
