@@ -21,6 +21,8 @@ async function injectDiff(
     files: DiffEntry[],
     document: Document
 ) {
+    // TODO: find a better way, but this helps waiting for the full diff
+    await new Promise(resolve => setTimeout(resolve, 1000));
     const map = mapInjectableDiffElements(document, files)
     const root = createReactRoot(document)
     const cadDiffPage = React.createElement(CadDiffPage, {
