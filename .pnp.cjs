@@ -34,7 +34,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@octokit/rest", "npm:19.0.7"],\
             ["@octokit/types", "npm:9.0.0"],\
             ["@playwright/test", "npm:1.32.1"],\
-            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
+            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.24.0"],\
             ["@react-three/drei", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:9.58.5"],\
             ["@react-three/fiber", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.12.0"],\
@@ -4240,13 +4240,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@primer/octicons-react", [\
-        ["npm:18.2.0", {\
-          "packageLocation": "./.yarn/cache/@primer-octicons-react-npm-18.2.0-4922167f1d-95f1770f44.zip/node_modules/@primer/octicons-react/",\
-          "packageDependencies": [\
-            ["@primer/octicons-react", "npm:18.2.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
         ["npm:18.3.0", {\
           "packageLocation": "./.yarn/cache/@primer-octicons-react-npm-18.3.0-0c85db708e-12d9578bf6.zip/node_modules/@primer/octicons-react/",\
           "packageDependencies": [\
@@ -4254,23 +4247,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:88d6895c1d1f5a87264e4115ce7a8661c6b26adba29932500186d2ac763f5ce4a3b351b3fbfa431715837f20907bb3b1042a9a237821ce590e148ef2ea4cd30b#npm:18.3.0", {\
-          "packageLocation": "./.yarn/__virtual__/@primer-octicons-react-virtual-c550ca6286/0/cache/@primer-octicons-react-npm-18.3.0-0c85db708e-12d9578bf6.zip/node_modules/@primer/octicons-react/",\
+        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0", {\
+          "packageLocation": "./.yarn/__virtual__/@primer-octicons-react-virtual-d16ec7c115/0/cache/@primer-octicons-react-npm-18.3.0-0c85db708e-12d9578bf6.zip/node_modules/@primer/octicons-react/",\
           "packageDependencies": [\
-            ["@primer/octicons-react", "virtual:88d6895c1d1f5a87264e4115ce7a8661c6b26adba29932500186d2ac763f5ce4a3b351b3fbfa431715837f20907bb3b1042a9a237821ce590e148ef2ea4cd30b#npm:18.3.0"],\
-            ["@types/react", "npm:18.0.31"],\
-            ["react", "npm:18.2.0"]\
-          ],\
-          "packagePeers": [\
-            "@types/react",\
-            "react"\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0", {\
-          "packageLocation": "./.yarn/__virtual__/@primer-octicons-react-virtual-dd8ad50232/0/cache/@primer-octicons-react-npm-18.2.0-4922167f1d-95f1770f44.zip/node_modules/@primer/octicons-react/",\
-          "packageDependencies": [\
-            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
+            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@types/react", "npm:18.0.31"],\
             ["react", "npm:18.2.0"]\
           ],\
@@ -4308,7 +4288,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@github/relative-time-element", "npm:4.2.3"],\
             ["@lit-labs/react", "npm:1.1.1"],\
             ["@primer/behaviors", "npm:1.3.3"],\
-            ["@primer/octicons-react", "virtual:88d6895c1d1f5a87264e4115ce7a8661c6b26adba29932500186d2ac763f5ce4a3b351b3fbfa431715837f20907bb3b1042a9a237821ce590e148ef2ea4cd30b#npm:18.3.0"],\
+            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/primitives", "npm:7.11.1"],\
             ["@react-aria/ssr", "virtual:88d6895c1d1f5a87264e4115ce7a8661c6b26adba29932500186d2ac763f5ce4a3b351b3fbfa431715837f20907bb3b1042a9a237821ce590e148ef2ea4cd30b#npm:3.5.0"],\
             ["@styled-system/css", "npm:5.1.5"],\
@@ -9015,7 +8995,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@octokit/rest", "npm:19.0.7"],\
             ["@octokit/types", "npm:9.0.0"],\
             ["@playwright/test", "npm:1.32.1"],\
-            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
+            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.24.0"],\
             ["@react-three/drei", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:9.58.5"],\
             ["@react-three/fiber", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.12.0"],\
