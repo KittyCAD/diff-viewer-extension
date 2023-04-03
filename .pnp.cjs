@@ -47,7 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.31"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["buffer", "npm:6.0.3"],\
             ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.37.0"],\
@@ -4467,7 +4467,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@react-three/fiber", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.12.0"],\
             ["@types/react", "npm:18.0.31"],\
             ["@types/react-three__fiber", null],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["react", "npm:18.2.0"],\
             ["three", "npm:0.151.2"]\
           ],\
@@ -4509,7 +4509,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.31"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["@types/react-three__fiber", null],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["@use-gesture/react", "virtual:29c3c4240323f5bf8136b0c1a1012bc3e3d9588d3498f13510f3afbd0efe5063183229512909a2c0e61a30445f0fb0073f778c20e19439a9a9c3fb42e065e599#npm:10.2.24"],\
             ["camera-controls", "virtual:29c3c4240323f5bf8136b0c1a1012bc3e3d9588d3498f13510f3afbd0efe5063183229512909a2c0e61a30445f0fb0073f778c20e19439a9a9c3fb42e065e599#npm:2.3.3"],\
             ["detect-gpu", "npm:5.0.17"],\
@@ -4565,7 +4565,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.11"],\
             ["@types/react-native", null],\
             ["@types/react-reconciler", "npm:0.26.7"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["expo", null],\
             ["expo-asset", null],\
             ["expo-gl", null],\
@@ -5748,6 +5748,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/stats.js", [\
+        ["npm:0.17.0", {\
+          "packageLocation": "./.yarn/cache/@types-stats.js-npm-0.17.0-b3a18cda82-ac8dc5e622.zip/node_modules/@types/stats.js/",\
+          "packageDependencies": [\
+            ["@types/stats.js", "npm:0.17.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/styled-components", [\
         ["npm:5.1.26", {\
           "packageLocation": "./.yarn/cache/@types-styled-components-npm-5.1.26-aabda06611-84f53b3101.zip/node_modules/@types/styled-components/",\
@@ -5800,11 +5809,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/three", [\
-        ["npm:0.149.0", {\
-          "packageLocation": "./.yarn/cache/@types-three-npm-0.149.0-b06e5f80a4-5def82bd5d.zip/node_modules/@types/three/",\
+        ["npm:0.150.1", {\
+          "packageLocation": "./.yarn/cache/@types-three-npm-0.150.1-61bd294e82-6cb4656461.zip/node_modules/@types/three/",\
           "packageDependencies": [\
-            ["@types/three", "npm:0.149.0"],\
-            ["@types/webxr", "npm:0.5.1"]\
+            ["@types/three", "npm:0.150.1"],\
+            ["@types/stats.js", "npm:0.17.0"],\
+            ["@types/webxr", "npm:0.5.1"],\
+            ["fflate", "npm:0.6.10"],\
+            ["lil-gui", "npm:0.17.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7628,7 +7640,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/camera-controls-virtual-0002ab9f9a/0/cache/camera-controls-npm-2.3.3-b16acd6fc6-4e6ac54968.zip/node_modules/camera-controls/",\
           "packageDependencies": [\
             ["camera-controls", "virtual:29c3c4240323f5bf8136b0c1a1012bc3e3d9588d3498f13510f3afbd0efe5063183229512909a2c0e61a30445f0fb0073f778c20e19439a9a9c3fb42e065e599#npm:2.3.3"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["three", "npm:0.151.2"]\
           ],\
           "packagePeers": [\
@@ -9016,7 +9028,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react", "npm:18.0.31"],\
             ["@types/react-dom", "npm:18.0.11"],\
             ["@types/testing-library__jest-dom", "npm:5.14.5"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["buffer", "npm:6.0.3"],\
             ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.37.0"],\
@@ -13016,6 +13028,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lil-gui", [\
+        ["npm:0.17.0", {\
+          "packageLocation": "./.yarn/cache/lil-gui-npm-0.17.0-6e5e3a6fbb-a6f33e9074.zip/node_modules/lil-gui/",\
+          "packageDependencies": [\
+            ["lil-gui", "npm:0.17.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["lilconfig", [\
         ["npm:2.1.0", {\
           "packageLocation": "./.yarn/cache/lilconfig-npm-2.1.0-a179261924-8549bb352b.zip/node_modules/lilconfig/",\
@@ -13236,7 +13257,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/maath-virtual-4ead2d3820/0/cache/maath-npm-0.5.2-c0b37dd8e9-1e6f8f9698.zip/node_modules/maath/",\
           "packageDependencies": [\
             ["maath", "virtual:29c3c4240323f5bf8136b0c1a1012bc3e3d9588d3498f13510f3afbd0efe5063183229512909a2c0e61a30445f0fb0073f778c20e19439a9a9c3fb42e065e599#npm:0.5.2"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["three", "npm:0.151.2"]\
           ],\
           "packagePeers": [\
@@ -13384,7 +13405,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/meshline-virtual-773f69e080/0/cache/meshline-npm-3.1.6-97c0517205-72b7990831.zip/node_modules/meshline/",\
           "packageDependencies": [\
             ["meshline", "virtual:29c3c4240323f5bf8136b0c1a1012bc3e3d9588d3498f13510f3afbd0efe5063183229512909a2c0e61a30445f0fb0073f778c20e19439a9a9c3fb42e065e599#npm:3.1.6"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["three", "npm:0.151.2"]\
           ],\
           "packagePeers": [\
@@ -18327,7 +18348,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/three-mesh-bvh-virtual-c955010166/0/cache/three-mesh-bvh-npm-0.5.23-1c2fe9e70e-40f5821409.zip/node_modules/three-mesh-bvh/",\
           "packageDependencies": [\
             ["three-mesh-bvh", "virtual:29c3c4240323f5bf8136b0c1a1012bc3e3d9588d3498f13510f3afbd0efe5063183229512909a2c0e61a30445f0fb0073f778c20e19439a9a9c3fb42e065e599#npm:0.5.23"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["three", "npm:0.151.2"]\
           ],\
           "packagePeers": [\
@@ -18351,7 +18372,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["three-stdlib", "virtual:29c3c4240323f5bf8136b0c1a1012bc3e3d9588d3498f13510f3afbd0efe5063183229512909a2c0e61a30445f0fb0073f778c20e19439a9a9c3fb42e065e599#npm:2.21.8"],\
             ["@babel/runtime", "npm:7.21.0"],\
             ["@types/offscreencanvas", "npm:2019.7.0"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["@webgpu/glslang", "npm:0.0.15"],\
             ["chevrotain", "npm:10.4.2"],\
             ["draco3d", "npm:1.5.6"],\
@@ -18484,7 +18505,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/troika-three-text-virtual-577dfcef88/0/cache/troika-three-text-npm-0.47.1-caf8602ddd-854d74e1f5.zip/node_modules/troika-three-text/",\
           "packageDependencies": [\
             ["troika-three-text", "virtual:29c3c4240323f5bf8136b0c1a1012bc3e3d9588d3498f13510f3afbd0efe5063183229512909a2c0e61a30445f0fb0073f778c20e19439a9a9c3fb42e065e599#npm:0.47.1"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["bidi-js", "npm:1.0.2"],\
             ["three", "npm:0.151.2"],\
             ["troika-three-utils", "virtual:577dfcef88695e072908cdeb0a1cd2a18816c13ab434e3707bb6c9cd69c5ea467a08ef0eeabad0916aaa106c0b70039f3ed45f8eab83432e294a1aace207e627#npm:0.47.0"],\
@@ -18510,7 +18531,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/troika-three-utils-virtual-8c0981ec6c/0/cache/troika-three-utils-npm-0.47.0-4ef0580dcd-2541865d95.zip/node_modules/troika-three-utils/",\
           "packageDependencies": [\
             ["troika-three-utils", "virtual:577dfcef88695e072908cdeb0a1cd2a18816c13ab434e3707bb6c9cd69c5ea467a08ef0eeabad0916aaa106c0b70039f3ed45f8eab83432e294a1aace207e627#npm:0.47.0"],\
-            ["@types/three", "npm:0.149.0"],\
+            ["@types/three", "npm:0.150.1"],\
             ["three", "npm:0.151.2"]\
           ],\
           "packagePeers": [\
