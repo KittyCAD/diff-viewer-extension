@@ -13,6 +13,8 @@ import {
 // no ts support
 const gitHubInjection = require('github-injection')
 
+const root = createReactRoot(document)
+
 async function injectDiff(
     owner: string,
     repo: string,
@@ -22,7 +24,6 @@ async function injectDiff(
     document: Document
 ) {
     const map = mapInjectableDiffElements(document, files)
-    const root = createReactRoot(document)
     const cadDiffPage = React.createElement(CadDiffPage, {
         owner,
         repo,
@@ -96,23 +97,13 @@ async function run() {
 
 gitHubInjection(() => {
     run()
-})
 
-function watch(observer: MutationObserver) {
+    // Make sure we observe the diff for changes
     const elements = [
         ...document.getElementsByClassName('js-diff-load-container'),
         ...document.getElementsByClassName('js-diff-progressive-container'),
     ]
-
-    elements.forEach(element => {
-        observer.observe(element, {
-            childList: true,
-        })
-    })
-}
-
-watch(
-    new MutationObserver(records => {
+    const observer = new MutationObserver(records => {
         records.forEach(record => {
             if (record.addedNodes.length > 0) {
                 console.log('Re-running, as new nodes were added')
@@ -120,4 +111,9 @@ watch(
             }
         })
     })
-)
+    elements.forEach(element => {
+        observer.observe(element, {
+            childList: true,
+        })
+    })
+})
