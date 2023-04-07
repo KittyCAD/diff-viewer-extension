@@ -21,8 +21,6 @@ async function injectDiff(
     files: DiffEntry[],
     document: Document
 ) {
-    // TODO: find a better way, but this helps waiting for the full diff
-    await new Promise(resolve => setTimeout(resolve, 1000));
     const map = mapInjectableDiffElements(document, files)
     const root = createReactRoot(document)
     const cadDiffPage = React.createElement(CadDiffPage, {
@@ -55,6 +53,7 @@ async function injectPullDiff(
     const pullData = pullDataResponse as Pull
     const sha = pullData.head.sha
     const parentSha = pullData.base.sha
+
     await injectDiff(owner, repo, sha, parentSha, files, document)
 }
 
@@ -76,7 +75,7 @@ async function injectCommitDiff(
     await injectDiff(owner, repo, sha, parentSha, commit.files, document)
 }
 
-gitHubInjection(async () => {
+async function run() {
     const url = window.location.href
     const pullParams = getGithubPullUrlParams(url)
     if (pullParams) {
@@ -93,4 +92,32 @@ gitHubInjection(async () => {
         await injectCommitDiff(owner, repo, sha, window.document)
         return
     }
+}
+
+gitHubInjection(() => {
+    run()
 })
+
+function watch(observer: MutationObserver) {
+    const elements = [
+        ...document.getElementsByClassName('js-diff-load-container'),
+        ...document.getElementsByClassName('js-diff-progressive-container'),
+    ]
+
+    elements.forEach(element => {
+        observer.observe(element, {
+            childList: true,
+        })
+    })
+}
+
+watch(
+    new MutationObserver(records => {
+        records.forEach(record => {
+            if (record.addedNodes.length > 0) {
+                console.log('Re-running, as new nodes were added')
+                run()
+            }
+        })
+    })
+)
