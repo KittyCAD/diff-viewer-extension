@@ -15,10 +15,10 @@
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
-        "@types/chrome": "^0.0.228",
+        "@types/chrome": "^0.0.229",
         "@types/jest": "^29.5.0",
         "@types/node": "^18.15.11",
-        "@types/react": "^18.0.33",
+        "@types/react": "^18.0.34",
         "@types/react-dom": "^18.0.11",
         "@types/testing-library__jest-dom": "^5.14.5",
         "@types/three": "^0.150.1",
@@ -30,7 +30,7 @@
         "react-scripts": "5.0.1",
         "styled-components": "^5.3.9",
         "three": "^0.151.3",
-        "typescript": "4.9.5"
+        "typescript": "^5.0.4"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -71,9 +71,9 @@
         ]
     },
     "devDependencies": {
-        "@playwright/test": "^1.32.2",
+        "@playwright/test": "^1.32.3",
         "dotenv": "^16.0.3",
-        "eslint": "^8.37.0",
+        "eslint": "^8.38.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-config-react-app": "^7.0.1",
         "eslint-plugin-react": "^7.32.2",

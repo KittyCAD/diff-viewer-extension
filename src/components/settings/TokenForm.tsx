@@ -14,6 +14,7 @@ export function TokenForm({ service, onToken }: TokenFormProps) {
             <FormControl required>
                 <FormControl.Label>Enter a {service} token</FormControl.Label>
                 <TextInput
+                    alt="Text input for token"
                     value={token}
                     onChange={e => setToken(e.target.value)}
                 />
