@@ -71,7 +71,7 @@
         ]
     },
     "devDependencies": {
-        "@playwright/test": "^1.32.2",
+        "@playwright/test": "^1.32.3",
         "dotenv": "^16.0.3",
         "eslint": "^8.38.0",
         "eslint-config-prettier": "^8.8.0",
