@@ -8,7 +8,8 @@ it('renders settings popup with both save buttons', async () => {
     await waitFor(() => screen.findByText(/github token/i))
 
     // GitHub and KittyCAD buttons
-    const buttons = screen.getAllByRole('button')
+    // TODO: understand why screen.getByRole started to hang
+    const buttons = screen.getAllByText('Save')
     expect(buttons[0]).toBeEnabled()
     expect(buttons[1]).toBeEnabled()
 })

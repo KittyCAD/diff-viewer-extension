@@ -9,10 +9,12 @@ it('renders a token form and checks its callback', () => {
     render(<TokenForm service={service} onToken={callback} />)
     expect(screen.getByText(`Enter a ${service} token`)).toBeInTheDocument()
 
-    const field = screen.getByRole('textbox')
+    // TODO: understand why screen.getByRole started to hang
+    const field = screen.getByAltText("Text input for token")
     fireEvent.change(field, { target: { value: token } })
 
-    const button = screen.getByRole('button')
+    // TODO: understand why screen.getByRole started to hang
+    const button = screen.getByText('Save')
     expect(button).toBeEnabled()
     fireEvent.click(button)
 
