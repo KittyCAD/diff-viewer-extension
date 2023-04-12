@@ -54,7 +54,6 @@ async function injectPullDiff(
     const pullData = pullDataResponse as Pull
     const sha = pullData.head.sha
     const parentSha = pullData.base.sha
-
     await injectDiff(owner, repo, sha, parentSha, files, document)
 }
 
@@ -95,10 +94,9 @@ async function run() {
     }
 }
 
-gitHubInjection(() => {
-    run()
-
-    // Make sure we observe the diff for changes
+function waitForSlowDiffNodes(callback: () => void) {
+    // Containers holding diff nodes, in which new nodes might be added
+    // Inspired from https://github.com/OctoLinker/OctoLinker/blob/55e1efdad91453846b83db1192a157694ee3438c/packages/core/app.js#L57-L109
     const elements = [
         ...document.getElementsByClassName('js-diff-load-container'),
         ...document.getElementsByClassName('js-diff-progressive-container'),
@@ -107,7 +105,7 @@ gitHubInjection(() => {
         records.forEach(record => {
             if (record.addedNodes.length > 0) {
                 console.log('Re-running, as new nodes were added')
-                run()
+                callback()
             }
         })
     })
@@ -116,4 +114,9 @@ gitHubInjection(() => {
             childList: true,
         })
     })
+}
+
+gitHubInjection(() => {
+    run()
+    waitForSlowDiffNodes(() => run())
 })
