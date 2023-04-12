@@ -94,7 +94,7 @@ async function run() {
     }
 }
 
-function waitForSlowDiffNodes(callback: () => void) {
+function waitForLateDiffNodes(callback: () => void) {
     // Containers holding diff nodes, in which new nodes might be added
     // Inspired from https://github.com/OctoLinker/OctoLinker/blob/55e1efdad91453846b83db1192a157694ee3438c/packages/core/app.js#L57-L109
     const elements = [
@@ -118,5 +118,5 @@ function waitForSlowDiffNodes(callback: () => void) {
 
 gitHubInjection(() => {
     run()
-    waitForSlowDiffNodes(() => run())
+    waitForLateDiffNodes(() => run())
 })
