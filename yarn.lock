@@ -1459,7 +1459,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.21.0
   resolution: "@babel/runtime@npm:7.21.0"
   dependencies:
@@ -2685,6 +2685,15 @@ __metadata:
   version: 9.6.1
   resolution: "@react-spring/types@npm:9.6.1"
   checksum: 803dc6c2d67773ee1e5d00d2feac291dad32cf4ca6a790554d6133dd4cd39aeb89b3beea4cc67f91c2d2e4bdbd1a995540dc7fee117138e207a105d255d39c1c
+  languageName: node
+  linkType: hard
+
+"@react-three/csg@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@react-three/csg@npm:2.2.0"
+  dependencies:
+    three-bvh-csg: ^0.0.5
+  checksum: 79a78384d8db2b1ca4f9cccf79d1591b389a69c0a14f572ce5fc2e7375d5d4682b02eff295b1b7dc06ed2f44a39d9b9df6f3d2e6e5d734830ba1ecd7866f1070
   languageName: node
   linkType: hard
 
@@ -6180,6 +6189,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "diff-viewer-extension@workspace:."
   dependencies:
+    "@babel/runtime": ^7.21.0
     "@craco/craco": ^7.0.0
     "@kittycad/lib": ^0.0.19
     "@octokit/openapi-types": ^16.0.0
@@ -6188,6 +6198,7 @@ __metadata:
     "@playwright/test": ^1.32.3
     "@primer/octicons-react": ^18.3.0
     "@primer/react": ^35.24.0
+    "@react-three/csg": ^2.2.0
     "@react-three/drei": ^9.64.0
     "@react-three/fiber": ^8.11.1
     "@testing-library/jest-dom": ^5.14.1
@@ -6214,6 +6225,7 @@ __metadata:
     react-scripts: 5.0.1
     styled-components: ^5.3.9
     three: ^0.151.3
+    three-mesh-bvh: ^0.5.23
     typescript: ^4.9.5
   languageName: unknown
   linkType: soft
@@ -13542,6 +13554,16 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
+  languageName: node
+  linkType: hard
+
+"three-bvh-csg@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "three-bvh-csg@npm:0.0.5"
+  peerDependencies:
+    three: ^0.141.0
+    three-mesh-bvh: ^0.5.13
+  checksum: 110a536e0fe3145e25a54e64a416352cb7ceb9ace93a14060460e4b82f4c3840fcdef8dab70ee242156eb90b85dface34b2bbe4499670fcbcf43c43380d3051a
   languageName: node
   linkType: hard
 

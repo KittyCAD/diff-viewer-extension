@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@babel/runtime", "npm:7.21.0"],\
             ["@craco/craco", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.0.0"],\
             ["@kittycad/lib", "npm:0.0.19"],\
             ["@octokit/openapi-types", "npm:16.0.0"],\
@@ -36,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@playwright/test", "npm:1.32.3"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.24.0"],\
+            ["@react-three/csg", "npm:2.2.0"],\
             ["@react-three/drei", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:9.64.0"],\
             ["@react-three/fiber", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.12.0"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
@@ -62,6 +64,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.0.1"],\
             ["styled-components", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.3.9"],\
             ["three", "npm:0.151.3"],\
+            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"]\
           ],\
           "linkType": "SOFT"\
@@ -4471,6 +4474,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@react-three/csg", [\
+        ["npm:2.2.0", {\
+          "packageLocation": "./.yarn/cache/@react-three-csg-npm-2.2.0-ddb4889841-79a78384d8.zip/node_modules/@react-three/csg/",\
+          "packageDependencies": [\
+            ["@react-three/csg", "npm:2.2.0"],\
+            ["three-bvh-csg", "virtual:ddb48898417b269a93e15a683bcd45a75bec368facd387b3464e757645316cb4c2b950199ffc04aa39c8cf2466e39c9680d2d732b57656e2bd59fc9fe2cdf326#npm:0.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@react-three/drei", [\
         ["npm:9.64.0", {\
           "packageLocation": "./.yarn/cache/@react-three-drei-npm-9.64.0-f768bfe1f7-47e4167e6e.zip/node_modules/@react-three/drei/",\
@@ -4506,7 +4519,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stats.js", "npm:0.17.0"],\
             ["suspend-react", "virtual:2e41a70e239774f846083d0b5d0d59ea9d46a3cee0a9e4e5e418629d6dd38a7c4d3c7c8a1d5eebf2f4461357fb3ef62402b98016f7ac697a09b36e18f73a03a8#npm:0.0.8"],\
             ["three", "npm:0.151.3"],\
-            ["three-mesh-bvh", "virtual:2e41a70e239774f846083d0b5d0d59ea9d46a3cee0a9e4e5e418629d6dd38a7c4d3c7c8a1d5eebf2f4461357fb3ef62402b98016f7ac697a09b36e18f73a03a8#npm:0.5.23"],\
+            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23"],\
             ["three-stdlib", "virtual:2e41a70e239774f846083d0b5d0d59ea9d46a3cee0a9e4e5e418629d6dd38a7c4d3c7c8a1d5eebf2f4461357fb3ef62402b98016f7ac697a09b36e18f73a03a8#npm:2.21.8"],\
             ["troika-three-text", "virtual:2e41a70e239774f846083d0b5d0d59ea9d46a3cee0a9e4e5e418629d6dd38a7c4d3c7c8a1d5eebf2f4461357fb3ef62402b98016f7ac697a09b36e18f73a03a8#npm:0.47.1"],\
             ["utility-types", "npm:3.10.0"],\
@@ -8989,6 +9002,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["diff-viewer-extension", "workspace:."],\
+            ["@babel/runtime", "npm:7.21.0"],\
             ["@craco/craco", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.0.0"],\
             ["@kittycad/lib", "npm:0.0.19"],\
             ["@octokit/openapi-types", "npm:16.0.0"],\
@@ -8997,6 +9011,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@playwright/test", "npm:1.32.3"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.24.0"],\
+            ["@react-three/csg", "npm:2.2.0"],\
             ["@react-three/drei", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:9.64.0"],\
             ["@react-three/fiber", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.12.0"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
@@ -9023,6 +9038,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.0.1"],\
             ["styled-components", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.3.9"],\
             ["three", "npm:0.151.3"],\
+            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"]\
           ],\
           "linkType": "SOFT"\
@@ -18316,6 +18332,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["three-bvh-csg", [\
+        ["npm:0.0.5", {\
+          "packageLocation": "./.yarn/cache/three-bvh-csg-npm-0.0.5-c6e7cbf6c5-110a536e0f.zip/node_modules/three-bvh-csg/",\
+          "packageDependencies": [\
+            ["three-bvh-csg", "npm:0.0.5"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:ddb48898417b269a93e15a683bcd45a75bec368facd387b3464e757645316cb4c2b950199ffc04aa39c8cf2466e39c9680d2d732b57656e2bd59fc9fe2cdf326#npm:0.0.5", {\
+          "packageLocation": "./.yarn/__virtual__/three-bvh-csg-virtual-cb98ad0b86/0/cache/three-bvh-csg-npm-0.0.5-c6e7cbf6c5-110a536e0f.zip/node_modules/three-bvh-csg/",\
+          "packageDependencies": [\
+            ["three-bvh-csg", "virtual:ddb48898417b269a93e15a683bcd45a75bec368facd387b3464e757645316cb4c2b950199ffc04aa39c8cf2466e39c9680d2d732b57656e2bd59fc9fe2cdf326#npm:0.0.5"],\
+            ["@types/three", null],\
+            ["@types/three-mesh-bvh", null],\
+            ["three", null],\
+            ["three-mesh-bvh", null]\
+          ],\
+          "packagePeers": [\
+            "@types/three-mesh-bvh",\
+            "@types/three",\
+            "three-mesh-bvh",\
+            "three"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["three-mesh-bvh", [\
         ["npm:0.5.23", {\
           "packageLocation": "./.yarn/cache/three-mesh-bvh-npm-0.5.23-1c2fe9e70e-40f5821409.zip/node_modules/three-mesh-bvh/",\
@@ -18324,10 +18366,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:2e41a70e239774f846083d0b5d0d59ea9d46a3cee0a9e4e5e418629d6dd38a7c4d3c7c8a1d5eebf2f4461357fb3ef62402b98016f7ac697a09b36e18f73a03a8#npm:0.5.23", {\
-          "packageLocation": "./.yarn/__virtual__/three-mesh-bvh-virtual-071b4f3492/0/cache/three-mesh-bvh-npm-0.5.23-1c2fe9e70e-40f5821409.zip/node_modules/three-mesh-bvh/",\
+        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23", {\
+          "packageLocation": "./.yarn/__virtual__/three-mesh-bvh-virtual-e40e23a8af/0/cache/three-mesh-bvh-npm-0.5.23-1c2fe9e70e-40f5821409.zip/node_modules/three-mesh-bvh/",\
           "packageDependencies": [\
-            ["three-mesh-bvh", "virtual:2e41a70e239774f846083d0b5d0d59ea9d46a3cee0a9e4e5e418629d6dd38a7c4d3c7c8a1d5eebf2f4461357fb3ef62402b98016f7ac697a09b36e18f73a03a8#npm:0.5.23"],\
+            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23"],\
             ["@types/three", "npm:0.150.1"],\
             ["three", "npm:0.151.3"]\
           ],\
