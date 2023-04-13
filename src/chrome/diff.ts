@@ -103,7 +103,7 @@ export async function getFileDiff(
             github,
             owner,
             repo,
-            sha,
+            parentSha,
             filename
         )
         const before = await convert(kittycad, beforeBlob, extension)
@@ -111,7 +111,7 @@ export async function getFileDiff(
             github,
             owner,
             repo,
-            parentSha,
+            sha,
             filename
         )
         const after = await convert(kittycad, afterBlob, extension)
