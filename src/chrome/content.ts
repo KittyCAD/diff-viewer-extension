@@ -13,6 +13,8 @@ import {
 // no ts support
 const gitHubInjection = require('github-injection')
 
+const root = createReactRoot(document)
+
 async function injectDiff(
     owner: string,
     repo: string,
@@ -21,10 +23,7 @@ async function injectDiff(
     files: DiffEntry[],
     document: Document
 ) {
-    // TODO: find a better way, but this helps waiting for the full diff
-    await new Promise(resolve => setTimeout(resolve, 1000));
     const map = mapInjectableDiffElements(document, files)
-    const root = createReactRoot(document)
     const cadDiffPage = React.createElement(CadDiffPage, {
         owner,
         repo,
@@ -76,7 +75,7 @@ async function injectCommitDiff(
     await injectDiff(owner, repo, sha, parentSha, commit.files, document)
 }
 
-gitHubInjection(async () => {
+async function run() {
     const url = window.location.href
     const pullParams = getGithubPullUrlParams(url)
     if (pullParams) {
@@ -93,4 +92,31 @@ gitHubInjection(async () => {
         await injectCommitDiff(owner, repo, sha, window.document)
         return
     }
+}
+
+function waitForLateDiffNodes(callback: () => void) {
+    // Containers holding diff nodes, in which new nodes might be added
+    // Inspired from https://github.com/OctoLinker/OctoLinker/blob/55e1efdad91453846b83db1192a157694ee3438c/packages/core/app.js#L57-L109
+    const elements = [
+        ...document.getElementsByClassName('js-diff-load-container'),
+        ...document.getElementsByClassName('js-diff-progressive-container'),
+    ]
+    const observer = new MutationObserver(records => {
+        records.forEach(record => {
+            if (record.addedNodes.length > 0) {
+                console.log('Re-running, as new nodes were added')
+                callback()
+            }
+        })
+    })
+    elements.forEach(element => {
+        observer.observe(element, {
+            childList: true,
+        })
+    })
+}
+
+gitHubInjection(() => {
+    run()
+    waitForLateDiffNodes(() => run())
 })

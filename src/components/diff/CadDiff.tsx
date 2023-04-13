@@ -15,7 +15,6 @@ function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
         const buffer = Buffer.from(file, 'base64').toString()
         const group = loader.parse(buffer)
         console.log(`Model ${group.id} loaded`)
-        console.log(group)
         const geometry = (group.children[0] as Mesh)?.geometry
         setGeometry(geometry)
     }, [file])
