@@ -2688,9 +2688,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.64.0":
-  version: 9.64.0
-  resolution: "@react-three/drei@npm:9.64.0"
+"@react-three/drei@npm:^9.65.3":
+  version: 9.65.3
+  resolution: "@react-three/drei@npm:9.65.3"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@react-spring/three": ~9.6.1
@@ -2720,7 +2720,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 47e4167e6e7c2dd0e3f8949509f4bef4b4f42bf71ebc01b4edbcb098fad0339eb972fd6006f7bd3fefdea938d9f86e1a782efdcad66a5304eb2c1dae682cc372
+  checksum: 298bd1088a41cd52ad6c0a0adb6f7fb2e69421324f3f63fc9bf9176490c05d1e3e6369eaa78915d7532de792add1887e48fe7c486b979852145072ee73cd3670
   languageName: node
   linkType: hard
 
@@ -6188,7 +6188,7 @@ __metadata:
     "@playwright/test": ^1.32.3
     "@primer/octicons-react": ^18.3.0
     "@primer/react": ^35.24.0
-    "@react-three/drei": ^9.64.0
+    "@react-three/drei": ^9.65.3
     "@react-three/fiber": ^8.11.1
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^14.0.0
