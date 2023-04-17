@@ -11,7 +11,7 @@
         "@primer/octicons-react": "^18.3.0",
         "@primer/react": "^35.24.0",
         "@react-three/drei": "^9.65.3",
-        "@react-three/fiber": "^8.11.1",
+        "@react-three/fiber": "^8.12.1",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
