@@ -2566,16 +2566,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/primitives@npm:7.11.1":
-  version: 7.11.1
-  resolution: "@primer/primitives@npm:7.11.1"
-  checksum: 876a8da46bf95758386f6ef9296af1eed0b2a0d826a1106ec4422752dc4a2e01e924d668ce69d498d0fe696b37d525e4b727eb4a8a3a115651db22412b5c2336
+"@primer/primitives@npm:7.11.5":
+  version: 7.11.5
+  resolution: "@primer/primitives@npm:7.11.5"
+  dependencies:
+    markdown-table-ts: ^1.0.3
+  checksum: 8d5c08903722815d4bf3a3eac6fe008817d7f9241b750294cc26ed8315c8acc852f8f4041c67ee1eacd40e0e554b1d81782044656d795498c0a3c107533b21f2
   languageName: node
   linkType: hard
 
-"@primer/react@npm:^35.24.0":
-  version: 35.24.0
-  resolution: "@primer/react@npm:35.24.0"
+"@primer/react@npm:^35.25.0":
+  version: 35.25.0
+  resolution: "@primer/react@npm:35.25.0"
   dependencies:
     "@github/combobox-nav": ^2.1.5
     "@github/markdown-toolbar-element": ^2.1.0
@@ -2584,7 +2586,7 @@ __metadata:
     "@lit-labs/react": 1.1.1
     "@primer/behaviors": 1.3.3
     "@primer/octicons-react": ^18.0.0
-    "@primer/primitives": 7.11.1
+    "@primer/primitives": 7.11.5
     "@react-aria/ssr": ^3.1.0
     "@styled-system/css": ^5.1.5
     "@styled-system/props": ^5.1.5
@@ -2599,13 +2601,13 @@ __metadata:
     focus-visible: ^5.2.0
     fzy.js: 0.4.1
     history: ^5.0.0
-    react-intersection-observer: 9.4.1
+    react-intersection-observer: 9.4.3
     styled-system: ^5.1.5
   peerDependencies:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
     styled-components: 4.x || 5.x
-  checksum: 2ee1b2ffc385c0b82e712ae7da521ed45689af829b6d7b29b36580ff07bce1e5ca1573c8f344869ba6d31931afef02c89206566b5838c87ffa337ef4b7a8c491
+  checksum: 6ffec47dd9eaf284080415eb0f4ca496240e44e3c5c06bebf74dad1faf22be781962bb64b6db5715256871ea8ea4252a0014ee617daa530167665c0a716206c9
   languageName: node
   linkType: hard
 
@@ -6187,7 +6189,7 @@ __metadata:
     "@octokit/types": ^9.0.0
     "@playwright/test": ^1.32.3
     "@primer/octicons-react": ^18.3.0
-    "@primer/react": ^35.24.0
+    "@primer/react": ^35.25.0
     "@react-three/drei": ^9.65.3
     "@react-three/fiber": ^8.12.1
     "@testing-library/jest-dom": ^5.14.1
@@ -9910,6 +9912,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"markdown-table-ts@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "markdown-table-ts@npm:1.0.3"
+  checksum: af684c664f14d628cec0b554d3accc12309be02d25c7fc455bfd962e04484d2d2781c4d58dd1bfe07f5e895962b137ddbdae43e05f95ed3190f31f4035174840
+  languageName: node
+  linkType: hard
+
 "mdn-data@npm:2.0.14":
   version: 2.0.14
   resolution: "mdn-data@npm:2.0.14"
@@ -11998,12 +12007,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intersection-observer@npm:9.4.1":
-  version: 9.4.1
-  resolution: "react-intersection-observer@npm:9.4.1"
+"react-intersection-observer@npm:9.4.3":
+  version: 9.4.3
+  resolution: "react-intersection-observer@npm:9.4.3"
   peerDependencies:
     react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-  checksum: 13d1c36658470a781d8db8870dbd272c5b4b32329fa69c27ee96424de4e1599526a9bf2a91ea59922c18323c97d6909f0ac120c5af6076d1c01e654b43fb03c1
+  checksum: ac31c6c76ce72019a1fb50fe6b53ef6429d98b9e9b937f92d16635ef8586392c7058bb61526a8fe6bea6ce36c006015fe2d8893bac43eda6157b9e6b17ad9b68
   languageName: node
   linkType: hard
 
