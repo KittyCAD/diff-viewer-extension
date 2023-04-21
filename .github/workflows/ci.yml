@@ -22,11 +22,11 @@ jobs:
 
             - name: Set package.json and manifest.json versions from tag
               run: |
-                export VERSION=0.1.2
+                export TAG=v0.1.2
                 sudo apt update
                 sudo apt install -y jq
-                echo "$(jq '.version="$VERSION"' package.json         --indent 4)" > package.json
-                echo "$(jq '.version="$VERSION"' public/manifest.json --indent 4)" > public/manifest.json
+                echo "$(jq '.version="${TAG#v}"' package.json         --indent 4)" > package.json
+                echo "$(jq '.version="${TAG#v}"' public/manifest.json --indent 4)" > public/manifest.json
 
             - run: yarn install
 
@@ -45,3 +45,8 @@ jobs:
             - uses: actions/upload-artifact@v3
               with:
                   path: build
+
+            - name: Create extension zip
+              run: |
+                export ZIP_PATH=kittycad_diff-viewer_v0.1.2.zip
+                zip -r $ZIP_PATH build/
