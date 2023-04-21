@@ -21,8 +21,8 @@ jobs:
                   cache: 'yarn'
 
             - run: |
-                apt update
-                apt install -y jq
+                sudo apt update
+                sudo apt install -y jq
                 echo "$(jq '.version="0.1.2"' package.json         --indent 4)" > package.json
                 echo "$(jq '.version="0.1.2"' public/manifest.json --indent 4)" > public/manifest.json
                 git diff
