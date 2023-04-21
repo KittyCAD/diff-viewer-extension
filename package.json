@@ -10,7 +10,7 @@
         "@octokit/types": "^9.1.1",
         "@primer/octicons-react": "^18.3.0",
         "@primer/react": "^35.25.0",
-        "@react-three/drei": "^9.65.3",
+        "@react-three/drei": "^9.65.4",
         "@react-three/fiber": "^8.12.2",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^14.0.0",
