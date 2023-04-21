@@ -5,6 +5,8 @@ on:
         branches:
             - main
     pull_request:
+    release:
+      types: [published]
 
 jobs:
     install-build-test:
@@ -17,6 +19,13 @@ jobs:
               with:
                   node-version: '16'
                   cache: 'yarn'
+
+            - run: |
+                apt update
+                apt install -y jq
+                echo "$(jq '.version="0.1.2"' package.json         --indent 4)" > package.json
+                echo "$(jq '.version="0.1.2"' public/manifest.json --indent 4)" > public/manifest.json
+                git diff
 
             - run: yarn install
 
