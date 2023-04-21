@@ -32,7 +32,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@kittycad/lib", "npm:0.0.19"],\
             ["@octokit/openapi-types", "npm:16.0.0"],\
             ["@octokit/rest", "npm:19.0.7"],\
-            ["@octokit/types", "npm:9.0.0"],\
+            ["@octokit/types", "npm:9.1.1"],\
             ["@playwright/test", "npm:1.32.3"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.0"],\
@@ -4042,6 +4042,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@octokit/openapi-types", "npm:16.0.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:17.0.0", {\
+          "packageLocation": "./.yarn/cache/@octokit-openapi-types-npm-17.0.0-698aa930bc-64d8500891.zip/node_modules/@octokit/openapi-types/",\
+          "packageDependencies": [\
+            ["@octokit/openapi-types", "npm:17.0.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@octokit/plugin-paginate-rest", [\
@@ -4159,6 +4166,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@octokit/types", "npm:9.0.0"],\
             ["@octokit/openapi-types", "npm:16.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:9.1.1", {\
+          "packageLocation": "./.yarn/cache/@octokit-types-npm-9.1.1-821c37b6c1-e28f0b00b8.zip/node_modules/@octokit/types/",\
+          "packageDependencies": [\
+            ["@octokit/types", "npm:9.1.1"],\
+            ["@octokit/openapi-types", "npm:17.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8994,7 +9009,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@kittycad/lib", "npm:0.0.19"],\
             ["@octokit/openapi-types", "npm:16.0.0"],\
             ["@octokit/rest", "npm:19.0.7"],\
-            ["@octokit/types", "npm:9.0.0"],\
+            ["@octokit/types", "npm:9.1.1"],\
             ["@playwright/test", "npm:1.32.3"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.0"],\
