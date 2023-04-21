@@ -20,12 +20,13 @@ jobs:
                   node-version: '16'
                   cache: 'yarn'
 
-            - run: |
+            - name: Set package.json and manifest.json versions from tag
+              run: |
+                export VERSION=0.1.2
                 sudo apt update
                 sudo apt install -y jq
-                echo "$(jq '.version="0.1.2"' package.json         --indent 4)" > package.json
-                echo "$(jq '.version="0.1.2"' public/manifest.json --indent 4)" > public/manifest.json
-                git diff
+                echo "$(jq '.version="$VERSION"' package.json         --indent 4)" > package.json
+                echo "$(jq '.version="$VERSION"' public/manifest.json --indent 4)" > public/manifest.json
 
             - run: yarn install
 
