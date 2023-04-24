@@ -5,9 +5,38 @@ on:
         branches:
             - main
     pull_request:
+    release:
+        types: [published]
 
 jobs:
+    commit-release-version:
+        if: github.event_name == 'release'
+        runs-on: ubuntu-latest
+
+        env:
+            RELEASE: ${{ github.event.release.name }}
+
+        steps:
+            - uses: actions/checkout@v3.5.2
+
+            - name: Set release package.json and manifest.json versions from tag
+              run: |
+                  echo "$(jq --arg v "${RELEASE#v}" '.version=$v' package.json         --indent 4)" > package.json
+                  echo "$(jq --arg v "${RELEASE#v}" '.version=$v' public/manifest.json --indent 4)" > public/manifest.json
+                  git diff
+
+            - name: Commit release version
+              run: |
+                  git add .
+                  git config user.name github-actions
+                  git config user.email github-actions@github.com
+                  git commit -m "Release version $RELEASE"
+                  git push
+
     install-build-test:
+        needs: commit-release-version
+        # needed for non-release workflows
+        if: ${{ always() }}
         runs-on: ubuntu-latest
 
         steps:
@@ -26,8 +55,8 @@ jobs:
 
             - name: Run playwright e2e tests
               env:
-                GITHUB_TOKEN: ${{secrets.GLOBAL_PAT}}
-                KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
+                  GITHUB_TOKEN: ${{secrets.GLOBAL_PAT}}
+                  KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
               run: |
                   yarn playwright install chromium --with-deps
                   yarn playwright test
@@ -35,3 +64,34 @@ jobs:
             - uses: actions/upload-artifact@v3
               with:
                   path: build
+
+    deploy-release:
+        if: github.event_name == 'release'
+        needs: [commit-release-version, install-build-test]
+        runs-on: ubuntu-latest
+
+        env:
+            RELEASE_ZIP: kittycad_diff-viewer_${{ github.event.release.name }}.zip
+
+        steps:
+            - uses: actions/checkout@v3.5.2
+
+            - name: Create release zip
+              run: |
+                  zip -r $RELEASE_ZIP build/
+
+            - name: Upload zip to release
+              if: github.event_name == 'release'
+              uses: svenstaro/upload-release-action@v2
+              with:
+                  file: $RELEASE_ZIP
+
+            - name: Upload zip to Chrome Web Store
+              uses: mobilefirstllc/cws-publish@latest
+              with:
+                  action: publish
+                  client_id: ${{ secrets.CHROME_WEBSTORE_CLIENT_ID }}
+                  client_secret: ${{ secrets.CHROME_WEBSTORE_CLIENT_SECRET }}
+                  refresh_token: ${{ secrets.CHROME_WEBSTORE_REFRESH_TOKEN }}
+                  extension_id: gccpihmphokfjpohkmkbimnhhnlpmegp
+                  zip_file: $RELEASE_ZIP
