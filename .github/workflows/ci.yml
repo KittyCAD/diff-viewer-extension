@@ -23,10 +23,8 @@ jobs:
             - name: Set package.json and manifest.json versions from tag
               run: |
                 export TAG=v0.1.2
-                sudo apt update
-                sudo apt install -y jq
-                echo "$(jq '.version="${TAG#v}"' package.json         --indent 4)" > package.json
-                echo "$(jq '.version="${TAG#v}"' public/manifest.json --indent 4)" > public/manifest.json
+                echo "$(jq --arg v "${TAG#v}" '.version=$v' package.json         --indent 4)" > package.json
+                echo "$(jq --arg v "${TAG#v}" '.version=$v' public/manifest.json --indent 4)" > public/manifest.json
                 git diff
 
             - run: yarn install
