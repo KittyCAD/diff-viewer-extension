@@ -6,7 +6,7 @@ on:
             - main
     pull_request:
     release:
-      types: [published]
+        types: [published]
 
 jobs:
     install-build-test:
@@ -20,14 +20,14 @@ jobs:
                   node-version: '16'
                   cache: 'yarn'
 
-            # TODO: replace v0.1.2 with github.event.release.name
-            # TODO: add if release
-            - name: Set package.json and manifest.json versions from tag
+            - name: Set release package.json and manifest.json versions from tag
+              if: github.event_name == 'release'
               env:
-                TAG: v0.1.2
+                  RELEASE: ${{ github.event.release.name }}
               run: |
-                echo "$(jq --arg v "${TAG#v}" '.version=$v' package.json         --indent 4)" > package.json
-                echo "$(jq --arg v "${TAG#v}" '.version=$v' public/manifest.json --indent 4)" > public/manifest.json
+                  echo "$(jq --arg v "${RELEASE#v}" '.version=$v' package.json         --indent 4)" > package.json
+                  echo "$(jq --arg v "${RELEASE#v}" '.version=$v' public/manifest.json --indent 4)" > public/manifest.json
+                  git diff
 
             - run: yarn install
 
@@ -37,8 +37,8 @@ jobs:
 
             - name: Run playwright e2e tests
               env:
-                GITHUB_TOKEN: ${{secrets.GLOBAL_PAT}}
-                KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
+                  GITHUB_TOKEN: ${{secrets.GLOBAL_PAT}}
+                  KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
               run: |
                   yarn playwright install chromium --with-deps
                   yarn playwright test
@@ -47,16 +47,21 @@ jobs:
               with:
                   path: build
 
-            # TODO: add if release
-            # TODO: replace v0.1.2 with github.event.release.name
-            - name: Create extension zip
+            - name: Create release binaries
+              if: github.event_name == 'release'
               env:
-                TAG: v0.1.2
+                  RELEASE: ${{ github.event.release.name }}
               run: |
-                export ZIP_PATH=kittycad_diff-viewer_$TAG.zip
-                zip -r $ZIP_PATH build/
-                ls
+                  export ZIP_PATH=kittycad_diff-viewer_$RELEASE.zip
+                  zip -r $ZIP_PATH build/
+                  ls
 
             # TODO: if release, commit version change
-            # TODO: if release, add upload to release artifacts
+
+            - name: Upload binaries to release
+              if: github.event_name == 'release'
+              uses: svenstaro/upload-release-action@v2
+              with:
+                  file: kittycad_diff-viewer_${{ github.event.release.name }}.zip
+
             # TODO: if release, add push to cws
