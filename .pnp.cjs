@@ -30,7 +30,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@craco/craco", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.0.0"],\
             ["@kittycad/lib", "npm:0.0.19"],\
-            ["@octokit/openapi-types", "npm:16.0.0"],\
+            ["@octokit/openapi-types", "npm:17.0.0"],\
             ["@octokit/rest", "npm:19.0.7"],\
             ["@octokit/types", "npm:9.1.1"],\
             ["@playwright/test", "npm:1.32.3"],\
@@ -9007,7 +9007,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["diff-viewer-extension", "workspace:."],\
             ["@craco/craco", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.0.0"],\
             ["@kittycad/lib", "npm:0.0.19"],\
-            ["@octokit/openapi-types", "npm:16.0.0"],\
+            ["@octokit/openapi-types", "npm:17.0.0"],\
             ["@octokit/rest", "npm:19.0.7"],\
             ["@octokit/types", "npm:9.1.1"],\
             ["@playwright/test", "npm:1.32.3"],\
