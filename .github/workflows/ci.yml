@@ -27,8 +27,11 @@ jobs:
 
             - name: Set release version to .json files and commit to main
               if: github.event_name == 'release'
+              env:
+                BRANCH: main
               run: |
-                  git checkout main
+                  git fetch origin
+                  git checkout $BRANCH
                   echo "$(jq --arg v "${RELEASE#v}" '.version=$v' package.json         --indent 4)" > package.json
                   echo "$(jq --arg v "${RELEASE#v}" '.version=$v' public/manifest.json --indent 4)" > public/manifest.json
                   git diff
@@ -36,7 +39,7 @@ jobs:
                   git config user.name github-actions
                   git config user.email github-actions@github.com
                   git commit -m "Align versions with $RELEASE"
-                  git push
+                  git push origin $BRANCH
 
             - run: yarn build
 
