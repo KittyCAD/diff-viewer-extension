@@ -9,7 +9,7 @@ on:
         types: [published]
 
 jobs:
-    install-build-test:
+    build:
         runs-on: ubuntu-latest
         env:
             RELEASE: ${{ github.event.release.name }}
@@ -27,8 +27,6 @@ jobs:
 
             - name: Set release version to .json files and commit to main
               if: github.event_name == 'release'
-              env:
-                  RELEASE: ${{ github.event.release.name }}
               run: |
                   git checkout main
                   echo "$(jq --arg v "${RELEASE#v}" '.version=$v' package.json         --indent 4)" > package.json
