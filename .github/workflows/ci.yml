@@ -9,35 +9,11 @@ on:
         types: [published]
 
 jobs:
-    commit-release-version:
-        if: github.event_name == 'release'
+    install-build-test:
         runs-on: ubuntu-latest
-
         env:
             RELEASE: ${{ github.event.release.name }}
-
-        steps:
-            - uses: actions/checkout@v3.5.2
-
-            - name: Set release package.json and manifest.json versions from tag
-              run: |
-                  echo "$(jq --arg v "${RELEASE#v}" '.version=$v' package.json         --indent 4)" > package.json
-                  echo "$(jq --arg v "${RELEASE#v}" '.version=$v' public/manifest.json --indent 4)" > public/manifest.json
-                  git diff
-
-            - name: Commit release version
-              run: |
-                  git add .
-                  git config user.name github-actions
-                  git config user.email github-actions@github.com
-                  git commit -m "Release version $RELEASE"
-                  git push
-
-    install-build-test:
-        needs: commit-release-version
-        # needed for non-release workflows
-        if: ${{ always() }}
-        runs-on: ubuntu-latest
+            RELEASE_ZIP: kittycad_diff-viewer_${{ github.event.release.name }}.zip
 
         steps:
             - uses: actions/checkout@v3.5.2
@@ -48,6 +24,21 @@ jobs:
                   cache: 'yarn'
 
             - run: yarn install
+
+            - name: Set release version to .json files and commit to main
+              if: github.event_name == 'release'
+              env:
+                  RELEASE: ${{ github.event.release.name }}
+              run: |
+                  git checkout main
+                  echo "$(jq --arg v "${RELEASE#v}" '.version=$v' package.json         --indent 4)" > package.json
+                  echo "$(jq --arg v "${RELEASE#v}" '.version=$v' public/manifest.json --indent 4)" > public/manifest.json
+                  git diff
+                  git add .
+                  git config user.name github-actions
+                  git config user.email github-actions@github.com
+                  git commit -m "Align versions with $RELEASE"
+                  git push
 
             - run: yarn build
 
@@ -65,18 +56,8 @@ jobs:
               with:
                   path: build
 
-    deploy-release:
-        if: github.event_name == 'release'
-        needs: [commit-release-version, install-build-test]
-        runs-on: ubuntu-latest
-
-        env:
-            RELEASE_ZIP: kittycad_diff-viewer_${{ github.event.release.name }}.zip
-
-        steps:
-            - uses: actions/checkout@v3.5.2
-
             - name: Create release zip
+              if: github.event_name == 'release'
               run: |
                   zip -r $RELEASE_ZIP build/
 
@@ -87,6 +68,7 @@ jobs:
                   file: $RELEASE_ZIP
 
             - name: Upload zip to Chrome Web Store
+              if: github.event_name == 'release'
               uses: mobilefirstllc/cws-publish@latest
               with:
                   action: publish
