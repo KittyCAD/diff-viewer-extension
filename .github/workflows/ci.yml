@@ -26,6 +26,7 @@ jobs:
             - run: yarn install
 
             - name: Set release version to .json files and commit to main
+              if: github.event_name == 'release'
               env:
                 BRANCH: main
               run: |
@@ -38,10 +39,7 @@ jobs:
                   git config user.name github-actions
                   git config user.email github-actions@github.com
                   git commit -m "Align versions with $RELEASE"
-            
-            # TODO: add
-            # git push origin $BRANCH
-            # if: github.event_name == 'release'
+                  git push origin $BRANCH
 
             - run: yarn build
 
