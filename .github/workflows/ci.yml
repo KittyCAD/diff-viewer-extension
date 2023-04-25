@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             RELEASE: ${{ github.event.release.name }}
-            RELEASE_ZIP: kittycad_diff-viewer_${{ github.event.release.name }}.zip
+            RELEASE_ZIP: kittycad_diff-viewer_${{ github.ref }}.zip
 
         steps:
             - uses: actions/checkout@v3.5.2
@@ -53,20 +53,19 @@ jobs:
                   yarn playwright install chromium --with-deps
                   yarn playwright test
 
-            - uses: actions/upload-artifact@v3
-              with:
-                  path: build
-
             - name: Create release zip
-              if: github.event_name == 'release'
               run: |
                   zip -r $RELEASE_ZIP build/
+
+            - uses: actions/upload-artifact@v3
+              with:
+                  path: ${{ env.RELEASE_ZIP }}
 
             - name: Upload zip to release
               if: github.event_name == 'release'
               uses: svenstaro/upload-release-action@v2
               with:
-                  file: $RELEASE_ZIP
+                  file: ${{ env.RELEASE_ZIP }}
 
             - name: Upload zip to Chrome Web Store
               if: github.event_name == 'release'
@@ -77,4 +76,4 @@ jobs:
                   client_secret: ${{ secrets.CHROME_WEBSTORE_CLIENT_SECRET }}
                   refresh_token: ${{ secrets.CHROME_WEBSTORE_REFRESH_TOKEN }}
                   extension_id: gccpihmphokfjpohkmkbimnhhnlpmegp
-                  zip_file: $RELEASE_ZIP
+                  zip_file: ${{ env.RELEASE_ZIP }}
