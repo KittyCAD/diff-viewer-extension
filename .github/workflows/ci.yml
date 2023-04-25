@@ -55,11 +55,15 @@ jobs:
 
             - name: Create release zip
               run: |
-                  zip -r $RELEASE_ZIP build/
+                  cd build
+                  zip -r ../$RELEASE_ZIP *
+                  cd ..
+                  unzip -l $RELEASE_ZIP
 
             - uses: actions/upload-artifact@v3
               with:
                   path: ${{ env.RELEASE_ZIP }}
+                  name: ${{ env.RELEASE_ZIP }}
 
             - name: Upload zip to release
               if: github.event_name == 'release'
