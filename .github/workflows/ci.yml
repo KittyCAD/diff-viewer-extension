@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             RELEASE: ${{ github.event.release.name }}
-            RELEASE_ZIP: kittycad_diff-viewer_${{ github.ref }}.zip
+            RELEASE_ZIP: kittycad_diff-viewer_${{ github.event.release.name || github.sha }}.zip
 
         steps:
             - uses: actions/checkout@v3.5.2
