@@ -20,7 +20,7 @@ export function TokenForm({ service, onToken }: TokenFormProps) {
                 />
                 {service === 'GitHub' && (
                     <FormControl.Caption>
-                        With <BranchName>repo</BranchName> permissions
+                        With <BranchName href="https://github.com/settings/tokens/new?scopes=repo&description=KittyCAD">repo</BranchName> permissions
                     </FormControl.Caption>
                 )}
             </FormControl>
