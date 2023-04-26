@@ -37,7 +37,8 @@
         "build": "INLINE_RUNTIME_CHUNK=false craco build",
         "test": "react-scripts test",
         "e2e": "yarn build && yarn playwright test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "bump": "echo \"$(jq --arg v \"$VERSION\" '.version=$v' package.json --indent 4)\" > package.json && echo \"$(jq --arg v \"$VERSION\" '.version=$v' public/manifest.json --indent 4)\" > public/manifest.json"
     },
     "eslintConfig": {
         "extends": [
