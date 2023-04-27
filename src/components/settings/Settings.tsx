@@ -1,9 +1,69 @@
-import { Box, ThemeProvider } from '@primer/react'
-import { useEffect, useState } from 'react'
+import {
+    Box,
+    Details,
+    FormControl,
+    Link,
+    Text,
+    ThemeProvider,
+    useDetails,
+} from '@primer/react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { KittycadUser, MessageIds, User } from '../../chrome/types'
 import { Loading } from '../Loading'
 import { TokenForm } from './TokenForm'
 import { UserCard } from './UserCard'
+
+function BaseHelper({ children }: PropsWithChildren<{}>) {
+    const { getDetailsProps, open } = useDetails({ closeOnOutsideClick: true })
+    return (
+        <Details {...getDetailsProps()}>
+            <Box as="summary" sx={{ cursor: 'pointer' }}>
+                {!open && <FormControl.Caption>Need help?</FormControl.Caption>}
+            </Box>
+            <Text color="fg.muted" as="ol" fontSize={12} px={3} py={0}>
+                {children}
+            </Text>
+        </Details>
+    )
+}
+
+function GithubHelper() {
+    return (
+        <BaseHelper>
+            <li>
+                Open{' '}
+                <Link
+                    href="https://github.com/settings/tokens/new?scopes=repo&description=KittyCAD"
+                    target="_blank"
+                >
+                    this link
+                </Link>
+            </li>
+            <li>Click on 'Generate token'</li>
+            <li>Copy the provided token</li>
+            <li>Paste it in the input above</li>
+        </BaseHelper>
+    )
+}
+
+function KittycadHelper() {
+    return (
+        <BaseHelper>
+            <li>
+                Open{' '}
+                <Link
+                    href="https://kittycad.io/account/api-tokens"
+                    target="_blank"
+                >
+                    this link
+                </Link>
+            </li>
+            <li>Click on 'Generate an API token'</li>
+            <li>Copy the provided token</li>
+            <li>Paste it in the input above</li>
+        </BaseHelper>
+    )
+}
 
 export function Settings() {
     const [githubUser, setGithubUser] = useState<User>()
@@ -76,7 +136,9 @@ export function Settings() {
                                         )
                                         await fetchGithubUser()
                                     }}
-                                />
+                                >
+                                    <GithubHelper />
+                                </TokenForm>
                             )}
                         </Box>
                         <Box mt={4}>
@@ -105,7 +167,9 @@ export function Settings() {
                                         )
                                         await fetchKittycadUser()
                                     }}
-                                />
+                                >
+                                    <KittycadHelper />
+                                </TokenForm>
                             )}
                         </Box>
                     </Box>
