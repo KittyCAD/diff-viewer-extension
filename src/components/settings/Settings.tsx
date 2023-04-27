@@ -1,9 +1,50 @@
-import { Box, ThemeProvider } from '@primer/react'
-import { useEffect, useState } from 'react'
+import {
+    Box,
+    Details,
+    FormControl,
+    Text,
+    ThemeProvider,
+    useDetails,
+} from '@primer/react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 import { KittycadUser, MessageIds, User } from '../../chrome/types'
 import { Loading } from '../Loading'
 import { TokenForm } from './TokenForm'
 import { UserCard } from './UserCard'
+
+function BaseHelper({ children }: PropsWithChildren<{}>) {
+    const { getDetailsProps } = useDetails({ closeOnOutsideClick: true })
+    return (
+        <Details {...getDetailsProps()}>
+            <Box as="summary" sx={{ cursor: 'pointer' }}>
+                <FormControl.Caption>Need help?</FormControl.Caption>
+            </Box>
+            <Text color="fg.default" as="ol" fontSize={14} px={3} py={0}>
+                {children}
+            </Text>
+        </Details>
+    )
+}
+
+function GithubHelper() {
+    return (
+        <BaseHelper>
+            <li>
+                Open{' '}
+                <a
+                    href="https://github.com/settings/tokens/new?scopes=repo&description=KittyCAD"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    this link
+                </a>
+            </li>
+            <li>Click on 'Generate token'</li>
+            <li>Copy the provided token</li>
+            <li>Paste it in the input above</li>
+        </BaseHelper>
+    )
+}
 
 export function Settings() {
     const [githubUser, setGithubUser] = useState<User>()
@@ -76,7 +117,9 @@ export function Settings() {
                                         )
                                         await fetchGithubUser()
                                     }}
-                                />
+                                >
+                                    <GithubHelper />
+                                </TokenForm>
                             )}
                         </Box>
                         <Box mt={4}>

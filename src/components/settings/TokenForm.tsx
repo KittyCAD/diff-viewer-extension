@@ -1,12 +1,12 @@
-import { Box, BranchName, Button, FormControl, TextInput } from '@primer/react'
-import { useState } from 'react'
+import { Box, Button, FormControl, TextInput } from '@primer/react'
+import { useState, PropsWithChildren } from 'react'
 
 export type TokenFormProps = {
     service: string
     onToken: (token: string) => void
 }
 
-export function TokenForm({ service, onToken }: TokenFormProps) {
+export function TokenForm({ service, onToken, children }: PropsWithChildren<TokenFormProps>) {
     const [token, setToken] = useState('')
 
     return (
@@ -18,11 +18,7 @@ export function TokenForm({ service, onToken }: TokenFormProps) {
                     value={token}
                     onChange={e => setToken(e.target.value)}
                 />
-                {service === 'GitHub' && (
-                    <FormControl.Caption>
-                        With <BranchName target="_blank" href="https://github.com/settings/tokens/new?scopes=repo&description=KittyCAD">repo</BranchName> permissions
-                    </FormControl.Caption>
-                )}
+                {children}
             </FormControl>
             <Button sx={{ mt: 2 }} onClick={() => onToken(token)}>
                 Save
