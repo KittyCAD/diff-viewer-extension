@@ -48,3 +48,17 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Release a new version
+
+1. Bump the versions in the source code by creating a new PR, committing the changes from
+
+```bash
+VERSION=x.y.z npm run bump
+```
+
+2. Merge the PR
+
+3. Create a new release and tag pointing to the bump version commit using semantic versioning `v{x}.{y}.{z}`
+
+A new Action should run, uploading artifacts to the release itself and to the Chrome Web Store at https://chrome.google.com/webstore/detail/kittycad-diff-viewer/gccpihmphokfjpohkmkbimnhhnlpmegp
