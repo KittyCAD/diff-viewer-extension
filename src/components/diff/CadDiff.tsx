@@ -4,7 +4,7 @@ import { Box, useTheme, Text } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
-import { BufferGeometry, Mesh } from 'three'
+import { BufferAttribute, BufferGeometry, Mesh } from 'three'
 import { WireframeColors } from './WireframeModel'
 import { Buffer } from 'buffer'
 import { Canvas } from '@react-three/fiber'
@@ -18,7 +18,11 @@ function loadGeometry(file: string): BufferGeometry {
     const buffer = Buffer.from(file, 'base64').toString()
     const group = loader.parse(buffer)
     console.log(`Model ${group.id} loaded`)
-    return (group.children[0] as Mesh)?.geometry
+    const geometry = (group.children[0] as Mesh)?.geometry
+    if (!geometry.attributes.uv) {
+        geometry.setAttribute('uv', new BufferAttribute(new Float32Array([]), 1))
+    }
+    return geometry
 }
 
 function Loader3DDiff({ before, after, colors }: { before: string; after: string; colors: WireframeColors }) {

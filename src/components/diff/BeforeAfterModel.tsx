@@ -1,16 +1,15 @@
 import { useThree } from '@react-three/fiber'
 import type { MutableRefObject } from 'react'
-import { Suspense, useEffect, useMemo, useRef } from 'react'
-import { BufferGeometry, DoubleSide } from 'three'
-import { EdgesGeometry, Vector3 } from 'three'
+import { useTheme } from '@primer/react'
+import { useEffect } from 'react'
+import { BufferGeometry } from 'three'
+import { Vector3 } from 'three'
 import { calculateFovFactor } from './Camera'
 import {
     Geometry,
     Base,
-    Addition,
     Subtraction,
     Intersection,
-    Difference,
 } from '@react-three/csg'
 
 export type WireframeColors = {
@@ -34,6 +33,10 @@ export function BeforeAfterModel({
 }: Props) {
     const camera = useThree(state => state.camera)
     const canvasHeight = useThree(state => state.size.height)
+    const { theme } = useTheme()
+    const commonColor = theme?.colors.fg.default
+    const additionsColor = theme?.colors.success.default
+    const deletionsColor = theme?.colors.danger.default
 
     // Camera view
     useEffect(() => {
@@ -59,19 +62,33 @@ export function BeforeAfterModel({
     }, [beforeGeometry, camera, cameraRef, canvasHeight])
 
     return (
-        <mesh castShadow receiveShadow>
-            <Geometry useGroups>
-                <Base geometry={beforeGeometry} position={[0, 0, 0]} scale={1}>
-                    <meshPhongMaterial color={colors.face} />
-                </Base>
-                <Addition
-                    geometry={afterGeometry}
-                    position={[0, 0, 0]}
-                    scale={1}
-                >
-                    <meshStandardMaterial color="skyblue" />
-                </Addition>
-            </Geometry>
-        </mesh>
+        <>
+            <mesh>
+                <Geometry>
+                    <Base geometry={beforeGeometry}>
+                        <meshBasicMaterial color={commonColor} />
+                    </Base>
+                    <Intersection geometry={afterGeometry} />
+                </Geometry>
+            </mesh>
+            {/* Additions */}
+            <mesh>
+                <Geometry>
+                    <Base geometry={afterGeometry}>
+                        <meshBasicMaterial color={additionsColor} />
+                    </Base>
+                    <Subtraction geometry={beforeGeometry} />
+                </Geometry>
+            </mesh>
+            {/* Deletions */}
+            <mesh>
+                <Geometry>
+                    <Base geometry={beforeGeometry}>
+                        <meshBasicMaterial color={deletionsColor} />
+                    </Base>
+                    <Subtraction geometry={afterGeometry} />
+                </Geometry>
+            </mesh>
+        </>
     )
 }
