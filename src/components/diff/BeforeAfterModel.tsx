@@ -5,12 +5,7 @@ import { useEffect } from 'react'
 import { BufferGeometry } from 'three'
 import { Vector3 } from 'three'
 import { calculateFovFactor } from './Camera'
-import {
-    Geometry,
-    Base,
-    Subtraction,
-    Intersection,
-} from '@react-three/csg'
+import { Geometry, Base, Subtraction, Intersection } from '@react-three/csg'
 
 export type WireframeColors = {
     face: string
@@ -35,8 +30,8 @@ export function BeforeAfterModel({
     const canvasHeight = useThree(state => state.size.height)
     const { theme } = useTheme()
     const commonColor = theme?.colors.fg.default
-    const additionsColor = theme?.colors.success.default
-    const deletionsColor = theme?.colors.danger.default
+    const additionsColor = theme?.colors.success.fg
+    const deletionsColor = theme?.colors.danger.fg
 
     // Camera view
     useEffect(() => {
@@ -64,28 +59,25 @@ export function BeforeAfterModel({
     return (
         <>
             <mesh>
+                <meshPhongMaterial color={commonColor} />
                 <Geometry>
-                    <Base geometry={beforeGeometry}>
-                        <meshBasicMaterial color={commonColor} />
-                    </Base>
+                    <Base geometry={beforeGeometry} />
                     <Intersection geometry={afterGeometry} />
                 </Geometry>
             </mesh>
             {/* Additions */}
             <mesh>
+                <meshPhongMaterial color={additionsColor} />
                 <Geometry>
-                    <Base geometry={afterGeometry}>
-                        <meshBasicMaterial color={additionsColor} />
-                    </Base>
+                    <Base geometry={afterGeometry} />
                     <Subtraction geometry={beforeGeometry} />
                 </Geometry>
             </mesh>
             {/* Deletions */}
             <mesh>
+                <meshPhongMaterial color={deletionsColor} />
                 <Geometry>
-                    <Base geometry={beforeGeometry}>
-                        <meshBasicMaterial color={deletionsColor} />
-                    </Base>
+                    <Base geometry={beforeGeometry} />
                     <Subtraction geometry={afterGeometry} />
                 </Geometry>
             </mesh>
