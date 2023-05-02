@@ -20,12 +20,23 @@ function loadGeometry(file: string): BufferGeometry {
     console.log(`Model ${group.id} loaded`)
     const geometry = (group.children[0] as Mesh)?.geometry
     if (!geometry.attributes.uv) {
-        geometry.setAttribute('uv', new BufferAttribute(new Float32Array([]), 1))
+        geometry.setAttribute(
+            'uv',
+            new BufferAttribute(new Float32Array([]), 1)
+        )
     }
     return geometry
 }
 
-function Loader3DDiff({ before, after, colors }: { before: string; after: string; colors: WireframeColors }) {
+function Loader3DDiff({
+    before,
+    after,
+    colors,
+}: {
+    before: string
+    after: string
+    colors: WireframeColors
+}) {
     const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
     const cameraRef = useRef<any>()
@@ -35,7 +46,7 @@ function Loader3DDiff({ before, after, colors }: { before: string; after: string
     useEffect(() => {
         setAfterGeometry(loadGeometry(after))
     }, [after])
-    return (beforeGeometry && afterGeometry) ? (
+    return beforeGeometry && afterGeometry ? (
         <Canvas dpr={[1, 2]} shadows>
             {typeof window !== 'undefined' && beforeGeometry && (
                 <BeforeAfterModel
@@ -75,7 +86,10 @@ function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
 }
 
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
-    const sideBySideEnabled = false 
+    const canShowUnified = before && after
+    // TODO: add radio select to trigger this
+    // let [showUnified, setShowUnified] = useState(canShowUnified)
+    const showUnified = canShowUnified
     const { theme } = useTheme()
     const beforeColors: WireframeColors = {
         face: theme?.colors.fg.default,
@@ -89,25 +103,37 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     }
     return (
         <Box display="flex" height={300} overflow="hidden" minWidth={0}>
-            {!sideBySideEnabled && before && after &&
-                <Loader3DDiff before={before} after={after} colors={beforeColors} />
-            }
-            {sideBySideEnabled && before && (
-                <Box flexGrow={1} minWidth={0} backgroundColor="danger.subtle">
-                    <Loader3D file={before} colors={beforeColors} />
-                </Box>
+            {canShowUnified && showUnified && (
+                <Loader3DDiff
+                    before={before}
+                    after={after}
+                    colors={beforeColors}
+                />
             )}
-            {sideBySideEnabled && after && (
-                <Box
-                    flexGrow={1}
-                    minWidth={0}
-                    backgroundColor="success.subtle"
-                    borderLeftWidth={1}
-                    borderLeftColor="border.default"
-                    borderLeftStyle="solid"
-                >
-                    <Loader3D file={after} colors={afterColors} />
-                </Box>
+            {!showUnified && (
+                <>
+                    {before && (
+                        <Box
+                            flexGrow={1}
+                            minWidth={0}
+                            backgroundColor="danger.subtle"
+                        >
+                            <Loader3D file={before} colors={beforeColors} />
+                        </Box>
+                    )}
+                    {after && (
+                        <Box
+                            flexGrow={1}
+                            minWidth={0}
+                            backgroundColor="success.subtle"
+                            borderLeftWidth={1}
+                            borderLeftColor="border.default"
+                            borderLeftStyle="solid"
+                        >
+                            <Loader3D file={after} colors={afterColors} />
+                        </Box>
+                    )}
+                </>
             )}
         </Box>
     )
