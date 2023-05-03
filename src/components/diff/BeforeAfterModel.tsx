@@ -37,7 +37,9 @@ export function BeforeAfterModel({
     useEffect(() => {
         if (beforeGeometry && cameraRef.current) {
             beforeGeometry.computeBoundingSphere()
-            beforeGeometry.center()
+            // TODO: understand the implications of this,
+            // it's been disabled as it was causing before and after to be misaligned
+            // beforeGeometry.center()
 
             // move the camera away so the object fits in the view
             const { radius } = beforeGeometry.boundingSphere || { radius: 1 }
@@ -58,8 +60,9 @@ export function BeforeAfterModel({
 
     return (
         <>
+            {/* Unchanged */}
             <mesh>
-                <meshPhongMaterial color={commonColor} />
+                <meshPhongMaterial color={commonColor} transparent opacity={0.95}/>
                 <Geometry>
                     <Base geometry={beforeGeometry} />
                     <Intersection geometry={afterGeometry} />
