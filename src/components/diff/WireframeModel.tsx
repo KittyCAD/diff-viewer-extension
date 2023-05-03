@@ -4,7 +4,6 @@ import { Suspense, useEffect, useMemo, useRef } from 'react'
 import { BufferGeometry, DoubleSide } from 'three'
 import { EdgesGeometry, Vector3 } from 'three'
 import { calculateFovFactor } from './Camera'
-import { Geometry, Base, Addition, Subtraction, Intersection, Difference } from '@react-three/csg'
 
 export type WireframeColors = {
     face: string

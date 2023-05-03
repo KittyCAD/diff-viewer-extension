@@ -31,11 +31,9 @@ function loadGeometry(file: string): BufferGeometry {
 function Loader3DDiff({
     before,
     after,
-    colors,
 }: {
     before: string
     after: string
-    colors: WireframeColors
 }) {
     const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
@@ -53,7 +51,6 @@ function Loader3DDiff({
                     beforeGeometry={beforeGeometry}
                     afterGeometry={afterGeometry}
                     cameraRef={cameraRef}
-                    colors={colors}
                 />
             )}
             <CameraControls cameraRef={cameraRef} />
@@ -107,7 +104,6 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                 <Loader3DDiff
                     before={before}
                     after={after}
-                    colors={beforeColors}
                 />
             )}
             {!showUnified && (

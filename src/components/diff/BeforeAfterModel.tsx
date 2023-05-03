@@ -7,24 +7,16 @@ import { Vector3 } from 'three'
 import { calculateFovFactor } from './Camera'
 import { Geometry, Base, Subtraction, Intersection } from '@react-three/csg'
 
-export type WireframeColors = {
-    face: string
-    edge: string
-    dashEdge: string
-}
-
 type Props = {
     cameraRef: MutableRefObject<any>
     beforeGeometry: BufferGeometry
     afterGeometry: BufferGeometry
-    colors: WireframeColors
 }
 
 export function BeforeAfterModel({
     beforeGeometry,
     afterGeometry,
     cameraRef,
-    colors,
 }: Props) {
     const camera = useThree(state => state.camera)
     const canvasHeight = useThree(state => state.size.height)
