@@ -60,7 +60,7 @@ export function WireframeModel({ geometry, cameraRef, colors }: Props) {
                     receiveShadow={true}
                     geometry={geometry}
                 >
-                    <meshBasicMaterial
+                    <meshPhongMaterial
                         color={colors.face}
                         side={DoubleSide}
                         depthTest={true}

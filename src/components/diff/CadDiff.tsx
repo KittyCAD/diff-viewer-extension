@@ -4,8 +4,6 @@ import {
     Box,
     useTheme,
     Text,
-    ToggleSwitch,
-    SubNav,
     TabNav,
 } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
