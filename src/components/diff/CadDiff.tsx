@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, useTheme, Text } from '@primer/react'
+import {
+    Box,
+    useTheme,
+    Text,
+    ToggleSwitch,
+    SubNav,
+    TabNav,
+} from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
@@ -28,13 +35,7 @@ function loadGeometry(file: string): BufferGeometry {
     return geometry
 }
 
-function Loader3DDiff({
-    before,
-    after,
-}: {
-    before: string
-    after: string
-}) {
+function Loader3DDiff({ before, after }: { before: string; after: string }) {
     const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
     const cameraRef = useRef<any>()
@@ -85,8 +86,7 @@ function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     const canShowUnified = before && after
     // TODO: add radio select to trigger this
-    // let [showUnified, setShowUnified] = useState(canShowUnified)
-    const showUnified = canShowUnified
+    let [showUnified, setShowUnified] = useState(false)
     const { theme } = useTheme()
     const beforeColors: WireframeColors = {
         face: theme?.colors.fg.default,
@@ -99,38 +99,74 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
         dashEdge: theme?.colors.success.subtle,
     }
     return (
-        <Box display="flex" height={300} overflow="hidden" minWidth={0}>
-            {canShowUnified && showUnified && (
-                <Loader3DDiff
-                    before={before}
-                    after={after}
-                />
-            )}
-            {!showUnified && (
-                <>
-                    {before && (
-                        <Box
-                            flexGrow={1}
-                            minWidth={0}
-                            backgroundColor="danger.subtle"
+        <>
+            <Box display="flex" height={300} overflow="hidden" minWidth={0}>
+                {canShowUnified && showUnified && (
+                    <Loader3DDiff before={before} after={after} />
+                )}
+                {!showUnified && (
+                    <>
+                        {before && (
+                            <Box
+                                flexGrow={1}
+                                minWidth={0}
+                                backgroundColor="danger.subtle"
+                            >
+                                <Loader3D file={before} colors={beforeColors} />
+                            </Box>
+                        )}
+                        {after && (
+                            <Box
+                                flexGrow={1}
+                                minWidth={0}
+                                backgroundColor="success.subtle"
+                                borderLeftWidth={1}
+                                borderLeftColor="border.default"
+                                borderLeftStyle="solid"
+                            >
+                                <Loader3D file={after} colors={afterColors} />
+                            </Box>
+                        )}
+                    </>
+                )}
+            </Box>
+            {canShowUnified && (
+                <Box
+                    pt={2}
+                    backgroundColor="canvas.default"
+                    borderTopWidth={1}
+                    borderTopColor="border.default"
+                    borderTopStyle="solid"
+                    borderBottomLeftRadius={6}
+                    borderBottomRightRadius={6}
+                    overflow="hidden"
+                >
+                    <TabNav
+                        aria-label="Rich diff types"
+                        sx={{
+                            display: 'block',
+                            marginX: 'auto',
+                            marginBottom: '-1px',
+                            width: 'fit-content',
+                        }}
+                    >
+                        <TabNav.Link
+                            selected={!showUnified}
+                            onClick={() => setShowUnified(false)}
+                            sx={{ cursor: 'pointer' }}
                         >
-                            <Loader3D file={before} colors={beforeColors} />
-                        </Box>
-                    )}
-                    {after && (
-                        <Box
-                            flexGrow={1}
-                            minWidth={0}
-                            backgroundColor="success.subtle"
-                            borderLeftWidth={1}
-                            borderLeftColor="border.default"
-                            borderLeftStyle="solid"
+                            Side-by-side
+                        </TabNav.Link>
+                        <TabNav.Link
+                            selected={showUnified}
+                            onClick={() => setShowUnified(true)}
+                            sx={{ cursor: 'pointer' }}
                         >
-                            <Loader3D file={after} colors={afterColors} />
-                        </Box>
-                    )}
-                </>
+                            Unified
+                        </TabNav.Link>
+                    </TabNav>
+                </Box>
             )}
-        </Box>
+        </>
     )
 }
