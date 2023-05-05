@@ -85,7 +85,6 @@ function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
 
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     const canShowUnified = before && after
-    // TODO: add radio select to trigger this
     let [showUnified, setShowUnified] = useState(false)
     const { theme } = useTheme()
     const beforeColors: WireframeColors = {
