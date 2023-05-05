@@ -10,7 +10,11 @@ type Viewer3DProps = {
     geometry: BufferGeometry
 }
 
-export function Viewer3D({ cameraRef, geometry, children }: PropsWithChildren<Viewer3DProps>) {
+export function Viewer3D({
+    cameraRef,
+    geometry,
+    children,
+}: PropsWithChildren<Viewer3DProps>) {
     return (
         <Canvas dpr={[1, 2]} shadows>
             {typeof window !== 'undefined' && children}

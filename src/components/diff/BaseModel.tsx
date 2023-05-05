@@ -10,7 +10,11 @@ type BaseModelProps = {
     geometry: BufferGeometry
 }
 
-export function BaseModel({ geometry, cameraRef, children }: PropsWithChildren<BaseModelProps>) {
+export function BaseModel({
+    geometry,
+    cameraRef,
+    children,
+}: PropsWithChildren<BaseModelProps>) {
     const groupRef = useRef<any>()
     const camera = useThree(state => state.camera)
     const canvasHeight = useThree(state => state.size.height)
@@ -42,9 +46,7 @@ export function BaseModel({ geometry, cameraRef, children }: PropsWithChildren<B
 
     return (
         <Suspense fallback={null}>
-            <group ref={groupRef}>
-                {children}
-            </group>
+            <group ref={groupRef}>{children}</group>
         </Suspense>
     )
 }

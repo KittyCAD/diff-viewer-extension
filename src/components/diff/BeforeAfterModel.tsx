@@ -21,10 +21,16 @@ export function BeforeAfterModel({
     const deletionsColor = theme?.colors.danger.fg
 
     return (
+        // TODO: here we give beforeGeometry for auto camera centering,
+        // for the lack of something better. Need to check the implications
         <BaseModel geometry={beforeGeometry} cameraRef={cameraRef}>
             {/* Unchanged */}
             <mesh>
-                <meshPhongMaterial color={commonColor} transparent opacity={0.95}/>
+                <meshPhongMaterial
+                    color={commonColor}
+                    transparent
+                    opacity={0.95}
+                />
                 <Geometry>
                     <Base geometry={beforeGeometry} />
                     <Intersection geometry={afterGeometry} />
