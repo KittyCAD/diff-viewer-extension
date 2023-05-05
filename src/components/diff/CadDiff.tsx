@@ -25,6 +25,8 @@ function loadGeometry(file: string): BufferGeometry {
     console.log(`Model ${group.id} loaded`)
     const geometry = (group.children[0] as Mesh)?.geometry
     if (!geometry.attributes.uv) {
+        // UV is needed for @react-three/csg
+        // see: github.com/KittyCAD/diff-viewer-extension/issues/73
         geometry.setAttribute(
             'uv',
             new BufferAttribute(new Float32Array([]), 1)
