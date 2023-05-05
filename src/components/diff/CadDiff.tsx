@@ -1,30 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import {
-    Box,
-    useTheme,
-    Text,
-    TabNav,
-} from '@primer/react'
+import { Box, useTheme, Text, TabNav } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { BufferAttribute, BufferGeometry, Mesh } from 'three'
-import { WireframeColors } from './WireframeModel'
+import { WireframeColors, WireframeModel } from './WireframeModel'
 import { Buffer } from 'buffer'
-import { Canvas } from '@react-three/fiber'
-import { Camera } from './Camera'
-import { CameraControls } from './CameraControls'
 import { useRef } from 'react'
 import { BeforeAfterModel } from './BeforeAfterModel'
 
-function loadGeometry(file: string): BufferGeometry {
+function loadGeometry(file: string, checkUV = false): BufferGeometry {
     const loader = new OBJLoader()
     const buffer = Buffer.from(file, 'base64').toString()
     const group = loader.parse(buffer)
     console.log(`Model ${group.id} loaded`)
     const geometry = (group.children[0] as Mesh)?.geometry
-    if (!geometry.attributes.uv) {
+    if (checkUV && !geometry.attributes.uv) {
         // UV is needed for @react-three/csg
         // see: github.com/KittyCAD/diff-viewer-extension/issues/73
         geometry.setAttribute(
@@ -35,28 +27,30 @@ function loadGeometry(file: string): BufferGeometry {
     return geometry
 }
 
-function Loader3DDiff({ before, after }: { before: string; after: string }) {
+function Loader3DBeforeAfter({
+    before,
+    after,
+}: {
+    before: string
+    after: string
+}) {
+    const cameraRef = useRef<any>()
     const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
-    const cameraRef = useRef<any>()
     useEffect(() => {
-        setBeforeGeometry(loadGeometry(before))
+        setBeforeGeometry(loadGeometry(before, true))
     }, [before])
     useEffect(() => {
-        setAfterGeometry(loadGeometry(after))
+        setAfterGeometry(loadGeometry(after, true))
     }, [after])
     return beforeGeometry && afterGeometry ? (
-        <Canvas dpr={[1, 2]} shadows>
-            {typeof window !== 'undefined' && beforeGeometry && (
-                <BeforeAfterModel
-                    beforeGeometry={beforeGeometry}
-                    afterGeometry={afterGeometry}
-                    cameraRef={cameraRef}
-                />
-            )}
-            <CameraControls cameraRef={cameraRef} />
-            {beforeGeometry && <Camera geometry={beforeGeometry} />}
-        </Canvas>
+        <Viewer3D cameraRef={cameraRef} geometry={beforeGeometry}>
+            <BeforeAfterModel
+                beforeGeometry={beforeGeometry}
+                afterGeometry={afterGeometry}
+                cameraRef={cameraRef}
+            />
+        </Viewer3D>
     ) : (
         <Box p={3}>
             <Text>Sorry, the rich diff can't be displayed for this file.</Text>
@@ -65,17 +59,19 @@ function Loader3DDiff({ before, after }: { before: string; after: string }) {
 }
 
 function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
+    const cameraRef = useRef<any>()
     const [geometry, setGeometry] = useState<BufferGeometry>()
     useEffect(() => {
-        const loader = new OBJLoader()
-        const buffer = Buffer.from(file, 'base64').toString()
-        const group = loader.parse(buffer)
-        console.log(`Model ${group.id} loaded`)
-        const geometry = (group.children[0] as Mesh)?.geometry
-        setGeometry(geometry)
+        setGeometry(loadGeometry(file))
     }, [file])
     return geometry ? (
-        <Viewer3D geometry={geometry} colors={colors} />
+        <Viewer3D cameraRef={cameraRef} geometry={geometry}>
+            <WireframeModel
+                geometry={geometry}
+                cameraRef={cameraRef}
+                colors={colors}
+            />
+        </Viewer3D>
     ) : (
         <Box p={3}>
             <Text>Sorry, the rich diff can't be displayed for this file.</Text>
@@ -101,7 +97,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
         <>
             <Box display="flex" height={300} overflow="hidden" minWidth={0}>
                 {canShowUnified && showUnified && (
-                    <Loader3DDiff before={before} after={after} />
+                    <Loader3DBeforeAfter before={before} after={after} />
                 )}
                 {!showUnified && (
                     <>
