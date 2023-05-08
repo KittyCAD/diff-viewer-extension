@@ -12,6 +12,8 @@ import { KittycadUser, MessageIds, User } from '../../chrome/types'
 import { Loading } from '../Loading'
 import { TokenForm } from './TokenForm'
 import { UserCard } from './UserCard'
+import { createAvatar } from '@dicebear/avatars'
+import * as avatarStyles from '@dicebear/avatars-bottts-sprites'
 
 function BaseHelper({ children }: PropsWithChildren<{}>) {
     const { getDetailsProps, open } = useDetails({ closeOnOutsideClick: true })
@@ -147,7 +149,12 @@ export function Settings() {
                                     login={kittycadUser.email}
                                     avatar={
                                         kittycadUser.image ||
-                                        'https://kittycad.io/logo-green.png'
+                                        createAvatar(avatarStyles, {
+                                            seed:
+                                                kittycadUser?.email ||
+                                                'some-seed',
+                                            dataUri: true,
+                                        })
                                     }
                                     onSignOut={async () => {
                                         await onToken(
