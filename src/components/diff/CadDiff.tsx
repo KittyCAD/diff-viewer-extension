@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, useTheme, Text, TabNav } from '@primer/react'
+import {
+    Box,
+    useTheme,
+    Text,
+    TabNav,
+    StyledOcticon,
+} from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
@@ -9,6 +15,7 @@ import { WireframeColors, WireframeModel } from './WireframeModel'
 import { Buffer } from 'buffer'
 import { useRef } from 'react'
 import { BeforeAfterModel } from './BeforeAfterModel'
+import { BeakerIcon } from '@primer/octicons-react'
 
 function loadGeometry(file: string, checkUV = false): BufferGeometry {
     const loader = new OBJLoader()
@@ -158,6 +165,12 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                             sx={{ cursor: 'pointer' }}
                         >
                             Unified
+                            <StyledOcticon
+                                icon={BeakerIcon}
+                                color="fg.muted"
+                                sx={{ pl: 1 }}
+                                aria-label="Experimental"
+                            />
                         </TabNav.Link>
                     </TabNav>
                 </Box>
