@@ -102,6 +102,14 @@ export function Settings() {
         await chrome.runtime.sendMessage({ id, data: { token } })
     }
 
+    function getDefaultKittycadAvatar(email: string): string {
+        // from https://github.com/KittyCAD/website/blob/0d891781865a72d9aff0ed72078d557b6f1dcf8e/components/HeaderAccountMenu.tsx#L34
+        return createAvatar(avatarStyles, {
+            seed: email || 'some-seed',
+            dataUri: true,
+        })
+    }
+
     useEffect(() => {
         ;(async () => {
             await fetchGithubUser()
@@ -150,12 +158,9 @@ export function Settings() {
                                     login={kittycadUser.email}
                                     avatar={
                                         kittycadUser.image ||
-                                        createAvatar(avatarStyles, {
-                                            seed:
-                                                kittycadUser?.email ||
-                                                'some-seed',
-                                            dataUri: true,
-                                        })
+                                        getDefaultKittycadAvatar(
+                                            kittycadUser.email
+                                        )
                                     }
                                     serviceAvatar="https://avatars.githubusercontent.com/kittycad"
                                     onSignOut={async () => {
