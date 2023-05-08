@@ -15,7 +15,7 @@ it('renders a user card and checks its callback button', () => {
         />
     )
     expect(screen.getByText(login)).toBeInTheDocument()
-    expect(screen.getByRole('img')).toBeInTheDocument()
+    expect(screen.getAllByRole('img')).toHaveLength(2)
 
     const button = screen.getByRole('button')
     expect(button).toBeEnabled()
