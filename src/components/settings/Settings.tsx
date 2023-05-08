@@ -120,6 +120,7 @@ export function Settings() {
                                 <UserCard
                                     login={'@' + githubUser.login}
                                     avatar={githubUser.avatar_url}
+                                    serviceAvatar="https://avatars.githubusercontent.com/github"
                                     onSignOut={async () => {
                                         await onToken(
                                             MessageIds.SaveGithubToken,
@@ -156,6 +157,7 @@ export function Settings() {
                                             dataUri: true,
                                         })
                                     }
+                                    serviceAvatar="https://avatars.githubusercontent.com/kittycad"
                                     onSignOut={async () => {
                                         await onToken(
                                             MessageIds.SaveKittycadToken,
