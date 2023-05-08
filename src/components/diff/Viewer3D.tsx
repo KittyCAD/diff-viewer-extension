@@ -17,7 +17,7 @@ export function Viewer3D({
 }: PropsWithChildren<Viewer3DProps>) {
     return (
         <Canvas dpr={[1, 2]} shadows>
-            {typeof window !== 'undefined' && children}
+            {children}
             <CameraControls cameraRef={cameraRef} />
             {geometry && <Camera geometry={geometry} />}
         </Canvas>
