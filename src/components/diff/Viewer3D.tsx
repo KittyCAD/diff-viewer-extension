@@ -1,27 +1,23 @@
-import { useRef } from 'react'
+import { MutableRefObject, PropsWithChildren } from 'react'
 import '@react-three/fiber'
 import { BufferGeometry } from 'three'
 import { Canvas } from '@react-three/fiber'
-import { WireframeColors, WireframeModel } from './WireframeModel'
 import { Camera } from './Camera'
 import { CameraControls } from './CameraControls'
 
-type Props = {
+type Viewer3DProps = {
+    cameraRef: MutableRefObject<any>
     geometry: BufferGeometry
-    colors: WireframeColors
 }
 
-export function Viewer3D({ geometry, colors }: Props) {
-    const cameraRef = useRef<any>()
+export function Viewer3D({
+    cameraRef,
+    geometry,
+    children,
+}: PropsWithChildren<Viewer3DProps>) {
     return (
         <Canvas dpr={[1, 2]} shadows>
-            {typeof window !== 'undefined' && geometry && (
-                <WireframeModel
-                    geometry={geometry}
-                    cameraRef={cameraRef}
-                    colors={colors}
-                />
-            )}
+            {children}
             <CameraControls cameraRef={cameraRef} />
             {geometry && <Camera geometry={geometry} />}
         </Canvas>
