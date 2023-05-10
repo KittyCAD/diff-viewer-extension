@@ -2399,6 +2399,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/openapi-types@npm:^17.1.1":
+  version: 17.1.1
+  resolution: "@octokit/openapi-types@npm:17.1.1"
+  checksum: 6d77f0cf55e051a386f57df63d9a7d75f5d0731340822e4f8460e31379560cc7756d224a46eed8ff4b0188be49e920621c6b3d524f9979df4497d5f24774c389
+  languageName: node
+  linkType: hard
+
 "@octokit/plugin-paginate-rest@npm:^6.0.0":
   version: 6.0.0
   resolution: "@octokit/plugin-paginate-rest@npm:6.0.0"
@@ -2468,12 +2475,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^9.0.0, @octokit/types@npm:^9.1.1":
+"@octokit/types@npm:^9.0.0":
   version: 9.2.0
   resolution: "@octokit/types@npm:9.2.0"
   dependencies:
     "@octokit/openapi-types": ^17.1.0
   checksum: 3946ad67c4de8002061154228cb5a4a28ae24823038a5991c518cbceeb05f10feeb52800b1c72b923e2531ffbb2855ed7dcb0ad2f1f35d075e7f79d6157fc385
+  languageName: node
+  linkType: hard
+
+"@octokit/types@npm:^9.2.1":
+  version: 9.2.1
+  resolution: "@octokit/types@npm:9.2.1"
+  dependencies:
+    "@octokit/openapi-types": ^17.1.1
+  checksum: 84ccab65d6f7aa7dd5c878e1737f5ccc671cfdc4146378bc4931b877c2e10c1f40440c1bf4c662ce6a08c7c6d8e9ca6cbb605b70c803f33d9f94ed3fbe51e384
   languageName: node
   linkType: hard
 
@@ -6155,7 +6171,7 @@ __metadata:
     "@kittycad/lib": ^0.0.19
     "@octokit/openapi-types": ^17.0.0
     "@octokit/rest": ^19.0.7
-    "@octokit/types": ^9.1.1
+    "@octokit/types": ^9.2.1
     "@playwright/test": ^1.32.3
     "@primer/octicons-react": ^18.3.0
     "@primer/react": ^35.25.0
