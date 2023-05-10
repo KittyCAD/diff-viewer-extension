@@ -39,7 +39,7 @@ test('pull request diff with an .obj file', async ({
     page,
     authorizedBackground,
 }) => {
-    const url = 'https://github.com/KittyCAD/kittycad.ts/pull/3/files'
+    const url = 'https://github.com/KittyCAD/diff-samples/pull/2/files'
     const screenshot = await getFirstDiffScreenshot(page, url)
     expect(screenshot).toMatchSnapshot()
 })
@@ -49,7 +49,7 @@ test('commit diff with an .obj file', async ({
     authorizedBackground,
 }) => {
     const url =
-        'https://github.com/KittyCAD/kittycad.ts/commit/08b50ee5a23b3ae7dd7b19383f14bbd520079cc1'
+        'https://github.com/KittyCAD/diff-samples/commit/fd9eec79f0464833686ea6b5b34ea07145e32734'
     const screenshot = await getFirstDiffScreenshot(page, url)
     expect(screenshot).toMatchSnapshot()
 })
