@@ -12,6 +12,8 @@ import { KittycadUser, MessageIds, User } from '../../chrome/types'
 import { Loading } from '../Loading'
 import { TokenForm } from './TokenForm'
 import { UserCard } from './UserCard'
+import { createAvatar } from '@dicebear/avatars'
+import * as avatarStyles from '@dicebear/avatars-bottts-sprites'
 
 function BaseHelper({ children }: PropsWithChildren<{}>) {
     const { getDetailsProps, open } = useDetails({ closeOnOutsideClick: true })
@@ -100,6 +102,14 @@ export function Settings() {
         await chrome.runtime.sendMessage({ id, data: { token } })
     }
 
+    function getDefaultKittycadAvatar(email: string): string {
+        // from https://github.com/KittyCAD/website/blob/0d891781865a72d9aff0ed72078d557b6f1dcf8e/components/HeaderAccountMenu.tsx#L34
+        return createAvatar(avatarStyles, {
+            seed: email || 'some-seed',
+            dataUri: true,
+        })
+    }
+
     useEffect(() => {
         ;(async () => {
             await fetchGithubUser()
@@ -118,6 +128,7 @@ export function Settings() {
                                 <UserCard
                                     login={'@' + githubUser.login}
                                     avatar={githubUser.avatar_url}
+                                    serviceAvatar="https://avatars.githubusercontent.com/github"
                                     onSignOut={async () => {
                                         await onToken(
                                             MessageIds.SaveGithubToken,
@@ -147,8 +158,11 @@ export function Settings() {
                                     login={kittycadUser.email}
                                     avatar={
                                         kittycadUser.image ||
-                                        'https://kittycad.io/logo-green.png'
+                                        getDefaultKittycadAvatar(
+                                            kittycadUser.email
+                                        )
                                     }
+                                    serviceAvatar="https://avatars.githubusercontent.com/kittycad"
                                     onSignOut={async () => {
                                         await onToken(
                                             MessageIds.SaveKittycadToken,

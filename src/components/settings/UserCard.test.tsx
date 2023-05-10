@@ -6,9 +6,16 @@ it('renders a user card and checks its callback button', () => {
     const avatar = 'avatar'
     const callback = jest.fn()
 
-    render(<UserCard login={login} avatar={avatar} onSignOut={callback} />)
+    render(
+        <UserCard
+            login={login}
+            avatar={avatar}
+            serviceAvatar="https://avatars.githubusercontent.com/github"
+            onSignOut={callback}
+        />
+    )
     expect(screen.getByText(login)).toBeInTheDocument()
-    expect(screen.getByRole('img')).toBeInTheDocument()
+    expect(screen.getAllByRole('img')).toHaveLength(2)
 
     const button = screen.getByRole('button')
     expect(button).toBeEnabled()

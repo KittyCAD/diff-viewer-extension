@@ -4,6 +4,8 @@
     "private": true,
     "dependencies": {
         "@craco/craco": "^7.0.0",
+        "@dicebear/avatars": "^4.10.8",
+        "@dicebear/avatars-bottts-sprites": "^4.10.8",
         "@kittycad/lib": "^0.0.19",
         "@octokit/openapi-types": "^17.0.0",
         "@octokit/rest": "^19.0.7",
