@@ -6256,7 +6256,7 @@ __metadata:
     react-is: ^18.2.0
     react-scripts: 5.0.1
     styled-components: ^5.3.10
-    three: ^0.151.3
+    three: ^0.152.2
     three-mesh-bvh: ^0.5.23
     typescript: ^4.9.5
   languageName: unknown
@@ -13738,10 +13738,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:^0.151.3":
-  version: 0.151.3
-  resolution: "three@npm:0.151.3"
-  checksum: cb6f10e4e409bbc4677d2128470c4e0bdb29f7879a77bc800180e30bda3527816c45b47ac10228f346cfc7501234457f63a87c1bdd5c3b6e2841d523e5d6eb79
+"three@npm:^0.152.2":
+  version: 0.152.2
+  resolution: "three@npm:0.152.2"
+  checksum: 6d2d990dbff60b99c7e58b7f1446bb4bd235c7db5dd848a671385e01ae5c72bec865265be7f5a82907ecc96186acc13177d7de1252bc9592f5c9ebaffd1da1e7
   languageName: node
   linkType: hard
 
