@@ -27,14 +27,14 @@
                 "https://github.com/*"
             ],
             "js": [
-                "./static/js/content.js"
+                "src/chrome/content.ts"
             ],
             "all_frames": false,
             "run_at": "document_end"
         }
     ],
     "background": {
-        "service_worker": "./static/js/background.js",
+        "service_worker": "src/chrome/background.ts",
         "type": "module"
     }
 }
