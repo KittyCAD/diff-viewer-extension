@@ -1,10 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { TokenForm } from './TokenForm'
+import { vi } from 'vitest'
 
 it('renders a token form and checks its callback', () => {
     const service = 'service'
     const token = 'token'
-    const callback = jest.fn()
+    const callback = vi.fn()
 
     render(<TokenForm service={service} onToken={callback} />)
     expect(screen.getByText(`Enter a ${service} token`)).toBeInTheDocument()

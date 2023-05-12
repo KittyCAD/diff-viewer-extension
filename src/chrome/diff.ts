@@ -6,6 +6,7 @@ import {
     FileImportFormat_type,
 } from '@kittycad/lib/dist/types/src/models'
 import { Buffer } from 'buffer'
+import fetch from 'cross-fetch';
 
 export const extensionToSrcFormat: {
     [extension: string]: FileImportFormat_type

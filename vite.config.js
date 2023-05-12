@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { configDefaults } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import { crx } from '@crxjs/vite-plugin'
 import manifest from './manifest.json'
@@ -16,6 +17,12 @@ export default defineConfig(() => {
                     global: 'globalThis',
                 },
             },
+        },
+        test: {
+            globals: true,
+            environment: 'jsdom',
+            setupFiles: 'src/setupTests.ts',
+            exclude: [...configDefaults.exclude, 'tests/*'],
         },
     }
 })

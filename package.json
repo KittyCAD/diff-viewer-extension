@@ -37,7 +37,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "test": "vite test",
+        "test": "vitest",
         "e2e": "yarn build && yarn playwright test",
         "bump": "echo \"$(jq --arg v \"$VERSION\" '.version=$v' package.json --indent 4)\" > package.json && echo \"$(jq --arg v \"$VERSION\" '.version=$v' public/manifest.json --indent 4)\" > public/manifest.json"
     },
@@ -77,12 +77,15 @@
         "@crxjs/vite-plugin": "latest",
         "@playwright/test": "^1.32.3",
         "@vitejs/plugin-react": "^4.0.0",
+        "cross-fetch": "^3.1.5",
         "dotenv": "^16.0.3",
         "eslint": "^8.39.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-config-react-app": "^7.0.1",
         "eslint-plugin-react": "^7.32.2",
+        "jsdom": "^22.0.0",
         "prettier": "^2.8.7",
-        "vite": "^4.3.5"
+        "vite": "^4.3.5",
+        "vitest": "^0.31.0"
     }
 }

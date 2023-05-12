@@ -1,9 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { SourceRichToggle } from './SourceRichToggle'
+import { vi } from 'vitest'
 
 it('renders a source-rich diff toggle and checks its callbacks', async () => {
-    const callbackSource = jest.fn()
-    const callbackRich = jest.fn()
+    const callbackSource = vi.fn()
+    const callbackRich = vi.fn()
 
     render(
         <SourceRichToggle
