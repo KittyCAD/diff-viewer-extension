@@ -25,6 +25,7 @@
         "@types/testing-library__jest-dom": "^5.14.5",
         "@types/three": "^0.150.2",
         "buffer": "^6.0.3",
+        "cross-fetch": "^3.1.6",
         "github-injection": "^1.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -32,10 +33,11 @@
         "styled-components": "^5.3.10",
         "three": "^0.152.2",
         "three-mesh-bvh": "^0.5.23",
-        "typescript": "^4.9.5"
+        "typescript": "^4.9.5",
+        "vite-plugin-node-polyfills": "^0.8.2"
     },
     "scripts": {
-        "dev": "vite",
+        "start": "vite",
         "build": "vite build",
         "test": "vitest",
         "e2e": "yarn build && yarn playwright test",
@@ -77,7 +79,6 @@
         "@crxjs/vite-plugin": "latest",
         "@playwright/test": "^1.32.3",
         "@vitejs/plugin-react": "^4.0.0",
-        "cross-fetch": "^3.1.5",
         "dotenv": "^16.0.3",
         "eslint": "^8.39.0",
         "eslint-config-prettier": "^8.8.0",

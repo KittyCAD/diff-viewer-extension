@@ -65,7 +65,7 @@ async function saveKittycadTokenAndReload(token: string): Promise<void> {
     await initGithubApi()
 })()
 
-const noClientError = new Error('API client is undefined')
+const noClientError = 'API client is undefined'
 
 chrome.runtime.onMessage.addListener(
     (

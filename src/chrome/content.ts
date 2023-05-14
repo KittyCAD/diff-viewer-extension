@@ -7,11 +7,8 @@ import {
     getGithubCommitUrlParams,
     createReactRoot,
 } from './web'
-
-// https://github.com/OctoLinker/injection
-// maintained by octolinker, makes sure pages that are loaded through pjax are available for injection
-// no ts support
-const gitHubInjection = require('github-injection')
+// TODO: fix eslint issue
+import gitHubInjection from 'github-injection'
 
 const root = createReactRoot(document)
 

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 import { configDefaults } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import { crx } from '@crxjs/vite-plugin'
@@ -9,15 +10,18 @@ export default defineConfig(() => {
         build: {
             outDir: 'build',
         },
-        plugins: [react(), crx({ manifest })],
-        optimizeDeps: {
-            esbuildOptions: {
-                // Node.js global to browser globalThis
-                define: {
-                    global: 'globalThis',
-                },
-            },
-        },
+        plugins: [
+            react(),
+            crx({ manifest }),
+            nodePolyfills({
+                // To exclude specific polyfills, add them to this list.
+                exclude: [
+                    'fs', // Excludes the polyfill for `fs` and `node:fs`.
+                ],
+                // Whether to polyfill `node:` protocol imports.
+                protocolImports: true,
+            }),
+        ],
         test: {
             globals: true,
             environment: 'jsdom',
