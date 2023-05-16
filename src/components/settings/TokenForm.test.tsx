@@ -11,7 +11,7 @@ it('renders a token form and checks its callback', () => {
     expect(screen.getByText(`Enter a ${service} token`)).toBeInTheDocument()
 
     // TODO: understand why screen.getByRole started to hang
-    const field = screen.getByAltText("Text input for token")
+    const field = screen.getByAltText('Text input for token')
     fireEvent.change(field, { target: { value: token } })
 
     // TODO: understand why screen.getByRole started to hang

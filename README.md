@@ -4,9 +4,7 @@ Injects @kittycad/lib powered visual diffs for supported CAD files in GitHub Pul
 
 ## Available Scripts
 
-The project was setup as a Create-React-App boilerplate, with Node 18, yarn 3 as package manager and TypeScript.
-
-https://craco.js.org/ is used to extend the default CRA configs.
+The project uses Vite, with Node 18, yarn 3 as package manager and TypeScript.
 
 From the project directory:
 
@@ -29,25 +27,17 @@ The generated `build` directory may then be added to Chrome with the **Load unpa
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode.
 
-**This will only show the current settings popup in a tab, that won't be able to act as a Chrome extension, so it may only be used for pure UI work.**
+The generated `build` directory may then be added to Chrome with the **Load unpacked** button at [chrome://extensions](). Background/content scripts and React views should reload as changes are made.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the unit tests runner in the interactive watch mode.
 
-### `yarn eject`
+### `yarn e2e`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Builds the extension and runs end-to-end tests through an automated Chromium instance.
 
 ## Release a new version
 

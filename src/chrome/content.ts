@@ -7,7 +7,6 @@ import {
     getGithubCommitUrlParams,
     createReactRoot,
 } from './web'
-// TODO: fix eslint issue
 import gitHubInjection from 'github-injection'
 
 const root = createReactRoot(document)

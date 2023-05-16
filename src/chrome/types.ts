@@ -56,7 +56,7 @@ export type MessageSaveToken = {
 }
 
 export type MessageError = {
-    error: Error | string
+    error: Error
 }
 
 export type Message = {

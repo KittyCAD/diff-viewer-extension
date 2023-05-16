@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import {
-    Box,
-    useTheme,
-    Text,
-    TabNav,
-    StyledOcticon,
-} from '@primer/react'
+import { Box, useTheme, Text, TabNav, StyledOcticon } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'

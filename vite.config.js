@@ -13,7 +13,7 @@ export default defineConfig(() => {
         plugins: [react(), crx({ manifest }), nodePolyfills()],
         resolve: {
             alias: {
-                // Need to replace node-fetch in kittycad.ts
+                // Replaces node-fetch in kittycad.ts, cross-fetch wouldn't work
                 'node-fetch': 'isomorphic-fetch',
             },
         },
