@@ -1,10 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { UserCard } from './UserCard'
+import { vi } from 'vitest'
 
 it('renders a user card and checks its callback button', () => {
     const login = 'login'
     const avatar = 'avatar'
-    const callback = jest.fn()
+    const callback = vi.fn()
 
     render(
         <UserCard

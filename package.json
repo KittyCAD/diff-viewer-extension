@@ -3,7 +3,6 @@
     "version": "0.1.5",
     "private": true,
     "dependencies": {
-        "@craco/craco": "^7.0.0",
         "@dicebear/avatars": "^4.10.8",
         "@dicebear/avatars-bottts-sprites": "^4.10.8",
         "@kittycad/lib": "^0.0.19",
@@ -27,27 +26,24 @@
         "@types/three": "^0.150.2",
         "buffer": "^6.0.3",
         "github-injection": "^1.1.0",
+        "isomorphic-fetch": "^3.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-is": "^18.2.0",
-        "react-scripts": "5.0.1",
         "styled-components": "^5.3.10",
         "three": "^0.152.2",
         "three-mesh-bvh": "^0.5.23",
         "typescript": "^4.9.5"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "INLINE_RUNTIME_CHUNK=false craco build",
-        "test": "react-scripts test",
+        "start": "vite",
+        "build": "vite build",
+        "test": "vitest",
         "e2e": "yarn build && yarn playwright test",
-        "eject": "react-scripts eject",
         "bump": "echo \"$(jq --arg v \"$VERSION\" '.version=$v' package.json --indent 4)\" > package.json && echo \"$(jq --arg v \"$VERSION\" '.version=$v' public/manifest.json --indent 4)\" > public/manifest.json"
     },
     "eslintConfig": {
         "extends": [
-            "react-app",
-            "react-app/jest",
             "prettier"
         ]
     },
@@ -77,12 +73,17 @@
     },
     "devDependencies": {
         "@babel/runtime": "^7.21.0",
+        "@crxjs/vite-plugin": "^1.0.14",
         "@playwright/test": "^1.32.3",
+        "@vitejs/plugin-react": "^4.0.0",
         "dotenv": "^16.0.3",
         "eslint": "^8.39.0",
         "eslint-config-prettier": "^8.8.0",
-        "eslint-config-react-app": "^7.0.1",
         "eslint-plugin-react": "^7.32.2",
-        "prettier": "^2.8.7"
+        "jsdom": "^22.0.0",
+        "prettier": "^2.8.7",
+        "vite": "^4.3.5",
+        "vite-plugin-node-polyfills": "^0.8.2",
+        "vitest": "^0.31.0"
     }
 }

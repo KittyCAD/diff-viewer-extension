@@ -6,7 +6,11 @@ export type TokenFormProps = {
     onToken: (token: string) => void
 }
 
-export function TokenForm({ service, onToken, children }: PropsWithChildren<TokenFormProps>) {
+export function TokenForm({
+    service,
+    onToken,
+    children,
+}: PropsWithChildren<TokenFormProps>) {
     const [token, setToken] = useState('')
 
     return (
