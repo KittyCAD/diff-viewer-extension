@@ -21,13 +21,7 @@ jobs:
             - uses: actions/setup-node@v3.6.0
               with:
                   node-version: '18'
-                  cache: 'yarn'
             
-            - name: Setup yarn
-              run: |
-                  corepack enable
-                  yarn set version stable
-
             - run: yarn install
 
             - run: yarn build
