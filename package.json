@@ -44,8 +44,6 @@
     },
     "eslintConfig": {
         "extends": [
-            "react-app",
-            "react-app/jest",
             "prettier"
         ]
     },
@@ -81,7 +79,6 @@
         "dotenv": "^16.0.3",
         "eslint": "^8.39.0",
         "eslint-config-prettier": "^8.8.0",
-        "eslint-config-react-app": "^7.0.1",
         "eslint-plugin-react": "^7.32.2",
         "jsdom": "^22.0.0",
         "prettier": "^2.8.7",

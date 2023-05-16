@@ -12,9 +12,7 @@
         "48": "logo192.png",
         "128": "logo192.png"
     },
-    "permissions": [
-        "storage"
-    ],
+    "permissions": ["storage"],
     "host_permissions": [
         "https://github.com/",
         "https://api.github.com/",
@@ -23,12 +21,8 @@
     ],
     "content_scripts": [
         {
-            "matches": [
-                "https://github.com/*"
-            ],
-            "js": [
-                "src/chrome/content.ts"
-            ],
+            "matches": ["https://github.com/*"],
+            "js": ["src/chrome/content.ts"],
             "all_frames": false,
             "run_at": "document_end"
         }

@@ -20,14 +20,14 @@ yarn dlx @yarnpkg/sdks vscode
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
+Builds the extension for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The generated `build` directory may then be added to Chrome with the **Load unpacked** button at [chrome://extensions](). This needs to be done everytime there's a change.
 
 ### `yarn start`
 
-Runs the app in the development mode.
+Runs the extension in the development mode.
 
 The generated `build` directory may then be added to Chrome with the **Load unpacked** button at [chrome://extensions](). Background/content scripts and React views should reload as changes are made.
 

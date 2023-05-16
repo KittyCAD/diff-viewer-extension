@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "useDefineForClassFields": true,    
+        "useDefineForClassFields": true,
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": false,
         "skipLibCheck": true,
