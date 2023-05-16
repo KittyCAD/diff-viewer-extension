@@ -10,18 +10,13 @@ export default defineConfig(() => {
         build: {
             outDir: 'build',
         },
-        plugins: [
-            react(),
-            crx({ manifest }),
-            nodePolyfills({
-                // To exclude specific polyfills, add them to this list.
-                exclude: [
-                    'fs', // Excludes the polyfill for `fs` and `node:fs`.
-                ],
-                // Whether to polyfill `node:` protocol imports.
-                protocolImports: true,
-            }),
-        ],
+        plugins: [react(), crx({ manifest }), nodePolyfills()],
+        resolve: {
+            alias: {
+                // Need to replace node-fetch in kittycad.ts
+                'node-fetch': 'isomorphic-fetch',
+            },
+        },
         test: {
             globals: true,
             environment: 'jsdom',

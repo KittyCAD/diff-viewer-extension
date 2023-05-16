@@ -26,6 +26,7 @@
         "@types/three": "^0.150.2",
         "buffer": "^6.0.3",
         "github-injection": "^1.1.0",
+        "isomorphic-fetch": "^3.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-is": "^18.2.0",
@@ -84,7 +85,6 @@
         "eslint-config-react-app": "^7.0.1",
         "eslint-plugin-react": "^7.32.2",
         "jsdom": "^22.0.0",
-        "node-fetch": "^3.3.1",
         "prettier": "^2.8.7",
         "vite": "^4.3.5",
         "vitest": "^0.31.0"

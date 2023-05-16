@@ -4,7 +4,7 @@ Injects @kittycad/lib powered visual diffs for supported CAD files in GitHub Pul
 
 ## Available Scripts
 
-The project was setup as a Create-React-App boilerplate, with Node 16, yarn 3 as package manager and TypeScript.
+The project was setup as a Create-React-App boilerplate, with Node 18, yarn 3 as package manager and TypeScript.
 
 https://craco.js.org/ is used to extend the default CRA configs.
 

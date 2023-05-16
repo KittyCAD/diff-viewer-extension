@@ -1,12 +1,11 @@
 import { Octokit } from '@octokit/rest'
-import { Client } from '@kittycad/lib'
+import { Client, file } from '@kittycad/lib'
 import { ContentFile, DiffEntry, FileDiff } from './types'
 import {
     FileExportFormat_type,
     FileImportFormat_type,
 } from '@kittycad/lib/dist/types/src/models'
 import { Buffer } from 'buffer'
-import { file } from './kittycad'
 
 export const extensionToSrcFormat: {
     [extension: string]: FileImportFormat_type

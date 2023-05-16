@@ -1,4 +1,4 @@
-import { Client } from '@kittycad/lib'
+import { Client, users } from '@kittycad/lib'
 import { Octokit } from '@octokit/rest'
 import {
     KittycadUser,
@@ -17,7 +17,6 @@ import {
     setStorageKittycadToken,
 } from './storage'
 import { getFileDiff } from './diff'
-import { users } from './kittycad'
 
 let github: Octokit | undefined
 let kittycad: Client | undefined
