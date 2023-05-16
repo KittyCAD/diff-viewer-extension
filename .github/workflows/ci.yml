@@ -23,7 +23,10 @@ jobs:
                   node-version: '18'
                   cache: 'yarn'
             
-            - run: yarn set version stable
+            - name: Setup yarn
+              run: |
+                  corepack enable
+                  yarn set version stable
 
             - run: yarn install
 
