@@ -85,5 +85,9 @@
         "vite": "^4.3.5",
         "vite-plugin-node-polyfills": "^0.8.2",
         "vitest": "^0.31.0"
+    },
+    "packageManager": "yarn@3.5.1",
+    "engines": {
+        "node": ">=18.0.0"
     }
 }
