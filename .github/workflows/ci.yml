@@ -20,7 +20,10 @@ jobs:
 
             - uses: actions/setup-node@v3.6.0
 
-            - run: yarn install
+            - name: Setup yarn
+              run: |
+                yarn set version stable
+                yarn install
 
             - run: yarn build
 
