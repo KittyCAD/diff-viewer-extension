@@ -17,8 +17,8 @@ export function BeforeAfterModel({
 }: BeforeAfterModelProps) {
     const { theme } = useTheme()
     const commonColor = theme?.colors.fg.default
-    const additionsColor = theme?.colors.success.fg
-    const deletionsColor = theme?.colors.danger.fg
+    const additionsColor = theme?.colors.success.muted
+    const deletionsColor = theme?.colors.danger.muted
 
     return (
         // TODO: here we give beforeGeometry for auto camera centering,
@@ -29,7 +29,7 @@ export function BeforeAfterModel({
                 <meshPhongMaterial
                     color={commonColor}
                     transparent
-                    opacity={0.95}
+                    opacity={0.8}
                 />
                 <Geometry>
                     <Base geometry={beforeGeometry} />
