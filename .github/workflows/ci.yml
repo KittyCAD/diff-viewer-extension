@@ -23,7 +23,7 @@ jobs:
             - name: Setup yarn
               run: |
                 yarn set version stable
-                yarn install
+                yarn install --immutable
 
             - run: yarn build
 
