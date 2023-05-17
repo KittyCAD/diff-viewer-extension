@@ -1529,6 +1529,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tweenjs/tween.js@npm:~18.6.4":
+  version: 18.6.4
+  resolution: "@tweenjs/tween.js@npm:18.6.4"
+  checksum: 47208db3f6c32cde80284a852d0fca016284f90c4798eb4ebb2ebfc2e379504007bf0c031c2c33044df8a0878fd1942ebc4e0b7f5b8bcccf812b532ea1ee73eb
+  languageName: node
+  linkType: hard
+
 "@types/aria-query@npm:^5.0.1":
   version: 5.0.1
   resolution: "@types/aria-query@npm:5.0.1"
@@ -1796,15 +1803,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/three@npm:^0.150.2":
-  version: 0.150.2
-  resolution: "@types/three@npm:0.150.2"
+"@types/three@npm:^0.152.0":
+  version: 0.152.0
+  resolution: "@types/three@npm:0.152.0"
   dependencies:
+    "@tweenjs/tween.js": ~18.6.4
     "@types/stats.js": "*"
     "@types/webxr": "*"
     fflate: ~0.6.9
     lil-gui: ~0.17.0
-  checksum: 6252abd77cb3336116361d262cc9b4c809c1184953ed847ca6969e7e10e01be01a253c5dea03e010821dae8e06cf3ea7f56d424bb0aa5660599408387d5b46da
+  checksum: 23182ba26bc8793755536731a9605e8fa3a8b66e91461b1da56009c5103388f92b996c39d97c3e50ca91f874fc8dd0a2b8443b4416540870ad3031eab973e6ed
   languageName: node
   linkType: hard
 
@@ -3089,7 +3097,7 @@ __metadata:
     "@types/react": ^18.2.6
     "@types/react-dom": ^18.2.4
     "@types/testing-library__jest-dom": ^5.14.5
-    "@types/three": ^0.150.2
+    "@types/three": ^0.152.0
     "@vitejs/plugin-react": ^4.0.0
     buffer: ^6.0.3
     dotenv: ^16.0.3
