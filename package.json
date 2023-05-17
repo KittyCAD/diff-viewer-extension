@@ -7,7 +7,7 @@
         "@dicebear/avatars-bottts-sprites": "^4.10.8",
         "@kittycad/lib": "^0.0.19",
         "@octokit/openapi-types": "^17.2.0",
-        "@octokit/rest": "^19.0.7",
+        "@octokit/rest": "^19.0.8",
         "@octokit/types": "^9.2.1",
         "@primer/octicons-react": "^18.3.0",
         "@primer/react": "^35.25.0",
