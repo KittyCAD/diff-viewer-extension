@@ -902,7 +902,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/openapi-types@npm:^17.0.0, @octokit/openapi-types@npm:^17.1.0":
+"@octokit/openapi-types@npm:^17.1.0":
   version: 17.1.0
   resolution: "@octokit/openapi-types@npm:17.1.0"
   checksum: 67d695306d9cb30cfce536d9c54d92b11014b1df0edc7543737d0b1042906205dbbb1701f36bf19ac24209aba7f44647ab77af6223b2db028edcb81148ece516
@@ -913,6 +913,13 @@ __metadata:
   version: 17.1.1
   resolution: "@octokit/openapi-types@npm:17.1.1"
   checksum: 6d77f0cf55e051a386f57df63d9a7d75f5d0731340822e4f8460e31379560cc7756d224a46eed8ff4b0188be49e920621c6b3d524f9979df4497d5f24774c389
+  languageName: node
+  linkType: hard
+
+"@octokit/openapi-types@npm:^17.2.0":
+  version: 17.2.0
+  resolution: "@octokit/openapi-types@npm:17.2.0"
+  checksum: 29995e34f98d9d64ba234d64a7ae9486c66d2bb6ac0d30d9a42decdbb4b03b13e811769b1e1505a1748ff20c22d35724985e6c128cd11a3f14f8322201520093
   languageName: node
   linkType: hard
 
@@ -3055,7 +3062,7 @@ __metadata:
     "@dicebear/avatars": ^4.10.8
     "@dicebear/avatars-bottts-sprites": ^4.10.8
     "@kittycad/lib": ^0.0.19
-    "@octokit/openapi-types": ^17.0.0
+    "@octokit/openapi-types": ^17.2.0
     "@octokit/rest": ^19.0.7
     "@octokit/types": ^9.2.1
     "@playwright/test": ^1.32.3
