@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@kittycad/lib", "npm:0.0.19"],\
             ["@octokit/openapi-types", "npm:17.2.0"],\
             ["@octokit/rest", "npm:19.0.8"],\
-            ["@octokit/types", "npm:9.2.1"],\
+            ["@octokit/types", "npm:9.2.2"],\
             ["@playwright/test", "npm:1.33.0"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.1"],\
@@ -1183,13 +1183,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:17.1.1", {\
-          "packageLocation": "./.yarn/cache/@octokit-openapi-types-npm-17.1.1-af436862ac-6d77f0cf55.zip/node_modules/@octokit/openapi-types/",\
-          "packageDependencies": [\
-            ["@octokit/openapi-types", "npm:17.1.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:17.2.0", {\
           "packageLocation": "./.yarn/cache/@octokit-openapi-types-npm-17.2.0-e9456595e7-29995e34f9.zip/node_modules/@octokit/openapi-types/",\
           "packageDependencies": [\
@@ -1313,14 +1306,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@octokit/types", "npm:9.2.0"],\
             ["@octokit/openapi-types", "npm:17.1.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:9.2.1", {\
-          "packageLocation": "./.yarn/cache/@octokit-types-npm-9.2.1-b55f39cc91-84ccab65d6.zip/node_modules/@octokit/types/",\
-          "packageDependencies": [\
-            ["@octokit/types", "npm:9.2.1"],\
-            ["@octokit/openapi-types", "npm:17.1.1"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -3905,7 +3890,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@kittycad/lib", "npm:0.0.19"],\
             ["@octokit/openapi-types", "npm:17.2.0"],\
             ["@octokit/rest", "npm:19.0.8"],\
-            ["@octokit/types", "npm:9.2.1"],\
+            ["@octokit/types", "npm:9.2.2"],\
             ["@playwright/test", "npm:1.33.0"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.1"],\
