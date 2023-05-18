@@ -42,6 +42,9 @@ function Loader3DBeforeAfter({
     before: string
     after: string
 }) {
+    const [showUnchanged, setShowUnchanged] = useState(true)
+    const [showAdditions, setShowAdditions] = useState(true)
+    const [showDeletions, setShowDeletions] = useState(true)
     const cameraRef = useRef<any>()
     const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
@@ -52,13 +55,49 @@ function Loader3DBeforeAfter({
         setAfterGeometry(loadGeometry(after, true))
     }, [after])
     return beforeGeometry && afterGeometry ? (
-        <Viewer3D cameraRef={cameraRef} geometry={beforeGeometry}>
-            <BeforeAfterModel
-                beforeGeometry={beforeGeometry}
-                afterGeometry={afterGeometry}
-                cameraRef={cameraRef}
-            />
-        </Viewer3D>
+        <>
+            <Viewer3D cameraRef={cameraRef} geometry={beforeGeometry}>
+                <BeforeAfterModel
+                    beforeGeometry={beforeGeometry}
+                    afterGeometry={afterGeometry}
+                    cameraRef={cameraRef}
+                    showUnchanged={showUnchanged}
+                    showAdditions={showAdditions}
+                    showDeletions={showDeletions}
+                />
+            </Viewer3D>
+            <Box
+                position="absolute"
+                top={2}
+                left={2}
+                p={2}
+                backgroundColor="canvas.default"
+                color="fg.muted"
+                borderWidth={1}
+                borderStyle="solid"
+                borderColor="border.default"
+                borderRadius={2}
+            >
+                <LegendLabel
+                    text="Unchanged"
+                    color="neutral"
+                    enabled={showUnchanged}
+                    onChange={enabled => setShowUnchanged(enabled)}
+                />
+                <LegendLabel
+                    text="Additions"
+                    color="success"
+                    enabled={showAdditions}
+                    onChange={enabled => setShowAdditions(enabled)}
+                />
+                <LegendLabel
+                    text="Deletions"
+                    color="danger"
+                    enabled={showDeletions}
+                    onChange={enabled => setShowDeletions(enabled)}
+                />
+            </Box>
+        </>
     ) : (
         <Box p={3}>
             <Text>Sorry, the rich diff can't be displayed for this file.</Text>
@@ -106,8 +145,10 @@ function LegendLabel({
                 onClick={() => onChange && onChange(!enabled)}
                 sx={{
                     border: 'none',
-                    backgroundColor: enabled ? `${color}.muted` : 'transparent',
-                    color: `${color}.emphasis`,
+                    backgroundColor: enabled
+                        ? `${color}.subtle`
+                        : 'transparent',
+                    color: `${color}.muted`,
                     cursor: 'pointer',
                 }}
             >
@@ -142,37 +183,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                 position="relative"
             >
                 {canShowUnified && showUnified && (
-                    <>
-                        <Loader3DBeforeAfter before={before} after={after} />
-                        <Box
-                            position="absolute"
-                            top={2}
-                            left={2}
-                            p={2}
-                            backgroundColor="canvas.default"
-                            color="fg.muted"
-                            borderWidth={1}
-                            borderStyle="solid"
-                            borderColor="border.default"
-                            borderRadius={2}
-                        >
-                            <LegendLabel
-                                text="Unchanged"
-                                color="neutral"
-                                enabled={false}
-                            />
-                            <LegendLabel
-                                text="Additions"
-                                color="success"
-                                enabled
-                            />
-                            <LegendLabel
-                                text="Deletions"
-                                color="danger"
-                                enabled
-                            />
-                        </Box>
-                    </>
+                    <Loader3DBeforeAfter before={before} after={after} />
                 )}
                 {!showUnified && (
                     <>
