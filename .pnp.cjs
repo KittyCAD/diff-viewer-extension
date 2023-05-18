@@ -37,7 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@octokit/rest", "npm:19.0.8"],\
             ["@octokit/types", "npm:9.2.2"],\
             ["@playwright/test", "npm:1.33.0"],\
-            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
+            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:19.1.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.1"],\
             ["@react-three/csg", "npm:2.2.0"],\
             ["@react-three/drei", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:9.68.3"],\
@@ -1347,10 +1347,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0", {\
-          "packageLocation": "./.yarn/__virtual__/@primer-octicons-react-virtual-d16ec7c115/0/cache/@primer-octicons-react-npm-18.3.0-0c85db708e-12d9578bf6.zip/node_modules/@primer/octicons-react/",\
+        ["npm:19.1.0", {\
+          "packageLocation": "./.yarn/cache/@primer-octicons-react-npm-19.1.0-a94a76c5e8-07d69f6dce.zip/node_modules/@primer/octicons-react/",\
           "packageDependencies": [\
-            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
+            ["@primer/octicons-react", "npm:19.1.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:11f58a825cd254c5316f348fcdf4bae114db486f67e78ece6df6869fb426fd26b0fd96b1e8d005d7685bc521628eb5ca2ea96400c36d5f5dc0413498a88090fc#npm:18.3.0", {\
+          "packageLocation": "./.yarn/__virtual__/@primer-octicons-react-virtual-ba0995671d/0/cache/@primer-octicons-react-npm-18.3.0-0c85db708e-12d9578bf6.zip/node_modules/@primer/octicons-react/",\
+          "packageDependencies": [\
+            ["@primer/octicons-react", "virtual:11f58a825cd254c5316f348fcdf4bae114db486f67e78ece6df6869fb426fd26b0fd96b1e8d005d7685bc521628eb5ca2ea96400c36d5f5dc0413498a88090fc#npm:18.3.0"],\
+            ["@types/react", "npm:18.2.6"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:19.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/@primer-octicons-react-virtual-b2c72efc1a/0/cache/@primer-octicons-react-npm-19.1.0-a94a76c5e8-07d69f6dce.zip/node_modules/@primer/octicons-react/",\
+          "packageDependencies": [\
+            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:19.1.0"],\
             ["@types/react", "npm:18.2.6"],\
             ["react", "npm:18.2.0"]\
           ],\
@@ -1389,7 +1409,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@github/relative-time-element", "npm:4.3.0"],\
             ["@lit-labs/react", "npm:1.1.1"],\
             ["@primer/behaviors", "npm:1.3.3"],\
-            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
+            ["@primer/octicons-react", "virtual:11f58a825cd254c5316f348fcdf4bae114db486f67e78ece6df6869fb426fd26b0fd96b1e8d005d7685bc521628eb5ca2ea96400c36d5f5dc0413498a88090fc#npm:18.3.0"],\
             ["@primer/primitives", "npm:7.11.5"],\
             ["@react-aria/ssr", "virtual:11f58a825cd254c5316f348fcdf4bae114db486f67e78ece6df6869fb426fd26b0fd96b1e8d005d7685bc521628eb5ca2ea96400c36d5f5dc0413498a88090fc#npm:3.6.0"],\
             ["@styled-system/css", "npm:5.1.5"],\
@@ -3892,7 +3912,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@octokit/rest", "npm:19.0.8"],\
             ["@octokit/types", "npm:9.2.2"],\
             ["@playwright/test", "npm:1.33.0"],\
-            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.3.0"],\
+            ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:19.1.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.1"],\
             ["@react-three/csg", "npm:2.2.0"],\
             ["@react-three/drei", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:9.68.3"],\
