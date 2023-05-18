@@ -1,6 +1,6 @@
 {
     "name": "diff-viewer-extension",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "private": true,
     "dependencies": {
         "@dicebear/avatars": "^4.10.8",
@@ -40,7 +40,7 @@
         "build": "vite build",
         "test": "vitest",
         "e2e": "yarn build && yarn playwright test",
-        "bump": "echo \"$(jq --arg v \"$VERSION\" '.version=$v' package.json --indent 4)\" > package.json && echo \"$(jq --arg v \"$VERSION\" '.version=$v' public/manifest.json --indent 4)\" > public/manifest.json"
+        "bump": "echo \"$(jq --arg v \"$VERSION\" '.version=$v' package.json --indent 4)\" > package.json && echo \"$(jq --arg v \"$VERSION\" '.version=$v' manifest.json --indent 4)\" > manifest.json"
     },
     "eslintConfig": {
         "extends": [
