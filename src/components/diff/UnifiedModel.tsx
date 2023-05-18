@@ -4,7 +4,7 @@ import { BufferGeometry } from 'three'
 import { Geometry, Base, Subtraction, Intersection } from '@react-three/csg'
 import { BaseModel } from './BaseModel'
 
-type BeforeAfterModelProps = {
+type UnifiedModelProps = {
     beforeGeometry: BufferGeometry
     afterGeometry: BufferGeometry
     cameraRef: MutableRefObject<any>
@@ -13,14 +13,14 @@ type BeforeAfterModelProps = {
     showDeletions: boolean
 }
 
-export function BeforeAfterModel({
+export function UnifiedModel({
     beforeGeometry,
     afterGeometry,
     cameraRef,
     showUnchanged,
     showAdditions,
     showDeletions,
-}: BeforeAfterModelProps) {
+}: UnifiedModelProps) {
     const { theme } = useTheme()
     const commonColor = theme?.colors.fg.muted
     const additionsColor = theme?.colors.success.muted

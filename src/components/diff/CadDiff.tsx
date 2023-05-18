@@ -6,7 +6,6 @@ import {
     Text,
     TabNav,
     StyledOcticon,
-    Label,
 } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
@@ -15,8 +14,9 @@ import { BufferAttribute, BufferGeometry, Mesh } from 'three'
 import { WireframeColors, WireframeModel } from './WireframeModel'
 import { Buffer } from 'buffer'
 import { useRef } from 'react'
-import { BeforeAfterModel } from './BeforeAfterModel'
-import { BeakerIcon, DotFillIcon } from '@primer/octicons-react'
+import { UnifiedModel } from './UnifiedModel'
+import { BeakerIcon } from '@primer/octicons-react'
+import { LegendLabel } from './Legend'
 
 function loadGeometry(file: string, checkUV = false): BufferGeometry {
     const loader = new OBJLoader()
@@ -35,7 +35,7 @@ function loadGeometry(file: string, checkUV = false): BufferGeometry {
     return geometry
 }
 
-function Loader3DBeforeAfter({
+function Loader3DUnified({
     before,
     after,
 }: {
@@ -57,7 +57,7 @@ function Loader3DBeforeAfter({
     return beforeGeometry && afterGeometry ? (
         <>
             <Viewer3D cameraRef={cameraRef} geometry={beforeGeometry}>
-                <BeforeAfterModel
+                <UnifiedModel
                     beforeGeometry={beforeGeometry}
                     afterGeometry={afterGeometry}
                     cameraRef={cameraRef}
@@ -126,39 +126,6 @@ function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
     )
 }
 
-interface LegendLabelProps {
-    text: string
-    color: 'neutral' | 'danger' | 'success'
-    enabled: boolean
-    onChange?: (enabled: boolean) => void
-}
-
-function LegendLabel({
-    text,
-    color,
-    enabled,
-    onChange,
-}: LegendLabelProps): React.ReactElement {
-    return (
-        <Box py={1}>
-            <Label
-                onClick={() => onChange && onChange(!enabled)}
-                sx={{
-                    border: 'none',
-                    backgroundColor: enabled
-                        ? `${color}.subtle`
-                        : 'transparent',
-                    color: `${color}.muted`,
-                    cursor: 'pointer',
-                }}
-            >
-                <DotFillIcon size={16} />
-                <Text color="fg.default">{text}</Text>
-            </Label>
-        </Box>
-    )
-}
-
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     const canShowUnified = before && after
     let [showUnified, setShowUnified] = useState(false)
@@ -183,7 +150,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                 position="relative"
             >
                 {canShowUnified && showUnified && (
-                    <Loader3DBeforeAfter before={before} after={after} />
+                    <Loader3DUnified before={before} after={after} />
                 )}
                 {!showUnified && (
                     <>
