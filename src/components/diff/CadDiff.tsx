@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, useTheme, Text, TabNav, StyledOcticon } from '@primer/react'
+import {
+    Box,
+    useTheme,
+    Text,
+    TabNav,
+    StyledOcticon,
+    Label,
+} from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
@@ -9,7 +16,7 @@ import { WireframeColors, WireframeModel } from './WireframeModel'
 import { Buffer } from 'buffer'
 import { useRef } from 'react'
 import { BeforeAfterModel } from './BeforeAfterModel'
-import { BeakerIcon } from '@primer/octicons-react'
+import { BeakerIcon, DotFillIcon } from '@primer/octicons-react'
 
 function loadGeometry(file: string, checkUV = false): BufferGeometry {
     const loader = new OBJLoader()
@@ -80,6 +87,37 @@ function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
     )
 }
 
+interface LegendLabelProps {
+    text: string
+    color: 'neutral' | 'danger' | 'success'
+    enabled: boolean
+    onChange?: (enabled: boolean) => void
+}
+
+function LegendLabel({
+    text,
+    color,
+    enabled,
+    onChange,
+}: LegendLabelProps): React.ReactElement {
+    return (
+        <Box py={1}>
+            <Label
+                onClick={() => onChange && onChange(!enabled)}
+                sx={{
+                    border: 'none',
+                    backgroundColor: enabled ? `${color}.muted` : 'transparent',
+                    color: `${color}.emphasis`,
+                    cursor: 'pointer',
+                }}
+            >
+                <DotFillIcon size={16} />
+                <Text color="fg.default">{text}</Text>
+            </Label>
+        </Box>
+    )
+}
+
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     const canShowUnified = before && after
     let [showUnified, setShowUnified] = useState(false)
@@ -96,9 +134,45 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     }
     return (
         <>
-            <Box display="flex" height={300} overflow="hidden" minWidth={0}>
+            <Box
+                display="flex"
+                height={300}
+                overflow="hidden"
+                minWidth={0}
+                position="relative"
+            >
                 {canShowUnified && showUnified && (
-                    <Loader3DBeforeAfter before={before} after={after} />
+                    <>
+                        <Loader3DBeforeAfter before={before} after={after} />
+                        <Box
+                            position="absolute"
+                            top={2}
+                            left={2}
+                            p={2}
+                            backgroundColor="canvas.default"
+                            color="fg.muted"
+                            borderWidth={1}
+                            borderStyle="solid"
+                            borderColor="border.default"
+                            borderRadius={2}
+                        >
+                            <LegendLabel
+                                text="Unchanged"
+                                color="neutral"
+                                enabled={false}
+                            />
+                            <LegendLabel
+                                text="Additions"
+                                color="success"
+                                enabled
+                            />
+                            <LegendLabel
+                                text="Deletions"
+                                color="danger"
+                                enabled
+                            />
+                        </Box>
+                    </>
                 )}
                 {!showUnified && (
                     <>
