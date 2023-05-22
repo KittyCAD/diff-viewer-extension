@@ -10,7 +10,7 @@ import { Buffer } from 'buffer'
 import { useRef } from 'react'
 import { UnifiedModel } from './UnifiedModel'
 import { BeakerIcon } from '@primer/octicons-react'
-import { LegendLabel } from './LegendLabel'
+import { LegendBox, LegendLabel } from './Legend'
 
 function loadGeometry(file: string, checkUV = false): BufferGeometry {
     const loader = new OBJLoader()
@@ -54,18 +54,7 @@ function Loader3DUnified({ before, after }: { before: string; after: string }) {
                     showDeletions={showDeletions}
                 />
             </Viewer3D>
-            <Box
-                position="absolute"
-                top={2}
-                left={2}
-                p={2}
-                backgroundColor="canvas.default"
-                color="fg.muted"
-                borderWidth={1}
-                borderStyle="solid"
-                borderColor="border.default"
-                borderRadius={2}
-            >
+            <LegendBox>
                 <LegendLabel
                     text="Unchanged"
                     color="neutral"
@@ -84,7 +73,7 @@ function Loader3DUnified({ before, after }: { before: string; after: string }) {
                     enabled={showDeletions}
                     onChange={enabled => setShowDeletions(enabled)}
                 />
-            </Box>
+            </LegendBox>
         </>
     ) : (
         <Box p={3}>
