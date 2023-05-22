@@ -1177,9 +1177,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.68.3":
-  version: 9.68.3
-  resolution: "@react-three/drei@npm:9.68.3"
+"@react-three/drei@npm:^9.68.6":
+  version: 9.68.6
+  resolution: "@react-three/drei@npm:9.68.6"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@react-spring/three": ~9.6.1
@@ -1197,7 +1197,7 @@ __metadata:
     stats.js: ^0.17.0
     suspend-react: ^0.0.8
     three-mesh-bvh: ^0.5.23
-    three-stdlib: ^2.21.8
+    three-stdlib: ^2.21.12
     troika-three-text: ^0.47.1
     utility-types: ^3.10.0
     zustand: ^3.5.13
@@ -1209,7 +1209,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: be57bb2b73788ba4543163bc68679bc79afc9bc5ae190be0b02b771a89649e9bca1ff497f0afcc336306e38b19d24c5d7332f3a6a7b8f350b0c26d7fe1379e59
+  checksum: 30b03b5014f4fe6b27f7c7312e3e10941aba57fad3f195b9af20f812ca5b89803a5d8c510a9376511ca75c2a4fedf75c8525b56956d211b0e961a2b9b263aa8e
   languageName: node
   linkType: hard
 
@@ -3088,7 +3088,7 @@ __metadata:
     "@primer/octicons-react": ^19.1.0
     "@primer/react": ^35.25.0
     "@react-three/csg": ^2.2.0
-    "@react-three/drei": ^9.68.3
+    "@react-three/drei": ^9.68.6
     "@react-three/fiber": ^8.12.2
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^14.0.0
@@ -6885,9 +6885,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three-stdlib@npm:^2.21.8":
-  version: 2.21.10
-  resolution: "three-stdlib@npm:2.21.10"
+"three-stdlib@npm:^2.21.12":
+  version: 2.21.12
+  resolution: "three-stdlib@npm:2.21.12"
   dependencies:
     "@babel/runtime": ^7.16.7
     "@types/offscreencanvas": ^2019.6.4
@@ -6902,7 +6902,7 @@ __metadata:
     zstddec: ^0.0.2
   peerDependencies:
     three: ">=0.122.0"
-  checksum: 3f26ab13a7dd700187cfc5e9c1cbd64cff7eb1465b45cfa5f7ff5296e054151212dbe14257b149b75775cef7060c8ea6b4a4620000c488cb448dcd9d48961ea9
+  checksum: 9a80a1107934bbcd601603214302bd4302347a72be4c2475dec6261d99b5541d7af3dc1a939f3b6a44dd17f712f3e83088900a9675a25ad39d9f9767bc155dbd
   languageName: node
   linkType: hard
 
