@@ -32,7 +32,7 @@
         "react-is": "^18.2.0",
         "styled-components": "^5.3.10",
         "three": "^0.152.2",
-        "three-mesh-bvh": "^0.5.23",
+        "three-mesh-bvh": "^0.5.24",
         "typescript": "^4.9.5"
     },
     "scripts": {

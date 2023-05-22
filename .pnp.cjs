@@ -67,7 +67,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-is", "npm:18.2.0"],\
             ["styled-components", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.3.10"],\
             ["three", "npm:0.152.2"],\
-            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23"],\
+            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.24"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"],\
             ["vite", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.3.7"],\
             ["vite-plugin-node-polyfills", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.8.2"],\
@@ -1637,7 +1637,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["stats.js", "npm:0.17.0"],\
             ["suspend-react", "virtual:c4d2a756fa3ffd9106f5ba3a7852940725963f6aa0d2b2bc4d193615aa52ff9bec608c0a5cd6375614b7f6b7af00d6238bf0c755b4e97e4696ec10666d4f04f9#npm:0.0.8"],\
             ["three", "npm:0.152.2"],\
-            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23"],\
+            ["three-mesh-bvh", "virtual:c4d2a756fa3ffd9106f5ba3a7852940725963f6aa0d2b2bc4d193615aa52ff9bec608c0a5cd6375614b7f6b7af00d6238bf0c755b4e97e4696ec10666d4f04f9#npm:0.5.23"],\
             ["three-stdlib", "virtual:c4d2a756fa3ffd9106f5ba3a7852940725963f6aa0d2b2bc4d193615aa52ff9bec608c0a5cd6375614b7f6b7af00d6238bf0c755b4e97e4696ec10666d4f04f9#npm:2.21.10"],\
             ["troika-three-text", "virtual:c4d2a756fa3ffd9106f5ba3a7852940725963f6aa0d2b2bc4d193615aa52ff9bec608c0a5cd6375614b7f6b7af00d6238bf0c755b4e97e4696ec10666d4f04f9#npm:0.47.1"],\
             ["utility-types", "npm:3.10.0"],\
@@ -3942,7 +3942,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-is", "npm:18.2.0"],\
             ["styled-components", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.3.10"],\
             ["three", "npm:0.152.2"],\
-            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23"],\
+            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.24"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"],\
             ["vite", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.3.7"],\
             ["vite-plugin-node-polyfills", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.8.2"],\
@@ -8271,10 +8271,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23", {\
-          "packageLocation": "./.yarn/__virtual__/three-mesh-bvh-virtual-e40e23a8af/0/cache/three-mesh-bvh-npm-0.5.23-1c2fe9e70e-40f5821409.zip/node_modules/three-mesh-bvh/",\
+        ["npm:0.5.24", {\
+          "packageLocation": "./.yarn/cache/three-mesh-bvh-npm-0.5.24-40e3c9a8af-5a5e356111.zip/node_modules/three-mesh-bvh/",\
           "packageDependencies": [\
-            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.23"],\
+            ["three-mesh-bvh", "npm:0.5.24"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:c4d2a756fa3ffd9106f5ba3a7852940725963f6aa0d2b2bc4d193615aa52ff9bec608c0a5cd6375614b7f6b7af00d6238bf0c755b4e97e4696ec10666d4f04f9#npm:0.5.23", {\
+          "packageLocation": "./.yarn/__virtual__/three-mesh-bvh-virtual-56085b0e84/0/cache/three-mesh-bvh-npm-0.5.23-1c2fe9e70e-40f5821409.zip/node_modules/three-mesh-bvh/",\
+          "packageDependencies": [\
+            ["three-mesh-bvh", "virtual:c4d2a756fa3ffd9106f5ba3a7852940725963f6aa0d2b2bc4d193615aa52ff9bec608c0a5cd6375614b7f6b7af00d6238bf0c755b4e97e4696ec10666d4f04f9#npm:0.5.23"],\
+            ["@types/three", "npm:0.152.0"],\
+            ["three", "npm:0.152.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/three",\
+            "three"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.24", {\
+          "packageLocation": "./.yarn/__virtual__/three-mesh-bvh-virtual-549362ed12/0/cache/three-mesh-bvh-npm-0.5.24-40e3c9a8af-5a5e356111.zip/node_modules/three-mesh-bvh/",\
+          "packageDependencies": [\
+            ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.5.24"],\
             ["@types/three", "npm:0.152.0"],\
             ["three", "npm:0.152.2"]\
           ],\

@@ -3115,7 +3115,7 @@ __metadata:
     react-is: ^18.2.0
     styled-components: ^5.3.10
     three: ^0.152.2
-    three-mesh-bvh: ^0.5.23
+    three-mesh-bvh: ^0.5.24
     typescript: ^4.9.5
     vite: ^4.3.7
     vite-plugin-node-polyfills: ^0.8.2
@@ -6873,6 +6873,15 @@ __metadata:
   peerDependencies:
     three: ">= 0.123.0"
   checksum: 40f582140994c6d8e7ec0d8ab990215483b08c7245963b778e6c2389c7a8f7b6287dbecb071f8a5351b2c91b7e31aae717b0dfcd6aace0c6b6d67d09927218f4
+  languageName: node
+  linkType: hard
+
+"three-mesh-bvh@npm:^0.5.24":
+  version: 0.5.24
+  resolution: "three-mesh-bvh@npm:0.5.24"
+  peerDependencies:
+    three: ">= 0.123.0"
+  checksum: 5a5e356111756869cfd00870bca2d881d3019b55e71142b5eee544a2e6bcc3546a340b0defa29c3ebe7ed4cfe99e7ee6addd5671bb89852841107189c0f98157
   languageName: node
   linkType: hard
 
