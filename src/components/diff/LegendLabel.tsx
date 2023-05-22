@@ -1,7 +1,7 @@
 import { DotFillIcon } from '@primer/octicons-react'
 import { Box, Label, Text } from '@primer/react'
 
-export interface LegendLabelProps {
+export type LegendLabelProps = {
     text: string
     color: 'neutral' | 'danger' | 'success'
     enabled: boolean

@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import {
-    Box,
-    useTheme,
-    Text,
-    TabNav,
-    StyledOcticon,
-} from '@primer/react'
+import { Box, useTheme, Text, TabNav, StyledOcticon } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
@@ -16,7 +10,7 @@ import { Buffer } from 'buffer'
 import { useRef } from 'react'
 import { UnifiedModel } from './UnifiedModel'
 import { BeakerIcon } from '@primer/octicons-react'
-import { LegendLabel } from './Legend'
+import { LegendLabel } from './LegendLabel'
 
 function loadGeometry(file: string, checkUV = false): BufferGeometry {
     const loader = new OBJLoader()
@@ -35,13 +29,7 @@ function loadGeometry(file: string, checkUV = false): BufferGeometry {
     return geometry
 }
 
-function Loader3DUnified({
-    before,
-    after,
-}: {
-    before: string
-    after: string
-}) {
+function Loader3DUnified({ before, after }: { before: string; after: string }) {
     const [showUnchanged, setShowUnchanged] = useState(true)
     const [showAdditions, setShowAdditions] = useState(true)
     const [showDeletions, setShowDeletions] = useState(true)
