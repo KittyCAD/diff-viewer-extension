@@ -9,7 +9,7 @@
         "@octokit/openapi-types": "^17.2.0",
         "@octokit/rest": "^19.0.8",
         "@octokit/types": "^9.2.2",
-        "@primer/octicons-react": "^18.3.0",
+        "@primer/octicons-react": "^19.1.0",
         "@primer/react": "^35.25.0",
         "@react-three/csg": "^2.2.0",
         "@react-three/drei": "^9.68.3",
