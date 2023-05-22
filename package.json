@@ -9,7 +9,7 @@
         "@octokit/openapi-types": "^17.2.0",
         "@octokit/rest": "^19.0.8",
         "@octokit/types": "^9.2.2",
-        "@primer/octicons-react": "^18.3.0",
+        "@primer/octicons-react": "^19.1.0",
         "@primer/react": "^35.25.0",
         "@react-three/csg": "^2.2.0",
         "@react-three/drei": "^9.68.3",
@@ -19,7 +19,7 @@
         "@testing-library/user-event": "^14.4.3",
         "@types/chrome": "^0.0.236",
         "@types/jest": "^29.5.0",
-        "@types/node": "^20.1.2",
+        "@types/node": "^20.2.3",
         "@types/react": "^18.2.6",
         "@types/react-dom": "^18.2.4",
         "@types/testing-library__jest-dom": "^5.14.5",
@@ -32,7 +32,7 @@
         "react-is": "^18.2.0",
         "styled-components": "^5.3.10",
         "three": "^0.152.2",
-        "three-mesh-bvh": "^0.5.23",
+        "three-mesh-bvh": "^0.5.24",
         "typescript": "^4.9.5"
     },
     "scripts": {
@@ -82,9 +82,9 @@
         "eslint-plugin-react": "^7.32.2",
         "jsdom": "^22.0.0",
         "prettier": "^2.8.7",
-        "vite": "^4.3.7",
+        "vite": "^4.3.8",
         "vite-plugin-node-polyfills": "^0.8.2",
-        "vitest": "^0.31.0"
+        "vitest": "^0.31.1"
     },
     "packageManager": "yarn@3.5.1",
     "engines": {
