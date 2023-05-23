@@ -101,6 +101,35 @@ function CadDiffPortal({
     )
 }
 
+function CadDiffLoadingPortal({
+    element,
+}: {
+    element: HTMLElement
+}): React.ReactElement {
+    const [diffContainer, setDiffContainer] = useState<HTMLElement>()
+
+    useEffect(() => {
+        const diff = element.querySelector<HTMLElement>('.js-file-content')
+        if (diff != null) {
+            setDiffContainer(diff)
+            const sourceElements = Array.from(diff.children) as HTMLElement[]
+            sourceElements.map(n => (n.style.display = 'none'))
+        }
+    }, [element])
+
+    return (
+        <>
+            {diffContainer &&
+                createPortal(
+                    <Box>
+                        <Loading />
+                    </Box>,
+                    diffContainer
+                )}
+        </>
+    )
+}
+
 export type CadDiffPageProps = {
     map: { element: HTMLElement; file: DiffEntry }[]
     owner: string
@@ -128,6 +157,22 @@ export function CadDiffPage({
                     sha={sha}
                     parentSha={parentSha}
                 />
+            ))}
+        </ThemeProvider>
+    )
+}
+
+export type CadDiffLoadingPageProps = {
+    elements: HTMLElement[]
+}
+
+export function CadDiffLoadingPage({
+    elements,
+}: CadDiffLoadingPageProps): React.ReactElement {
+    return (
+        <ThemeProvider colorMode="auto">
+            {elements.map(element => (
+                <CadDiffLoadingPortal key={element.id} element={element} />
             ))}
         </ThemeProvider>
     )

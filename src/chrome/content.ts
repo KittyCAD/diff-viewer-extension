@@ -1,11 +1,12 @@
 import React from 'react'
-import { CadDiffPage } from '../components/diff/CadDiffPage'
+import { CadDiffLoadingPage, CadDiffPage } from '../components/diff/CadDiffPage'
 import { Commit, DiffEntry, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
     mapInjectableDiffElements,
     getGithubCommitUrlParams,
     createReactRoot,
+    getSupportedWebDiffElements,
 } from './web'
 import gitHubInjection from 'github-injection'
 
@@ -74,6 +75,13 @@ async function injectCommitDiff(
 async function run() {
     const url = window.location.href
     const pullParams = getGithubPullUrlParams(url)
+
+    const elements = getSupportedWebDiffElements(document)
+    const cadDiffLoadingPage = React.createElement(CadDiffLoadingPage, {
+        elements,
+    })
+    root.render(cadDiffLoadingPage)
+
     if (pullParams) {
         const { owner, repo, pull } = pullParams
         console.log('Found PR diff: ', owner, repo, pull)
