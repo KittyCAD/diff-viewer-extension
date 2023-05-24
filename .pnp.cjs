@@ -50,7 +50,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:20.2.3"],\
             ["@types/react", "npm:18.2.6"],\
             ["@types/react-dom", "npm:18.2.4"],\
-            ["@types/testing-library__jest-dom", "npm:5.14.5"],\
+            ["@types/testing-library__jest-dom", "npm:5.14.6"],\
             ["@types/three", "npm:0.152.0"],\
             ["@vitejs/plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.0.0"],\
             ["buffer", "npm:6.0.3"],\
@@ -2383,6 +2383,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:29.5.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:5.14.6", {\
+          "packageLocation": "./.yarn/cache/@types-testing-library__jest-dom-npm-5.14.6-d8914e1c73-92f81cefea.zip/node_modules/@types/testing-library__jest-dom/",\
+          "packageDependencies": [\
+            ["@types/testing-library__jest-dom", "npm:5.14.6"],\
+            ["@types/jest", "npm:29.5.1"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@types/three", [\
@@ -3935,7 +3943,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:20.2.3"],\
             ["@types/react", "npm:18.2.6"],\
             ["@types/react-dom", "npm:18.2.4"],\
-            ["@types/testing-library__jest-dom", "npm:5.14.5"],\
+            ["@types/testing-library__jest-dom", "npm:5.14.6"],\
             ["@types/three", "npm:0.152.0"],\
             ["@vitejs/plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.0.0"],\
             ["buffer", "npm:6.0.3"],\
