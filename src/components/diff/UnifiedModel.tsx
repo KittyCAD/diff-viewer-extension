@@ -4,21 +4,27 @@ import { BufferGeometry } from 'three'
 import { Geometry, Base, Subtraction, Intersection } from '@react-three/csg'
 import { BaseModel } from './BaseModel'
 
-type BeforeAfterModelProps = {
+type UnifiedModelProps = {
     beforeGeometry: BufferGeometry
     afterGeometry: BufferGeometry
     cameraRef: MutableRefObject<any>
+    showUnchanged: boolean
+    showAdditions: boolean
+    showDeletions: boolean
 }
 
-export function BeforeAfterModel({
+export function UnifiedModel({
     beforeGeometry,
     afterGeometry,
     cameraRef,
-}: BeforeAfterModelProps) {
+    showUnchanged,
+    showAdditions,
+    showDeletions,
+}: UnifiedModelProps) {
     const { theme } = useTheme()
-    const commonColor = theme?.colors.fg.default
-    const additionsColor = theme?.colors.success.fg
-    const deletionsColor = theme?.colors.danger.fg
+    const commonColor = theme?.colors.fg.muted
+    const additionsColor = theme?.colors.success.muted
+    const deletionsColor = theme?.colors.danger.muted
 
     return (
         // TODO: here we give beforeGeometry for auto camera centering,
@@ -29,7 +35,7 @@ export function BeforeAfterModel({
                 <meshPhongMaterial
                     color={commonColor}
                     transparent
-                    opacity={0.95}
+                    opacity={showUnchanged ? 0.8 : 0}
                 />
                 <Geometry>
                     <Base geometry={beforeGeometry} />
@@ -38,7 +44,11 @@ export function BeforeAfterModel({
             </mesh>
             {/* Additions */}
             <mesh>
-                <meshPhongMaterial color={additionsColor} />
+                <meshPhongMaterial
+                    color={additionsColor}
+                    transparent
+                    opacity={showAdditions ? 1 : 0}
+                />
                 <Geometry>
                     <Base geometry={afterGeometry} />
                     <Subtraction geometry={beforeGeometry} />
@@ -46,7 +56,11 @@ export function BeforeAfterModel({
             </mesh>
             {/* Deletions */}
             <mesh>
-                <meshPhongMaterial color={deletionsColor} />
+                <meshPhongMaterial
+                    color={deletionsColor}
+                    transparent
+                    opacity={showDeletions ? 1 : 0}
+                />
                 <Geometry>
                     <Base geometry={beforeGeometry} />
                     <Subtraction geometry={afterGeometry} />
