@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@kittycad/lib", "npm:0.0.19"],\
             ["@octokit/openapi-types", "npm:17.2.0"],\
             ["@octokit/rest", "npm:19.0.11"],\
-            ["@octokit/types", "npm:9.2.2"],\
+            ["@octokit/types", "npm:9.2.3"],\
             ["@playwright/test", "npm:1.33.0"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:19.1.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.1"],\
@@ -1316,14 +1316,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@octokit/types", "npm:9.2.0"],\
             ["@octokit/openapi-types", "npm:17.1.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:9.2.2", {\
-          "packageLocation": "./.yarn/cache/@octokit-types-npm-9.2.2-38ff7a6675-6bbf7e55c1.zip/node_modules/@octokit/types/",\
-          "packageDependencies": [\
-            ["@octokit/types", "npm:9.2.2"],\
-            ["@octokit/openapi-types", "npm:17.2.0"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -3928,7 +3920,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@kittycad/lib", "npm:0.0.19"],\
             ["@octokit/openapi-types", "npm:17.2.0"],\
             ["@octokit/rest", "npm:19.0.11"],\
-            ["@octokit/types", "npm:9.2.2"],\
+            ["@octokit/types", "npm:9.2.3"],\
             ["@playwright/test", "npm:1.33.0"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:19.1.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.1"],\
