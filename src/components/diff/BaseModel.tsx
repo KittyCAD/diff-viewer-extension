@@ -1,17 +1,17 @@
 import { useThree } from '@react-three/fiber'
 import type { MutableRefObject, PropsWithChildren } from 'react'
 import { Suspense, useEffect, useRef } from 'react'
-import { BufferGeometry } from 'three'
+import { Sphere } from 'three'
 import { Vector3 } from 'three'
 import { calculateFovFactor } from './Camera'
 
 type BaseModelProps = {
     cameraRef: MutableRefObject<any>
-    geometry: BufferGeometry
+    boundingSphere: Sphere | null | undefined
 }
 
 export function BaseModel({
-    geometry,
+    boundingSphere,
     cameraRef,
     children,
 }: PropsWithChildren<BaseModelProps>) {
@@ -21,14 +21,9 @@ export function BaseModel({
 
     // Camera view, adapted from KittyCAD/website
     useEffect(() => {
-        if (geometry && cameraRef.current) {
-            geometry.computeBoundingSphere()
-            // TODO: understand the implications of this,
-            // it's been disabled as it was causing before and after to be misaligned
-            // geometry.center()
-
+        if (boundingSphere && cameraRef.current) {
             // move the camera away so the object fits in the view
-            const { radius } = geometry.boundingSphere || { radius: 1 }
+            const { radius } = boundingSphere || { radius: 1 }
             if (!camera.position.length()) {
                 const arbitraryNonZeroStartPosition = new Vector3(0.5, 0.5, 1)
                 camera.position.copy(arbitraryNonZeroStartPosition)
@@ -42,7 +37,7 @@ export function BaseModel({
             camera.zoom = fovFactor / camera.position.length()
             camera.updateProjectionMatrix()
         }
-    }, [geometry, camera, cameraRef, canvasHeight])
+    }, [boundingSphere, camera, cameraRef, canvasHeight])
 
     return (
         <Suspense fallback={null}>

@@ -25,7 +25,7 @@ export function WireframeModel({ geometry, cameraRef, colors }: Props) {
     )
 
     return (
-        <BaseModel geometry={geometry} cameraRef={cameraRef}>
+        <BaseModel boundingSphere={geometry.boundingSphere} cameraRef={cameraRef}>
             <group ref={groupRef}>
                 <mesh
                     castShadow={true}
