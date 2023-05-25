@@ -59,6 +59,7 @@ function CadDiffPortal({
             })
             if ('error' in response) {
                 console.log(response.error)
+                setRichDiff({ before: undefined, after: undefined})
             } else {
                 setRichDiff(response as FileDiff)
             }
