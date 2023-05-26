@@ -11,6 +11,7 @@ import { useRef } from 'react'
 import { UnifiedModel } from './UnifiedModel'
 import { BeakerIcon } from '@primer/octicons-react'
 import { LegendBox, LegendLabel } from './Legend'
+import { ErrorMessage } from './ErrorMessage'
 
 function loadGeometry(file: string, checkUV = false): BufferGeometry {
     const loader = new OBJLoader()
@@ -76,9 +77,7 @@ function Loader3DUnified({ before, after }: { before: string; after: string }) {
             </LegendBox>
         </>
     ) : (
-        <Box p={3}>
-            <Text>Sorry, the rich diff can't be displayed for this file.</Text>
-        </Box>
+        <ErrorMessage />
     )
 }
 
@@ -97,9 +96,7 @@ function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
             />
         </Viewer3D>
     ) : (
-        <Box p={3}>
-            <Text>Sorry, the rich diff can't be displayed for this file.</Text>
-        </Box>
+        <ErrorMessage />
     )
 }
 
@@ -152,14 +149,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                                 <Loader3D file={after} colors={afterColors} />
                             </Box>
                         )}
-                        {!before && !after && (
-                            <Box p={3}>
-                                <Text>
-                                    Sorry, the rich diff can't be displayed for
-                                    this file.
-                                </Text>
-                            </Box>
-                        )}
+                        {!before && !after && <ErrorMessage />}
                     </>
                 )}
             </Box>
