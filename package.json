@@ -72,7 +72,7 @@
         ]
     },
     "devDependencies": {
-        "@babel/runtime": "^7.21.0",
+        "@babel/runtime": "^7.22.3",
         "@crxjs/vite-plugin": "^1.0.14",
         "@playwright/test": "^1.34.3",
         "@vitejs/plugin-react": "^4.0.0",
