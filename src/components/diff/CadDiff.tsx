@@ -180,8 +180,8 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
     const [boundingSphere, setBoundingSphere] = useState<Sphere>()
     useEffect(() => {
-        let beforeGeometry: BufferGeometry
-        let afterGeometry: BufferGeometry
+        let beforeGeometry: BufferGeometry | undefined = undefined
+        let afterGeometry: BufferGeometry | undefined = undefined
         if (before) {
             beforeGeometry = loadGeometry(before, true)
             setBeforeGeometry(beforeGeometry)

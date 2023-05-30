@@ -3,7 +3,7 @@ import { useThree } from '@react-three/fiber'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Sphere } from 'three'
 
-function CameraLighting({ boundingSphere }: { boundingSphere: Sphere }) {
+function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
     const ref1 = useRef<any>()
     const ref2 = useRef<any>()
     useEffect(() => {
@@ -22,7 +22,7 @@ function CameraLighting({ boundingSphere }: { boundingSphere: Sphere }) {
                 intensity={4}
                 castShadow
                 shadow-mapSize={[1024, 1024]}
-                shadowCameraNear={1}
+                shadow-cameraNear={1}
             />
             <spotLight
                 ref={ref2}
@@ -42,7 +42,7 @@ export function calculateFovFactor(fov: number, canvasHeight: number): number {
     return pixelsFromCenterToTop / Math.tan(halfFovRadians)
 }
 
-export function Camera({ boundingSphere }: { boundingSphere: Sphere }) {
+export function Camera({ boundingSphere }: { boundingSphere?: Sphere }) {
     const fov = 15
     const persRef = useRef<any>(null)
     const orthoRef = useRef<any>(null)

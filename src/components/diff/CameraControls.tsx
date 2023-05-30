@@ -4,7 +4,7 @@ import { Vector3 } from 'three'
 
 type Props = {
     cameraRef: any
-    target: Vector3
+    target?: Vector3
 }
 
 export function CameraControls({ cameraRef, target }: Props) {

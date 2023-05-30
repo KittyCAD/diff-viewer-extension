@@ -9,7 +9,7 @@ import { Sphere } from 'three'
 type Viewer3DProps = {
     cameraRef: MutableRefObject<any>
     geometry: BufferGeometry
-    boundingSphere: Sphere
+    boundingSphere?: Sphere
 }
 
 export function Viewer3D({
@@ -23,7 +23,7 @@ export function Viewer3D({
             {children}
             <CameraControls
                 cameraRef={cameraRef}
-                target={boundingSphere.center}
+                target={boundingSphere?.center}
             />
             {geometry && <Camera boundingSphere={boundingSphere} />}
         </Canvas>
