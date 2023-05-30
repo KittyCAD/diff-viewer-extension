@@ -1,7 +1,7 @@
 import type { MutableRefObject } from 'react'
 import { useMemo, useRef } from 'react'
 import { BufferGeometry, DoubleSide } from 'three'
-import { EdgesGeometry } from 'three'
+import { EdgesGeometry, Sphere } from 'three'
 import { BaseModel } from './BaseModel'
 
 export type WireframeColors = {
@@ -14,18 +14,27 @@ type Props = {
     cameraRef: MutableRefObject<any>
     geometry: BufferGeometry
     colors: WireframeColors
+    boundingSphere?: Sphere
 }
 
-export function WireframeModel({ geometry, cameraRef, colors }: Props) {
+export function WireframeModel({
+    geometry,
+    boundingSphere,
+    cameraRef,
+    colors,
+}: Props) {
     const groupRef = useRef<any>()
     const edgeThresholdAngle = 10
     const edges = useMemo(
-        () => new EdgesGeometry(geometry.center(), edgeThresholdAngle),
+        () => new EdgesGeometry(geometry, edgeThresholdAngle),
         [geometry]
     )
 
     return (
-        <BaseModel boundingSphere={geometry.boundingSphere} cameraRef={cameraRef}>
+        <BaseModel
+            boundingSphere={boundingSphere || geometry.boundingSphere}
+            cameraRef={cameraRef}
+        >
             <group ref={groupRef}>
                 <mesh
                     castShadow={true}
