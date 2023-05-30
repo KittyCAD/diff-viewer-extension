@@ -26,6 +26,7 @@ function loadGeometry(file: string, checkUV = false): BufferGeometry {
             new BufferAttribute(new Float32Array([]), 1)
         )
     }
+    geometry.computeBoundingSphere() // will be used for auto-centering
     return geometry
 }
 

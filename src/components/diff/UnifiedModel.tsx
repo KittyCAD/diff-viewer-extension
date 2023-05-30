@@ -1,6 +1,14 @@
 import type { MutableRefObject } from 'react'
 import { useTheme } from '@primer/react'
-import { BufferGeometry } from 'three'
+import {
+    Box3,
+    BufferGeometry,
+    Group,
+    Mesh,
+    MeshBasicMaterial,
+    Sphere,
+    Vector3,
+} from 'three'
 import { Geometry, Base, Subtraction, Intersection } from '@react-three/csg'
 import { BaseModel } from './BaseModel'
 
@@ -11,6 +19,20 @@ type UnifiedModelProps = {
     showUnchanged: boolean
     showAdditions: boolean
     showDeletions: boolean
+}
+
+function getCommonSphere(
+    beforeGeometry: BufferGeometry,
+    afterGeometry: BufferGeometry
+) {
+    const group = new Group()
+    const dummyMaterial = new MeshBasicMaterial()
+    group.add(new Mesh(beforeGeometry, dummyMaterial))
+    group.add(new Mesh(afterGeometry, dummyMaterial))
+    const boundingBox = new Box3().setFromObject(group)
+    const center = new Vector3()
+    boundingBox.getCenter(center)
+    return boundingBox.getBoundingSphere(new Sphere(center))
 }
 
 export function UnifiedModel({
@@ -27,9 +49,10 @@ export function UnifiedModel({
     const deletionsColor = theme?.colors.danger.muted
 
     return (
-        // TODO: here we give beforeGeometry for auto camera centering,
-        // for the lack of something better. Need to check the implications
-        <BaseModel geometry={beforeGeometry} cameraRef={cameraRef}>
+        <BaseModel
+            boundingSphere={getCommonSphere(beforeGeometry, afterGeometry)}
+            cameraRef={cameraRef}
+        >
             {/* Unchanged */}
             <mesh>
                 <meshPhongMaterial
