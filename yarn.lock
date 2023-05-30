@@ -256,7 +256,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.7, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.9.2":
   version: 7.21.0
   resolution: "@babel/runtime@npm:7.21.0"
   dependencies:
@@ -1185,9 +1185,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.68.6":
-  version: 9.68.6
-  resolution: "@react-three/drei@npm:9.68.6"
+"@react-three/drei@npm:^9.70.0":
+  version: 9.70.0
+  resolution: "@react-three/drei@npm:9.70.0"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@react-spring/three": ~9.6.1
@@ -1205,7 +1205,7 @@ __metadata:
     stats.js: ^0.17.0
     suspend-react: ^0.0.8
     three-mesh-bvh: ^0.5.23
-    three-stdlib: ^2.21.12
+    three-stdlib: ^2.22.10
     troika-three-text: ^0.47.1
     utility-types: ^3.10.0
     zustand: ^3.5.13
@@ -1217,7 +1217,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 30b03b5014f4fe6b27f7c7312e3e10941aba57fad3f195b9af20f812ca5b89803a5d8c510a9376511ca75c2a4fedf75c8525b56956d211b0e961a2b9b263aa8e
+  checksum: f457ad1180b650361c4d770e2d3b332e6802b66468c6ce9fcead6fe697ba2e8cf04e742aa934f6a970ea1680c17ecee1dec754e55a4e4a367005445ea2346c3a
   languageName: node
   linkType: hard
 
@@ -1579,6 +1579,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/draco3d@npm:^1.4.0":
+  version: 1.4.2
+  resolution: "@types/draco3d@npm:1.4.2"
+  checksum: d8e60db5e7e51081b32700d8f0defa537b41249eac6fe39e4af4e3e002f131acfd2a5e993bcfde9b597b30413726fbe6189a7b3bd970a3d7e9da93ef2e098283
+  languageName: node
+  linkType: hard
+
 "@types/estree@npm:^1.0.0":
   version: 1.0.1
   resolution: "@types/estree@npm:1.0.1"
@@ -1842,6 +1849,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webxr@npm:^0.5.2":
+  version: 0.5.2
+  resolution: "@types/webxr@npm:0.5.2"
+  checksum: e3387c3d64c140557796a4bcececd82d912a88f73ff8e34bf51c04d44078390fbe4756b256b2844b1ae4664a883d46f96bb40913d21f12e9ab484d9d8dbc68c3
+  languageName: node
+  linkType: hard
+
 "@types/yargs-parser@npm:*":
   version: 21.0.0
   resolution: "@types/yargs-parser@npm:21.0.0"
@@ -1948,13 +1962,6 @@ __metadata:
   version: 1.6.0
   resolution: "@webcomponents/custom-elements@npm:1.6.0"
   checksum: 503d81a8dba0bc5982ad7d0c7bf5b0e69021c98dc33e942b9a0bc872d707ac030d0d00d38afdb576ab7c01c3c3fe0395543681c58ad52000bbbe8240a0645271
-  languageName: node
-  linkType: hard
-
-"@webgpu/glslang@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "@webgpu/glslang@npm:0.0.15"
-  checksum: 0bb8c2e8e4533f95deeff09a24fa2551cdf984159f25cd8c3fc21e0e8ecfea54b88363bdcd04412f43669e199dcc8f6ea80a6a7ddd098005527567ec009d6881
   languageName: node
   linkType: hard
 
@@ -3105,7 +3112,7 @@ __metadata:
     "@primer/octicons-react": ^19.1.0
     "@primer/react": ^35.25.0
     "@react-three/csg": ^2.2.0
-    "@react-three/drei": ^9.68.6
+    "@react-three/drei": ^9.70.0
     "@react-three/fiber": ^8.12.2
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^14.0.0
@@ -6894,13 +6901,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three-stdlib@npm:^2.21.12":
-  version: 2.21.12
-  resolution: "three-stdlib@npm:2.21.12"
+"three-stdlib@npm:^2.22.10":
+  version: 2.23.4
+  resolution: "three-stdlib@npm:2.23.4"
   dependencies:
-    "@babel/runtime": ^7.16.7
+    "@types/draco3d": ^1.4.0
     "@types/offscreencanvas": ^2019.6.4
-    "@webgpu/glslang": ^0.0.15
+    "@types/webxr": ^0.5.2
     chevrotain: ^10.1.2
     draco3d: ^1.4.1
     fflate: ^0.6.9
@@ -6910,8 +6917,8 @@ __metadata:
     potpack: ^1.0.1
     zstddec: ^0.0.2
   peerDependencies:
-    three: ">=0.122.0"
-  checksum: 9a80a1107934bbcd601603214302bd4302347a72be4c2475dec6261d99b5541d7af3dc1a939f3b6a44dd17f712f3e83088900a9675a25ad39d9f9767bc155dbd
+    three: ">=0.128.0"
+  checksum: da676dca345841c11c9129d3d8cdf15e7d84dc958fd80833e48b9f3faf1ce166989dc17bf3aad3d70856785efdde890f4194f78b740c9f2a043a8ca1b295a407
   languageName: node
   linkType: hard
 
