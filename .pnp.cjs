@@ -45,7 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.0.0"],\
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.4.3"],\
-            ["@types/chrome", "npm:0.0.236"],\
+            ["@types/chrome", "npm:0.0.237"],\
             ["@types/jest", "npm:29.5.1"],\
             ["@types/node", "npm:20.2.5"],\
             ["@types/react", "npm:18.2.7"],\
@@ -2116,10 +2116,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/chrome", [\
-        ["npm:0.0.236", {\
-          "packageLocation": "./.yarn/cache/@types-chrome-npm-0.0.236-51f191babb-64cc6f8ac5.zip/node_modules/@types/chrome/",\
+        ["npm:0.0.237", {\
+          "packageLocation": "./.yarn/cache/@types-chrome-npm-0.0.237-c8ddbf6964-9dfb007006.zip/node_modules/@types/chrome/",\
           "packageDependencies": [\
-            ["@types/chrome", "npm:0.0.236"],\
+            ["@types/chrome", "npm:0.0.237"],\
             ["@types/filesystem", "npm:0.0.32"],\
             ["@types/har-format", "npm:1.2.10"]\
           ],\
@@ -3945,7 +3945,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.0.0"],\
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.4.3"],\
-            ["@types/chrome", "npm:0.0.236"],\
+            ["@types/chrome", "npm:0.0.237"],\
             ["@types/jest", "npm:29.5.1"],\
             ["@types/node", "npm:20.2.5"],\
             ["@types/react", "npm:18.2.7"],\
