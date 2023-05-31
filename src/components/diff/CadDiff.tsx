@@ -1,57 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, useTheme, Text, TabNav, StyledOcticon } from '@primer/react'
+import { Box, useTheme, TabNav, StyledOcticon } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import {
-    Box3,
     BufferGeometry,
-    BufferAttribute,
-    Group,
-    Mesh,
-    MeshBasicMaterial,
     Sphere,
-    Vector3,
 } from 'three'
 import { WireframeColors, WireframeModel } from './WireframeModel'
-import { Buffer } from 'buffer'
 import { useRef } from 'react'
 import { UnifiedModel } from './UnifiedModel'
 import { BeakerIcon } from '@primer/octicons-react'
 import { LegendBox, LegendLabel } from './Legend'
-
-function loadGeometry(file: string, checkUV = false): BufferGeometry {
-    const loader = new OBJLoader()
-    const buffer = Buffer.from(file, 'base64').toString()
-    const group = loader.parse(buffer)
-    console.log(`Model ${group.id} loaded`)
-    const geometry = (group.children[0] as Mesh)?.geometry
-    if (checkUV && !geometry.attributes.uv) {
-        // UV is needed for @react-three/csg
-        // see: github.com/KittyCAD/diff-viewer-extension/issues/73
-        geometry.setAttribute(
-            'uv',
-            new BufferAttribute(new Float32Array([]), 1)
-        )
-    }
-    geometry.computeBoundingSphere() // will be used for auto-centering
-    return geometry
-}
-
-export function getCommonSphere(
-    beforeGeometry: BufferGeometry,
-    afterGeometry: BufferGeometry
-) {
-    const group = new Group()
-    const dummyMaterial = new MeshBasicMaterial()
-    group.add(new Mesh(beforeGeometry, dummyMaterial))
-    group.add(new Mesh(afterGeometry, dummyMaterial))
-    const boundingBox = new Box3().setFromObject(group)
-    const center = new Vector3()
-    boundingBox.getCenter(center)
-    return boundingBox.getBoundingSphere(new Sphere(center))
-}
+import { getCommonSphere, loadGeometry } from '../../utils/three'
 
 function Viewer3DUnified({
     beforeGeometry,
@@ -183,11 +144,11 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
         let beforeGeometry: BufferGeometry | undefined = undefined
         let afterGeometry: BufferGeometry | undefined = undefined
         if (before) {
-            beforeGeometry = loadGeometry(before, true)
+            beforeGeometry = loadGeometry(before)
             setBeforeGeometry(beforeGeometry)
         }
         if (after) {
-            afterGeometry = loadGeometry(after, true)
+            afterGeometry = loadGeometry(after)
             setAfterGeometry(afterGeometry)
         }
         if (beforeGeometry && afterGeometry) {
@@ -251,7 +212,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                             onClick={() => setShowUnified(false)}
                             sx={{ cursor: 'pointer' }}
                         >
-                            Side-by-side
+                            Split
                         </TabNav.Link>
                         <TabNav.Link
                             selected={showUnified}
