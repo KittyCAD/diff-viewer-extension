@@ -54,7 +54,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/three", "npm:0.152.1"],\
             ["@vitejs/plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.0.0"],\
             ["buffer", "npm:6.0.3"],\
-            ["dotenv", "npm:16.0.3"],\
+            ["dotenv", "npm:16.1.3"],\
             ["eslint", "npm:8.41.0"],\
             ["eslint-config-prettier", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.8.0"],\
             ["eslint-plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.32.2"],\
@@ -3954,7 +3954,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/three", "npm:0.152.1"],\
             ["@vitejs/plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.0.0"],\
             ["buffer", "npm:6.0.3"],\
-            ["dotenv", "npm:16.0.3"],\
+            ["dotenv", "npm:16.1.3"],\
             ["eslint", "npm:8.41.0"],\
             ["eslint-config-prettier", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:8.8.0"],\
             ["eslint-plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.32.2"],\
@@ -4078,10 +4078,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["dotenv", [\
-        ["npm:16.0.3", {\
-          "packageLocation": "./.yarn/cache/dotenv-npm-16.0.3-4cc29121dc-afcf03f373.zip/node_modules/dotenv/",\
+        ["npm:16.1.3", {\
+          "packageLocation": "./.yarn/cache/dotenv-npm-16.1.3-4df6c2511f-8f73bae720.zip/node_modules/dotenv/",\
           "packageDependencies": [\
-            ["dotenv", "npm:16.0.3"]\
+            ["dotenv", "npm:16.1.3"]\
           ],\
           "linkType": "HARD"\
         }]\
