@@ -154,7 +154,10 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                 afterGeometry
             )
             setBoundingSphere(boundingSphere)
-            console.log('common compute', boundingSphere)
+        } else if (beforeGeometry && beforeGeometry.boundingSphere) {
+            setBoundingSphere(beforeGeometry.boundingSphere)
+        } else if (afterGeometry && afterGeometry.boundingSphere) {
+            setBoundingSphere(afterGeometry.boundingSphere)
         }
     }, [before, after])
     return (
