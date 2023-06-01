@@ -1,8 +1,5 @@
 import { Octokit } from '@octokit/rest'
-import {
-    downloadFile,
-    isFilenameSupported,
-} from './diff'
+import { downloadFile, isFilenameSupported } from './diff'
 
 it('checks if the filename has a supported extension', () => {
     expect(isFilenameSupported('noextension')).toBe(false)

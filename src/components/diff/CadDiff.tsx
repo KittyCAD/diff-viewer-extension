@@ -3,10 +3,7 @@ import '@react-three/fiber'
 import { Box, useTheme, TabNav, StyledOcticon } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
-import {
-    BufferGeometry,
-    Sphere,
-} from 'three'
+import { BufferGeometry, Sphere } from 'three'
 import { WireframeColors, WireframeModel } from './WireframeModel'
 import { useRef } from 'react'
 import { UnifiedModel } from './UnifiedModel'
