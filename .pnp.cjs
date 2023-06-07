@@ -46,7 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.0.0"],\
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.4.3"],\
             ["@types/chrome", "npm:0.0.237"],\
-            ["@types/jest", "npm:29.5.1"],\
+            ["@types/jest", "npm:29.5.2"],\
             ["@types/node", "npm:20.2.5"],\
             ["@types/react", "npm:18.2.7"],\
             ["@types/react-dom", "npm:18.2.4"],\
@@ -2221,6 +2221,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pretty-format", "npm:29.5.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:29.5.2", {\
+          "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.2-1a72e55a50-7d205599ea.zip/node_modules/@types/jest/",\
+          "packageDependencies": [\
+            ["@types/jest", "npm:29.5.2"],\
+            ["expect", "npm:29.5.0"],\
+            ["pretty-format", "npm:29.5.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@types/json-schema", [\
@@ -3946,7 +3955,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.0.0"],\
             ["@testing-library/user-event", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:14.4.3"],\
             ["@types/chrome", "npm:0.0.237"],\
-            ["@types/jest", "npm:29.5.1"],\
+            ["@types/jest", "npm:29.5.2"],\
             ["@types/node", "npm:20.2.5"],\
             ["@types/react", "npm:18.2.7"],\
             ["@types/react-dom", "npm:18.2.4"],\
