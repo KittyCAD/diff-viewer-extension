@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, useTheme, TabNav, StyledOcticon } from '@primer/react'
+import { Box, Text, useTheme, TabNav, StyledOcticon } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { BufferGeometry, Sphere } from 'three'
@@ -10,60 +10,6 @@ import { UnifiedModel } from './UnifiedModel'
 import { BeakerIcon } from '@primer/octicons-react'
 import { LegendBox, LegendLabel } from './Legend'
 import { getCommonSphere, loadGeometry } from '../../utils/three'
-
-function Viewer3DCombined({
-    beforeGeometry,
-    afterGeometry,
-    boundingSphere,
-}: {
-    beforeGeometry: BufferGeometry
-    afterGeometry: BufferGeometry
-    boundingSphere: Sphere
-}) {
-    const cameraRef = useRef<any>()
-    const [showUnchanged, setShowUnchanged] = useState(true)
-    const [showAdditions, setShowAdditions] = useState(true)
-    const [showDeletions, setShowDeletions] = useState(true)
-    return (
-        <>
-            <Viewer3D
-                cameraRef={cameraRef}
-                geometry={beforeGeometry}
-                boundingSphere={boundingSphere}
-            >
-                <UnifiedModel
-                    beforeGeometry={beforeGeometry}
-                    afterGeometry={afterGeometry}
-                    boundingSphere={boundingSphere}
-                    cameraRef={cameraRef}
-                    showUnchanged={showUnchanged}
-                    showAdditions={showAdditions}
-                    showDeletions={showDeletions}
-                />
-            </Viewer3D>
-            <LegendBox>
-                <LegendLabel
-                    text="Unchanged"
-                    color="neutral"
-                    enabled={showUnchanged}
-                    onChange={enabled => setShowUnchanged(enabled)}
-                />
-                <LegendLabel
-                    text="Additions"
-                    color="success"
-                    enabled={showAdditions}
-                    onChange={enabled => setShowAdditions(enabled)}
-                />
-                <LegendLabel
-                    text="Deletions"
-                    color="danger"
-                    enabled={showDeletions}
-                    onChange={enabled => setShowDeletions(enabled)}
-                />
-            </LegendBox>
-        </>
-    )
-}
 
 function Viewer3D2Up({
     beforeGeometry,
@@ -131,8 +77,61 @@ function Viewer3D2Up({
     )
 }
 
+function Viewer3DCombined({
+    beforeGeometry,
+    afterGeometry,
+    boundingSphere,
+}: {
+    beforeGeometry: BufferGeometry
+    afterGeometry: BufferGeometry
+    boundingSphere: Sphere
+}) {
+    const cameraRef = useRef<any>()
+    const [showUnchanged, setShowUnchanged] = useState(true)
+    const [showAdditions, setShowAdditions] = useState(true)
+    const [showDeletions, setShowDeletions] = useState(true)
+    return (
+        <>
+            <Viewer3D
+                cameraRef={cameraRef}
+                geometry={beforeGeometry}
+                boundingSphere={boundingSphere}
+            >
+                <UnifiedModel
+                    beforeGeometry={beforeGeometry}
+                    afterGeometry={afterGeometry}
+                    boundingSphere={boundingSphere}
+                    cameraRef={cameraRef}
+                    showUnchanged={showUnchanged}
+                    showAdditions={showAdditions}
+                    showDeletions={showDeletions}
+                />
+            </Viewer3D>
+            <LegendBox>
+                <LegendLabel
+                    text="Unchanged"
+                    color="neutral"
+                    enabled={showUnchanged}
+                    onChange={enabled => setShowUnchanged(enabled)}
+                />
+                <LegendLabel
+                    text="Additions"
+                    color="success"
+                    enabled={showAdditions}
+                    onChange={enabled => setShowAdditions(enabled)}
+                />
+                <LegendLabel
+                    text="Deletions"
+                    color="danger"
+                    enabled={showDeletions}
+                    onChange={enabled => setShowDeletions(enabled)}
+                />
+            </LegendBox>
+        </>
+    )
+}
+
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
-    const canShowUnified = before && after
     let [showUnified, setShowCombined] = useState(false)
     const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
@@ -162,32 +161,34 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     }, [before, after])
     return (
         <>
-            <Box
-                display="flex"
-                height={300}
-                overflow="hidden"
-                minWidth={0}
-                position="relative"
-            >
-                {beforeGeometry &&
-                    afterGeometry &&
-                    boundingSphere &&
-                    showUnified && (
-                        <Viewer3DCombined
+            {(beforeGeometry || afterGeometry) && (
+                <Box
+                    display="flex"
+                    height={300}
+                    overflow="hidden"
+                    minWidth={0}
+                    position="relative"
+                >
+                    {beforeGeometry &&
+                        afterGeometry &&
+                        boundingSphere &&
+                        showUnified && (
+                            <Viewer3DCombined
+                                beforeGeometry={beforeGeometry}
+                                afterGeometry={afterGeometry}
+                                boundingSphere={boundingSphere}
+                            />
+                        )}
+                    {!showUnified && (
+                        <Viewer3D2Up
                             beforeGeometry={beforeGeometry}
                             afterGeometry={afterGeometry}
                             boundingSphere={boundingSphere}
                         />
                     )}
-                {!showUnified && (
-                    <Viewer3D2Up
-                        beforeGeometry={beforeGeometry}
-                        afterGeometry={afterGeometry}
-                        boundingSphere={boundingSphere}
-                    />
-                )}
-            </Box>
-            {canShowUnified && (
+                </Box>
+            )}
+            {beforeGeometry && afterGeometry && boundingSphere && (
                 <Box
                     pt={2}
                     backgroundColor="canvas.default"
@@ -219,7 +220,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                             onClick={() => setShowCombined(true)}
                             sx={{ cursor: 'pointer' }}
                         >
-                           Combined 
+                            Combined
                             <StyledOcticon
                                 icon={BeakerIcon}
                                 color="fg.muted"
@@ -228,6 +229,13 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                             />
                         </TabNav.Link>
                     </TabNav>
+                </Box>
+            )}
+            {!beforeGeometry && !afterGeometry && (
+                <Box p={3}>
+                    <Text>
+                        Sorry, the rich diff can't be displayed for this file.
+                    </Text>
                 </Box>
             )}
         </>
