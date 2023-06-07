@@ -17,7 +17,7 @@
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
-        "@types/chrome": "^0.0.236",
+        "@types/chrome": "^0.0.237",
         "@types/jest": "^29.5.0",
         "@types/node": "^20.2.5",
         "@types/react": "^18.2.7",
@@ -30,7 +30,7 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-is": "^18.2.0",
-        "styled-components": "^5.3.10",
+        "styled-components": "^5.3.11",
         "three": "^0.152.2",
         "three-mesh-bvh": "^0.6.0",
         "typescript": "^4.9.5"
@@ -76,15 +76,15 @@
         "@crxjs/vite-plugin": "^1.0.14",
         "@playwright/test": "^1.34.3",
         "@vitejs/plugin-react": "^4.0.0",
-        "dotenv": "^16.0.3",
+        "dotenv": "^16.1.4",
         "eslint": "^8.41.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-react": "^7.32.2",
-        "jsdom": "^22.0.0",
+        "jsdom": "^22.1.0",
         "prettier": "^2.8.7",
         "vite": "^4.3.9",
         "vite-plugin-node-polyfills": "^0.8.2",
-        "vitest": "^0.31.1"
+        "vitest": "^0.31.4"
     },
     "packageManager": "yarn@3.5.1",
     "engines": {
