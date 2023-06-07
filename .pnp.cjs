@@ -60,7 +60,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.32.2"],\
             ["github-injection", "npm:1.1.0"],\
             ["isomorphic-fetch", "npm:3.0.0"],\
-            ["jsdom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.0.0"],\
+            ["jsdom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.1.0"],\
             ["prettier", "npm:2.8.8"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
@@ -3960,7 +3960,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:7.32.2"],\
             ["github-injection", "npm:1.1.0"],\
             ["isomorphic-fetch", "npm:3.0.0"],\
-            ["jsdom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.0.0"],\
+            ["jsdom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.1.0"],\
             ["prettier", "npm:2.8.8"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
@@ -5823,17 +5823,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["jsdom", [\
-        ["npm:22.0.0", {\
-          "packageLocation": "./.yarn/cache/jsdom-npm-22.0.0-4ee1f4ceb0-5d554ccb16.zip/node_modules/jsdom/",\
+        ["npm:22.1.0", {\
+          "packageLocation": "./.yarn/cache/jsdom-npm-22.1.0-1ae0e70a97-d955ab83a6.zip/node_modules/jsdom/",\
           "packageDependencies": [\
-            ["jsdom", "npm:22.0.0"]\
+            ["jsdom", "npm:22.1.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.0.0", {\
-          "packageLocation": "./.yarn/__virtual__/jsdom-virtual-1ad333b230/0/cache/jsdom-npm-22.0.0-4ee1f4ceb0-5d554ccb16.zip/node_modules/jsdom/",\
+        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/jsdom-virtual-273988fb1f/0/cache/jsdom-npm-22.1.0-1ae0e70a97-d955ab83a6.zip/node_modules/jsdom/",\
           "packageDependencies": [\
-            ["jsdom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.0.0"],\
+            ["jsdom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.1.0"],\
             ["@types/canvas", null],\
             ["abab", "npm:2.0.6"],\
             ["canvas", null],\
@@ -5857,7 +5857,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["whatwg-encoding", "npm:2.0.0"],\
             ["whatwg-mimetype", "npm:3.0.0"],\
             ["whatwg-url", "npm:12.0.1"],\
-            ["ws", "virtual:1ad333b230ffc5a21ae15c05b26d3dfcdff639d3b80d70a4d73c5f09007f23dce98a2a23daf82eaae5d27e77fe05c6e978566605182f2b202be105c303325326#npm:8.13.0"],\
+            ["ws", "virtual:273988fb1f65bc884ccb5599abbdcdc51f99e83d4580b15ddbaecf51c8261ea7c75d9159f7a8055bdd83ddb548d2b06dca0e6060f0ee5af3fc69df770ebb4e41#npm:8.13.0"],\
             ["xml-name-validator", "npm:4.0.0"]\
           ],\
           "packagePeers": [\
@@ -9015,7 +9015,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["concordance", "npm:5.0.4"],\
             ["debug", "virtual:ac3d8e680759ce54399273724d44e041d6c9b73454d191d411a8c44bb27e22f02aaf6ed9d3ad0ac1c298eac4833cff369c9c7b84c573016112c4f84be2cd8543#npm:4.3.4"],\
             ["happy-dom", null],\
-            ["jsdom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.0.0"],\
+            ["jsdom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:22.1.0"],\
             ["local-pkg", "npm:0.4.3"],\
             ["magic-string", "npm:0.30.0"],\
             ["pathe", "npm:1.1.0"],\
@@ -9261,10 +9261,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:1ad333b230ffc5a21ae15c05b26d3dfcdff639d3b80d70a4d73c5f09007f23dce98a2a23daf82eaae5d27e77fe05c6e978566605182f2b202be105c303325326#npm:8.13.0", {\
-          "packageLocation": "./.yarn/__virtual__/ws-virtual-7d4f2dce9f/0/cache/ws-npm-8.13.0-26ffa3016a-53e991bbf9.zip/node_modules/ws/",\
+        ["virtual:273988fb1f65bc884ccb5599abbdcdc51f99e83d4580b15ddbaecf51c8261ea7c75d9159f7a8055bdd83ddb548d2b06dca0e6060f0ee5af3fc69df770ebb4e41#npm:8.13.0", {\
+          "packageLocation": "./.yarn/__virtual__/ws-virtual-8e5f2e28dd/0/cache/ws-npm-8.13.0-26ffa3016a-53e991bbf9.zip/node_modules/ws/",\
           "packageDependencies": [\
-            ["ws", "virtual:1ad333b230ffc5a21ae15c05b26d3dfcdff639d3b80d70a4d73c5f09007f23dce98a2a23daf82eaae5d27e77fe05c6e978566605182f2b202be105c303325326#npm:8.13.0"],\
+            ["ws", "virtual:273988fb1f65bc884ccb5599abbdcdc51f99e83d4580b15ddbaecf51c8261ea7c75d9159f7a8055bdd83ddb548d2b06dca0e6060f0ee5af3fc69df770ebb4e41#npm:8.13.0"],\
             ["@types/bufferutil", null],\
             ["@types/utf-8-validate", null],\
             ["bufferutil", null],\
