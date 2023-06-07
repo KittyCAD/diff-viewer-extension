@@ -66,7 +66,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
             ["react-is", "npm:18.2.0"],\
             ["styled-components", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.3.11"],\
-            ["three", "npm:0.152.2"],\
+            ["three", "npm:0.153.0"],\
             ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.6.0"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"],\
             ["vite", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.3.9"],\
@@ -1580,7 +1580,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-three__fiber", null],\
             ["@types/three", "npm:0.152.1"],\
             ["react", "npm:18.2.0"],\
-            ["three", "npm:0.152.2"]\
+            ["three", "npm:0.153.0"]\
           ],\
           "packagePeers": [\
             "@react-three/fiber",\
@@ -1646,7 +1646,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-merge-refs", "npm:1.1.0"],\
             ["stats.js", "npm:0.17.0"],\
             ["suspend-react", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:0.0.8"],\
-            ["three", "npm:0.152.2"],\
+            ["three", "npm:0.153.0"],\
             ["three-mesh-bvh", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:0.5.23"],\
             ["three-stdlib", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:2.23.4"],\
             ["troika-three-text", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:0.47.1"],\
@@ -1698,7 +1698,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-use-measure", "virtual:c50c476f47660c89599fcd9a37e249e685ec28dcf8dc31ca1aa7c1e97dd459424445840a202211867938c63287357d580ef81d4cb4d8b0c902b1b6f3024abe58#npm:2.1.1"],\
             ["scheduler", "npm:0.21.0"],\
             ["suspend-react", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:0.0.8"],\
-            ["three", "npm:0.152.2"],\
+            ["three", "npm:0.153.0"],\
             ["zustand", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:3.7.2"]\
           ],\
           "packagePeers": [\
@@ -3240,7 +3240,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["camera-controls", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:2.3.4"],\
             ["@types/three", "npm:0.152.1"],\
-            ["three", "npm:0.152.2"]\
+            ["three", "npm:0.153.0"]\
           ],\
           "packagePeers": [\
             "@types/three",\
@@ -3975,7 +3975,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:18.2.0"],\
             ["react-is", "npm:18.2.0"],\
             ["styled-components", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.3.11"],\
-            ["three", "npm:0.152.2"],\
+            ["three", "npm:0.153.0"],\
             ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.6.0"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"],\
             ["vite", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.3.9"],\
@@ -6120,7 +6120,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["maath", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:0.5.3"],\
             ["@types/three", "npm:0.152.1"],\
-            ["three", "npm:0.152.2"]\
+            ["three", "npm:0.153.0"]\
           ],\
           "packagePeers": [\
             "@types/three",\
@@ -6242,7 +6242,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["meshline", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:3.1.6"],\
             ["@types/three", "npm:0.152.1"],\
-            ["three", "npm:0.152.2"]\
+            ["three", "npm:0.153.0"]\
           ],\
           "packagePeers": [\
             "@types/three",\
@@ -8253,10 +8253,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["three", [\
-        ["npm:0.152.2", {\
-          "packageLocation": "./.yarn/cache/three-npm-0.152.2-0abc985e13-6d2d990dbf.zip/node_modules/three/",\
+        ["npm:0.153.0", {\
+          "packageLocation": "./.yarn/cache/three-npm-0.153.0-078c985b99-68899ca90e.zip/node_modules/three/",\
           "packageDependencies": [\
-            ["three", "npm:0.152.2"]\
+            ["three", "npm:0.153.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8307,7 +8307,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["three-mesh-bvh", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:0.5.23"],\
             ["@types/three", "npm:0.152.1"],\
-            ["three", "npm:0.152.2"]\
+            ["three", "npm:0.153.0"]\
           ],\
           "packagePeers": [\
             "@types/three",\
@@ -8320,7 +8320,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.6.0"],\
             ["@types/three", "npm:0.152.1"],\
-            ["three", "npm:0.152.2"]\
+            ["three", "npm:0.153.0"]\
           ],\
           "packagePeers": [\
             "@types/three",\
@@ -8352,7 +8352,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["mmd-parser", "npm:1.0.4"],\
             ["opentype.js", "npm:1.3.4"],\
             ["potpack", "npm:1.0.2"],\
-            ["three", "npm:0.152.2"],\
+            ["three", "npm:0.153.0"],\
             ["zstddec", "npm:0.0.2"]\
           ],\
           "packagePeers": [\
@@ -8480,7 +8480,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["troika-three-text", "virtual:8c0d00ace11e7d59553d58ba8214b4a755094f52c3edd2af41eab1be9e6bb68ac2bd897018448cb35bc4eef06c9e6a6d3547acbfba4cb2bfd331bc2c3997f032#npm:0.47.1"],\
             ["@types/three", "npm:0.152.1"],\
             ["bidi-js", "npm:1.0.2"],\
-            ["three", "npm:0.152.2"],\
+            ["three", "npm:0.153.0"],\
             ["troika-three-utils", "virtual:0b913fd11495c1224efd86cdd5becbd74c03d52b25aa51c0e7ca68a02d9728c196fe8b36540cf55b6b1136a70174a94653ac986e0d21d810394fd7e79695fa8e#npm:0.47.0"],\
             ["troika-worker-utils", "npm:0.47.0"],\
             ["webgl-sdf-generator", "npm:1.1.1"]\
@@ -8505,7 +8505,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["troika-three-utils", "virtual:0b913fd11495c1224efd86cdd5becbd74c03d52b25aa51c0e7ca68a02d9728c196fe8b36540cf55b6b1136a70174a94653ac986e0d21d810394fd7e79695fa8e#npm:0.47.0"],\
             ["@types/three", "npm:0.152.1"],\
-            ["three", "npm:0.152.2"]\
+            ["three", "npm:0.153.0"]\
           ],\
           "packagePeers": [\
             "@types/three",\
