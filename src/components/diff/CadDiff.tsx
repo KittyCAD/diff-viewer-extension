@@ -11,7 +11,7 @@ import { BeakerIcon } from '@primer/octicons-react'
 import { LegendBox, LegendLabel } from './Legend'
 import { getCommonSphere, loadGeometry } from '../../utils/three'
 
-function Viewer3DUnified({
+function Viewer3DCombined({
     beforeGeometry,
     afterGeometry,
     boundingSphere,
@@ -65,7 +65,7 @@ function Viewer3DUnified({
     )
 }
 
-function Viewer3DSplit({
+function Viewer3D2Up({
     beforeGeometry,
     afterGeometry,
     boundingSphere,
@@ -133,7 +133,7 @@ function Viewer3DSplit({
 
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
     const canShowUnified = before && after
-    let [showUnified, setShowUnified] = useState(false)
+    let [showUnified, setShowCombined] = useState(false)
     const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
     const [boundingSphere, setBoundingSphere] = useState<Sphere>()
@@ -173,14 +173,14 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                     afterGeometry &&
                     boundingSphere &&
                     showUnified && (
-                        <Viewer3DUnified
+                        <Viewer3DCombined
                             beforeGeometry={beforeGeometry}
                             afterGeometry={afterGeometry}
                             boundingSphere={boundingSphere}
                         />
                     )}
                 {!showUnified && (
-                    <Viewer3DSplit
+                    <Viewer3D2Up
                         beforeGeometry={beforeGeometry}
                         afterGeometry={afterGeometry}
                         boundingSphere={boundingSphere}
@@ -209,17 +209,17 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                     >
                         <TabNav.Link
                             selected={!showUnified}
-                            onClick={() => setShowUnified(false)}
+                            onClick={() => setShowCombined(false)}
                             sx={{ cursor: 'pointer' }}
                         >
-                            Split
+                            2-up
                         </TabNav.Link>
                         <TabNav.Link
                             selected={showUnified}
-                            onClick={() => setShowUnified(true)}
+                            onClick={() => setShowCombined(true)}
                             sx={{ cursor: 'pointer' }}
                         >
-                            Unified
+                           Combined 
                             <StyledOcticon
                                 icon={BeakerIcon}
                                 color="fg.muted"
