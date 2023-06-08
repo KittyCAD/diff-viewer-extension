@@ -4,7 +4,7 @@ import { BufferGeometry, Sphere } from 'three'
 import { Geometry, Base, Subtraction, Intersection } from '@react-three/csg'
 import { BaseModel } from './BaseModel'
 
-type UnifiedModelProps = {
+type CombinedModelProps = {
     beforeGeometry: BufferGeometry
     afterGeometry: BufferGeometry
     boundingSphere: Sphere
@@ -14,7 +14,7 @@ type UnifiedModelProps = {
     showDeletions: boolean
 }
 
-export function UnifiedModel({
+export function CombinedModel({
     beforeGeometry,
     afterGeometry,
     boundingSphere,
@@ -22,7 +22,7 @@ export function UnifiedModel({
     showUnchanged,
     showAdditions,
     showDeletions,
-}: UnifiedModelProps) {
+}: CombinedModelProps) {
     const { theme } = useTheme()
     const commonColor = theme?.colors.fg.muted
     const additionsColor = theme?.colors.success.muted

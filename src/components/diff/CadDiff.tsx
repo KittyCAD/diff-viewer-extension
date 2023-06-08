@@ -6,7 +6,7 @@ import { Viewer3D } from './Viewer3D'
 import { BufferGeometry, Sphere } from 'three'
 import { WireframeColors, WireframeModel } from './WireframeModel'
 import { useRef } from 'react'
-import { UnifiedModel } from './UnifiedModel'
+import { CombinedModel } from './CombinedModel'
 import { BeakerIcon } from '@primer/octicons-react'
 import { LegendBox, LegendLabel } from './Legend'
 import { getCommonSphere, loadGeometry } from '../../utils/three'
@@ -97,7 +97,7 @@ function Viewer3DCombined({
                 geometry={beforeGeometry}
                 boundingSphere={boundingSphere}
             >
-                <UnifiedModel
+                <CombinedModel
                     beforeGeometry={beforeGeometry}
                     afterGeometry={afterGeometry}
                     boundingSphere={boundingSphere}
