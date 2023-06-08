@@ -132,7 +132,7 @@ function Viewer3DCombined({
 }
 
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
-    let [showUnified, setShowCombined] = useState(false)
+    let [showCombined, setShowCombined] = useState(false)
     const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
     const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
     const [boundingSphere, setBoundingSphere] = useState<Sphere>()
@@ -172,14 +172,14 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                     {beforeGeometry &&
                         afterGeometry &&
                         boundingSphere &&
-                        showUnified && (
+                        showCombined && (
                             <Viewer3DCombined
                                 beforeGeometry={beforeGeometry}
                                 afterGeometry={afterGeometry}
                                 boundingSphere={boundingSphere}
                             />
                         )}
-                    {!showUnified && (
+                    {!showCombined && (
                         <Viewer3D2Up
                             beforeGeometry={beforeGeometry}
                             afterGeometry={afterGeometry}
@@ -209,14 +209,14 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                         }}
                     >
                         <TabNav.Link
-                            selected={!showUnified}
+                            selected={!showCombined}
                             onClick={() => setShowCombined(false)}
                             sx={{ cursor: 'pointer' }}
                         >
                             2-up
                         </TabNav.Link>
                         <TabNav.Link
-                            selected={showUnified}
+                            selected={showCombined}
                             onClick={() => setShowCombined(true)}
                             sx={{ cursor: 'pointer' }}
                         >
