@@ -32,7 +32,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@crxjs/vite-plugin", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:1.0.14"],\
             ["@dicebear/avatars", "npm:4.10.8"],\
             ["@dicebear/avatars-bottts-sprites", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.10.8"],\
-            ["@kittycad/lib", "npm:0.0.19"],\
+            ["@kittycad/lib", "npm:0.0.20"],\
             ["@octokit/openapi-types", "npm:17.2.0"],\
             ["@octokit/rest", "npm:19.0.11"],\
             ["@octokit/types", "npm:9.2.3"],\
@@ -1051,13 +1051,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@kittycad/lib", [\
-        ["npm:0.0.19", {\
-          "packageLocation": "./.yarn/cache/@kittycad-lib-npm-0.0.19-a5b8af1eec-ae518d7a39.zip/node_modules/@kittycad/lib/",\
+        ["npm:0.0.20", {\
+          "packageLocation": "./.yarn/cache/@kittycad-lib-npm-0.0.20-b586fa8e54-14be882b5d.zip/node_modules/@kittycad/lib/",\
           "packageDependencies": [\
-            ["@kittycad/lib", "npm:0.0.19"],\
-            ["node-fetch", "virtual:a5b8af1eec44b584eaae46765fd5b85f4dfa0d5675778c9763b5f7bc729a7dc20f1c8e0d34ec9e6ecbd0cda02a415dacaa84cb1e3e0d482ebe9be7b4fa0da683#npm:2.6.7"],\
+            ["@kittycad/lib", "npm:0.0.20"],\
+            ["node-fetch", "virtual:b586fa8e54c749479a458a28f16a4f9311439c8906cf4d04f5d38eba6d45357e8fb5a7b2e3b6d6de54288630a6902275d42056de8ce90732b89cda7dff2a8f78#npm:2.6.7"],\
             ["openapi-types", "npm:12.1.0"],\
-            ["ts-node", "virtual:a5b8af1eec44b584eaae46765fd5b85f4dfa0d5675778c9763b5f7bc729a7dc20f1c8e0d34ec9e6ecbd0cda02a415dacaa84cb1e3e0d482ebe9be7b4fa0da683#npm:10.9.1"],\
+            ["ts-node", "virtual:b586fa8e54c749479a458a28f16a4f9311439c8906cf4d04f5d38eba6d45357e8fb5a7b2e3b6d6de54288630a6902275d42056de8ce90732b89cda7dff2a8f78#npm:10.9.1"],\
             ["tslib", "npm:2.4.1"]\
           ],\
           "linkType": "HARD"\
@@ -3941,7 +3941,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@crxjs/vite-plugin", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:1.0.14"],\
             ["@dicebear/avatars", "npm:4.10.8"],\
             ["@dicebear/avatars-bottts-sprites", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.10.8"],\
-            ["@kittycad/lib", "npm:0.0.19"],\
+            ["@kittycad/lib", "npm:0.0.20"],\
             ["@octokit/openapi-types", "npm:17.2.0"],\
             ["@octokit/rest", "npm:19.0.11"],\
             ["@octokit/types", "npm:9.2.3"],\
@@ -6535,10 +6535,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["virtual:a5b8af1eec44b584eaae46765fd5b85f4dfa0d5675778c9763b5f7bc729a7dc20f1c8e0d34ec9e6ecbd0cda02a415dacaa84cb1e3e0d482ebe9be7b4fa0da683#npm:2.6.7", {\
-          "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-f86ffdb817/0/cache/node-fetch-npm-2.6.7-777aa2a6df-8d816ffd1e.zip/node_modules/node-fetch/",\
+        ["virtual:b586fa8e54c749479a458a28f16a4f9311439c8906cf4d04f5d38eba6d45357e8fb5a7b2e3b6d6de54288630a6902275d42056de8ce90732b89cda7dff2a8f78#npm:2.6.7", {\
+          "packageLocation": "./.yarn/__virtual__/node-fetch-virtual-26421a7929/0/cache/node-fetch-npm-2.6.7-777aa2a6df-8d816ffd1e.zip/node_modules/node-fetch/",\
           "packageDependencies": [\
-            ["node-fetch", "virtual:a5b8af1eec44b584eaae46765fd5b85f4dfa0d5675778c9763b5f7bc729a7dc20f1c8e0d34ec9e6ecbd0cda02a415dacaa84cb1e3e0d482ebe9be7b4fa0da683#npm:2.6.7"],\
+            ["node-fetch", "virtual:b586fa8e54c749479a458a28f16a4f9311439c8906cf4d04f5d38eba6d45357e8fb5a7b2e3b6d6de54288630a6902275d42056de8ce90732b89cda7dff2a8f78#npm:2.6.7"],\
             ["@types/encoding", null],\
             ["encoding", null],\
             ["whatwg-url", "npm:5.0.0"]\
@@ -8531,10 +8531,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:a5b8af1eec44b584eaae46765fd5b85f4dfa0d5675778c9763b5f7bc729a7dc20f1c8e0d34ec9e6ecbd0cda02a415dacaa84cb1e3e0d482ebe9be7b4fa0da683#npm:10.9.1", {\
-          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-d6bd91c24a/0/cache/ts-node-npm-10.9.1-6c268be7f4-090adff130.zip/node_modules/ts-node/",\
+        ["virtual:b586fa8e54c749479a458a28f16a4f9311439c8906cf4d04f5d38eba6d45357e8fb5a7b2e3b6d6de54288630a6902275d42056de8ce90732b89cda7dff2a8f78#npm:10.9.1", {\
+          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-29bb062532/0/cache/ts-node-npm-10.9.1-6c268be7f4-090adff130.zip/node_modules/ts-node/",\
           "packageDependencies": [\
-            ["ts-node", "virtual:a5b8af1eec44b584eaae46765fd5b85f4dfa0d5675778c9763b5f7bc729a7dc20f1c8e0d34ec9e6ecbd0cda02a415dacaa84cb1e3e0d482ebe9be7b4fa0da683#npm:10.9.1"],\
+            ["ts-node", "virtual:b586fa8e54c749479a458a28f16a4f9311439c8906cf4d04f5d38eba6d45357e8fb5a7b2e3b6d6de54288630a6902275d42056de8ce90732b89cda7dff2a8f78#npm:10.9.1"],\
             ["@cspotcode/source-map-support", "npm:0.8.1"],\
             ["@swc/core", null],\
             ["@swc/wasm", null],\
