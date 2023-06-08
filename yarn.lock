@@ -809,6 +809,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mediapipe/tasks-vision@npm:^0.10.0":
+  version: 0.10.1
+  resolution: "@mediapipe/tasks-vision@npm:0.10.1"
+  checksum: 0f23b726f6af0d3e8d6a1811e5501ca607c5714adb2a61d2f6308265a84b4d6fc2accc718c89efeca9963eb782e03f56bcb79a772a5567632fedb26c4d3fb6c6
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -1185,11 +1192,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.70.0":
-  version: 9.70.0
-  resolution: "@react-three/drei@npm:9.70.0"
+"@react-three/drei@npm:^9.74.6":
+  version: 9.74.6
+  resolution: "@react-three/drei@npm:9.74.6"
   dependencies:
     "@babel/runtime": ^7.11.2
+    "@mediapipe/tasks-vision": ^0.10.0
     "@react-spring/three": ~9.6.1
     "@use-gesture/react": ^10.2.24
     camera-controls: ^2.3.1
@@ -1205,7 +1213,7 @@ __metadata:
     stats.js: ^0.17.0
     suspend-react: ^0.0.8
     three-mesh-bvh: ^0.5.23
-    three-stdlib: ^2.22.10
+    three-stdlib: ^2.23.5
     troika-three-text: ^0.47.1
     utility-types: ^3.10.0
     zustand: ^3.5.13
@@ -1217,7 +1225,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: f457ad1180b650361c4d770e2d3b332e6802b66468c6ce9fcead6fe697ba2e8cf04e742aa934f6a970ea1680c17ecee1dec754e55a4e4a367005445ea2346c3a
+  checksum: 3c4d7e4b0f5cbe526aa4bf80479bae3c172b2e05596d91b3d6a97f93ef0f7062581f4cc4b42f9faf051713f971e8253629e519bf2a8e14c28a85a313278bf118
   languageName: node
   linkType: hard
 
@@ -3122,7 +3130,7 @@ __metadata:
     "@primer/octicons-react": ^19.1.0
     "@primer/react": ^35.25.0
     "@react-three/csg": ^2.2.0
-    "@react-three/drei": ^9.70.0
+    "@react-three/drei": ^9.74.6
     "@react-three/fiber": ^8.12.2
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^14.0.0
@@ -6911,9 +6919,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three-stdlib@npm:^2.22.10":
-  version: 2.23.4
-  resolution: "three-stdlib@npm:2.23.4"
+"three-stdlib@npm:^2.23.5":
+  version: 2.23.8
+  resolution: "three-stdlib@npm:2.23.8"
   dependencies:
     "@types/draco3d": ^1.4.0
     "@types/offscreencanvas": ^2019.6.4
@@ -6928,7 +6936,7 @@ __metadata:
     zstddec: ^0.0.2
   peerDependencies:
     three: ">=0.128.0"
-  checksum: da676dca345841c11c9129d3d8cdf15e7d84dc958fd80833e48b9f3faf1ce166989dc17bf3aad3d70856785efdde890f4194f78b740c9f2a043a8ca1b295a407
+  checksum: a34c8bccc22d5009122c195bc159bcfc41314b8ddded93477bf356b3ac5a3acd64f685373a9b0aa29ed559eb782862c208326f90c31d6835580dbc6f1c93ba36
   languageName: node
   linkType: hard
 
