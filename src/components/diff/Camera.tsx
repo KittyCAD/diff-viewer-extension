@@ -1,19 +1,18 @@
 import { OrthographicCamera } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { BufferGeometry } from 'three'
+import { Sphere } from 'three'
 
-function CameraLighting({ geometry }: Props) {
+function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
     const ref1 = useRef<any>()
     const ref2 = useRef<any>()
     useEffect(() => {
-        if (geometry && ref1.current) {
-            geometry.computeBoundingSphere()
-            const { radius } = geometry.boundingSphere || { radius: 1 }
+        if (ref1.current) {
+            const { radius } = boundingSphere || { radius: 1 }
             // move spot light away relative to the object's size
             ref1.current.position.setLength(radius * 15)
         }
-    }, [geometry])
+    }, [boundingSphere])
     return (
         <>
             <spotLight
@@ -23,7 +22,7 @@ function CameraLighting({ geometry }: Props) {
                 intensity={4}
                 castShadow
                 shadow-mapSize={[1024, 1024]}
-                shadowCameraNear={1}
+                shadow-cameraNear={1}
             />
             <spotLight
                 ref={ref2}
@@ -43,11 +42,7 @@ export function calculateFovFactor(fov: number, canvasHeight: number): number {
     return pixelsFromCenterToTop / Math.tan(halfFovRadians)
 }
 
-type Props = {
-    geometry: BufferGeometry
-}
-
-export function Camera({ geometry }: Props) {
+export function Camera({ boundingSphere }: { boundingSphere?: Sphere }) {
     const fov = 15
     const persRef = useRef<any>(null)
     const orthoRef = useRef<any>(null)
@@ -71,7 +66,7 @@ export function Camera({ geometry }: Props) {
     return (
         <>
             <OrthographicCamera ref={orthoRef} makeDefault>
-                <CameraLighting geometry={geometry} />
+                <CameraLighting boundingSphere={boundingSphere} />
             </OrthographicCamera>
         </>
     )

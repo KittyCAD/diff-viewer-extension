@@ -1,58 +1,35 @@
 import type { MutableRefObject } from 'react'
 import { useTheme } from '@primer/react'
-import {
-    Box3,
-    BufferGeometry,
-    Group,
-    Mesh,
-    MeshBasicMaterial,
-    Sphere,
-    Vector3,
-} from 'three'
+import { BufferGeometry, Sphere } from 'three'
 import { Geometry, Base, Subtraction, Intersection } from '@react-three/csg'
 import { BaseModel } from './BaseModel'
 
-type UnifiedModelProps = {
+type CombinedModelProps = {
     beforeGeometry: BufferGeometry
     afterGeometry: BufferGeometry
+    boundingSphere: Sphere
     cameraRef: MutableRefObject<any>
     showUnchanged: boolean
     showAdditions: boolean
     showDeletions: boolean
 }
 
-function getCommonSphere(
-    beforeGeometry: BufferGeometry,
-    afterGeometry: BufferGeometry
-) {
-    const group = new Group()
-    const dummyMaterial = new MeshBasicMaterial()
-    group.add(new Mesh(beforeGeometry, dummyMaterial))
-    group.add(new Mesh(afterGeometry, dummyMaterial))
-    const boundingBox = new Box3().setFromObject(group)
-    const center = new Vector3()
-    boundingBox.getCenter(center)
-    return boundingBox.getBoundingSphere(new Sphere(center))
-}
-
-export function UnifiedModel({
+export function CombinedModel({
     beforeGeometry,
     afterGeometry,
+    boundingSphere,
     cameraRef,
     showUnchanged,
     showAdditions,
     showDeletions,
-}: UnifiedModelProps) {
+}: CombinedModelProps) {
     const { theme } = useTheme()
     const commonColor = theme?.colors.fg.muted
     const additionsColor = theme?.colors.success.muted
     const deletionsColor = theme?.colors.danger.muted
 
     return (
-        <BaseModel
-            boundingSphere={getCommonSphere(beforeGeometry, afterGeometry)}
-            cameraRef={cameraRef}
-        >
+        <BaseModel boundingSphere={boundingSphere} cameraRef={cameraRef}>
             {/* Unchanged */}
             <mesh>
                 <meshPhongMaterial

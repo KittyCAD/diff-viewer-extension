@@ -1,54 +1,106 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, useTheme, Text, TabNav, StyledOcticon } from '@primer/react'
+import { Box, Text, useTheme, TabNav, StyledOcticon } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
-import { BufferAttribute, BufferGeometry, Mesh } from 'three'
+import { BufferGeometry, Sphere } from 'three'
 import { WireframeColors, WireframeModel } from './WireframeModel'
-import { Buffer } from 'buffer'
 import { useRef } from 'react'
-import { UnifiedModel } from './UnifiedModel'
+import { CombinedModel } from './CombinedModel'
 import { BeakerIcon } from '@primer/octicons-react'
 import { LegendBox, LegendLabel } from './Legend'
+import { getCommonSphere, loadGeometry } from '../../utils/three'
 
-function loadGeometry(file: string, checkUV = false): BufferGeometry {
-    const loader = new OBJLoader()
-    const buffer = Buffer.from(file, 'base64').toString()
-    const group = loader.parse(buffer)
-    console.log(`Model ${group.id} loaded`)
-    const geometry = (group.children[0] as Mesh)?.geometry
-    if (checkUV && !geometry.attributes.uv) {
-        // UV is needed for @react-three/csg
-        // see: github.com/KittyCAD/diff-viewer-extension/issues/73
-        geometry.setAttribute(
-            'uv',
-            new BufferAttribute(new Float32Array([]), 1)
-        )
+function Viewer3D2Up({
+    beforeGeometry,
+    afterGeometry,
+    boundingSphere,
+}: {
+    beforeGeometry?: BufferGeometry
+    afterGeometry?: BufferGeometry
+    boundingSphere?: Sphere
+}) {
+    const cameraRef = useRef<any>()
+    const { theme } = useTheme()
+    const beforeColors: WireframeColors = {
+        face: theme?.colors.fg.default,
+        edge: theme?.colors.danger.muted,
+        dashEdge: theme?.colors.danger.subtle,
     }
-    geometry.computeBoundingSphere() // will be used for auto-centering
-    return geometry
+    const afterColors: WireframeColors = {
+        face: theme?.colors.fg.default,
+        edge: theme?.colors.success.muted,
+        dashEdge: theme?.colors.success.subtle,
+    }
+    return (
+        <>
+            {beforeGeometry && (
+                <Box flexGrow={1} minWidth={0} backgroundColor="danger.subtle">
+                    <Viewer3D
+                        cameraRef={cameraRef}
+                        geometry={beforeGeometry}
+                        boundingSphere={boundingSphere}
+                    >
+                        <WireframeModel
+                            geometry={beforeGeometry}
+                            boundingSphere={boundingSphere}
+                            cameraRef={cameraRef}
+                            colors={beforeColors}
+                        />
+                    </Viewer3D>
+                </Box>
+            )}
+            {afterGeometry && (
+                <Box
+                    flexGrow={1}
+                    minWidth={0}
+                    backgroundColor="success.subtle"
+                    borderLeftWidth={1}
+                    borderLeftColor="border.default"
+                    borderLeftStyle="solid"
+                >
+                    <Viewer3D
+                        cameraRef={cameraRef}
+                        geometry={afterGeometry}
+                        boundingSphere={boundingSphere}
+                    >
+                        <WireframeModel
+                            geometry={afterGeometry}
+                            boundingSphere={boundingSphere}
+                            cameraRef={cameraRef}
+                            colors={afterColors}
+                        />
+                    </Viewer3D>
+                </Box>
+            )}
+        </>
+    )
 }
 
-function Loader3DUnified({ before, after }: { before: string; after: string }) {
+function Viewer3DCombined({
+    beforeGeometry,
+    afterGeometry,
+    boundingSphere,
+}: {
+    beforeGeometry: BufferGeometry
+    afterGeometry: BufferGeometry
+    boundingSphere: Sphere
+}) {
+    const cameraRef = useRef<any>()
     const [showUnchanged, setShowUnchanged] = useState(true)
     const [showAdditions, setShowAdditions] = useState(true)
     const [showDeletions, setShowDeletions] = useState(true)
-    const cameraRef = useRef<any>()
-    const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
-    const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
-    useEffect(() => {
-        setBeforeGeometry(loadGeometry(before, true))
-    }, [before])
-    useEffect(() => {
-        setAfterGeometry(loadGeometry(after, true))
-    }, [after])
-    return beforeGeometry && afterGeometry ? (
+    return (
         <>
-            <Viewer3D cameraRef={cameraRef} geometry={beforeGeometry}>
-                <UnifiedModel
+            <Viewer3D
+                cameraRef={cameraRef}
+                geometry={beforeGeometry}
+                boundingSphere={boundingSphere}
+            >
+                <CombinedModel
                     beforeGeometry={beforeGeometry}
                     afterGeometry={afterGeometry}
+                    boundingSphere={boundingSphere}
                     cameraRef={cameraRef}
                     showUnchanged={showUnchanged}
                     showAdditions={showAdditions}
@@ -76,87 +128,67 @@ function Loader3DUnified({ before, after }: { before: string; after: string }) {
                 />
             </LegendBox>
         </>
-    ) : (
-        <Box p={3}>
-            <Text>Sorry, the rich diff can't be displayed for this file.</Text>
-        </Box>
-    )
-}
-
-function Loader3D({ file, colors }: { file: string; colors: WireframeColors }) {
-    const cameraRef = useRef<any>()
-    const [geometry, setGeometry] = useState<BufferGeometry>()
-    useEffect(() => {
-        setGeometry(loadGeometry(file))
-    }, [file])
-    return geometry ? (
-        <Viewer3D cameraRef={cameraRef} geometry={geometry}>
-            <WireframeModel
-                geometry={geometry}
-                cameraRef={cameraRef}
-                colors={colors}
-            />
-        </Viewer3D>
-    ) : (
-        <Box p={3}>
-            <Text>Sorry, the rich diff can't be displayed for this file.</Text>
-        </Box>
     )
 }
 
 export function CadDiff({ before, after }: FileDiff): React.ReactElement {
-    const canShowUnified = before && after
-    let [showUnified, setShowUnified] = useState(false)
-    const { theme } = useTheme()
-    const beforeColors: WireframeColors = {
-        face: theme?.colors.fg.default,
-        edge: theme?.colors.danger.muted,
-        dashEdge: theme?.colors.danger.subtle,
-    }
-    const afterColors: WireframeColors = {
-        face: theme?.colors.fg.default,
-        edge: theme?.colors.success.muted,
-        dashEdge: theme?.colors.success.subtle,
-    }
+    let [showCombined, setShowCombined] = useState(false)
+    const [beforeGeometry, setBeforeGeometry] = useState<BufferGeometry>()
+    const [afterGeometry, setAfterGeometry] = useState<BufferGeometry>()
+    const [boundingSphere, setBoundingSphere] = useState<Sphere>()
+    useEffect(() => {
+        let beforeGeometry: BufferGeometry | undefined = undefined
+        let afterGeometry: BufferGeometry | undefined = undefined
+        if (before) {
+            beforeGeometry = loadGeometry(before)
+            setBeforeGeometry(beforeGeometry)
+        }
+        if (after) {
+            afterGeometry = loadGeometry(after)
+            setAfterGeometry(afterGeometry)
+        }
+        if (beforeGeometry && afterGeometry) {
+            const boundingSphere = getCommonSphere(
+                beforeGeometry,
+                afterGeometry
+            )
+            setBoundingSphere(boundingSphere)
+        } else if (beforeGeometry && beforeGeometry.boundingSphere) {
+            setBoundingSphere(beforeGeometry.boundingSphere)
+        } else if (afterGeometry && afterGeometry.boundingSphere) {
+            setBoundingSphere(afterGeometry.boundingSphere)
+        }
+    }, [before, after])
     return (
         <>
-            <Box
-                display="flex"
-                height={300}
-                overflow="hidden"
-                minWidth={0}
-                position="relative"
-            >
-                {canShowUnified && showUnified && (
-                    <Loader3DUnified before={before} after={after} />
-                )}
-                {!showUnified && (
-                    <>
-                        {before && (
-                            <Box
-                                flexGrow={1}
-                                minWidth={0}
-                                backgroundColor="danger.subtle"
-                            >
-                                <Loader3D file={before} colors={beforeColors} />
-                            </Box>
+            {(beforeGeometry || afterGeometry) && (
+                <Box
+                    display="flex"
+                    height={300}
+                    overflow="hidden"
+                    minWidth={0}
+                    position="relative"
+                >
+                    {beforeGeometry &&
+                        afterGeometry &&
+                        boundingSphere &&
+                        showCombined && (
+                            <Viewer3DCombined
+                                beforeGeometry={beforeGeometry}
+                                afterGeometry={afterGeometry}
+                                boundingSphere={boundingSphere}
+                            />
                         )}
-                        {after && (
-                            <Box
-                                flexGrow={1}
-                                minWidth={0}
-                                backgroundColor="success.subtle"
-                                borderLeftWidth={1}
-                                borderLeftColor="border.default"
-                                borderLeftStyle="solid"
-                            >
-                                <Loader3D file={after} colors={afterColors} />
-                            </Box>
-                        )}
-                    </>
-                )}
-            </Box>
-            {canShowUnified && (
+                    {!showCombined && (
+                        <Viewer3D2Up
+                            beforeGeometry={beforeGeometry}
+                            afterGeometry={afterGeometry}
+                            boundingSphere={boundingSphere}
+                        />
+                    )}
+                </Box>
+            )}
+            {beforeGeometry && afterGeometry && boundingSphere && (
                 <Box
                     pt={2}
                     backgroundColor="canvas.default"
@@ -177,18 +209,18 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                         }}
                     >
                         <TabNav.Link
-                            selected={!showUnified}
-                            onClick={() => setShowUnified(false)}
+                            selected={!showCombined}
+                            onClick={() => setShowCombined(false)}
                             sx={{ cursor: 'pointer' }}
                         >
-                            Side-by-side
+                            2-up
                         </TabNav.Link>
                         <TabNav.Link
-                            selected={showUnified}
-                            onClick={() => setShowUnified(true)}
+                            selected={showCombined}
+                            onClick={() => setShowCombined(true)}
                             sx={{ cursor: 'pointer' }}
                         >
-                            Unified
+                            Combined
                             <StyledOcticon
                                 icon={BeakerIcon}
                                 color="fg.muted"
@@ -197,6 +229,13 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                             />
                         </TabNav.Link>
                     </TabNav>
+                </Box>
+            )}
+            {!beforeGeometry && !afterGeometry && (
+                <Box p={3}>
+                    <Text>
+                        Sorry, the rich diff can't be displayed for this file.
+                    </Text>
                 </Box>
             )}
         </>
