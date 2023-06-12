@@ -73,6 +73,6 @@ test('commit diff with a .dae file as LFS', async ({
 }) => {
     const url =
         'https://github.com/KittyCAD/diff-samples/commit/b009cfd6dd1eb2d0c3ec0d31a21360766ad084e4'
-    const screenshot = await getFirstDiffScreenshot(page, url, 'step')
+    const screenshot = await getFirstDiffScreenshot(page, url, 'dae')
     expect(screenshot).toMatchSnapshot()
 })
