@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@octokit/openapi-types", "npm:17.2.0"],\
             ["@octokit/rest", "npm:19.0.11"],\
             ["@octokit/types", "npm:9.2.3"],\
-            ["@playwright/test", "npm:1.34.3"],\
+            ["@playwright/test", "npm:1.35.0"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:19.1.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.1"],\
             ["@react-three/csg", "npm:2.2.0"],\
@@ -1338,13 +1338,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@playwright/test", [\
-        ["npm:1.34.3", {\
-          "packageLocation": "./.yarn/cache/@playwright-test-npm-1.34.3-52e4547b97-b387d85f09.zip/node_modules/@playwright/test/",\
+        ["npm:1.35.0", {\
+          "packageLocation": "./.yarn/cache/@playwright-test-npm-1.35.0-bb258733c8-c63a281d87.zip/node_modules/@playwright/test/",\
           "packageDependencies": [\
-            ["@playwright/test", "npm:1.34.3"],\
+            ["@playwright/test", "npm:1.35.0"],\
             ["@types/node", "npm:18.16.3"],\
             ["fsevents", "patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"],\
-            ["playwright-core", "npm:1.34.3"]\
+            ["playwright-core", "npm:1.35.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3955,7 +3955,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@octokit/openapi-types", "npm:17.2.0"],\
             ["@octokit/rest", "npm:19.0.11"],\
             ["@octokit/types", "npm:9.2.3"],\
-            ["@playwright/test", "npm:1.34.3"],\
+            ["@playwright/test", "npm:1.35.0"],\
             ["@primer/octicons-react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:19.1.0"],\
             ["@primer/react", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:35.25.1"],\
             ["@react-three/csg", "npm:2.2.0"],\
@@ -7053,10 +7053,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["playwright-core", [\
-        ["npm:1.34.3", {\
-          "packageLocation": "./.yarn/unplugged/playwright-core-npm-1.34.3-f476cefee2/node_modules/playwright-core/",\
+        ["npm:1.35.0", {\
+          "packageLocation": "./.yarn/unplugged/playwright-core-npm-1.35.0-887829e564/node_modules/playwright-core/",\
           "packageDependencies": [\
-            ["playwright-core", "npm:1.34.3"]\
+            ["playwright-core", "npm:1.35.0"]\
           ],\
           "linkType": "HARD"\
         }]\
