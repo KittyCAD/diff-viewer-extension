@@ -28,7 +28,7 @@ export function BaseModel({
                 const arbitraryNonZeroStartPosition = new Vector3(0.5, 0.5, 1)
                 camera.position.copy(arbitraryNonZeroStartPosition)
             }
-            const initialZoomOffset = 7.5
+            const initialZoomOffset = 10 // TODO: understand why we have this value
             camera.position.setLength(radius * initialZoomOffset)
 
             // set zoom for orthographic Camera
