@@ -33,7 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@dicebear/avatars", "npm:4.10.8"],\
             ["@dicebear/avatars-bottts-sprites", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.10.8"],\
             ["@kittycad/lib", "npm:0.0.20"],\
-            ["@octokit/openapi-types", "npm:17.2.0"],\
+            ["@octokit/openapi-types", "npm:18.0.0"],\
             ["@octokit/rest", "npm:19.0.11"],\
             ["@octokit/types", "npm:9.2.3"],\
             ["@playwright/test", "npm:1.35.0"],\
@@ -1196,6 +1196,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@octokit-openapi-types-npm-17.2.0-e9456595e7-29995e34f9.zip/node_modules/@octokit/openapi-types/",\
           "packageDependencies": [\
             ["@octokit/openapi-types", "npm:17.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:18.0.0", {\
+          "packageLocation": "./.yarn/cache/@octokit-openapi-types-npm-18.0.0-1586e405d6-d487d6c6c1.zip/node_modules/@octokit/openapi-types/",\
+          "packageDependencies": [\
+            ["@octokit/openapi-types", "npm:18.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3952,7 +3959,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@dicebear/avatars", "npm:4.10.8"],\
             ["@dicebear/avatars-bottts-sprites", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.10.8"],\
             ["@kittycad/lib", "npm:0.0.20"],\
-            ["@octokit/openapi-types", "npm:17.2.0"],\
+            ["@octokit/openapi-types", "npm:18.0.0"],\
             ["@octokit/rest", "npm:19.0.11"],\
             ["@octokit/types", "npm:9.2.3"],\
             ["@playwright/test", "npm:1.35.0"],\

@@ -923,6 +923,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/openapi-types@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "@octokit/openapi-types@npm:18.0.0"
+  checksum: d487d6c6c1965e583eee417d567e4fe3357a98953fc49bce1a88487e7908e9b5dbb3e98f60dfa340e23b1792725fbc006295aea071c5667a813b9c098185b56f
+  languageName: node
+  linkType: hard
+
 "@octokit/plugin-paginate-rest@npm:^6.1.2":
   version: 6.1.2
   resolution: "@octokit/plugin-paginate-rest@npm:6.1.2"
@@ -3123,7 +3130,7 @@ __metadata:
     "@dicebear/avatars": ^4.10.8
     "@dicebear/avatars-bottts-sprites": ^4.10.8
     "@kittycad/lib": ^0.0.20
-    "@octokit/openapi-types": ^17.2.0
+    "@octokit/openapi-types": ^18.0.0
     "@octokit/rest": ^19.0.11
     "@octokit/types": ^9.2.3
     "@playwright/test": ^1.35.0
