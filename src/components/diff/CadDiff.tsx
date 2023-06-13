@@ -27,7 +27,8 @@ function Viewer3D2Up({
     afterGeometry?: BufferGeometry
     boundingSphere?: Sphere
 }) {
-    const cameraRef = useRef<any>()
+    const cameraRefBefore = useRef<any>()
+    const cameraRefAfter = useRef<any>()
     const { theme } = useTheme()
     const beforeColors: WireframeColors = {
         face: theme?.colors.fg.default,
@@ -44,14 +45,14 @@ function Viewer3D2Up({
             {beforeGeometry && (
                 <Box flexGrow={1} minWidth={0} backgroundColor="danger.subtle">
                     <Viewer3D
-                        cameraRef={cameraRef}
+                        cameraRef={cameraRefBefore}
                         geometry={beforeGeometry}
                         boundingSphere={boundingSphere}
                     >
                         <WireframeModel
                             geometry={beforeGeometry}
                             boundingSphere={boundingSphere}
-                            cameraRef={cameraRef}
+                            cameraRef={cameraRefBefore}
                             colors={beforeColors}
                         />
                     </Viewer3D>
@@ -67,14 +68,14 @@ function Viewer3D2Up({
                     borderLeftStyle="solid"
                 >
                     <Viewer3D
-                        cameraRef={cameraRef}
+                        cameraRef={cameraRefAfter}
                         geometry={afterGeometry}
                         boundingSphere={boundingSphere}
                     >
                         <WireframeModel
                             geometry={afterGeometry}
                             boundingSphere={boundingSphere}
-                            cameraRef={cameraRef}
+                            cameraRef={cameraRefAfter}
                             colors={afterColors}
                         />
                     </Viewer3D>
@@ -83,8 +84,8 @@ function Viewer3D2Up({
             <Box top={2} right={2} position="absolute">
                 <Button
                     onClick={() => {
-                        console.log(cameraRef.current)
-                        cameraRef.current.reset()
+                        console.log(cameraRefBefore.current)
+                        console.log(cameraRefAfter.current)
                     }}
                 >
                     Recenter
