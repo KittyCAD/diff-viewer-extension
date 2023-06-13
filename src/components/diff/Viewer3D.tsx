@@ -25,7 +25,9 @@ export function Viewer3D({
                 cameraRef={cameraRef}
                 target={boundingSphere?.center}
             />
-            {geometry && <Camera boundingSphere={boundingSphere} />}
+            {geometry && (
+                <Camera cameraRef={cameraRef} boundingSphere={boundingSphere} />
+            )}
         </Canvas>
     )
 }

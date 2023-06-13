@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, Text, useTheme, TabNav, StyledOcticon } from '@primer/react'
+import {
+    Box,
+    Text,
+    useTheme,
+    TabNav,
+    StyledOcticon,
+    Button,
+} from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
 import { BufferGeometry, Sphere } from 'three'
@@ -73,6 +80,16 @@ function Viewer3D2Up({
                     </Viewer3D>
                 </Box>
             )}
+            <Box top={2} right={2} position="absolute">
+                <Button
+                    onClick={() => {
+                        console.log(cameraRef.current)
+                        cameraRef.current.reset()
+                    }}
+                >
+                    Recenter
+                </Button>
+            </Box>
         </>
     )
 }
@@ -160,10 +177,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
             )
             setBoundingSphere(boundingSphere)
         } else if (afterGeometry && afterGeometry.boundingSphere) {
-            const boundingSphere = getCommonSphere(
-                afterGeometry,
-                afterGeometry
-            )
+            const boundingSphere = getCommonSphere(afterGeometry, afterGeometry)
             setBoundingSphere(boundingSphere)
         }
     }, [before, after])
