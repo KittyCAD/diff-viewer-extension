@@ -11,7 +11,6 @@ export type WireframeColors = {
 }
 
 type Props = {
-    cameraRef: MutableRefObject<any>
     geometry: BufferGeometry
     colors: WireframeColors
     boundingSphere?: Sphere
@@ -20,7 +19,6 @@ type Props = {
 export function WireframeModel({
     geometry,
     boundingSphere,
-    cameraRef,
     colors,
 }: Props) {
     const groupRef = useRef<any>()
@@ -33,7 +31,6 @@ export function WireframeModel({
     return (
         <BaseModel
             boundingSphere={boundingSphere || geometry.boundingSphere}
-            cameraRef={cameraRef}
         >
             <group ref={groupRef}>
                 <mesh

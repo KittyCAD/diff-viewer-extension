@@ -68,6 +68,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["styled-components", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.3.11"],\
             ["three", "npm:0.153.0"],\
             ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.6.0"],\
+            ["three-stdlib", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:2.23.9"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"],\
             ["vite", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.3.9"],\
             ["vite-plugin-node-polyfills", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.9.0"],\
@@ -3987,6 +3988,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["styled-components", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:5.3.11"],\
             ["three", "npm:0.153.0"],\
             ["three-mesh-bvh", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.6.0"],\
+            ["three-stdlib", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:2.23.9"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"],\
             ["vite", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:4.3.9"],\
             ["vite-plugin-node-polyfills", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:0.9.0"],\
@@ -8347,10 +8349,41 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["npm:2.23.9", {\
+          "packageLocation": "./.yarn/cache/three-stdlib-npm-2.23.9-ca597d80c4-bebd4723b7.zip/node_modules/three-stdlib/",\
+          "packageDependencies": [\
+            ["three-stdlib", "npm:2.23.9"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
         ["virtual:0b635d7b0d680ba21bf91c401422f1e7d5b06de5cea2fa3694d51d413ef66fe8e0e44041150f3184de0d0ec8ce0164553db559c18e795401b2be39bbc7270aae#npm:2.23.8", {\
           "packageLocation": "./.yarn/__virtual__/three-stdlib-virtual-a005eb2731/0/cache/three-stdlib-npm-2.23.8-c932cb5b7f-a34c8bccc2.zip/node_modules/three-stdlib/",\
           "packageDependencies": [\
             ["three-stdlib", "virtual:0b635d7b0d680ba21bf91c401422f1e7d5b06de5cea2fa3694d51d413ef66fe8e0e44041150f3184de0d0ec8ce0164553db559c18e795401b2be39bbc7270aae#npm:2.23.8"],\
+            ["@types/draco3d", "npm:1.4.2"],\
+            ["@types/offscreencanvas", "npm:2019.7.0"],\
+            ["@types/three", "npm:0.152.1"],\
+            ["@types/webxr", "npm:0.5.2"],\
+            ["chevrotain", "npm:10.5.0"],\
+            ["draco3d", "npm:1.5.6"],\
+            ["fflate", "npm:0.6.10"],\
+            ["ktx-parse", "npm:0.4.5"],\
+            ["mmd-parser", "npm:1.0.4"],\
+            ["opentype.js", "npm:1.3.4"],\
+            ["potpack", "npm:1.0.2"],\
+            ["three", "npm:0.153.0"],\
+            ["zstddec", "npm:0.0.2"]\
+          ],\
+          "packagePeers": [\
+            "@types/three",\
+            "three"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:2.23.9", {\
+          "packageLocation": "./.yarn/__virtual__/three-stdlib-virtual-ce40e73de3/0/cache/three-stdlib-npm-2.23.9-ca597d80c4-bebd4723b7.zip/node_modules/three-stdlib/",\
+          "packageDependencies": [\
+            ["three-stdlib", "virtual:ff5ad3439f8ec237c0c86796b437c422a681ce7f1211bc52c84c467fd5c19025673469e4b3bd047db74cf4144d670522e4013a081fcd63cc449dbcb3b5b92460#npm:2.23.9"],\
             ["@types/draco3d", "npm:1.4.2"],\
             ["@types/offscreencanvas", "npm:2019.7.0"],\
             ["@types/three", "npm:0.152.1"],\

@@ -1,7 +1,8 @@
+import { CameraControls } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import type { MutableRefObject, PropsWithChildren } from 'react'
 import { Suspense, useEffect, useRef } from 'react'
-import { Camera, Sphere } from 'three'
+import { Sphere } from 'three'
 import { Vector3 } from 'three'
 
 function calculateFovFactor(fov: number, canvasHeight: number): number {
@@ -13,22 +14,20 @@ function calculateFovFactor(fov: number, canvasHeight: number): number {
 }
 
 type BaseModelProps = {
-    cameraRef: MutableRefObject<any>
     boundingSphere: Sphere | null | undefined
 }
 
 export function BaseModel({
     boundingSphere,
-    cameraRef,
     children,
 }: PropsWithChildren<BaseModelProps>) {
-    const groupRef = useRef<any>()
+    const camera = useThree(state => state.camera)
+    const controls = useThree(state => state.controls)
     const canvasHeight = useThree(state => state.size.height)
 
     // Camera view, adapted from KittyCAD/website
     useEffect(() => {
-        if (boundingSphere && cameraRef.current) {
-            const camera = cameraRef.current
+        if (boundingSphere && camera && controls && canvasHeight) {
             // move the camera away so the object fits in the view
             const { radius } = boundingSphere || { radius: 1 }
             if (!camera.position.length()) {
@@ -43,12 +42,14 @@ export function BaseModel({
             const fovFactor = calculateFovFactor(fov, canvasHeight)
             camera.zoom = fovFactor / camera.position.length()
             camera.updateProjectionMatrix()
+            // TODO: fix type?
+            controls.saveState()
         }
-    }, [boundingSphere, cameraRef, canvasHeight])
+    }, [boundingSphere, camera, controls, canvasHeight])
 
     return (
         <Suspense fallback={null}>
-            <group ref={groupRef}>{children}</group>
+            <group>{children}</group>
         </Suspense>
     )
 }

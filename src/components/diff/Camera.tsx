@@ -35,14 +35,12 @@ function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
 
 export function Camera({
     boundingSphere,
-    cameraRef,
 }: {
     boundingSphere?: Sphere
-    cameraRef: MutableRefObject<any>
 }) {
     return (
         <>
-            <OrthographicCamera ref={cameraRef} makeDefault>
+            <OrthographicCamera makeDefault>
                 <CameraLighting boundingSphere={boundingSphere} />
             </OrthographicCamera>
         </>

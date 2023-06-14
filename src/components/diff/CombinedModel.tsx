@@ -8,7 +8,6 @@ type CombinedModelProps = {
     beforeGeometry: BufferGeometry
     afterGeometry: BufferGeometry
     boundingSphere: Sphere
-    cameraRef: MutableRefObject<any>
     showUnchanged: boolean
     showAdditions: boolean
     showDeletions: boolean
@@ -18,7 +17,6 @@ export function CombinedModel({
     beforeGeometry,
     afterGeometry,
     boundingSphere,
-    cameraRef,
     showUnchanged,
     showAdditions,
     showDeletions,
@@ -29,7 +27,7 @@ export function CombinedModel({
     const deletionsColor = theme?.colors.danger.muted
 
     return (
-        <BaseModel boundingSphere={boundingSphere} cameraRef={cameraRef}>
+        <BaseModel boundingSphere={boundingSphere}>
             {/* Unchanged */}
             <mesh>
                 <meshPhongMaterial

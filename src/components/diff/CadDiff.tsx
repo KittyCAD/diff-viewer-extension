@@ -17,6 +17,7 @@ import { CombinedModel } from './CombinedModel'
 import { BeakerIcon } from '@primer/octicons-react'
 import { LegendBox, LegendLabel } from './Legend'
 import { getCommonSphere, loadGeometry } from '../../utils/three'
+import { OrbitControls } from 'three-stdlib'
 
 function Viewer3D2Up({
     beforeGeometry,
@@ -27,8 +28,8 @@ function Viewer3D2Up({
     afterGeometry?: BufferGeometry
     boundingSphere?: Sphere
 }) {
-    const cameraRefBefore = useRef<any>()
-    const cameraRefAfter = useRef<any>()
+    const beforeControlsRef = useRef<OrbitControls | null>(null)
+    const afterControlsRef = useRef<OrbitControls | null>(null)
     const { theme } = useTheme()
     const beforeColors: WireframeColors = {
         face: theme?.colors.fg.default,
@@ -45,14 +46,13 @@ function Viewer3D2Up({
             {beforeGeometry && (
                 <Box flexGrow={1} minWidth={0} backgroundColor="danger.subtle">
                     <Viewer3D
-                        cameraRef={cameraRefBefore}
+                        controlsRef={beforeControlsRef}
                         geometry={beforeGeometry}
                         boundingSphere={boundingSphere}
                     >
                         <WireframeModel
                             geometry={beforeGeometry}
                             boundingSphere={boundingSphere}
-                            cameraRef={cameraRefBefore}
                             colors={beforeColors}
                         />
                     </Viewer3D>
@@ -68,14 +68,13 @@ function Viewer3D2Up({
                     borderLeftStyle="solid"
                 >
                     <Viewer3D
-                        cameraRef={cameraRefAfter}
+                        controlsRef={afterControlsRef}
                         geometry={afterGeometry}
                         boundingSphere={boundingSphere}
                     >
                         <WireframeModel
                             geometry={afterGeometry}
                             boundingSphere={boundingSphere}
-                            cameraRef={cameraRefAfter}
                             colors={afterColors}
                         />
                     </Viewer3D>
@@ -84,8 +83,8 @@ function Viewer3D2Up({
             <Box top={2} right={2} position="absolute">
                 <Button
                     onClick={() => {
-                        console.log(cameraRefBefore.current)
-                        console.log(cameraRefAfter.current)
+                        afterControlsRef.current?.reset()
+                        beforeControlsRef.current?.reset()
                     }}
                 >
                     Recenter
@@ -104,14 +103,14 @@ function Viewer3DCombined({
     afterGeometry: BufferGeometry
     boundingSphere: Sphere
 }) {
-    const cameraRef = useRef<any>()
+    const controlsRef = useRef<OrbitControls | null>(null)
     const [showUnchanged, setShowUnchanged] = useState(true)
     const [showAdditions, setShowAdditions] = useState(true)
     const [showDeletions, setShowDeletions] = useState(true)
     return (
         <>
             <Viewer3D
-                cameraRef={cameraRef}
+                controlsRef={controlsRef}
                 geometry={beforeGeometry}
                 boundingSphere={boundingSphere}
             >
@@ -119,7 +118,6 @@ function Viewer3DCombined({
                     beforeGeometry={beforeGeometry}
                     afterGeometry={afterGeometry}
                     boundingSphere={boundingSphere}
-                    cameraRef={cameraRef}
                     showUnchanged={showUnchanged}
                     showAdditions={showAdditions}
                     showDeletions={showDeletions}
