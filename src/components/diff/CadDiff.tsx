@@ -30,6 +30,7 @@ function Viewer3D2Up({
 }) {
     const beforeControlsRef = useRef<OrbitControls | null>(null)
     const afterControlsRef = useRef<OrbitControls | null>(null)
+    const [controlsAltered, setControlsAltered] = useState(false)
     const { theme } = useTheme()
     const beforeColors: WireframeColors = {
         face: theme?.colors.fg.default,
@@ -46,9 +47,12 @@ function Viewer3D2Up({
             {beforeGeometry && (
                 <Box flexGrow={1} minWidth={0} backgroundColor="danger.subtle">
                     <Viewer3D
-                        controlsRef={beforeControlsRef}
                         geometry={beforeGeometry}
                         boundingSphere={boundingSphere}
+                        controlsRef={beforeControlsRef}
+                        onControlsAltered={() =>
+                            !controlsAltered && setControlsAltered(true)
+                        }
                     >
                         <WireframeModel
                             geometry={beforeGeometry}
@@ -68,9 +72,12 @@ function Viewer3D2Up({
                     borderLeftStyle="solid"
                 >
                     <Viewer3D
-                        controlsRef={afterControlsRef}
                         geometry={afterGeometry}
                         boundingSphere={boundingSphere}
+                        controlsRef={afterControlsRef}
+                        onControlsAltered={() =>
+                            !controlsAltered && setControlsAltered(true)
+                        }
                     >
                         <WireframeModel
                             geometry={afterGeometry}
@@ -80,16 +87,19 @@ function Viewer3D2Up({
                     </Viewer3D>
                 </Box>
             )}
-            <Box top={2} right={2} position="absolute">
-                <Button
-                    onClick={() => {
-                        afterControlsRef.current?.reset()
-                        beforeControlsRef.current?.reset()
-                    }}
-                >
-                    Recenter
-                </Button>
-            </Box>
+            {controlsAltered && (
+                <Box top={2} right={2} position="absolute">
+                    <Button
+                        onClick={() => {
+                            afterControlsRef.current?.reset()
+                            beforeControlsRef.current?.reset()
+                            setControlsAltered(false)
+                        }}
+                    >
+                        Recenter
+                    </Button>
+                </Box>
+            )}
         </>
     )
 }
@@ -104,15 +114,19 @@ function Viewer3DCombined({
     boundingSphere: Sphere
 }) {
     const controlsRef = useRef<OrbitControls | null>(null)
+    const [controlsAltered, setControlsAltered] = useState(false)
     const [showUnchanged, setShowUnchanged] = useState(true)
     const [showAdditions, setShowAdditions] = useState(true)
     const [showDeletions, setShowDeletions] = useState(true)
     return (
         <>
             <Viewer3D
-                controlsRef={controlsRef}
                 geometry={beforeGeometry}
                 boundingSphere={boundingSphere}
+                controlsRef={controlsRef}
+                onControlsAltered={() =>
+                    !controlsAltered && setControlsAltered(true)
+                }
             >
                 <CombinedModel
                     beforeGeometry={beforeGeometry}
@@ -143,6 +157,18 @@ function Viewer3DCombined({
                     onChange={enabled => setShowDeletions(enabled)}
                 />
             </LegendBox>
+            {controlsAltered && (
+                <Box top={2} right={2} position="absolute">
+                    <Button
+                        onClick={() => {
+                            controlsRef.current?.reset()
+                            setControlsAltered(false)
+                        }}
+                    >
+                        Recenter
+                    </Button>
+                </Box>
+            )}
         </>
     )
 }

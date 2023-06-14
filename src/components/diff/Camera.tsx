@@ -33,11 +33,7 @@ function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
     )
 }
 
-export function Camera({
-    boundingSphere,
-}: {
-    boundingSphere?: Sphere
-}) {
+export function Camera({ boundingSphere }: { boundingSphere?: Sphere }) {
     return (
         <>
             <OrthographicCamera makeDefault>

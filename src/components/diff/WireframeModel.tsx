@@ -16,11 +16,7 @@ type Props = {
     boundingSphere?: Sphere
 }
 
-export function WireframeModel({
-    geometry,
-    boundingSphere,
-    colors,
-}: Props) {
+export function WireframeModel({ geometry, boundingSphere, colors }: Props) {
     const groupRef = useRef<any>()
     const edgeThresholdAngle = 10
     const edges = useMemo(
@@ -29,9 +25,7 @@ export function WireframeModel({
     )
 
     return (
-        <BaseModel
-            boundingSphere={boundingSphere || geometry.boundingSphere}
-        >
+        <BaseModel boundingSphere={boundingSphere || geometry.boundingSphere}>
             <group ref={groupRef}>
                 <mesh
                     castShadow={true}
