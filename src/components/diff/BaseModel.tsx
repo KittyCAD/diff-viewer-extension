@@ -1,17 +1,9 @@
-import { CameraControls } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import type { MutableRefObject, PropsWithChildren } from 'react'
 import { Suspense, useEffect, useRef } from 'react'
 import { Sphere } from 'three'
 import { Vector3 } from 'three'
-
-function calculateFovFactor(fov: number, canvasHeight: number): number {
-    const pixelsFromCenterToTop = canvasHeight / 2
-    // Only interested in the angle from the center to the top of frame
-    const deg2Rad = Math.PI / 180
-    const halfFovRadians = (fov * deg2Rad) / 2
-    return pixelsFromCenterToTop / Math.tan(halfFovRadians)
-}
+import { calculateFovFactor } from './Camera'
 
 type BaseModelProps = {
     boundingSphere: Sphere | null | undefined
@@ -22,7 +14,7 @@ export function BaseModel({
     children,
 }: PropsWithChildren<BaseModelProps>) {
     const camera = useThree(state => state.camera)
-    const controls = useThree(state => state.controls)
+    const controls = useThree(state => state.controls) as any // TODO: fix type
     const canvasHeight = useThree(state => state.size.height)
 
     // Camera view, adapted from KittyCAD/website
@@ -42,7 +34,6 @@ export function BaseModel({
             const fovFactor = calculateFovFactor(fov, canvasHeight)
             camera.zoom = fovFactor / camera.position.length()
             camera.updateProjectionMatrix()
-            // TODO: fix type?
             controls.saveState()
         }
     }, [boundingSphere, camera, controls, canvasHeight])

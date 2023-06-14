@@ -1,5 +1,5 @@
 import { OrthographicCamera } from '@react-three/drei'
-import { MutableRefObject, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Sphere } from 'three'
 
 function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
@@ -31,6 +31,14 @@ function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
             />
         </>
     )
+}
+
+export function calculateFovFactor(fov: number, canvasHeight: number): number {
+    const pixelsFromCenterToTop = canvasHeight / 2
+    // Only interested in the angle from the center to the top of frame
+    const deg2Rad = Math.PI / 180
+    const halfFovRadians = (fov * deg2Rad) / 2
+    return pixelsFromCenterToTop / Math.tan(halfFovRadians)
 }
 
 export function Camera({ boundingSphere }: { boundingSphere?: Sphere }) {

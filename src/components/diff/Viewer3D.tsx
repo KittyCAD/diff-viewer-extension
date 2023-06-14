@@ -1,7 +1,7 @@
 import { MutableRefObject, PropsWithChildren } from 'react'
 import '@react-three/fiber'
 import { BufferGeometry } from 'three'
-import { Canvas, useThree } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { Camera } from './Camera'
 import { Sphere } from 'three'
 import { Controls } from './Controls'

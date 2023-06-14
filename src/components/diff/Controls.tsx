@@ -2,11 +2,12 @@ import { OrbitControls } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { MutableRefObject } from 'react'
 import { Vector3 } from 'three'
+// From https://github.com/pmndrs/drei/discussions/719#discussioncomment-1961149
 import { OrbitControls as OrbitControlsType } from 'three-stdlib'
 
 export type ControlsProps = {
-    reference: MutableRefObject<OrbitControlsType | null>
     target?: Vector3
+    reference: MutableRefObject<OrbitControlsType | null>
     onAltered?: () => void
 }
 
