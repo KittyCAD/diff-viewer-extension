@@ -923,6 +923,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/openapi-types@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "@octokit/openapi-types@npm:18.0.0"
+  checksum: d487d6c6c1965e583eee417d567e4fe3357a98953fc49bce1a88487e7908e9b5dbb3e98f60dfa340e23b1792725fbc006295aea071c5667a813b9c098185b56f
+  languageName: node
+  linkType: hard
+
 "@octokit/plugin-paginate-rest@npm:^6.1.2":
   version: 6.1.2
   resolution: "@octokit/plugin-paginate-rest@npm:6.1.2"
@@ -1015,6 +1022,15 @@ __metadata:
   dependencies:
     "@octokit/openapi-types": ^17.2.0
   checksum: 6806413089f20a8302237ef85aa2e83bace7499e95fdc3db2d304f9e6dc6e87fb6766452f92e08ddf475046b69753e11beabaeff6733c38bdaf3e21dfd7d3341
+  languageName: node
+  linkType: hard
+
+"@octokit/types@npm:^9.3.1":
+  version: 9.3.1
+  resolution: "@octokit/types@npm:9.3.1"
+  dependencies:
+    "@octokit/openapi-types": ^18.0.0
+  checksum: 56fce104114730553c79175261f288a263055af4a6de848130fa964940460ee4fe8fa610f33dd0862c2c178d7d97f703e44a799898f3b52583e7ce5ae595f8ff
   languageName: node
   linkType: hard
 
@@ -1693,10 +1709,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.2.5":
-  version: 20.2.5
-  resolution: "@types/node@npm:20.2.5"
-  checksum: 38ce7c7e9d76880dc632f71d71e0d5914fcda9d5e9a7095d6c339abda55ca4affb0f2a882aeb29398f8e09d2c5151f0b6586c81c8ccdfe529c34b1ea3337425e
+"@types/node@npm:^20.3.1":
+  version: 20.3.1
+  resolution: "@types/node@npm:20.3.1"
+  checksum: 63a393ab6d947be17320817b35d7277ef03728e231558166ed07ee30b09fd7c08861be4d746f10fdc63ca7912e8cd023939d4eab887ff6580ff704ff24ed810c
   languageName: node
   linkType: hard
 
@@ -1723,12 +1739,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.2.4":
-  version: 18.2.4
-  resolution: "@types/react-dom@npm:18.2.4"
+"@types/react-dom@npm:^18.2.5":
+  version: 18.2.5
+  resolution: "@types/react-dom@npm:18.2.5"
   dependencies:
     "@types/react": "*"
-  checksum: 8301f35cf1cbfec8c723e9477aecf87774e3c168bd457d353b23c45064737213d3e8008b067c6767b7b08e4f2b3823ee239242a6c225fc91e7f8725ef8734124
+  checksum: c48209f8c60cb9054f3deee5365bc9fd6dadd8f901b67f1612a334057b2671518fc5145f14aca63ff276a926ccb5358308a6cf58ec700178f382bb3ebde96d91
   languageName: node
   linkType: hard
 
@@ -1761,14 +1777,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.9":
-  version: 18.2.9
-  resolution: "@types/react@npm:18.2.9"
+"@types/react@npm:^18.2.12":
+  version: 18.2.12
+  resolution: "@types/react@npm:18.2.12"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: f155256171a2d701eb962a1d3aa2a1c9ee36d9dd4a4aecb911d29e50717aab1a76914aef25242665147c455b9e8d081d1a60275d13ca81075c148ebd6607414a
+  checksum: ad85a7eadaf1b35cfeee9f715b39311420ff46d46e0650377d918b3f888c2e47416037da4a765e1dccd3d1916abd54c105a3bee803c971ba56c955a7768ce976
   languageName: node
   linkType: hard
 
@@ -3123,9 +3139,9 @@ __metadata:
     "@dicebear/avatars": ^4.10.8
     "@dicebear/avatars-bottts-sprites": ^4.10.8
     "@kittycad/lib": ^0.0.20
-    "@octokit/openapi-types": ^17.2.0
+    "@octokit/openapi-types": ^18.0.0
     "@octokit/rest": ^19.0.11
-    "@octokit/types": ^9.2.3
+    "@octokit/types": ^9.3.1
     "@playwright/test": ^1.35.0
     "@primer/octicons-react": ^19.1.0
     "@primer/react": ^35.25.0
@@ -3137,9 +3153,9 @@ __metadata:
     "@testing-library/user-event": ^14.4.3
     "@types/chrome": ^0.0.237
     "@types/jest": ^29.5.2
-    "@types/node": ^20.2.5
-    "@types/react": ^18.2.9
-    "@types/react-dom": ^18.2.4
+    "@types/node": ^20.3.1
+    "@types/react": ^18.2.12
+    "@types/react-dom": ^18.2.5
     "@types/testing-library__jest-dom": ^5.14.6
     "@types/three": ^0.152.1
     "@vitejs/plugin-react": ^4.0.0
