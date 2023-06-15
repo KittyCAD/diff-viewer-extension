@@ -26,11 +26,11 @@ export function BaseModel({
                 const arbitraryNonZeroStartPosition = new Vector3(0.5, 0.5, 1)
                 camera.position.copy(arbitraryNonZeroStartPosition)
             }
-            const initialZoomOffset = 7.5 // TODO: understand why we have this value
+            const initialZoomOffset = 15 // Far enough to avoid clipping
             camera.position.setLength(radius * initialZoomOffset)
 
             // set zoom for orthographic Camera
-            const fov = 15 // TODO fov shouldn't be hardcoded
+            const fov = 7.5 // Small enough to have a good initial zoom
             const fovFactor = calculateFovFactor(fov, canvasHeight)
             camera.zoom = fovFactor / camera.position.length()
             camera.updateProjectionMatrix()
