@@ -6,8 +6,10 @@ import {
     mapInjectableDiffElements,
     getGithubCommitUrlParams,
     createReactRoot,
+    getGithubBlobUrlParams,
 } from './web'
 import gitHubInjection from 'github-injection'
+import { CadBlobPage } from '../components/diff/CadBlobPage'
 
 const root = createReactRoot(document)
 
@@ -28,6 +30,26 @@ async function injectDiff(
         map,
     })
     root.render(cadDiffPage)
+}
+
+async function injectBlob(
+    owner: string,
+    repo: string,
+    sha: string,
+    filename: string,
+    document: Document
+) {
+    const element = document.querySelector(
+        'section[aria-labelledby="file-name-id"]'
+    ) as HTMLElement
+    const cadBlobPage = React.createElement(CadBlobPage, {
+        element,
+        owner,
+        repo,
+        sha,
+        filename,
+    })
+    root.render(cadBlobPage)
 }
 
 async function injectPullDiff(
@@ -86,6 +108,14 @@ async function run() {
         const { owner, repo, sha } = commitParams
         console.log('Found commit diff: ', owner, repo, sha)
         await injectCommitDiff(owner, repo, sha, window.document)
+        return
+    }
+
+    const blobParams = getGithubBlobUrlParams(url)
+    if (blobParams) {
+        const { owner, repo, sha, filename } = blobParams
+        console.log('Found blob diff: ', owner, repo, sha, filename)
+        await injectBlob(owner, repo, sha, filename, window.document)
         return
     }
 }
