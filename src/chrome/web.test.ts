@@ -153,10 +153,10 @@ describe('Function getGithubBlobUrlParams', () => {
             'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.obj'
         const params = getGithubBlobUrlParams(url)
         expect(params).toBeDefined()
-        const { owner, repo, ref, filename } = params!
+        const { owner, repo, sha, filename } = params!
         expect(owner).toEqual('KittyCAD')
         expect(repo).toEqual('diff-samples')
-        expect(ref).toEqual('fd9eec79f0464833686ea6b5b34ea07145e32734')
+        expect(sha).toEqual('fd9eec79f0464833686ea6b5b34ea07145e32734')
         expect(filename).toEqual('models/box.obj')
     })
 
