@@ -1,6 +1,5 @@
 import { OrthographicCamera } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Sphere } from 'three'
 
 function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
@@ -43,29 +42,9 @@ export function calculateFovFactor(fov: number, canvasHeight: number): number {
 }
 
 export function Camera({ boundingSphere }: { boundingSphere?: Sphere }) {
-    const fov = 15
-    const persRef = useRef<any>(null)
-    const orthoRef = useRef<any>(null)
-    const canvasHeight = useThree(state => state.size.height)
-    const [isFirstRender, setIsFirstRender] = useState(true)
-
-    useLayoutEffect(() => {
-        const fovFactor = calculateFovFactor(fov, canvasHeight)
-        if (!persRef.current || !orthoRef.current) return
-        if (isFirstRender) {
-            setIsFirstRender(false)
-            return
-        }
-        setTimeout(() => {
-            orthoRef.current.position.copy(persRef.current.position.clone())
-            orthoRef.current.zoom =
-                fovFactor / orthoRef.current.position.length()
-            orthoRef.current.updateProjectionMatrix()
-        })
-    }, [canvasHeight, orthoRef, isFirstRender])
     return (
         <>
-            <OrthographicCamera ref={orthoRef} makeDefault>
+            <OrthographicCamera makeDefault>
                 <CameraLighting boundingSphere={boundingSphere} />
             </OrthographicCamera>
         </>

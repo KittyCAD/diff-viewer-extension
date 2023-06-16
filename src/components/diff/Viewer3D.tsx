@@ -3,27 +3,31 @@ import '@react-three/fiber'
 import { BufferGeometry } from 'three'
 import { Canvas } from '@react-three/fiber'
 import { Camera } from './Camera'
-import { CameraControls } from './CameraControls'
 import { Sphere } from 'three'
+import { Controls } from './Controls'
+import { OrbitControls } from 'three-stdlib'
 
 type Viewer3DProps = {
-    cameraRef: MutableRefObject<any>
     geometry: BufferGeometry
     boundingSphere?: Sphere
+    controlsRef: MutableRefObject<OrbitControls | null>
+    onControlsAltered?: () => void
 }
 
 export function Viewer3D({
-    cameraRef,
+    controlsRef,
     geometry,
     boundingSphere,
+    onControlsAltered,
     children,
 }: PropsWithChildren<Viewer3DProps>) {
     return (
         <Canvas dpr={[1, 2]} shadows>
             {children}
-            <CameraControls
-                cameraRef={cameraRef}
+            <Controls
                 target={boundingSphere?.center}
+                reference={controlsRef}
+                onAltered={onControlsAltered}
             />
             {geometry && <Camera boundingSphere={boundingSphere} />}
         </Canvas>

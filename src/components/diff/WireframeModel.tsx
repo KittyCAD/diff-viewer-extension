@@ -11,18 +11,12 @@ export type WireframeColors = {
 }
 
 type Props = {
-    cameraRef: MutableRefObject<any>
     geometry: BufferGeometry
     colors: WireframeColors
     boundingSphere?: Sphere
 }
 
-export function WireframeModel({
-    geometry,
-    boundingSphere,
-    cameraRef,
-    colors,
-}: Props) {
+export function WireframeModel({ geometry, boundingSphere, colors }: Props) {
     const groupRef = useRef<any>()
     const edgeThresholdAngle = 10
     const edges = useMemo(
@@ -31,10 +25,7 @@ export function WireframeModel({
     )
 
     return (
-        <BaseModel
-            boundingSphere={boundingSphere || geometry.boundingSphere}
-            cameraRef={cameraRef}
-        >
+        <BaseModel boundingSphere={boundingSphere || geometry.boundingSphere}>
             <group ref={groupRef}>
                 <mesh
                     castShadow={true}

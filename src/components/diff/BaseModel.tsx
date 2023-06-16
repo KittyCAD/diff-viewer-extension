@@ -6,42 +6,41 @@ import { Vector3 } from 'three'
 import { calculateFovFactor } from './Camera'
 
 type BaseModelProps = {
-    cameraRef: MutableRefObject<any>
     boundingSphere: Sphere | null | undefined
 }
 
 export function BaseModel({
     boundingSphere,
-    cameraRef,
     children,
 }: PropsWithChildren<BaseModelProps>) {
-    const groupRef = useRef<any>()
     const camera = useThree(state => state.camera)
+    const controls = useThree(state => state.controls) as any // TODO: fix type
     const canvasHeight = useThree(state => state.size.height)
 
     // Camera view, adapted from KittyCAD/website
     useEffect(() => {
-        if (boundingSphere && cameraRef.current) {
+        if (boundingSphere && camera && controls && canvasHeight) {
             // move the camera away so the object fits in the view
             const { radius } = boundingSphere || { radius: 1 }
             if (!camera.position.length()) {
                 const arbitraryNonZeroStartPosition = new Vector3(0.5, 0.5, 1)
                 camera.position.copy(arbitraryNonZeroStartPosition)
             }
-            const initialZoomOffset = 7.5
+            const initialZoomOffset = 15 // Far enough to avoid clipping
             camera.position.setLength(radius * initialZoomOffset)
 
             // set zoom for orthographic Camera
-            const fov = 15 // TODO fov shouldn't be hardcoded
+            const fov = 7.5 // Small enough to have a good initial zoom
             const fovFactor = calculateFovFactor(fov, canvasHeight)
             camera.zoom = fovFactor / camera.position.length()
             camera.updateProjectionMatrix()
+            controls.saveState()
         }
-    }, [boundingSphere, camera, cameraRef, canvasHeight])
+    }, [boundingSphere, camera, controls, canvasHeight])
 
     return (
         <Suspense fallback={null}>
-            <group ref={groupRef}>{children}</group>
+            <group>{children}</group>
         </Suspense>
     )
 }
