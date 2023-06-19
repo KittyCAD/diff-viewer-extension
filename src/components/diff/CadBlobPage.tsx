@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
 import { Box, ThemeProvider } from '@primer/react'
-import { DiffEntry, FileBlob, FileDiff, MessageIds } from '../../chrome/types'
+import { FileBlob, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
-import { CadDiff } from './CadDiff'
-import { SourceRichToggle } from './SourceRichToggle'
 import { CadBlob } from './CadBlob'
 
 function CadBlobPortal({
@@ -23,24 +21,23 @@ function CadBlobPortal({
 }): React.ReactElement {
     const [richBlob, setRichBlob] = useState<FileBlob>()
     // const [richSelected, setRichSelected] = useState(true)
-    // const [toolbarContainer, setToolbarContainer] = useState<HTMLElement>()
+    const [toolbarContainer, setToolbarContainer] = useState<HTMLElement>()
     const [blobContainer, setBlobContainer] = useState<HTMLElement>()
     const [sourceElements, setSourceElements] = useState<HTMLElement[]>([])
 
     useEffect(() => {
-        // const toolbar = element.querySelector<HTMLElement>('.file-info')
-        // if (toolbar != null) {
-        //     setToolbarContainer(toolbar)
-        //     // STL files might have a toggle already
-        //     const existingToggle = element.querySelector<HTMLElement>(
-        //         '.js-prose-diff-toggle-form'
-        //     )
-        //     if (existingToggle) {
-        //         existingToggle.style.display = 'none'
-        //     }
-        // }
-        const blob = element.querySelector<HTMLElement>('div')
-        console.log(element, blob)
+        const toolbar = element.querySelector<HTMLElement>('.react-blob-view-header-sticky div div div')
+        if (toolbar != null) {
+            setToolbarContainer(toolbar)
+            const existingToggle = element.querySelector<HTMLElement>(
+                'ul[aria-label]'
+            )
+            if (existingToggle) {
+                existingToggle.style.display = 'none'
+            }
+        }
+        const blob = element.querySelector<HTMLElement>('section[aria-labelledby="file-name-id"]')
+        console.log(toolbar, blob)
         if (blob != null) {
             setBlobContainer(blob)
             const sourceElements = Array.from(blob.children) as HTMLElement[]
@@ -55,7 +52,6 @@ function CadBlobPortal({
                 id: MessageIds.GetFileBlob,
                 data: { owner, repo, sha, filename },
             })
-            console.log(response)
             if ('error' in response) {
                 console.log(response.error)
             } else {
@@ -66,22 +62,11 @@ function CadBlobPortal({
 
     return (
         <>
-            {/* {toolbarContainer &&
+            {toolbarContainer &&
                 createPortal(
-                    <SourceRichToggle
-                        disabled={!richBlob}
-                        richSelected={richSelected}
-                        onSourceSelected={() => {
-                            sourceElements.map(n => (n.style.display = 'block'))
-                            setRichSelected(false)
-                        }}
-                        onRichSelected={() => {
-                            sourceElements.map(n => (n.style.display = 'none'))
-                            setRichSelected(true)
-                        }}
-                    />,
+                    <Box display="inline">test</Box>,
                     toolbarContainer
-                )} */}
+                )}
             {blobContainer &&
                 createPortal(
                     <Box

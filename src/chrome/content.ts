@@ -39,9 +39,14 @@ async function injectBlob(
     filename: string,
     document: Document
 ) {
-    const element = document.querySelector(
-        'section[aria-labelledby="file-name-id"]'
+    const childWithProperClass = document.querySelector(
+        '.js-hovercard-content'
     ) as HTMLElement
+    const element = childWithProperClass.parentElement
+    if (!element) {
+        throw Error("Couldn't find blob html element to inject")
+    }
+
     const cadBlobPage = React.createElement(CadBlobPage, {
         element,
         owner,
