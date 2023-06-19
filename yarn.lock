@@ -1050,14 +1050,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/behaviors@npm:1.3.3":
-  version: 1.3.3
-  resolution: "@primer/behaviors@npm:1.3.3"
-  checksum: 017cb965a6b7fc2d64c89c636491ad18f195d5cbb28a8ac4fb32e3811f4ca4f85bf8e02aaf94358e6f0a7a4660e98ef97406b3de3dd5bc1bf4a94830798bfa60
+"@primer/behaviors@npm:1.3.4":
+  version: 1.3.4
+  resolution: "@primer/behaviors@npm:1.3.4"
+  checksum: e0671f1ab435b3e6439f707b97f0cda0261125b8c74ef2ffe019a63ef16f53ad1cfd74d72c5a0e1c1ab4f5fc511ba5e935a7c563aafcacea6c48765312810f14
   languageName: node
   linkType: hard
 
-"@primer/octicons-react@npm:^18.0.0":
+"@primer/octicons-react@npm:18.3.0":
   version: 18.3.0
   resolution: "@primer/octicons-react@npm:18.3.0"
   peerDependencies:
@@ -1075,27 +1075,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/primitives@npm:7.11.5":
-  version: 7.11.5
-  resolution: "@primer/primitives@npm:7.11.5"
-  dependencies:
-    markdown-table-ts: ^1.0.3
-  checksum: 8d5c08903722815d4bf3a3eac6fe008817d7f9241b750294cc26ed8315c8acc852f8f4041c67ee1eacd40e0e554b1d81782044656d795498c0a3c107533b21f2
+"@primer/primitives@npm:7.11.11":
+  version: 7.11.11
+  resolution: "@primer/primitives@npm:7.11.11"
+  checksum: 304aebca3286fe717e8dd5931df36bd47e7d627d2c9afd7f88b7b6f1e3524f147d5f252b9248aa2e00c30b94cf68d98a34f62927ed9bce280a2a1c72313cfe35
   languageName: node
   linkType: hard
 
-"@primer/react@npm:^35.25.0":
-  version: 35.25.1
-  resolution: "@primer/react@npm:35.25.1"
+"@primer/react@npm:^35.26.0":
+  version: 35.26.0
+  resolution: "@primer/react@npm:35.26.0"
   dependencies:
     "@github/combobox-nav": ^2.1.5
     "@github/markdown-toolbar-element": ^2.1.0
     "@github/paste-markdown": ^1.4.0
     "@github/relative-time-element": ^4.1.2
     "@lit-labs/react": 1.1.1
-    "@primer/behaviors": 1.3.3
-    "@primer/octicons-react": ^18.0.0
-    "@primer/primitives": 7.11.5
+    "@primer/behaviors": 1.3.4
+    "@primer/octicons-react": 18.3.0
+    "@primer/primitives": 7.11.11
     "@react-aria/ssr": ^3.1.0
     "@styled-system/css": ^5.1.5
     "@styled-system/props": ^5.1.5
@@ -1110,13 +1108,15 @@ __metadata:
     focus-visible: ^5.2.0
     fzy.js: 0.4.1
     history: ^5.0.0
+    lodash.isempty: 4.4.0
+    lodash.isobject: 3.0.2
     react-intersection-observer: 9.4.3
     styled-system: ^5.1.5
   peerDependencies:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
     styled-components: 4.x || 5.x
-  checksum: 058ed4c52ce05f8ff049b052913fdacf6f56489e9543c5617493659eab18fd87ab8f674ec392a2369efe6a264bfd218f137e81f6a415c98e88cbb819b0ac86d4
+  checksum: 45752fbb71d23c35971b6843e00b692674c74de71fb564f7063a04e864257001165add50ff78ca681caf3b674d6119e7cd1b753f443ee25491113724dbf640e3
   languageName: node
   linkType: hard
 
@@ -3144,7 +3144,7 @@ __metadata:
     "@octokit/types": ^10.0.0
     "@playwright/test": ^1.35.0
     "@primer/octicons-react": ^19.3.0
-    "@primer/react": ^35.25.0
+    "@primer/react": ^35.26.0
     "@react-three/csg": ^2.2.0
     "@react-three/drei": ^9.74.16
     "@react-three/fiber": ^8.13.3
@@ -5001,6 +5001,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.isempty@npm:4.4.0":
+  version: 4.4.0
+  resolution: "lodash.isempty@npm:4.4.0"
+  checksum: a8118f23f7ed72a1dbd176bf27f297d1e71aa1926288449cb8f7cef99ba1bc7527eab52fe7899ab080fa1dc150aba6e4a6367bf49fa4e0b78da1ecc095f8d8c5
+  languageName: node
+  linkType: hard
+
+"lodash.isobject@npm:3.0.2":
+  version: 3.0.2
+  resolution: "lodash.isobject@npm:3.0.2"
+  checksum: 6c1667cbc4494d0a13a3617a4b23278d6d02dac520311f2bbb43f16f2cf71d2e6eb9dec8057315b77459df4890c756a256a087d3f4baa44a79ab5d6c968b060e
+  languageName: node
+  linkType: hard
+
 "lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
@@ -5148,13 +5162,6 @@ __metadata:
     socks-proxy-agent: ^7.0.0
     ssri: ^9.0.0
   checksum: 2332eb9a8ec96f1ffeeea56ccefabcb4193693597b132cd110734d50f2928842e22b84cfa1508e921b8385cdfd06dda9ad68645fed62b50fff629a580f5fb72c
-  languageName: node
-  linkType: hard
-
-"markdown-table-ts@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "markdown-table-ts@npm:1.0.3"
-  checksum: af684c664f14d628cec0b554d3accc12309be02d25c7fc455bfd962e04484d2d2781c4d58dd1bfe07f5e895962b137ddbdae43e05f95ed3190f31f4035174840
   languageName: node
   linkType: hard
 
