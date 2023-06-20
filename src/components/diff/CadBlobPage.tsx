@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, ThemeProvider } from '@primer/react'
+import { Box, Link, SegmentedControl, Text, ThemeProvider } from '@primer/react'
 import { FileBlob, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
@@ -20,23 +20,24 @@ function CadBlobPortal({
     filename: string
 }): React.ReactElement {
     const [richBlob, setRichBlob] = useState<FileBlob>()
-    // const [richSelected, setRichSelected] = useState(true)
+    const [richSelected, setRichSelected] = useState(true)
     const [toolbarContainer, setToolbarContainer] = useState<HTMLElement>()
     const [blobContainer, setBlobContainer] = useState<HTMLElement>()
     const [sourceElements, setSourceElements] = useState<HTMLElement[]>([])
 
     useEffect(() => {
-        const toolbar = element.querySelector<HTMLElement>('.react-blob-view-header-sticky div div div')
+        const existingToggle =
+            element.querySelector<HTMLElement>('ul[aria-label]')
+        const toolbar = existingToggle?.parentElement
         if (toolbar != null) {
             setToolbarContainer(toolbar)
-            const existingToggle = element.querySelector<HTMLElement>(
-                'ul[aria-label]'
-            )
             if (existingToggle) {
                 existingToggle.style.display = 'none'
             }
         }
-        const blob = element.querySelector<HTMLElement>('section[aria-labelledby="file-name-id"]')
+        const blob = element.querySelector<HTMLElement>(
+            'section[aria-labelledby="file-name-id"]'
+        )
         console.log(toolbar, blob)
         if (blob != null) {
             setBlobContainer(blob)
@@ -64,14 +65,34 @@ function CadBlobPortal({
         <>
             {toolbarContainer &&
                 createPortal(
-                    <Box display="inline">test</Box>,
+                    <SegmentedControl
+                        sx={{ order: -1 }}  // prepend in flex
+                        onChange={(index: number) => {
+                            if (index < 2) {
+                                setRichSelected(index === 0)
+                                sourceElements.map(
+                                    n =>
+                                        (n.style.display =
+                                            index === 0 ? 'none' : 'block')
+                                )
+                                return
+                            }
+                            window.location.href = `https://github.com/${owner}/${repo}/blame/${sha}/${filename}`
+                        }}
+                    >
+                        <SegmentedControl.Button selected={richSelected}>
+                            Preview
+                        </SegmentedControl.Button>
+                        <SegmentedControl.Button selected={!richSelected}>
+                            Code
+                        </SegmentedControl.Button>
+                        <SegmentedControl.Button>Blame</SegmentedControl.Button>
+                    </SegmentedControl>,
                     toolbarContainer
                 )}
             {blobContainer &&
                 createPortal(
-                    <Box
-                    // sx={{ display: richSelected ? 'block' : 'none' }}
-                    >
+                    <Box sx={{ display: richSelected ? 'block' : 'none' }}>
                         {richBlob ? (
                             <CadBlob blob={richBlob.blob} />
                         ) : (
