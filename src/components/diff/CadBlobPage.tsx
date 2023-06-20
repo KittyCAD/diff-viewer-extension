@@ -67,6 +67,7 @@ function CadBlobPortal({
                 createPortal(
                     <SegmentedControl
                         sx={{ order: -1 }}  // prepend in flex
+                        aria-label="File view"
                         onChange={(index: number) => {
                             if (index < 2) {
                                 setRichSelected(index === 0)
