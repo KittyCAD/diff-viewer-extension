@@ -39,20 +39,29 @@ async function injectBlob(
     filename: string,
     document: Document
 ) {
-    const childWithProperClass = document.querySelector(
-        '.js-hovercard-content'
-    ) as HTMLElement
-    const element = childWithProperClass.parentElement
+    // React UI
+    let classicUI = false
+    const child = document.querySelector<HTMLElement>('.react-blob-view-header-sticky')
+    let element = child?.parentElement
+    if (!element) {
+        // Old UI
+        const child = document.querySelector<HTMLElement>('.js-blob-header')
+        element = child?.parentElement
+        classicUI = true
+    }
+
     if (!element) {
         throw Error("Couldn't find blob html element to inject")
     }
 
+    element.classList.add('kittycad-injected-file')
     const cadBlobPage = React.createElement(CadBlobPage, {
         element,
         owner,
         repo,
         sha,
         filename,
+        classicUI,
     })
     root.render(cadBlobPage)
 }
@@ -131,6 +140,7 @@ function waitForLateDiffNodes(callback: () => void) {
     const elements = [
         ...document.getElementsByClassName('js-diff-load-container'),
         ...document.getElementsByClassName('js-diff-progressive-container'),
+        ...document.getElementsByClassName('react-code-size-details-banner'),
     ]
     const observer = new MutationObserver(records => {
         records.forEach(record => {
