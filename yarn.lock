@@ -1066,12 +1066,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/octicons-react@npm:^19.2.0":
-  version: 19.2.0
-  resolution: "@primer/octicons-react@npm:19.2.0"
+"@primer/octicons-react@npm:^19.3.0":
+  version: 19.3.0
+  resolution: "@primer/octicons-react@npm:19.3.0"
   peerDependencies:
     react: ">=16.3"
-  checksum: 0beeda77d342f6719d9cb41df430a8e69f2621826c1adbc3dcecd96c53b8e9ce37a0c0ffd78493df89db0281fd4f4c064aa33c46329fd363bacc7aba508c93ac
+  checksum: ee1e1d2a815a2571827173a4c76f8e64a22afa375b18a4e86a04142dcbeffb1cece858da3211607fe5e841d978a2eead7f0881e06b81048e29a2f940a734cbc9
   languageName: node
   linkType: hard
 
@@ -3143,7 +3143,7 @@ __metadata:
     "@octokit/rest": ^19.0.11
     "@octokit/types": ^10.0.0
     "@playwright/test": ^1.35.0
-    "@primer/octicons-react": ^19.2.0
+    "@primer/octicons-react": ^19.3.0
     "@primer/react": ^35.25.0
     "@react-three/csg": ^2.2.0
     "@react-three/drei": ^9.74.16
@@ -3160,7 +3160,7 @@ __metadata:
     "@types/three": ^0.152.1
     "@vitejs/plugin-react": ^4.0.0
     buffer: ^6.0.3
-    dotenv: ^16.1.4
+    dotenv: ^16.2.0
     eslint: ^8.42.0
     eslint-config-prettier: ^8.8.0
     eslint-plugin-react: ^7.32.2
@@ -3174,7 +3174,7 @@ __metadata:
     styled-components: ^5.3.11
     three: ^0.153.0
     three-mesh-bvh: ^0.6.0
-    three-stdlib: ^2.23.9
+    three-stdlib: ^2.23.10
     typescript: ^4.9.5
     vite: ^4.3.9
     vite-plugin-node-polyfills: ^0.9.0
@@ -3279,10 +3279,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.1.4":
-  version: 16.1.4
-  resolution: "dotenv@npm:16.1.4"
-  checksum: c1b2e13df4d374a6a29e134c56c7b040ba20500677fe8b9939ea654f3b3badb9aaa0b172e40e4dfa1233a4177dbb8fb79d84cc79a50ac9c9641fe2ad98c14876
+"dotenv@npm:^16.2.0":
+  version: 16.2.0
+  resolution: "dotenv@npm:16.2.0"
+  checksum: 07ff2c3bccf3f0a7bd5e991f53cc97d8d093748154f2f74d7c2c7fdf669728234670a116b37dc38458951e61ab28ed8a92050d91461a8992117aa7605c688b1d
   languageName: node
   linkType: hard
 
@@ -6924,6 +6924,27 @@ __metadata:
   peerDependencies:
     three: ">= 0.151.0"
   checksum: bafa9c912be4137ae5bb440584deff5953abd3196f7e4c38ecfb279ed16abc7a570d9e89a0d998d1e77dc0f532f8524f393b4bc0a0755e3debd1968ee05f97fe
+  languageName: node
+  linkType: hard
+
+"three-stdlib@npm:^2.23.10":
+  version: 2.23.10
+  resolution: "three-stdlib@npm:2.23.10"
+  dependencies:
+    "@types/draco3d": ^1.4.0
+    "@types/offscreencanvas": ^2019.6.4
+    "@types/webxr": ^0.5.2
+    chevrotain: ^10.1.2
+    draco3d: ^1.4.1
+    fflate: ^0.6.9
+    ktx-parse: ^0.4.5
+    mmd-parser: ^1.0.4
+    opentype.js: ^1.3.3
+    potpack: ^1.0.1
+    zstddec: ^0.0.2
+  peerDependencies:
+    three: ">=0.128.0"
+  checksum: ff217acd9e90ef9d785a6c7261c9a24f85c6d0affafc90bb29292ea16a885f655c4e340a214c305d4f90e70237a85382ce747064b09034b191afcf721b0b1526
   languageName: node
   linkType: hard
 
