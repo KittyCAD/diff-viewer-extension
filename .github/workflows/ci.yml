@@ -22,7 +22,8 @@ jobs:
 
             - name: Setup yarn
               run: |
-                yarn set version stable
+                corepack prepare yarn@stable --activate
+#                yarn set version stable
                 yarn install --immutable
 
             - run: yarn build
