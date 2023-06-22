@@ -22,7 +22,7 @@ jobs:
 
             - name: Setup yarn
               run: |
-                corepack prepare yarn@3.6.0 --activate
+                yarn set version 3.6.0 
                 yarn install --immutable
 
             - run: yarn build
