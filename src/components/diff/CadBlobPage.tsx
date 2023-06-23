@@ -12,14 +12,14 @@ function CadBlobPortal({
     repo,
     sha,
     filename,
-    classicUI,
+    classicUi,
 }: {
     element: HTMLElement
     owner: string
     repo: string
     sha: string
     filename: string
-    classicUI: boolean
+    classicUi: boolean
 }): React.ReactElement {
     const [richBlob, setRichBlob] = useState<FileBlob>()
     const [richSelected, setRichSelected] = useState(true)
@@ -32,7 +32,7 @@ function CadBlobPortal({
         let existingToggle: HTMLElement | undefined | null
         let toolbar: HTMLElement | undefined | null
         let blob: HTMLElement | undefined | null
-        if (classicUI) {
+        if (classicUi) {
             blob = element.querySelector<HTMLElement>('.blob-wrapper')
             toolbar = element.querySelector<HTMLElement>('.js-blob-header')
             // no toggle
@@ -79,7 +79,7 @@ function CadBlobPortal({
             {toolbarContainer &&
                 createPortal(
                     <SegmentedControl
-                        sx={{ mr: classicUI ? 2 : 0, order: -1 }} // prepend in flex
+                        sx={{ mr: classicUi ? 2 : 0, order: -1 }} // prepend in flex
                         aria-label="File view"
                         onChange={(index: number) => {
                             if (index < 2) {
@@ -100,7 +100,7 @@ function CadBlobPortal({
                         <SegmentedControl.Button selected={!richSelected}>
                             Code
                         </SegmentedControl.Button>
-                        {!classicUI && (
+                        {!classicUi && (
                             <SegmentedControl.Button>
                                 Blame
                             </SegmentedControl.Button>
@@ -129,7 +129,7 @@ export type CadBlobPageProps = {
     repo: string
     sha: string
     filename: string
-    classicUI: boolean
+    classicUi: boolean
 }
 
 export function CadBlobPage({
@@ -138,7 +138,7 @@ export function CadBlobPage({
     repo,
     sha,
     filename,
-    classicUI,
+    classicUi,
 }: CadBlobPageProps): React.ReactElement {
     return (
         <ThemeProvider colorMode="auto">
@@ -148,7 +148,7 @@ export function CadBlobPage({
                 repo={repo}
                 sha={sha}
                 filename={filename}
-                classicUI={classicUI}
+                classicUi={classicUi}
             />
         </ThemeProvider>
     )

@@ -66,6 +66,7 @@ export function CadBlob({ blob }: FileBlob): React.ReactElement {
                         )}
                         {controlsAltered && (
                             <Box top={2} right={2} position="absolute">
+                                {/* TODO: change to reusable component */}
                                 <Button
                                     onClick={() => {
                                         controlsRef.current?.reset()
@@ -81,6 +82,7 @@ export function CadBlob({ blob }: FileBlob): React.ReactElement {
             )}
             {!geometry && (
                 <Box p={3}>
+                    {/* TODO: change to reusable component */}
                     <Text>
                         Sorry, the rich diff can't be displayed for this file.
                     </Text>

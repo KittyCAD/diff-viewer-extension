@@ -39,17 +39,19 @@ async function injectBlob(
     filename: string,
     document: Document
 ) {
-    // React UI
-    let classicUI = false
-    const child = document.querySelector<HTMLElement>(
+    let classicUi = false
+    // React UI (as of 2023-06-23, for signed-in users only)
+    const childWithProperClass = document.querySelector<HTMLElement>(
         '.react-blob-view-header-sticky'
     )
-    let element = child?.parentElement
+    let element = childWithProperClass?.parentElement
     if (!element) {
-        // Old UI
-        const child = document.querySelector<HTMLElement>('.js-blob-header')
-        element = child?.parentElement
-        classicUI = true
+        // Classic UI
+        // Querying a child element of the one of interest, as it's not properly class-ed or id-ed
+        const childWithProperClass =
+            document.querySelector<HTMLElement>('.js-blob-header')
+        element = childWithProperClass?.parentElement
+        classicUi = !!element
     }
 
     if (!element) {
@@ -63,7 +65,7 @@ async function injectBlob(
         repo,
         sha,
         filename,
-        classicUI,
+        classicUi,
     })
     root.render(cadBlobPage)
 }
@@ -142,7 +144,6 @@ function waitForLateDiffNodes(callback: () => void) {
     const elements = [
         ...document.getElementsByClassName('js-diff-load-container'),
         ...document.getElementsByClassName('js-diff-progressive-container'),
-        ...document.getElementsByClassName('react-code-size-details-banner'),
     ]
     const observer = new MutationObserver(records => {
         records.forEach(record => {
