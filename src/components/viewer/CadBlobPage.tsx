@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
-import { Box, Link, SegmentedControl, Text, ThemeProvider } from '@primer/react'
+import { Box, SegmentedControl, ThemeProvider } from '@primer/react'
 import { FileBlob, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
@@ -28,14 +28,13 @@ function CadBlobPortal({
     const [sourceElements, setSourceElements] = useState<HTMLElement[]>([])
 
     useEffect(() => {
-        // React UI
         let existingToggle: HTMLElement | undefined | null
         let toolbar: HTMLElement | undefined | null
         let blob: HTMLElement | undefined | null
         if (classicUi) {
-            blob = element.querySelector<HTMLElement>('.blob-wrapper')
+            // no existing toggle
             toolbar = element.querySelector<HTMLElement>('.js-blob-header')
-            // no toggle
+            blob = element.querySelector<HTMLElement>('.blob-wrapper')
         } else {
             existingToggle = element.querySelector<HTMLElement>(
                 'ul[class*=SegmentedControl]'
@@ -45,13 +44,14 @@ function CadBlobPortal({
                 'section[aria-labelledby="file-name-id"]'
             )
         }
-        console.log(toolbar, blob)
+
         if (toolbar != null) {
             setToolbarContainer(toolbar)
             if (existingToggle) {
                 existingToggle.style.display = 'none'
             }
         }
+
         if (blob != null) {
             setBlobContainer(blob)
             const sourceElements = Array.from(blob.children) as HTMLElement[]

@@ -18,6 +18,8 @@ import { BeakerIcon } from '@primer/octicons-react'
 import { LegendBox, LegendLabel } from './Legend'
 import { getCommonSphere, loadGeometry } from '../../utils/three'
 import { OrbitControls } from 'three-stdlib'
+import { RecenterButton } from './RecenterButton'
+import { ErrorMessage } from './ErrorMessage'
 
 function Viewer3D2Up({
     beforeGeometry,
@@ -88,17 +90,13 @@ function Viewer3D2Up({
                 </Box>
             )}
             {controlsAltered && (
-                <Box top={2} right={2} position="absolute">
-                    <Button
-                        onClick={() => {
-                            afterControlsRef.current?.reset()
-                            beforeControlsRef.current?.reset()
-                            setControlsAltered(false)
-                        }}
-                    >
-                        Recenter
-                    </Button>
-                </Box>
+                <RecenterButton
+                    onClick={() => {
+                        afterControlsRef.current?.reset()
+                        beforeControlsRef.current?.reset()
+                        setControlsAltered(false)
+                    }}
+                />
             )}
         </>
     )
@@ -158,16 +156,12 @@ function Viewer3DCombined({
                 />
             </LegendBox>
             {controlsAltered && (
-                <Box top={2} right={2} position="absolute">
-                    <Button
-                        onClick={() => {
-                            controlsRef.current?.reset()
-                            setControlsAltered(false)
-                        }}
-                    >
-                        Recenter
-                    </Button>
-                </Box>
+                <RecenterButton
+                    onClick={() => {
+                        controlsRef.current?.reset()
+                        setControlsAltered(false)
+                    }}
+                />
             )}
         </>
     )
@@ -273,13 +267,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                     </TabNav>
                 </Box>
             )}
-            {!beforeGeometry && !afterGeometry && (
-                <Box p={3}>
-                    <Text>
-                        Sorry, the rich diff can't be displayed for this file.
-                    </Text>
-                </Box>
-            )}
+            {!beforeGeometry && !afterGeometry && <ErrorMessage />}
         </>
     )
 }

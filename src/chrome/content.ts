@@ -1,5 +1,6 @@
 import React from 'react'
-import { CadDiffPage } from '../components/diff/CadDiffPage'
+import { CadDiffPage } from '../components/viewer/CadDiffPage'
+import { CadBlobPage } from '../components/viewer/CadBlobPage'
 import { Commit, DiffEntry, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
@@ -9,7 +10,6 @@ import {
     getGithubBlobUrlParams,
 } from './web'
 import gitHubInjection from 'github-injection'
-import { CadBlobPage } from '../components/diff/CadBlobPage'
 
 const root = createReactRoot(document)
 
@@ -47,7 +47,6 @@ async function injectBlob(
     let element = childWithProperClass?.parentElement
     if (!element) {
         // Classic UI
-        // Querying a child element of the one of interest, as it's not properly class-ed or id-ed
         const childWithProperClass =
             document.querySelector<HTMLElement>('.js-blob-header')
         element = childWithProperClass?.parentElement
