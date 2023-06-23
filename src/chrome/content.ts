@@ -41,7 +41,9 @@ async function injectBlob(
 ) {
     // React UI
     let classicUI = false
-    const child = document.querySelector<HTMLElement>('.react-blob-view-header-sticky')
+    const child = document.querySelector<HTMLElement>(
+        '.react-blob-view-header-sticky'
+    )
     let element = child?.parentElement
     if (!element) {
         // Old UI
