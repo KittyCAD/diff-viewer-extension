@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest'
 import { Client, file } from '@kittycad/lib'
-import { ContentFile, DiffEntry, FileDiff } from './types'
+import { ContentFile, DiffEntry, FileBlob, FileDiff } from './types'
 import {
     FileExportFormat_type,
     FileImportFormat_type,
@@ -131,4 +131,26 @@ export async function getFileDiff(
     }
 
     throw Error(`Unsupported status: ${status}`)
+}
+
+export async function getFileBlob(
+    github: Octokit,
+    kittycad: Client,
+    owner: string,
+    repo: string,
+    sha: string,
+    filename: string
+): Promise<FileBlob> {
+    const extension = filename.split('.').pop()
+    if (!extension || !extensionToSrcFormat[extension]) {
+        throw Error(
+            `Unsupported extension. Given ${extension}, was expecting ${Object.keys(
+                extensionToSrcFormat
+            )}`
+        )
+    }
+
+    const rawBlob = await downloadFile(github, owner, repo, sha, filename)
+    const blob = await convert(kittycad, rawBlob, extension)
+    return { blob }
 }

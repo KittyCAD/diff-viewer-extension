@@ -7,6 +7,7 @@ import {
     mapInjectableDiffElements,
     getSupportedWebDiffElements,
     createReactRoot,
+    getGithubBlobUrlParams,
 } from './web'
 
 const githubPullHtmlSnippet = `
@@ -136,6 +137,27 @@ describe('Function getGithubCommitUrlParams', () => {
         expect(owner).toEqual('KittyCAD')
         expect(repo).toEqual('litterbox')
         expect(sha).toEqual('4ddf899550addf41d6bf1b790ce79e46501411b3')
+    })
+
+    it("doesn't match other URLs", () => {
+        expect(getGithubPullUrlParams('http://google.com')).toBeUndefined()
+        expect(
+            getGithubPullUrlParams('https://github.com/KittyCAD/litterbox')
+        ).toBeUndefined()
+    })
+})
+
+describe('Function getGithubBlobUrlParams', () => {
+    it('gets params out of a valid github blob link', () => {
+        const url =
+            'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.obj'
+        const params = getGithubBlobUrlParams(url)
+        expect(params).toBeDefined()
+        const { owner, repo, sha, filename } = params!
+        expect(owner).toEqual('KittyCAD')
+        expect(repo).toEqual('diff-samples')
+        expect(sha).toEqual('fd9eec79f0464833686ea6b5b34ea07145e32734')
+        expect(filename).toEqual('models/box.obj')
     })
 
     it("doesn't match other URLs", () => {

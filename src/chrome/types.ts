@@ -20,6 +20,10 @@ export type FileDiff = {
     after?: string
 }
 
+export type FileBlob = {
+    blob?: string
+}
+
 export enum MessageIds {
     GetGithubPullFiles = 'GetPullFiles',
     GetGithubUser = 'GetGitHubUser',
@@ -27,6 +31,7 @@ export enum MessageIds {
     SaveKittycadToken = 'SaveKittyCadToken',
     GetKittycadUser = 'GetKittyCadUser',
     GetFileDiff = 'GetFileDiff',
+    GetFileBlob = 'GetFileBlob',
     GetGithubPull = 'GetGithubPull',
     GetGithubCommit = 'GetGithubCommit',
 }
@@ -49,6 +54,13 @@ export type MessageGetFileDiff = {
     sha: string
     parentSha: string
     file: DiffEntry
+}
+
+export type MessageGetFileBlob = {
+    owner: string
+    repo: string
+    sha: string
+    filename: string
 }
 
 export type MessageSaveToken = {
@@ -76,5 +88,6 @@ export type MessageResponse =
     | KittycadUser
     | MessageSaveToken
     | FileDiff
+    | FileBlob
     | MessageError
     | void

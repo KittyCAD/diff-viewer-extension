@@ -3,6 +3,7 @@ import { Octokit } from '@octokit/rest'
 import {
     KittycadUser,
     Message,
+    MessageGetFileBlob,
     MessageGetFileDiff,
     MessageGetGithubCommitData,
     MessageGetGithubPullFilesData,
@@ -16,7 +17,7 @@ import {
     setStorageGithubToken,
     setStorageKittycadToken,
 } from './storage'
-import { getFileDiff } from './diff'
+import { getFileBlob, getFileDiff } from './diff'
 
 let github: Octokit | undefined
 let kittycad: Client | undefined
@@ -164,6 +165,19 @@ chrome.runtime.onMessage.addListener(
             const { owner, repo, sha, parentSha, file } =
                 message.data as MessageGetFileDiff
             getFileDiff(github, kittycad, owner, repo, sha, parentSha, file)
+                .then(r => sendResponse(r))
+                .catch(error => sendResponse({ error }))
+            return true
+        }
+
+        if (message.id === MessageIds.GetFileBlob) {
+            if (!kittycad || !github) {
+                sendResponse({ error: noClientError })
+                return false
+            }
+            const { owner, repo, sha, filename } =
+                message.data as MessageGetFileBlob
+            getFileBlob(github, kittycad, owner, repo, sha, filename)
                 .then(r => sendResponse(r))
                 .catch(error => sendResponse({ error }))
             return true
