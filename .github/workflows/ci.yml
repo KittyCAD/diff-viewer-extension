@@ -22,7 +22,6 @@ jobs:
 
             - name: Setup yarn
               run: |
-                yarn set version 3.6.0 
                 yarn install --immutable
 
             - run: yarn build
