@@ -18,7 +18,7 @@ test('authorized popup page', async ({
     await expect(page.locator('button')).toHaveCount(2)
 })
 
-async function getFirstDiffScreenshot(
+async function getFirstDiffElement(
     page: Page,
     url: string,
     extension: string
@@ -36,10 +36,10 @@ async function getFirstDiffScreenshot(
         `.js-file[data-file-type=".${extension}"]`
     )
     await page.waitForTimeout(1000) // making sure the element fully settled in
-    return await element.screenshot()
+    return element
 }
 
-async function getBlobPreviewScreenshot(page: Page, url: string) {
+async function getBlobPreviewElement(page: Page, url: string) {
     page.on('console', msg => console.log(msg.text()))
     await page.goto(url)
 
@@ -49,7 +49,7 @@ async function getBlobPreviewScreenshot(page: Page, url: string) {
     // screenshot the file diff with its toolbar
     const element = await page.waitForSelector('.kittycad-injected-file')
     await page.waitForTimeout(1000) // making sure the element fully settled in
-    return await element.screenshot()
+    return element
 }
 
 test('pull request diff with an .obj file', async ({
@@ -57,7 +57,8 @@ test('pull request diff with an .obj file', async ({
     authorizedBackground,
 }) => {
     const url = 'https://github.com/KittyCAD/diff-samples/pull/2/files'
-    const screenshot = await getFirstDiffScreenshot(page, url, 'obj')
+    const element = await getFirstDiffElement(page, url, 'obj')
+    const screenshot = await element.screenshot()
     expect(screenshot).toMatchSnapshot()
 })
 
@@ -66,7 +67,8 @@ test('pull request diff with a .step file', async ({
     authorizedBackground,
 }) => {
     const url = 'https://github.com/KittyCAD/diff-samples/pull/2/files'
-    const screenshot = await getFirstDiffScreenshot(page, url, 'step')
+    const element = await getFirstDiffElement(page, url, 'step')
+    const screenshot = await element.screenshot()
     expect(screenshot).toMatchSnapshot()
 })
 
@@ -76,7 +78,8 @@ test('commit diff with a .step file', async ({
 }) => {
     const url =
         'https://github.com/KittyCAD/diff-samples/commit/fd9eec79f0464833686ea6b5b34ea07145e32734'
-    const screenshot = await getFirstDiffScreenshot(page, url, 'step')
+    const element = await getFirstDiffElement(page, url, 'step')
+    const screenshot = await element.screenshot()
     expect(screenshot).toMatchSnapshot()
 })
 
@@ -86,7 +89,8 @@ test('commit diff with a .dae file as LFS', async ({
 }) => {
     const url =
         'https://github.com/KittyCAD/diff-samples/commit/b009cfd6dd1eb2d0c3ec0d31a21360766ad084e4'
-    const screenshot = await getFirstDiffScreenshot(page, url, 'dae')
+    const element = await getFirstDiffElement(page, url, 'dae')
+    const screenshot = await element.screenshot()
     expect(screenshot).toMatchSnapshot()
 })
 
@@ -96,6 +100,7 @@ test('blob preview with an .obj file', async ({
 }) => {
     const url =
         'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.obj'
-    const screenshot = await getBlobPreviewScreenshot(page, url)
+    const element = await getBlobPreviewElement(page, url)
+    const screenshot = await element.screenshot()
     expect(screenshot).toMatchSnapshot()
 })
