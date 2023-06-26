@@ -46,7 +46,7 @@ function CadBlobPortal({
         }
 
         const isPreviewAlreadyEnabled =
-            !classicUi && existingToggle && existingToggle.childElementCount > 2
+            existingToggle && existingToggle.childElementCount > 2 // Preview, Code, Blame
         if (isPreviewAlreadyEnabled) {
             const existingPreview = element.querySelector<HTMLElement>('iframe')
             blob = existingPreview?.parentElement
