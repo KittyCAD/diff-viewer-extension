@@ -62,6 +62,18 @@ test('pull request diff with an .obj file', async ({
     expect(screenshot).toMatchSnapshot()
 })
 
+test('pull request diff with an .obj file and combined mode clicked', async ({
+    page,
+    authorizedBackground,
+}) => {
+    const url = 'https://github.com/KittyCAD/diff-samples/pull/2/files'
+    const element = await getFirstDiffElement(page, url, 'obj')
+    await page.getByText('Combined').first().click()
+    await page.waitForTimeout(1000)
+    const screenshot = await element.screenshot()
+    expect(screenshot).toMatchSnapshot()
+})
+
 test('pull request diff with a .step file', async ({
     page,
     authorizedBackground,
