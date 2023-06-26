@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { ElementHandle, Page } from '@playwright/test'
 import { test, expect } from './fixtures'
 
 test('popup page', async ({ page, extensionId }) => {
@@ -18,11 +18,7 @@ test('authorized popup page', async ({
     await expect(page.locator('button')).toHaveCount(2)
 })
 
-async function getFirstDiffElement(
-    page: Page,
-    url: string,
-    extension: string
-) {
+async function getFirstDiffElement(page: Page, url: string, extension: string) {
     page.on('console', msg => console.log(msg.text()))
     await page.goto(url)
 
@@ -39,6 +35,12 @@ async function getFirstDiffElement(
     return element
 }
 
+async function enableCombined(page: Page, element: ElementHandle) {
+    const button = await element.$('.kittycad-combined-button')
+    await button!.click()
+    await page.waitForTimeout(1000)
+}
+
 async function getBlobPreviewElement(page: Page, url: string) {
     page.on('console', msg => console.log(msg.text()))
     await page.goto(url)
@@ -52,7 +54,7 @@ async function getBlobPreviewElement(page: Page, url: string) {
     return element
 }
 
-test('pull request diff with an .obj file', async ({
+test('pull request diff with a modified .obj file', async ({
     page,
     authorizedBackground,
 }) => {
@@ -60,21 +62,13 @@ test('pull request diff with an .obj file', async ({
     const element = await getFirstDiffElement(page, url, 'obj')
     const screenshot = await element.screenshot()
     expect(screenshot).toMatchSnapshot()
+
+    await enableCombined(page, element)
+    const screenshot2 = await element.screenshot()
+    expect(screenshot2).toMatchSnapshot()
 })
 
-test('pull request diff with an .obj file and combined mode clicked', async ({
-    page,
-    authorizedBackground,
-}) => {
-    const url = 'https://github.com/KittyCAD/diff-samples/pull/2/files'
-    const element = await getFirstDiffElement(page, url, 'obj')
-    await page.getByText('Combined').first().click()
-    await page.waitForTimeout(1000)
-    const screenshot = await element.screenshot()
-    expect(screenshot).toMatchSnapshot()
-})
-
-test('pull request diff with a .step file', async ({
+test('pull request diff with a modified .step file', async ({
     page,
     authorizedBackground,
 }) => {
@@ -82,9 +76,13 @@ test('pull request diff with a .step file', async ({
     const element = await getFirstDiffElement(page, url, 'step')
     const screenshot = await element.screenshot()
     expect(screenshot).toMatchSnapshot()
+
+    await enableCombined(page, element)
+    const screenshot2 = await element.screenshot()
+    expect(screenshot2).toMatchSnapshot()
 })
 
-test('commit diff with a .step file', async ({
+test('commit diff with an added .step file', async ({
     page,
     authorizedBackground,
 }) => {
@@ -95,7 +93,7 @@ test('commit diff with a .step file', async ({
     expect(screenshot).toMatchSnapshot()
 })
 
-test('commit diff with a .dae file as LFS', async ({
+test('commit diff with a modified .dae file as LFS', async ({
     page,
     authorizedBackground,
 }) => {
@@ -104,6 +102,10 @@ test('commit diff with a .dae file as LFS', async ({
     const element = await getFirstDiffElement(page, url, 'dae')
     const screenshot = await element.screenshot()
     expect(screenshot).toMatchSnapshot()
+
+    await enableCombined(page, element)
+    const screenshot2 = await element.screenshot()
+    expect(screenshot2).toMatchSnapshot()
 })
 
 test('blob preview with an .obj file', async ({
