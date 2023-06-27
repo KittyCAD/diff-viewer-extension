@@ -44,6 +44,34 @@ export function getGithubCommitUrlParams(
     return { owner, repo, sha }
 }
 
+export type GithubBlobUrlParams = {
+    owner: string
+    repo: string
+    sha: string
+    filename: string
+}
+
+export function getGithubBlobUrlParams(
+    url: string
+): GithubBlobUrlParams | undefined {
+    const blobRe =
+        /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/blob\/(\w+)\/([^\0]+)/
+    const result = blobRe.exec(url)
+    if (!result) {
+        return undefined
+    }
+
+    const [, owner, repo, sha, filename] = result
+    console.log(
+        'Found a supported Github Blob URL:',
+        owner,
+        repo,
+        sha,
+        filename
+    )
+    return { owner, repo, sha, filename }
+}
+
 export function getSupportedWebDiffElements(document: Document): HTMLElement[] {
     const fileTypeSelectors = Object.keys(extensionToSrcFormat).map(
         t => `.file[data-file-type=".${t}"]`

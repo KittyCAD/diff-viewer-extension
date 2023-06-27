@@ -1,11 +1,13 @@
 import React from 'react'
-import { CadDiffPage } from '../components/diff/CadDiffPage'
+import { CadDiffPage } from '../components/viewer/CadDiffPage'
+import { CadBlobPage } from '../components/viewer/CadBlobPage'
 import { Commit, DiffEntry, MessageIds, Pull } from './types'
 import {
     getGithubPullUrlParams,
     mapInjectableDiffElements,
     getGithubCommitUrlParams,
     createReactRoot,
+    getGithubBlobUrlParams,
 } from './web'
 import gitHubInjection from 'github-injection'
 
@@ -28,6 +30,43 @@ async function injectDiff(
         map,
     })
     root.render(cadDiffPage)
+}
+
+async function injectBlob(
+    owner: string,
+    repo: string,
+    sha: string,
+    filename: string,
+    document: Document
+) {
+    let classicUi = false
+    // React UI (as of 2023-06-23, for signed-in users only)
+    const childWithProperClass = document.querySelector<HTMLElement>(
+        '.react-blob-view-header-sticky'
+    )
+    let element = childWithProperClass?.parentElement
+    if (!element) {
+        // Classic UI
+        const childWithProperClass =
+            document.querySelector<HTMLElement>('.js-blob-header')
+        element = childWithProperClass?.parentElement
+        classicUi = !!element
+    }
+
+    if (!element) {
+        throw Error("Couldn't find blob html element to inject")
+    }
+
+    element.classList.add('kittycad-injected-file')
+    const cadBlobPage = React.createElement(CadBlobPage, {
+        element,
+        owner,
+        repo,
+        sha,
+        filename,
+        classicUi,
+    })
+    root.render(cadBlobPage)
 }
 
 async function injectPullDiff(
@@ -86,6 +125,14 @@ async function run() {
         const { owner, repo, sha } = commitParams
         console.log('Found commit diff: ', owner, repo, sha)
         await injectCommitDiff(owner, repo, sha, window.document)
+        return
+    }
+
+    const blobParams = getGithubBlobUrlParams(url)
+    if (blobParams) {
+        const { owner, repo, sha, filename } = blobParams
+        console.log('Found blob diff: ', owner, repo, sha, filename)
+        await injectBlob(owner, repo, sha, filename, window.document)
         return
     }
 }
