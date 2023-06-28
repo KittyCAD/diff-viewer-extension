@@ -36,7 +36,7 @@ export function CadBlob({ blob }: FileBlob): React.ReactElement {
         <>
             {geometry && (
                 <Box position="relative">
-                    <Box height={300} backgroundColor="canvas.subtle">
+                    <Box height={500} backgroundColor="canvas.subtle">
                         <Viewer3D
                             geometry={geometry}
                             boundingSphere={boundingSphere}

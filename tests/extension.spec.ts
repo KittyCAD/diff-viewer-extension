@@ -99,3 +99,13 @@ test('blob preview with an .obj file', async ({
     const screenshot = await getBlobPreviewScreenshot(page, url)
     expect(screenshot).toMatchSnapshot()
 })
+
+test('blob preview with an .stl file', async ({
+    page,
+    authorizedBackground,
+}) => {
+    const url =
+        'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.stl'
+    const screenshot = await getBlobPreviewScreenshot(page, url)
+    expect(screenshot).toMatchSnapshot()
+})

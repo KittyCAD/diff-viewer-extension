@@ -45,6 +45,19 @@ function CadBlobPortal({
             )
         }
 
+        const isPreviewAlreadyEnabled =
+            existingToggle && existingToggle.childElementCount > 2 // Preview, Code, Blame
+        if (isPreviewAlreadyEnabled) {
+            const existingPreview = element.querySelector<HTMLElement>('iframe')
+            blob = existingPreview?.parentElement
+            if (blob && blob.parentElement) {
+                setBlobContainer(blob.parentElement)
+                blob.style.display = 'none'
+            }
+            // No toolbar, no sourceElements. Only a replacement of the existing (STL) preview
+            return
+        }
+
         if (toolbar != null) {
             setToolbarContainer(toolbar)
             if (existingToggle) {
@@ -110,7 +123,12 @@ function CadBlobPortal({
                 )}
             {blobContainer &&
                 createPortal(
-                    <Box sx={{ display: richSelected ? 'block' : 'none' }}>
+                    <Box
+                        sx={{
+                            display: richSelected ? 'block' : 'none',
+                            width: '100%',
+                        }}
+                    >
                         {richBlob ? (
                             <CadBlob blob={richBlob.blob} />
                         ) : (
