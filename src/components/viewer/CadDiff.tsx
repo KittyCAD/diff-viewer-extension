@@ -252,6 +252,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                             2-up
                         </TabNav.Link>
                         <TabNav.Link
+                            className="kittycad-combined-button"
                             selected={showCombined}
                             onClick={() => setShowCombined(true)}
                             sx={{ cursor: 'pointer' }}
