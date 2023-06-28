@@ -12,12 +12,6 @@ From the project directory:
 
 Installs all the dependencies needed to build and test the project.
 
-If needed: VS Code requires an additional step to make sure it works with Yarn PnP (more info [here](https://yarnpkg.com/getting-started/editor-sdks#vscode))
-
-```
-yarn dlx @yarnpkg/sdks vscode
-```
-
 ### `yarn build`
 
 Builds the extension for production to the `build` folder.\
