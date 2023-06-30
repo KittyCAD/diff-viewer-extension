@@ -21,7 +21,7 @@ export function Controls({ target, reference, onAltered }: ControlsProps) {
             ref={reference}
             target={target}
             args={[camera, gl.domElement]}
-            enablePan={false}
+            enablePan={true}
         />
     )
 }
