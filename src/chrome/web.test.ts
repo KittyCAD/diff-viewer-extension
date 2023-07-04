@@ -8,6 +8,7 @@ import {
     getSupportedWebDiffElements,
     createReactRoot,
     getGithubBlobUrlParams,
+    getGithubCommitWithinPullUrlParams,
 } from './web'
 
 const githubPullHtmlSnippet = `
@@ -137,6 +138,17 @@ describe('Function getGithubCommitUrlParams', () => {
         expect(owner).toEqual('KittyCAD')
         expect(repo).toEqual('litterbox')
         expect(sha).toEqual('4ddf899550addf41d6bf1b790ce79e46501411b3')
+    })
+
+    it('gets params out of a valid github commit link within a PR', () => {
+        const url =
+            'https://github.com/KittyCAD/diff-samples/pull/2/commits/1dc0d43a94dba95279fcfc112bb5dd4dfaac01ae'
+        const params = getGithubCommitWithinPullUrlParams(url)
+        expect(params).toBeDefined()
+        const { owner, repo, sha } = params!
+        expect(owner).toEqual('KittyCAD')
+        expect(repo).toEqual('diff-samples')
+        expect(sha).toEqual('1dc0d43a94dba95279fcfc112bb5dd4dfaac01ae')
     })
 
     it("doesn't match other URLs", () => {
