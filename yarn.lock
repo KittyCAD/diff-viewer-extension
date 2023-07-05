@@ -1471,9 +1471,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.77.10":
-  version: 9.77.10
-  resolution: "@react-three/drei@npm:9.77.10"
+"@react-three/drei@npm:^9.78.1":
+  version: 9.78.1
+  resolution: "@react-three/drei@npm:9.78.1"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@mediapipe/tasks-vision": 0.10.2-rc2
@@ -1504,7 +1504,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: a772951b744aae22663ab86a805bf0d1ad6ad71f5e8bd75e37b138e6c71b53c396221bfdbe45e23616f1b437348c7cb921186bca40e088157a92cdd3c047b20d
+  checksum: 945f216b935c64aa59a4544fa3cf33d7bdca250ab0b44241eee70de14f8a34f1477bf967e4ee85c103004927f0252c007bed3bb96b1798e686a5b69ec04faf4d
   languageName: node
   linkType: hard
 
@@ -3399,7 +3399,7 @@ __metadata:
     "@primer/octicons-react": ^19.4.0
     "@primer/react": ^35.25.0
     "@react-three/csg": ^2.2.0
-    "@react-three/drei": ^9.77.10
+    "@react-three/drei": ^9.78.1
     "@react-three/fiber": ^8.13.4
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^14.0.0
