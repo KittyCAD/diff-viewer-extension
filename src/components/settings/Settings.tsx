@@ -70,31 +70,39 @@ function KittycadHelper() {
 export function Settings() {
     const [githubUser, setGithubUser] = useState<User>()
     const [kittycadUser, setKittycadUser] = useState<KittycadUser>()
+    const [githubLoading, setGithubLoading] = useState(false)
+    const [kittycadLoading, setKittycadLoading] = useState(false)
     const [firstInitDone, setFirstInitDone] = useState(false)
 
     async function fetchGithubUser() {
         try {
+            setGithubLoading(true)
             const response = await chrome.runtime.sendMessage({
                 id: MessageIds.GetGithubUser,
             })
             if ('error' in response) throw response.error
             setGithubUser(response as User)
+            setGithubLoading(false)
         } catch (e) {
             console.error(e)
             setGithubUser(undefined)
+            setGithubLoading(false)
         }
     }
 
     async function fetchKittycadUser() {
         try {
+            setKittycadLoading(true)
             const response = await chrome.runtime.sendMessage({
                 id: MessageIds.GetKittycadUser,
             })
             if ('error' in response) throw response.error
             setKittycadUser(response as KittycadUser)
+            setKittycadLoading(false)
         } catch (e) {
             console.error(e)
             setKittycadUser(undefined)
+            setKittycadLoading(false)
         }
     }
 
@@ -140,6 +148,7 @@ export function Settings() {
                             ) : (
                                 <TokenForm
                                     service="GitHub"
+                                    loading={githubLoading}
                                     onToken={async (token: string) => {
                                         await onToken(
                                             MessageIds.SaveGithubToken,
@@ -174,6 +183,7 @@ export function Settings() {
                             ) : (
                                 <TokenForm
                                     service="KittyCAD"
+                                    loading={kittycadLoading}
                                     onToken={async (token: string) => {
                                         await onToken(
                                             MessageIds.SaveKittycadToken,
