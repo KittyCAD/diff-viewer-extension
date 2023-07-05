@@ -12,7 +12,7 @@
         "@primer/octicons-react": "^19.4.0",
         "@primer/react": "^35.25.0",
         "@react-three/csg": "^2.2.0",
-        "@react-three/drei": "^9.77.10",
+        "@react-three/drei": "^9.78.1",
         "@react-three/fiber": "^8.13.4",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^14.0.0",
