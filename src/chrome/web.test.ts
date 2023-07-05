@@ -154,9 +154,10 @@ describe('Function getGithubCommitWithinPullUrlParams', () => {
             'https://github.com/KittyCAD/diff-samples/pull/2/commits/1dc0d43a94dba95279fcfc112bb5dd4dfaac01ae'
         const params = getGithubCommitWithinPullUrlParams(url)
         expect(params).toBeDefined()
-        const { owner, repo, sha } = params!
+        const { owner, repo, pull, sha } = params!
         expect(owner).toEqual('KittyCAD')
         expect(repo).toEqual('diff-samples')
+        expect(pull).toEqual(2)
         expect(sha).toEqual('1dc0d43a94dba95279fcfc112bb5dd4dfaac01ae')
     })
 
