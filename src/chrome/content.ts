@@ -131,8 +131,9 @@ async function run() {
 
     const commitWithinPullParams = getGithubCommitWithinPullUrlParams(url)
     if (commitWithinPullParams) {
-        const { owner, repo, sha } = commitWithinPullParams
-        console.log('Found commit diff within pull: ', owner, repo, sha)
+        const { owner, repo, pull, sha } = commitWithinPullParams
+        console.log('Found commit diff within pull: ', owner, repo, pull, sha)
+        // TODO: understand if more things are needed here for this special case
         await injectCommitDiff(owner, repo, sha, window.document)
         return
     }
