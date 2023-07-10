@@ -4074,7 +4074,7 @@ __metadata:
     styled-components: ^5.3.11
     three: ^0.153.0
     three-mesh-bvh: ^0.6.0
-    three-stdlib: ^2.23.12
+    three-stdlib: ^2.23.13
     typescript: ^4.9.5
     vite: ^4.4.2
     vite-plugin-node-polyfills: ^0.9.0
@@ -8601,9 +8601,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three-stdlib@npm:^2.23.12":
-  version: 2.23.12
-  resolution: "three-stdlib@npm:2.23.12"
+"three-stdlib@npm:^2.23.13":
+  version: 2.23.13
+  resolution: "three-stdlib@npm:2.23.13"
   dependencies:
     "@types/draco3d": ^1.4.0
     "@types/offscreencanvas": ^2019.6.4
@@ -8618,7 +8618,7 @@ __metadata:
     zstddec: ^0.0.2
   peerDependencies:
     three: ">=0.128.0"
-  checksum: 1aaac476e48368168125b86513acdf17d5f569ac775cc242a3e0007746d1b16dfb9c2a07c584d26ad5107af86d36c725bbcc3bdfe8399b110d593e4aa448b703
+  checksum: 4be28398aca86cb0dda42ce2e48331192250ab5007b62e6f2848fe6e46fabde9ca9b9e344e0c1f69d86b5358bc0bee25d18fbd029a36f58fcc043fcee92d0579
   languageName: node
   linkType: hard
 
