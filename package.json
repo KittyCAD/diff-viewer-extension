@@ -76,7 +76,7 @@
         "@babel/runtime": "^7.22.6",
         "@crxjs/vite-plugin": "^1.0.14",
         "@playwright/test": "^1.35.0",
-        "@vitejs/plugin-react": "^4.0.1",
+        "@vitejs/plugin-react": "^4.0.2",
         "dotenv": "^16.2.0",
         "eslint": "^8.44.0",
         "eslint-config-prettier": "^8.8.0",
