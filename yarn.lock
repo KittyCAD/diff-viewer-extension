@@ -3583,7 +3583,7 @@ __metadata:
     three-mesh-bvh: ^0.6.0
     three-stdlib: ^2.23.12
     typescript: ^4.9.5
-    vite: ^4.4.0
+    vite: ^4.4.2
     vite-plugin-node-polyfills: ^0.9.0
     vitest: ^0.32.4
   languageName: unknown
@@ -7922,9 +7922,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^4.4.0":
-  version: 4.4.0
-  resolution: "vite@npm:4.4.0"
+"vite@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "vite@npm:4.4.2"
   dependencies:
     esbuild: ^0.18.10
     fsevents: ~2.3.2
@@ -7958,7 +7958,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: a0565345836d2bd5471aa784a3769c19c2c7b5f1df05f3b30948ccba691c0a37300ff40bcbb288a7a189aba13063b04b91abbb49dffe9ec45472e95bf4a9ab17
+  checksum: 37a1c3a0ccc4b80c0a696203d3608d6bf7dc98219ddc178e528b972e3305af9ab8f92dea455421024e98c59372f6a97b1b4cc409a05f757a64bff830610053c6
   languageName: node
   linkType: hard
 
