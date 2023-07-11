@@ -20,6 +20,7 @@ import { getCommonSphere, loadGeometry } from '../../utils/three'
 import { OrbitControls } from 'three-stdlib'
 import { RecenterButton } from './RecenterButton'
 import { ErrorMessage } from './ErrorMessage'
+import { Loading } from '../Loading'
 
 function Viewer3D2Up({
     beforeGeometry,
@@ -116,6 +117,7 @@ function Viewer3DCombined({
     const [showUnchanged, setShowUnchanged] = useState(true)
     const [showAdditions, setShowAdditions] = useState(true)
     const [showDeletions, setShowDeletions] = useState(true)
+    const [rendering, setRendering] = useState(true)
     return (
         <>
             <Viewer3D
@@ -133,6 +135,7 @@ function Viewer3DCombined({
                     showUnchanged={showUnchanged}
                     showAdditions={showAdditions}
                     showDeletions={showDeletions}
+                    onRendered={() => setRendering(false)}
                 />
             </Viewer3D>
             <LegendBox>
@@ -162,6 +165,9 @@ function Viewer3DCombined({
                         setControlsAltered(false)
                     }}
                 />
+            )}
+            {rendering && (
+                <Loading />
             )}
         </>
     )
