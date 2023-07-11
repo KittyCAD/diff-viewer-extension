@@ -8,7 +8,7 @@
         "@kittycad/lib": "^0.0.20",
         "@octokit/openapi-types": "^18.0.0",
         "@octokit/rest": "^19.0.11",
-        "@octokit/types": "^10.0.0",
+        "@octokit/types": "^11.1.0",
         "@primer/octicons-react": "^19.4.0",
         "@primer/react": "^35.26.1",
         "@react-three/csg": "^2.2.0",
