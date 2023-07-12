@@ -1669,19 +1669,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.35.0":
-  version: 1.35.0
-  resolution: "@playwright/test@npm:1.35.0"
+"@playwright/test@npm:^1.36.0":
+  version: 1.36.0
+  resolution: "@playwright/test@npm:1.36.0"
   dependencies:
     "@types/node": "*"
     fsevents: 2.3.2
-    playwright-core: 1.35.0
+    playwright-core: 1.36.0
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: c63a281d8711ec817906d7618563709842aaa013ac02919bb7bbef7f7162d4ace0fc1351c6aac94a8957df4d107b38440e55488e99455a07f55e1ace6bb07959
+  checksum: 6748fd7777617fc14aaf472c85a2d29bdcca7c63e88d06bd8c4f37af3bc35ae7af9c317ed966bc005e37038a27193be486fb5361634a0e9a79f527b6cbdd2f52
   languageName: node
   linkType: hard
 
@@ -3998,7 +3998,7 @@ __metadata:
     "@octokit/openapi-types": ^18.0.0
     "@octokit/rest": ^20.0.1
     "@octokit/types": ^11.1.0
-    "@playwright/test": ^1.35.0
+    "@playwright/test": ^1.36.0
     "@primer/octicons-react": ^19.4.0
     "@primer/react": ^35.26.1
     "@react-three/csg": ^2.2.0
@@ -7262,12 +7262,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.35.0":
-  version: 1.35.0
-  resolution: "playwright-core@npm:1.35.0"
+"playwright-core@npm:1.36.0":
+  version: 1.36.0
+  resolution: "playwright-core@npm:1.36.0"
   bin:
     playwright-core: cli.js
-  checksum: e23050c9de128e02b16ffbeb1adaca6dddd85a6fd581e71da38947f66b3c910504d628285340e3d6de8c099a488ab9dad14241aefe615f65c01a5a3e3b6e633d
+  checksum: d6b5fed5ae95238dc36a1be3e2cfd250221810e6a2d20592c29d7044a2d1f96e8e6cfff83d937605b6e26d7c3058231d16784e17979fbb11208880829e406e85
   languageName: node
   linkType: hard
 
