@@ -27,18 +27,19 @@ export function CombinedModel({
     const commonColor = theme?.colors.fg.muted
     const additionsColor = theme?.colors.success.muted
     const deletionsColor = theme?.colors.danger.muted
-    const [unchangedRendered, setUnchangedRendered] = useState(false)
+    const [rendered, setRendered] = useState(false)
 
     return (
         <BaseModel boundingSphere={boundingSphere}>
             {/* Unchanged */}
-            <mesh onAfterRender={() => {
-                if (!unchangedRendered) {
-                    setUnchangedRendered(true)
-                    // TODO: only call if all three are done
-                    onRendered && onRendered()
-                }
-            }}>
+            <mesh
+                onAfterRender={() => {
+                    if (!rendered) {
+                        setRendered(true)
+                        onRendered && onRendered()
+                    }
+                }}
+            >
                 <meshPhongMaterial
                     color={commonColor}
                     transparent
