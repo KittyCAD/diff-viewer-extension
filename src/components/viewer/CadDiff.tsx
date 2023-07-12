@@ -120,6 +120,11 @@ function Viewer3DCombined({
     const [rendering, setRendering] = useState(true)
     return (
         <>
+            {rendering && (
+                <Box top={0} left={0} right={0} bottom={0} position="absolute">
+                    <Loading />
+                </Box>
+            )}
             <Viewer3D
                 geometry={beforeGeometry}
                 boundingSphere={boundingSphere}
@@ -165,9 +170,6 @@ function Viewer3DCombined({
                         setControlsAltered(false)
                     }}
                 />
-            )}
-            {rendering && (
-                <Loading />
             )}
         </>
     )
