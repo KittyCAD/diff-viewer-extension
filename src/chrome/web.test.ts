@@ -8,6 +8,7 @@ import {
     getSupportedWebDiffElements,
     createReactRoot,
     getGithubBlobUrlParams,
+    getGithubCommitWithinPullUrlParams,
 } from './web'
 
 const githubPullHtmlSnippet = `
@@ -143,6 +144,29 @@ describe('Function getGithubCommitUrlParams', () => {
         expect(getGithubPullUrlParams('http://google.com')).toBeUndefined()
         expect(
             getGithubPullUrlParams('https://github.com/KittyCAD/litterbox')
+        ).toBeUndefined()
+    })
+})
+
+describe('Function getGithubCommitWithinPullUrlParams', () => {
+    it('gets params out of a valid github commit link within a PR', () => {
+        const url =
+            'https://github.com/KittyCAD/diff-samples/pull/2/commits/1dc0d43a94dba95279fcfc112bb5dd4dfaac01ae'
+        const params = getGithubCommitWithinPullUrlParams(url)
+        expect(params).toBeDefined()
+        const { owner, repo, pull, sha } = params!
+        expect(owner).toEqual('KittyCAD')
+        expect(repo).toEqual('diff-samples')
+        expect(pull).toEqual(2)
+        expect(sha).toEqual('1dc0d43a94dba95279fcfc112bb5dd4dfaac01ae')
+    })
+
+    it("doesn't match other URLs", () => {
+        expect(getGithubCommitWithinPullUrlParams('http://google.com')).toBeUndefined()
+        expect(
+            getGithubCommitWithinPullUrlParams(
+                'https://github.com/KittyCAD/litterbox/commit/4ddf899550addf41d6bf1b790ce79e46501411b3'
+            )
         ).toBeUndefined()
     })
 })

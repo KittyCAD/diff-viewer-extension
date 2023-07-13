@@ -68,6 +68,20 @@ test('pull request diff with a modified .obj file', async ({
     expect(screenshot2).toMatchSnapshot()
 })
 
+test('commit diff within pull request with a modified .stl file', async ({
+    page,
+    authorizedBackground,
+}) => {
+    const url = 'https://github.com/KittyCAD/diff-samples/pull/2/commits/1dc0d43a94dba95279fcfc112bb5dd4dfaac01ae'
+    const element = await getFirstDiffElement(page, url, 'stl')
+    const screenshot = await element.screenshot()
+    expect(screenshot).toMatchSnapshot()
+
+    await enableCombined(page, element)
+    const screenshot2 = await element.screenshot()
+    expect(screenshot2).toMatchSnapshot()
+})
+
 test('pull request diff with a modified .step file', async ({
     page,
     authorizedBackground,

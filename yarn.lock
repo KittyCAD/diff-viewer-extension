@@ -1542,63 +1542,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/auth-token@npm:^3.0.0":
-  version: 3.0.3
-  resolution: "@octokit/auth-token@npm:3.0.3"
-  dependencies:
-    "@octokit/types": ^9.0.0
-  checksum: 9b3f569cec1b7e0aa88ab6da68aed4b49b6652261bd957257541fabaf6a4d4ed99f908153cc3dd2fe15b8b0ccaff8caaafaa50bb1a4de3925b0954a47cca1900
+"@octokit/auth-token@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@octokit/auth-token@npm:4.0.0"
+  checksum: d78f4dc48b214d374aeb39caec4fdbf5c1e4fd8b9fcb18f630b1fe2cbd5a880fca05445f32b4561f41262cb551746aeb0b49e89c95c6dd99299706684d0cae2f
   languageName: node
   linkType: hard
 
-"@octokit/core@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "@octokit/core@npm:4.2.1"
+"@octokit/core@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@octokit/core@npm:5.0.0"
   dependencies:
-    "@octokit/auth-token": ^3.0.0
-    "@octokit/graphql": ^5.0.0
-    "@octokit/request": ^6.0.0
-    "@octokit/request-error": ^3.0.0
-    "@octokit/types": ^9.0.0
+    "@octokit/auth-token": ^4.0.0
+    "@octokit/graphql": ^7.0.0
+    "@octokit/request": ^8.0.2
+    "@octokit/request-error": ^5.0.0
+    "@octokit/types": ^11.0.0
     before-after-hook: ^2.2.0
     universal-user-agent: ^6.0.0
-  checksum: f82d52e937e12da1c7c163341c845b8e27e7fa75678f5e5954e6fa017a94f1833d6e5c4e43f0be796fbfea9dc5e1137087f655dbd5acb3d57879e1b28568e0a9
+  checksum: 1a5d1112a2403d146aa1db7aaf81a31192ef6b0310a1e6f68c3e439fded22bd4b3a930f5071585e6ca0f2f5e7fc4a1aac68910525b71b03732c140e362d26a33
   languageName: node
   linkType: hard
 
-"@octokit/endpoint@npm:^7.0.0":
-  version: 7.0.5
-  resolution: "@octokit/endpoint@npm:7.0.5"
+"@octokit/endpoint@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@octokit/endpoint@npm:9.0.0"
   dependencies:
-    "@octokit/types": ^9.0.0
+    "@octokit/types": ^11.0.0
     is-plain-object: ^5.0.0
     universal-user-agent: ^6.0.0
-  checksum: 81c9e9eabf50e48940cceff7c4d7fbc9327190296507cfe8a199ea00cd492caf8f18a841caf4e3619828924b481996eb16091826db6b5a649bee44c8718ecaa9
+  checksum: 0e402c4d0fbe5b8053630cedb30dde5074bb6410828a05dc93d7e0fdd6c17f9a44b66586ef1a4e4ee0baa8d34ef7d6f535e2f04d9ea42909b7fc7ff55ce56a48
   languageName: node
   linkType: hard
 
-"@octokit/graphql@npm:^5.0.0":
-  version: 5.0.5
-  resolution: "@octokit/graphql@npm:5.0.5"
+"@octokit/graphql@npm:^7.0.0":
+  version: 7.0.1
+  resolution: "@octokit/graphql@npm:7.0.1"
   dependencies:
-    "@octokit/request": ^6.0.0
-    "@octokit/types": ^9.0.0
+    "@octokit/request": ^8.0.1
+    "@octokit/types": ^11.0.0
     universal-user-agent: ^6.0.0
-  checksum: eb2d1a6305a3d1f55ff0ce92fb88b677f0bb789757152d58a79ef61171fb65ecf6fe18d6c27e236c0cee6a0c2600c2cb8370f5ac7184f8e9361c085aa4555bb1
-  languageName: node
-  linkType: hard
-
-"@octokit/openapi-types@npm:^17.1.0":
-  version: 17.1.0
-  resolution: "@octokit/openapi-types@npm:17.1.0"
-  checksum: 67d695306d9cb30cfce536d9c54d92b11014b1df0edc7543737d0b1042906205dbbb1701f36bf19ac24209aba7f44647ab77af6223b2db028edcb81148ece516
-  languageName: node
-  linkType: hard
-
-"@octokit/openapi-types@npm:^17.2.0":
-  version: 17.2.0
-  resolution: "@octokit/openapi-types@npm:17.2.0"
-  checksum: 29995e34f98d9d64ba234d64a7ae9486c66d2bb6ac0d30d9a42decdbb4b03b13e811769b1e1505a1748ff20c22d35724985e6c128cd11a3f14f8322201520093
+  checksum: 7ee907987b1b8312c6f870c44455cbd3eed805bb1a4095038f4e7e62ee2e006bd766f2a71dfbe56b870cd8f7558309c602f00d3e252fe59578f4acf6249a4f17
   languageName: node
   linkType: hard
 
@@ -1609,107 +1593,79 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-paginate-rest@npm:^6.1.2":
-  version: 6.1.2
-  resolution: "@octokit/plugin-paginate-rest@npm:6.1.2"
+"@octokit/plugin-paginate-rest@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "@octokit/plugin-paginate-rest@npm:8.0.0"
   dependencies:
-    "@octokit/tsconfig": ^1.0.2
-    "@octokit/types": ^9.2.3
+    "@octokit/types": ^11.0.0
   peerDependencies:
-    "@octokit/core": ">=4"
-  checksum: a7b3e686c7cbd27ec07871cde6e0b1dc96337afbcef426bbe3067152a17b535abd480db1861ca28c88d93db5f7bfdbcadd0919ead19818c28a69d0e194038065
+    "@octokit/core": ">=5"
+  checksum: b5d7cee50523862c6ce7be057f7200e14ee4dcded462f27304c822c960a37efa23ed51080ea879f5d1e56e78f74baa17d2ce32eed5d726794abc35755777e32c
   languageName: node
   linkType: hard
 
-"@octokit/plugin-request-log@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "@octokit/plugin-request-log@npm:1.0.4"
+"@octokit/plugin-request-log@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@octokit/plugin-request-log@npm:4.0.0"
   peerDependencies:
-    "@octokit/core": ">=3"
-  checksum: 2086db00056aee0f8ebd79797b5b57149ae1014e757ea08985b71eec8c3d85dbb54533f4fd34b6b9ecaa760904ae6a7536be27d71e50a3782ab47809094bfc0c
+    "@octokit/core": ">=5"
+  checksum: 2a8a6619640942092009a9248ceeb163ce01c978e2d7b2a7eb8686bd09a04b783c4cd9071eebb16652d233587abcde449a02ce4feabc652f0a171615fb3e9946
   languageName: node
   linkType: hard
 
-"@octokit/plugin-rest-endpoint-methods@npm:^7.1.2":
-  version: 7.1.2
-  resolution: "@octokit/plugin-rest-endpoint-methods@npm:7.1.2"
+"@octokit/plugin-rest-endpoint-methods@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@octokit/plugin-rest-endpoint-methods@npm:9.0.0"
   dependencies:
-    "@octokit/types": ^9.2.3
-    deprecation: ^2.3.1
+    "@octokit/types": ^11.0.0
   peerDependencies:
-    "@octokit/core": ">=3"
-  checksum: 159d29bf28d7aecbe39f08c25cf376d39b6c90ce17e50a55eafb44f3e4b9e1053a300c1edd72f308ae386146a17cbad46c410c1cfd000b048adf9c21d6922a1a
+    "@octokit/core": ">=5"
+  checksum: 8795cb29be042c839098886a03c2ec6051e3fd7a29f16f4f8a487aa2d85ceb00df8a4432499a43af550369bd730ce9b1b9d7eeff768745b80a3e67698ca9a5dd
   languageName: node
   linkType: hard
 
-"@octokit/request-error@npm:^3.0.0":
-  version: 3.0.3
-  resolution: "@octokit/request-error@npm:3.0.3"
+"@octokit/request-error@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@octokit/request-error@npm:5.0.0"
   dependencies:
-    "@octokit/types": ^9.0.0
+    "@octokit/types": ^11.0.0
     deprecation: ^2.0.0
     once: ^1.4.0
-  checksum: 5db0b514732686b627e6ed9ef1ccdbc10501f1b271a9b31f784783f01beee70083d7edcfeb35fbd7e569fa31fdd6762b1ff6b46101700d2d97e7e48e749520d0
+  checksum: 2012eca66f6b8fa4038b3bfe81d65a7134ec58e2caf45d229aca13b9653ab260abd95229bd1a8c11180ee0bcf738e2556831a85de28f39b175175653c3b79fdd
   languageName: node
   linkType: hard
 
-"@octokit/request@npm:^6.0.0":
-  version: 6.2.3
-  resolution: "@octokit/request@npm:6.2.3"
+"@octokit/request@npm:^8.0.1, @octokit/request@npm:^8.0.2":
+  version: 8.1.0
+  resolution: "@octokit/request@npm:8.1.0"
   dependencies:
-    "@octokit/endpoint": ^7.0.0
-    "@octokit/request-error": ^3.0.0
-    "@octokit/types": ^9.0.0
+    "@octokit/endpoint": ^9.0.0
+    "@octokit/request-error": ^5.0.0
+    "@octokit/types": ^11.1.0
     is-plain-object: ^5.0.0
-    node-fetch: ^2.6.7
     universal-user-agent: ^6.0.0
-  checksum: fef4097be8375d20bb0b3276d8a3adf866ec628f2b0664d334f3c29b92157da847899497abdc7a5be540053819b55564990543175ad48f04e9e6f25f0395d4d3
+  checksum: 00f71e1ca0bff84a1a903ca9f79a7837aac830cae3560d44f03272d062ef98e5a8170fdab8a47169c41db88e6894717cc71387604486d559f9eae409fab93f6f
   languageName: node
   linkType: hard
 
-"@octokit/rest@npm:^19.0.11":
-  version: 19.0.11
-  resolution: "@octokit/rest@npm:19.0.11"
+"@octokit/rest@npm:^20.0.1":
+  version: 20.0.1
+  resolution: "@octokit/rest@npm:20.0.1"
   dependencies:
-    "@octokit/core": ^4.2.1
-    "@octokit/plugin-paginate-rest": ^6.1.2
-    "@octokit/plugin-request-log": ^1.0.4
-    "@octokit/plugin-rest-endpoint-methods": ^7.1.2
-  checksum: 147518ad51d214ead88adc717b5fdc4f33317949d58c124f4069bdf07d2e6b49fa66861036b9e233aed71fcb88ff367a6da0357653484e466175ab4fb7183b3b
+    "@octokit/core": ^5.0.0
+    "@octokit/plugin-paginate-rest": ^8.0.0
+    "@octokit/plugin-request-log": ^4.0.0
+    "@octokit/plugin-rest-endpoint-methods": ^9.0.0
+  checksum: 9fb2e154a498e00598379b09d76cc7b67b3801e9c97d753f1a76e1163924188bf4cb1411ec152a038ae91e97b86d7146ff220b05adfb6e500e2300c87e14100a
   languageName: node
   linkType: hard
 
-"@octokit/tsconfig@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@octokit/tsconfig@npm:1.0.2"
-  checksum: 74d56f3e9f326a8dd63700e9a51a7c75487180629c7a68bbafee97c612fbf57af8347369bfa6610b9268a3e8b833c19c1e4beb03f26db9a9dce31f6f7a19b5b1
-  languageName: node
-  linkType: hard
-
-"@octokit/types@npm:^11.1.0":
+"@octokit/types@npm:^11.0.0, @octokit/types@npm:^11.1.0":
   version: 11.1.0
   resolution: "@octokit/types@npm:11.1.0"
   dependencies:
     "@octokit/openapi-types": ^18.0.0
   checksum: 72627a94ddaf7bc14db06572bcde67649aad608cd86548818380db9305f4c0ca9ca078a62dd883858a267e8ec8fd596a0fce416aa04197c439b9548efef609a7
-  languageName: node
-  linkType: hard
-
-"@octokit/types@npm:^9.0.0":
-  version: 9.2.0
-  resolution: "@octokit/types@npm:9.2.0"
-  dependencies:
-    "@octokit/openapi-types": ^17.1.0
-  checksum: 3946ad67c4de8002061154228cb5a4a28ae24823038a5991c518cbceeb05f10feeb52800b1c72b923e2531ffbb2855ed7dcb0ad2f1f35d075e7f79d6157fc385
-  languageName: node
-  linkType: hard
-
-"@octokit/types@npm:^9.2.3":
-  version: 9.2.3
-  resolution: "@octokit/types@npm:9.2.3"
-  dependencies:
-    "@octokit/openapi-types": ^17.2.0
-  checksum: 6806413089f20a8302237ef85aa2e83bace7499e95fdc3db2d304f9e6dc6e87fb6766452f92e08ddf475046b69753e11beabaeff6733c38bdaf3e21dfd7d3341
   languageName: node
   linkType: hard
 
@@ -1872,18 +1828,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/csg@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@react-three/csg@npm:2.2.0"
+"@react-three/csg@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@react-three/csg@npm:3.0.0"
   dependencies:
-    three-bvh-csg: ^0.0.5
-  checksum: 79a78384d8db2b1ca4f9cccf79d1591b389a69c0a14f572ce5fc2e7375d5d4682b02eff295b1b7dc06ed2f44a39d9b9df6f3d2e6e5d734830ba1ecd7866f1070
+    three-bvh-csg: ^0.0.8
+  checksum: 7e6ba934074b6ca1797916ec320a33ef919d23db8d1202f52a77d79308a5d3150419f4ec31eb14c32d144564ffd514fd5efe36a5e4a0d6d1f0c0fa6a8d97b6b0
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.78.1":
-  version: 9.78.1
-  resolution: "@react-three/drei@npm:9.78.1"
+"@react-three/drei@npm:^9.78.2":
+  version: 9.78.2
+  resolution: "@react-three/drei@npm:9.78.2"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@mediapipe/tasks-vision": 0.10.2-rc2
@@ -1914,13 +1870,13 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 945f216b935c64aa59a4544fa3cf33d7bdca250ab0b44241eee70de14f8a34f1477bf967e4ee85c103004927f0252c007bed3bb96b1798e686a5b69ec04faf4d
+  checksum: 38ae6127289050e514e28bd9ffaa41f53b7cf03f5d8953b3d1794a17d040cb8fd3c1a111a3a0caa7cccbb32d401f878d63be994a128bc2ed326024db92bc0e4d
   languageName: node
   linkType: hard
 
-"@react-three/fiber@npm:^8.13.4":
-  version: 8.13.4
-  resolution: "@react-three/fiber@npm:8.13.4"
+"@react-three/fiber@npm:^8.13.5":
+  version: 8.13.5
+  resolution: "@react-three/fiber@npm:8.13.5"
   dependencies:
     "@babel/runtime": ^7.17.8
     "@types/react-reconciler": ^0.26.7
@@ -1949,7 +1905,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 9e1c9b2db4a9a522c6a79021e6767ae22e82056fea3b93db22b09b5f339ec9dfa8f2e84e31baa2113e91c07d2084533bb6bd555b3f486aff565fe253ab428c71
+  checksum: 4cfae361babec37a6af55081568ac74b788520899470f98df50f0603e84c2c0f496f0992a0395e2b29c914742855188683ceb688019e8ec3a4e45e2ea320fd03
   languageName: node
   linkType: hard
 
@@ -2266,13 +2222,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chrome@npm:^0.0.240":
-  version: 0.0.240
-  resolution: "@types/chrome@npm:0.0.240"
+"@types/chrome@npm:^0.0.241":
+  version: 0.0.241
+  resolution: "@types/chrome@npm:0.0.241"
   dependencies:
     "@types/filesystem": "*"
     "@types/har-format": "*"
-  checksum: 5c7c8b6bc8961d64135793459256cbb454a2c88612cc2676629355278781c186d85d18c69da337368e56921cee6c8492b9c657427472f3ba26eb3d77a1da3ed7
+  checksum: af6cf474ed120b046001c0edf50bb752191369d5205d0b2d1ebcb7548db6b87183a098ee7ab77db1a441eacbf36fbfc3cd5b04a9642a99180a13018ced400984
   languageName: node
   linkType: hard
 
@@ -2367,13 +2323,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.2":
-  version: 29.5.2
-  resolution: "@types/jest@npm:29.5.2"
+"@types/jest@npm:^29.5.3":
+  version: 29.5.3
+  resolution: "@types/jest@npm:29.5.3"
   dependencies:
     expect: ^29.0.0
     pretty-format: ^29.0.0
-  checksum: 7d205599ea3cccc262bad5cc173d3242d6bf8138c99458509230e4ecef07a52d6ddcde5a1dbd49ace655c0af51d2dbadef3748697292ea4d86da19d9e03e19c0
+  checksum: e36bb92e0b9e5ea7d6f8832baa42f087fc1697f6cd30ec309a07ea4c268e06ec460f1f0cfd2581daf5eff5763475190ec1ad8ac6520c49ccfe4f5c0a48bfa676
   languageName: node
   linkType: hard
 
@@ -3990,7 +3946,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deprecation@npm:^2.0.0, deprecation@npm:^2.3.1":
+"deprecation@npm:^2.0.0":
   version: 2.3.1
   resolution: "deprecation@npm:2.3.1"
   checksum: f56a05e182c2c195071385455956b0c4106fe14e36245b00c689ceef8e8ab639235176a96977ba7c74afb173317fac2e0ec6ec7a1c6d1e6eaa401c586c714132
@@ -4040,19 +3996,19 @@ __metadata:
     "@dicebear/avatars-bottts-sprites": ^4.10.8
     "@kittycad/lib": ^0.0.20
     "@octokit/openapi-types": ^18.0.0
-    "@octokit/rest": ^19.0.11
+    "@octokit/rest": ^20.0.1
     "@octokit/types": ^11.1.0
     "@playwright/test": ^1.35.0
     "@primer/octicons-react": ^19.4.0
     "@primer/react": ^35.26.1
-    "@react-three/csg": ^2.2.0
-    "@react-three/drei": ^9.78.1
-    "@react-three/fiber": ^8.13.4
+    "@react-three/csg": ^3.0.0
+    "@react-three/drei": ^9.78.2
+    "@react-three/fiber": ^8.13.5
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
-    "@types/chrome": ^0.0.240
-    "@types/jest": ^29.5.2
+    "@types/chrome": ^0.0.241
+    "@types/jest": ^29.5.3
     "@types/node": ^20.4.1
     "@types/react": ^18.2.14
     "@types/react-dom": ^18.2.6
@@ -4073,10 +4029,10 @@ __metadata:
     react-is: ^18.2.0
     styled-components: ^5.3.11
     three: ^0.153.0
-    three-mesh-bvh: ^0.6.0
+    three-mesh-bvh: ^0.6.1
     three-stdlib: ^2.23.13
     typescript: ^4.9.5
-    vite: ^4.4.2
+    vite: ^4.4.3
     vite-plugin-node-polyfills: ^0.9.0
     vitest: ^0.33.0
   languageName: unknown
@@ -6771,20 +6727,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.6.7":
-  version: 2.6.9
-  resolution: "node-fetch@npm:2.6.9"
-  dependencies:
-    whatwg-url: ^5.0.0
-  peerDependencies:
-    encoding: ^0.1.0
-  peerDependenciesMeta:
-    encoding:
-      optional: true
-  checksum: acb04f9ce7224965b2b59e71b33c639794d8991efd73855b0b250921382b38331ffc9d61bce502571f6cc6e11a8905ca9b1b6d4aeb586ab093e2756a1fd190d0
-  languageName: node
-  linkType: hard
-
 "node-gyp@npm:latest":
   version: 9.3.1
   resolution: "node-gyp@npm:9.3.1"
@@ -7347,14 +7289,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.24":
-  version: 8.4.24
-  resolution: "postcss@npm:8.4.24"
+"postcss@npm:^8.4.25":
+  version: 8.4.25
+  resolution: "postcss@npm:8.4.25"
   dependencies:
     nanoid: ^3.3.6
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
-  checksum: 814e2126dacfea313588eda09cc99a9b4c26ec55c059188aa7a916d20d26d483483106dc5ff9e560731b59f45c5bb91b945dfadc670aed875cc90ddbbf4e787d
+  checksum: 9ed3ab8af43ad5210c28f56f916fd9b8c9f94fbeaebbf645dcf579bc28bdd8056c2a7ecc934668d399b81fedb6128f0c4b299f931e50454964bc911c25a3a0a2
   languageName: node
   linkType: hard
 
@@ -8011,11 +7953,11 @@ __metadata:
   linkType: hard
 
 "semver@npm:2 || 3 || 4 || 5, semver@npm:^5.4.1":
-  version: 5.7.1
-  resolution: "semver@npm:5.7.1"
+  version: 5.7.2
+  resolution: "semver@npm:5.7.2"
   bin:
-    semver: ./bin/semver
-  checksum: 57fd0acfd0bac382ee87cd52cd0aaa5af086a7dc8d60379dfe65fea491fb2489b6016400813930ecd61fd0952dae75c115287a1b16c234b1550887117744dfaf
+    semver: bin/semver
+  checksum: fb4ab5e0dd1c22ce0c937ea390b4a822147a9c53dbd2a9a0132f12fe382902beef4fbf12cf51bb955248d8d15874ce8cd89532569756384f994309825f10b686
   languageName: node
   linkType: hard
 
@@ -8028,18 +7970,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.3.5":
-  version: 7.5.0
-  resolution: "semver@npm:7.5.0"
-  dependencies:
-    lru-cache: ^6.0.0
-  bin:
-    semver: bin/semver.js
-  checksum: 2d266937756689a76f124ffb4c1ea3e1bbb2b263219f90ada8a11aebebe1280b13bb76cca2ca96bdee3dbc554cbc0b24752eb895b2a51577aa644427e9229f2b
-  languageName: node
-  linkType: hard
-
-"semver@npm:^7.5.3":
+"semver@npm:^7.3.5, semver@npm:^7.5.3":
   version: 7.5.4
   resolution: "semver@npm:7.5.4"
   dependencies:
@@ -8582,13 +8513,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three-bvh-csg@npm:^0.0.5":
-  version: 0.0.5
-  resolution: "three-bvh-csg@npm:0.0.5"
+"three-bvh-csg@npm:^0.0.8":
+  version: 0.0.8
+  resolution: "three-bvh-csg@npm:0.0.8"
   peerDependencies:
-    three: ^0.141.0
-    three-mesh-bvh: ^0.5.13
-  checksum: 110a536e0fe3145e25a54e64a416352cb7ceb9ace93a14060460e4b82f4c3840fcdef8dab70ee242156eb90b85dface34b2bbe4499670fcbcf43c43380d3051a
+    three: ">=0.144.0"
+    three-mesh-bvh: ^0.6.0
+  checksum: be8a973c3b8ded24ad17ef2e1c9290305069a15bfc8792529cd1611f2f06a6001c7cb4098a37473222ba3d1d11ff1976cbddbe02dda74b0910c4b04aa0e0ad67
   languageName: node
   linkType: hard
 
@@ -8598,6 +8529,15 @@ __metadata:
   peerDependencies:
     three: ">= 0.151.0"
   checksum: bafa9c912be4137ae5bb440584deff5953abd3196f7e4c38ecfb279ed16abc7a570d9e89a0d998d1e77dc0f532f8524f393b4bc0a0755e3debd1968ee05f97fe
+  languageName: node
+  linkType: hard
+
+"three-mesh-bvh@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "three-mesh-bvh@npm:0.6.1"
+  peerDependencies:
+    three: ">= 0.151.0"
+  checksum: ee26086a7810b2aa8f4895a1519dc79a41e35b4540a9c0ca0ae6ed7d0aa9b5f6a337182651f74d7391ae143f5018cf0b9fcc120981c76187bea237986966734b
   languageName: node
   linkType: hard
 
@@ -9162,13 +9102,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^4.4.2":
-  version: 4.4.2
-  resolution: "vite@npm:4.4.2"
+"vite@npm:^4.4.3":
+  version: 4.4.3
+  resolution: "vite@npm:4.4.3"
   dependencies:
     esbuild: ^0.18.10
     fsevents: ~2.3.2
-    postcss: ^8.4.24
+    postcss: ^8.4.25
     rollup: ^3.25.2
   peerDependencies:
     "@types/node": ">= 14"
@@ -9198,7 +9138,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 37a1c3a0ccc4b80c0a696203d3608d6bf7dc98219ddc178e528b972e3305af9ab8f92dea455421024e98c59372f6a97b1b4cc409a05f757a64bff830610053c6
+  checksum: 2f7c90de35c840ed7f33000d65006053885c0342aa7c19cee7369d7b3d92473a9bae790f910eb3e9900bdb7ca89559a772ee4782f35636ec4e6bd10717e7f5ff
   languageName: node
   linkType: hard
 

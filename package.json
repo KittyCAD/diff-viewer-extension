@@ -7,18 +7,18 @@
         "@dicebear/avatars-bottts-sprites": "^4.10.8",
         "@kittycad/lib": "^0.0.20",
         "@octokit/openapi-types": "^18.0.0",
-        "@octokit/rest": "^19.0.11",
+        "@octokit/rest": "^20.0.1",
         "@octokit/types": "^11.1.0",
         "@primer/octicons-react": "^19.4.0",
         "@primer/react": "^35.26.1",
-        "@react-three/csg": "^2.2.0",
-        "@react-three/drei": "^9.78.1",
-        "@react-three/fiber": "^8.13.4",
+        "@react-three/csg": "^3.0.0",
+        "@react-three/drei": "^9.78.2",
+        "@react-three/fiber": "^8.13.5",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
-        "@types/chrome": "^0.0.240",
-        "@types/jest": "^29.5.2",
+        "@types/chrome": "^0.0.241",
+        "@types/jest": "^29.5.3",
         "@types/node": "^20.4.1",
         "@types/react": "^18.2.14",
         "@types/react-dom": "^18.2.6",
@@ -32,7 +32,7 @@
         "react-is": "^18.2.0",
         "styled-components": "^5.3.11",
         "three": "^0.153.0",
-        "three-mesh-bvh": "^0.6.0",
+        "three-mesh-bvh": "^0.6.1",
         "three-stdlib": "^2.23.13",
         "typescript": "^4.9.5"
     },
@@ -54,11 +54,6 @@
         "singleQuote": true,
         "arrowParens": "avoid",
         "trailingComma": "es5"
-    },
-    "jest": {
-        "moduleNameMapper": {
-            "three/examples/jsm": "<rootDir>/jest.mockundefined.js"
-        }
     },
     "browserslist": {
         "production": [
@@ -83,7 +78,7 @@
         "eslint-plugin-react": "^7.32.2",
         "jsdom": "^22.1.0",
         "prettier": "^3.0.0",
-        "vite": "^4.4.2",
+        "vite": "^4.4.3",
         "vite-plugin-node-polyfills": "^0.9.0",
         "vitest": "^0.33.0"
     },
