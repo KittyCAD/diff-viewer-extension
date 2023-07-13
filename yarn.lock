@@ -1874,9 +1874,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/fiber@npm:^8.13.4":
-  version: 8.13.4
-  resolution: "@react-three/fiber@npm:8.13.4"
+"@react-three/fiber@npm:^8.13.5":
+  version: 8.13.5
+  resolution: "@react-three/fiber@npm:8.13.5"
   dependencies:
     "@babel/runtime": ^7.17.8
     "@types/react-reconciler": ^0.26.7
@@ -1905,7 +1905,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 9e1c9b2db4a9a522c6a79021e6767ae22e82056fea3b93db22b09b5f339ec9dfa8f2e84e31baa2113e91c07d2084533bb6bd555b3f486aff565fe253ab428c71
+  checksum: 4cfae361babec37a6af55081568ac74b788520899470f98df50f0603e84c2c0f496f0992a0395e2b29c914742855188683ceb688019e8ec3a4e45e2ea320fd03
   languageName: node
   linkType: hard
 
@@ -4003,7 +4003,7 @@ __metadata:
     "@primer/react": ^35.26.1
     "@react-three/csg": ^2.2.0
     "@react-three/drei": ^9.78.1
-    "@react-three/fiber": ^8.13.4
+    "@react-three/fiber": ^8.13.5
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
