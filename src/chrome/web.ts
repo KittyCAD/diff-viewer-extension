@@ -44,6 +44,34 @@ export function getGithubCommitUrlParams(
     return { owner, repo, sha }
 }
 
+export type GithubCommitWithinPullUrlParams = {
+    owner: string
+    repo: string
+    pull: number
+    sha: string
+}
+
+export function getGithubCommitWithinPullUrlParams(
+    url: string
+): GithubCommitWithinPullUrlParams | undefined {
+    const pullRe =
+        /https:\/\/github\.com\/([a-zA-Z0-9_.-]+)\/([a-zA-Z0-9_.-]+)\/pull\/(\d+)\/commits\/(\w+)/
+    const result = pullRe.exec(url)
+    if (!result) {
+        return undefined
+    }
+
+    const [, owner, repo, pull, sha] = result
+    console.log(
+        'Found a supported Github Commit witin Pull URL:',
+        owner,
+        repo,
+        pull,
+        sha
+    )
+    return { owner, repo, sha, pull: parseInt(pull) }
+}
+
 export type GithubBlobUrlParams = {
     owner: string
     repo: string

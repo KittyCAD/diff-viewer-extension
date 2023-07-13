@@ -8,6 +8,7 @@ import {
     getGithubCommitUrlParams,
     createReactRoot,
     getGithubBlobUrlParams,
+    getGithubCommitWithinPullUrlParams,
 } from './web'
 import gitHubInjection from 'github-injection'
 
@@ -124,6 +125,15 @@ async function run() {
     if (commitParams) {
         const { owner, repo, sha } = commitParams
         console.log('Found commit diff: ', owner, repo, sha)
+        await injectCommitDiff(owner, repo, sha, window.document)
+        return
+    }
+
+    const commitWithinPullParams = getGithubCommitWithinPullUrlParams(url)
+    if (commitWithinPullParams) {
+        const { owner, repo, pull, sha } = commitWithinPullParams
+        console.log('Found commit diff within pull: ', owner, repo, pull, sha)
+        // TODO: understand if more things are needed here for this special case
         await injectCommitDiff(owner, repo, sha, window.document)
         return
     }
