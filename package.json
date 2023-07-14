@@ -21,7 +21,7 @@
         "@types/jest": "^29.5.3",
         "@types/node": "^20.4.1",
         "@types/react": "^18.2.14",
-        "@types/react-dom": "^18.2.6",
+        "@types/react-dom": "^18.2.7",
         "@types/testing-library__jest-dom": "^5.14.7",
         "@types/three": "^0.152.1",
         "buffer": "^6.0.3",
