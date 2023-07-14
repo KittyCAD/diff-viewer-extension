@@ -11,6 +11,7 @@ import {
     getGithubCommitWithinPullUrlParams,
 } from './web'
 import gitHubInjection from 'github-injection'
+import { isFilenameSupported } from './diff'
 
 const root = createReactRoot(document)
 
@@ -141,9 +142,11 @@ async function run() {
     const blobParams = getGithubBlobUrlParams(url)
     if (blobParams) {
         const { owner, repo, sha, filename } = blobParams
-        console.log('Found blob diff: ', owner, repo, sha, filename)
-        await injectBlob(owner, repo, sha, filename, window.document)
-        return
+        if (isFilenameSupported(filename)) {
+            console.log('Found supported blob: ', owner, repo, sha, filename)
+            await injectBlob(owner, repo, sha, filename, window.document)
+            return
+        }
     }
 }
 
