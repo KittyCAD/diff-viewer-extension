@@ -1,4 +1,4 @@
-import type { MutableRefObject } from 'react'
+import { MutableRefObject, useState } from 'react'
 import { useTheme } from '@primer/react'
 import { BufferGeometry, Sphere } from 'three'
 import { Geometry, Base, Subtraction, Intersection } from '@react-three/csg'
@@ -11,6 +11,7 @@ type CombinedModelProps = {
     showUnchanged: boolean
     showAdditions: boolean
     showDeletions: boolean
+    onRendered?: () => void
 }
 
 export function CombinedModel({
@@ -20,16 +21,25 @@ export function CombinedModel({
     showUnchanged,
     showAdditions,
     showDeletions,
+    onRendered,
 }: CombinedModelProps) {
     const { theme } = useTheme()
     const commonColor = theme?.colors.fg.muted
     const additionsColor = theme?.colors.success.muted
     const deletionsColor = theme?.colors.danger.muted
+    const [rendered, setRendered] = useState(false)
 
     return (
         <BaseModel boundingSphere={boundingSphere}>
             {/* Unchanged */}
-            <mesh>
+            <mesh
+                onAfterRender={() => {
+                    if (!rendered) {
+                        setRendered(true)
+                        onRendered && onRendered()
+                    }
+                }}
+            >
                 <meshPhongMaterial
                     color={commonColor}
                     transparent
