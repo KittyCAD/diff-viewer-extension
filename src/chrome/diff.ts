@@ -73,6 +73,10 @@ async function convert(
     })
     if ('error_code' in response) throw response
     const { status, id, output } = response
+    if (status !== "Completed") {
+        console.log('This is async!!')
+        // TODO: take care of this case
+    }
     console.log(`File conversion id: ${id}`)
     console.log(`File conversion status: ${status}`)
     return output
