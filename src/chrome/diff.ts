@@ -1,5 +1,5 @@
 import { Octokit } from '@octokit/rest'
-import { Client, file } from '@kittycad/lib'
+import { api_calls, Client, file } from '@kittycad/lib'
 import { ContentFile, DiffEntry, FileBlob, FileDiff } from './types'
 import {
     FileExportFormat_type,
@@ -72,13 +72,20 @@ async function convert(
         output_format: outputFormat as FileExportFormat_type,
     })
     if ('error_code' in response) throw response
-    const { status, id, output } = response
-    if (status !== "Completed") {
-        console.log('This is async!!')
-        // TODO: take care of this case
-    }
+    const { id } = response
+    let { status, output } = response
     console.log(`File conversion id: ${id}`)
     console.log(`File conversion status: ${status}`)
+    while (status !== "Completed") {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        const response = await api_calls.get_async_operation({ client, id })
+        if ('error_code' in response) throw response
+        status = response.status
+        console.log(`File conversion status: ${status}`)
+        if ('output' in response) {
+            output = response.output
+        }
+    }
     return output
 }
 
