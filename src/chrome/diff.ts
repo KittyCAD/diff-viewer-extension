@@ -76,12 +76,18 @@ async function convert(
     let { status, output } = response
     console.log(`File conversion id: ${id}`)
     console.log(`File conversion status: ${status}`)
-    while (status !== "Completed") {
-        await new Promise(resolve => setTimeout(resolve, 1000));
+    let retries = 0
+    while (status !== 'Completed') {
+        if (retries >= 60) {
+            console.log('Async conversion took too long, aborting.')
+            break
+        }
+        retries++
+        await new Promise(resolve => setTimeout(resolve, 1000))
         const response = await api_calls.get_async_operation({ client, id })
         if ('error_code' in response) throw response
         status = response.status
-        console.log(`File conversion status: ${status}`)
+        console.log(`File conversion status: ${status} (retry #${retries})`)
         if ('output' in response) {
             output = response.output
         }
