@@ -1,6 +1,12 @@
 import { Octokit } from '@octokit/rest'
 import { api_calls, Client, file } from '@kittycad/lib'
-import { ContentFile, DiffEntry, FileBlob, FileDiff } from './types'
+import {
+    ContentFile,
+    DiffEntry,
+    FileBlob,
+    FileDiff,
+    KittycadObjOutputs,
+} from './types'
 import {
     FileExportFormat_type,
     FileImportFormat_type,
@@ -77,8 +83,8 @@ async function convert(
     console.log(`File conversion id: ${id}`)
     console.log(`File conversion status: ${status}`)
     let retries = 0
-    while (status !== 'Completed') {
-        if (retries >= 60) {
+    while (status !== 'Completed' && status !== 'Failed') {
+        if (retries >= 180) {
             console.log('Async conversion took too long, aborting.')
             break
         }
@@ -88,8 +94,9 @@ async function convert(
         if ('error_code' in response) throw response
         status = response.status
         console.log(`File conversion status: ${status} (retry #${retries})`)
-        if ('output' in response) {
-            output = response.output
+        if ('outputs' in response) {
+            const outputs = response.outputs as KittycadObjOutputs
+            output = outputs['output.obj']
         }
     }
     return output
