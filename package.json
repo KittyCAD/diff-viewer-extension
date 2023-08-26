@@ -5,7 +5,7 @@
     "dependencies": {
         "@dicebear/avatars": "^4.10.8",
         "@dicebear/avatars-bottts-sprites": "^4.10.8",
-        "@kittycad/lib": "^0.0.20",
+        "@kittycad/lib": "^0.0.34",
         "@octokit/openapi-types": "^18.0.0",
         "@octokit/rest": "^20.0.1",
         "@octokit/types": "^11.1.0",
