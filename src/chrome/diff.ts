@@ -71,11 +71,11 @@ async function convert(
         src_format: extensionToSrcFormat[extension],
         output_format: outputFormat as FileExportFormat_type,
     })
-    if ('error_code' in response) throw response
-    const { status, id, output } = response
-    console.log(`File conversion id: ${id}`)
-    console.log(`File conversion status: ${status}`)
-    return output
+    const key = `source.${outputFormat}`
+    if ('error_code' in response || !response.outputs[key]) throw response
+    const { status, id, outputs } = response
+    console.log(`File conversion: ${id}, ${status}`)
+    return outputs[key]
 }
 
 export async function getFileDiff(
