@@ -8,16 +8,20 @@ import {
 import { Buffer } from 'buffer'
 
 export const extensionToSrcFormat: {
-    [extension: string]: FileImportFormat_type
+    [extension: string]: FileImportFormat_type | 'fbx' | 'sldprt'
 } = {
-    dae: 'dae',
-    dxf: 'dxf',
+    // expected one of `fbx`, `gltf`, `obj`, `ply`, `sldprt`, `step`, `stl`
     fbx: 'fbx',
+    gltf: 'gltf',
     obj: 'obj',
-    stl: 'stl',
+    ply: 'ply',
+    sldprt: 'sldprt',
     stp: 'step',
     step: 'step',
-    svg: 'svg',
+    stl: 'stl',
+
+    // Disabled in new format api
+    // dae: 'dae',
 }
 
 export function isFilenameSupported(filename: string): boolean {

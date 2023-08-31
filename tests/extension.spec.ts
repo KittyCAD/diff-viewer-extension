@@ -108,6 +108,7 @@ test('commit diff with an added .step file', async ({
     expect(screenshot).toMatchSnapshot()
 })
 
+// TODO: re-enable when .dae are supported
 // test('commit diff with a modified .dae file as LFS', async ({
 //     page,
 //     authorizedBackground,
@@ -123,6 +124,7 @@ test('commit diff with an added .step file', async ({
 //     expect(screenshot2).toMatchSnapshot()
 // })
 
+// TODO: re-enable when new blob page is fixed
 // test('blob preview with an .obj file', async ({
 //     page,
 //     authorizedBackground,
