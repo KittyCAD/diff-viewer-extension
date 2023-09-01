@@ -5,7 +5,7 @@
     "dependencies": {
         "@dicebear/avatars": "^4.10.8",
         "@dicebear/avatars-bottts-sprites": "^4.10.8",
-        "@kittycad/lib": "^0.0.20",
+        "@kittycad/lib": "^0.0.34",
         "@octokit/openapi-types": "^18.0.0",
         "@octokit/rest": "^20.0.1",
         "@octokit/types": "^11.1.0",
@@ -17,7 +17,7 @@
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
-        "@types/chrome": "^0.0.241",
+        "@types/chrome": "^0.0.244",
         "@types/jest": "^29.5.3",
         "@types/node": "^20.4.2",
         "@types/react": "^18.2.15",
@@ -80,7 +80,7 @@
         "prettier": "^3.0.0",
         "vite": "^4.4.4",
         "vite-plugin-node-polyfills": "^0.9.0",
-        "vitest": "^0.33.0"
+        "vitest": "^0.34.3"
     },
     "packageManager": "yarn@3.6.0",
     "engines": {
