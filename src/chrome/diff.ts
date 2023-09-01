@@ -8,7 +8,7 @@ import {
 import { Buffer } from 'buffer'
 
 export const extensionToSrcFormat: {
-    [extension: string]: FileImportFormat_type | 'fbx' | 'sldprt'
+    [extension: string]: FileImportFormat_type
 } = {
     // expected one of `fbx`, `gltf`, `obj`, `ply`, `sldprt`, `step`, `stl`
     fbx: 'fbx',
