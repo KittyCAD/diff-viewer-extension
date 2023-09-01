@@ -162,7 +162,9 @@ describe('Function getGithubCommitWithinPullUrlParams', () => {
     })
 
     it("doesn't match other URLs", () => {
-        expect(getGithubCommitWithinPullUrlParams('http://google.com')).toBeUndefined()
+        expect(
+            getGithubCommitWithinPullUrlParams('http://google.com')
+        ).toBeUndefined()
         expect(
             getGithubCommitWithinPullUrlParams(
                 'https://github.com/KittyCAD/litterbox/commit/4ddf899550addf41d6bf1b790ce79e46501411b3'
