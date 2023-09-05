@@ -16,7 +16,7 @@ jobs:
             RELEASE_ZIP: kittycad_diff-viewer_${{ github.event.release.name || github.sha }}.zip
 
         steps:
-            - uses: actions/checkout@v3.5.3
+            - uses: actions/checkout@v4.0.0
 
             - uses: actions/setup-node@v3.7.0
               with:
