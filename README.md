@@ -1,8 +1,25 @@
-# Diff Viewer Chrome Extension
+![KittyCAD](/public/logo192.png)
 
-Injects @kittycad/lib powered visual diffs for supported CAD files in GitHub Pull Requests.
+## KittyCAD Diff Viewer Extension
 
-## Available Scripts
+View changes to your models directly within GitHub with our extension for all Chrome, Edge, and Chromium-powered browsers. Use the industry-standard version control platform, supercharged with a rich CAD visualizer. Open-source and powered by the KittyCAD API.
+
+### Review model changes visually
+
+Upload your models to GitHub and make safe, incremental changes to them with a full version history. And with our extension, you can now visually review your model with clear indications of what has changed between versions. Our extension overrides some of the GitHub interface to provide you with a full 3D view of your files, and two review modes:
+
+- 2-up view: For when you just need to see the before and after state of the model; and
+![2-up view](/public/diff-viewer-2-up.jpg)
+
+- Combined view (experimental): See the additions, deletions, and unchanged portions of your model in one 3D viewer.
+
+![Combined view](/public/diff-viewer-combined.jpg)
+
+## Try it now
+
+Live on the [Google Chrome Store](https://chrome.google.com/webstore/detail/kittycad-diff-viewer/gccpihmphokfjpohkmkbimnhhnlpmegp).
+
+## Running a development build
 
 The project uses Vite, with Node 18, yarn 3 as package manager and TypeScript.
 
