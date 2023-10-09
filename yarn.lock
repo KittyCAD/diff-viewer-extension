@@ -2362,10 +2362,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.4.2":
-  version: 20.4.2
-  resolution: "@types/node@npm:20.4.2"
-  checksum: 99e544ea7560d51f01f95627fc40394c24a13da8f041121a0da13e4ef0a2aa332932eaf9a5e8d0e30d1c07106e96a183be392cbba62e8cf0bf6a085d5c0f4149
+"@types/node@npm:^20.8.3":
+  version: 20.8.3
+  resolution: "@types/node@npm:20.8.3"
+  checksum: bfb88b341faeb19f8fd37306a3bf433721b876c6491d10fcb0b13fd26601fa36ee45113dd82b1e1c23e3c957dff5b99f81a16493cefa03abe797e41a2487a4f7
   languageName: node
   linkType: hard
 
@@ -4017,7 +4017,7 @@ __metadata:
     "@testing-library/user-event": ^14.4.3
     "@types/chrome": ^0.0.244
     "@types/jest": ^29.5.3
-    "@types/node": ^20.4.2
+    "@types/node": ^20.8.3
     "@types/react": ^18.2.15
     "@types/react-dom": ^18.2.7
     "@types/testing-library__jest-dom": ^5.14.8
