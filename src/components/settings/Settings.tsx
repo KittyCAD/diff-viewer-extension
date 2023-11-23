@@ -127,6 +127,7 @@ export function Settings() {
     }, [])
 
     return (
+        // Setting colorMode to 'auto' as this popup is part of Chrome
         <ThemeProvider colorMode="auto">
             <Box backgroundColor="canvas.default" width={300} p={4}>
                 {firstInitDone ? (

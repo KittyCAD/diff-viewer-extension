@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
 import { CadDiff } from './CadDiff'
 import { SourceRichToggle } from './SourceRichToggle'
+import { ColorModeWithAuto } from '@primer/react/lib/ThemeProvider'
 
 function CadDiffPortal({
     element,
@@ -107,6 +108,7 @@ export type CadDiffPageProps = {
     repo: string
     sha: string
     parentSha: string
+    colorMode: ColorModeWithAuto
 }
 
 export function CadDiffPage({
@@ -115,9 +117,10 @@ export function CadDiffPage({
     repo,
     sha,
     parentSha,
+    colorMode,
 }: CadDiffPageProps): React.ReactElement {
     return (
-        <ThemeProvider colorMode="auto">
+        <ThemeProvider colorMode={colorMode}>
             {map.map(m => (
                 <CadDiffPortal
                     key={m.file.filename}

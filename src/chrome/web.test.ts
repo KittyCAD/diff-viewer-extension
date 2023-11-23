@@ -9,6 +9,7 @@ import {
     createReactRoot,
     getGithubBlobUrlParams,
     getGithubCommitWithinPullUrlParams,
+    getGithubColorMode,
 } from './web'
 
 const githubPullHtmlSnippet = `
@@ -220,4 +221,37 @@ it('adds a div element, creates a react root inside, and can render', () => {
     const root = createReactRoot(document)
     expect(root).toBeDefined()
     expect(() => root.render(React.createElement('a'))).not.toThrow()
+})
+
+it('finds the right color mode from GitHub', () => {
+    const lightHtml = `
+    <html lang="en"
+          data-color-mode="light" data-light-theme="light" data-dark-theme="dark"
+          data-a11y-animated-images="system" data-a11y-link-underlines="true">
+    </html>
+    `
+    const lightDocument = parser.parseFromString(lightHtml, 'text/html')
+    expect(getGithubColorMode(lightDocument)).toEqual('light')
+
+    const darkHtml = `
+    <html lang="en"
+          data-color-mode="dark" data-light-theme="light" data-dark-theme="dark"
+          data-a11y-animated-images="system" data-a11y-link-underlines="true">
+    </html>
+    `
+    const darkDocument = parser.parseFromString(darkHtml, 'text/html')
+    expect(getGithubColorMode(darkDocument)).toEqual('dark')
+
+    const sysHtml = `
+    <html lang="en"
+          data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"
+          data-a11y-animated-images="system" data-a11y-link-underlines="true">
+    </html>
+    `
+    const sysDocument = parser.parseFromString(sysHtml, 'text/html')
+    expect(getGithubColorMode(sysDocument)).toEqual('auto')
+
+    const irrelevantHtml = '<html></html>'
+    const irrDocument = parser.parseFromString(irrelevantHtml, 'text/html')
+    expect(getGithubColorMode(irrDocument)).toEqual('auto')
 })
