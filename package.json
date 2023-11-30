@@ -73,7 +73,7 @@
         "@playwright/test": "^1.36.1",
         "@vitejs/plugin-react": "^4.0.3",
         "dotenv": "^16.2.0",
-        "eslint": "^8.45.0",
+        "eslint": "^8.54.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-react": "^7.33.2",
         "jsdom": "^22.1.0",
