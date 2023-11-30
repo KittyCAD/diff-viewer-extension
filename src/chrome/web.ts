@@ -1,3 +1,4 @@
+import { ColorModeWithAuto } from '@primer/react/lib/ThemeProvider'
 import { createRoot, Root } from 'react-dom/client'
 import { isFilenameSupported, extensionToSrcFormat } from './diff'
 import { DiffEntry } from './types'
@@ -155,4 +156,14 @@ export function createReactRoot(
     node.id = id
     document.body.appendChild(node)
     return createRoot(node)
+}
+
+export function getGithubColorMode(document: Document): ColorModeWithAuto {
+    const html = document.querySelector('html')
+    const attr = 'data-color-mode'
+    if (!html || !html.getAttribute(attr)) {
+        return 'auto'
+    }
+
+    return html.getAttribute(attr) as ColorModeWithAuto
 }

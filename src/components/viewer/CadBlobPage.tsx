@@ -5,6 +5,7 @@ import { FileBlob, MessageIds } from '../../chrome/types'
 import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
 import { CadBlob } from './CadBlob'
+import { ColorModeWithAuto } from '@primer/react/lib/ThemeProvider'
 
 function CadBlobPortal({
     element,
@@ -148,6 +149,7 @@ export type CadBlobPageProps = {
     sha: string
     filename: string
     classicUi: boolean
+    colorMode: ColorModeWithAuto
 }
 
 export function CadBlobPage({
@@ -157,9 +159,10 @@ export function CadBlobPage({
     sha,
     filename,
     classicUi,
+    colorMode,
 }: CadBlobPageProps): React.ReactElement {
     return (
-        <ThemeProvider colorMode="auto">
+        <ThemeProvider colorMode={colorMode}>
             <CadBlobPortal
                 element={element}
                 owner={owner}
