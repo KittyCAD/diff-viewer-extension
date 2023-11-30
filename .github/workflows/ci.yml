@@ -30,8 +30,8 @@ jobs:
 
             - name: Run playwright e2e tests
               env:
-                  GITHUB_TOKEN: ${{secrets.GLOBAL_PAT}}
-                  KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  KITTYCAD_TOKEN: ${{ secrets.KITTYCAD_TOKEN }}
               run: |
                   yarn playwright install chromium --with-deps
                   yarn playwright test
