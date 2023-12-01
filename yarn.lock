@@ -4175,7 +4175,7 @@ __metadata:
     github-injection: ^1.1.0
     isomorphic-fetch: ^3.0.0
     jsdom: ^22.1.0
-    prettier: ^3.0.0
+    prettier: ^3.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-is: ^18.2.0
@@ -7673,12 +7673,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "prettier@npm:3.0.0"
+"prettier@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "prettier@npm:3.1.0"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 6a832876a1552dc58330d2467874e5a0b46b9ccbfc5d3531eb69d15684743e7f83dc9fbd202db6270446deba9c82b79d24383d09924c462b457136a759425e33
+  checksum: 44b556bd56f74d7410974fbb2418bb4e53a894d3e7b42f6f87779f69f27a6c272fa7fc27cec0118cd11730ef3246478052e002cbd87e9a253f9cd04a56aa7d9b
   languageName: node
   linkType: hard
 
