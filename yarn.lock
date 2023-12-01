@@ -2514,14 +2514,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.15":
-  version: 18.2.15
-  resolution: "@types/react@npm:18.2.15"
+"@types/react@npm:^18.2.39":
+  version: 18.2.39
+  resolution: "@types/react@npm:18.2.39"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 36989f638201bfe2f4110b06c119180f6df9c0e13d7060481e82e7a745f81745a01ae543c478a25b61e0767cb52e82da2ad5b0dedacabf99339e523d06176705
+  checksum: 9bcb1f1f060f1bf8f4730fb1c7772d0323a6e707f274efee3b976c40d92af4677df4d88e9135faaacf34e13e02f92ef24eb7d0cbcf7fb75c1883f5623ccb19f4
   languageName: node
   linkType: hard
 
@@ -4162,7 +4162,7 @@ __metadata:
     "@types/chrome": ^0.0.244
     "@types/jest": ^29.5.3
     "@types/node": ^20.4.2
-    "@types/react": ^18.2.15
+    "@types/react": ^18.2.39
     "@types/react-dom": ^18.2.17
     "@types/testing-library__jest-dom": ^5.14.8
     "@types/three": ^0.152.1
