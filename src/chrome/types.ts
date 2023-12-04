@@ -91,7 +91,3 @@ export type MessageResponse =
     | FileBlob
     | MessageError
     | void
-
-export type KittycadObjOutputs = {
-    'output.obj': string
-}
