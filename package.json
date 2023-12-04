@@ -20,7 +20,7 @@
         "@types/chrome": "^0.0.244",
         "@types/jest": "^29.5.3",
         "@types/node": "^20.4.2",
-        "@types/react": "^18.2.39",
+        "@types/react": "^18.2.41",
         "@types/react-dom": "^18.2.17",
         "@types/testing-library__jest-dom": "^5.14.8",
         "@types/three": "^0.152.1",
