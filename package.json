@@ -74,7 +74,7 @@
         "@vitejs/plugin-react": "^4.2.0",
         "dotenv": "^16.2.0",
         "eslint": "^8.54.0",
-        "eslint-config-prettier": "^8.8.0",
+        "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-react": "^7.33.2",
         "jsdom": "^22.1.0",
         "prettier": "^3.1.0",
