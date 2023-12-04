@@ -9,6 +9,7 @@ import {
     createReactRoot,
     getGithubBlobUrlParams,
     getGithubCommitWithinPullUrlParams,
+    getGithubColorMode,
 } from './web'
 import gitHubInjection from 'github-injection'
 import { isFilenameSupported } from './diff'
@@ -24,12 +25,14 @@ async function injectDiff(
     document: Document
 ) {
     const map = mapInjectableDiffElements(document, files)
+    const colorMode = getGithubColorMode(document)
     const cadDiffPage = React.createElement(CadDiffPage, {
         owner,
         repo,
         sha,
         parentSha,
         map,
+        colorMode,
     })
     root.render(cadDiffPage)
 }
@@ -60,6 +63,7 @@ async function injectBlob(
     }
 
     element.classList.add('kittycad-injected-file')
+    const colorMode = getGithubColorMode(document)
     const cadBlobPage = React.createElement(CadBlobPage, {
         element,
         owner,
@@ -67,6 +71,7 @@ async function injectBlob(
         sha,
         filename,
         classicUi,
+        colorMode,
     })
     root.render(cadBlobPage)
 }

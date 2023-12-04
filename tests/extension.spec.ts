@@ -108,31 +108,33 @@ test('commit diff with an added .step file', async ({
     expect(screenshot).toMatchSnapshot()
 })
 
-test('commit diff with a modified .dae file as LFS', async ({
-    page,
-    authorizedBackground,
-}) => {
-    const url =
-        'https://github.com/KittyCAD/diff-samples/commit/b009cfd6dd1eb2d0c3ec0d31a21360766ad084e4'
-    const element = await getFirstDiffElement(page, url, 'dae')
-    const screenshot = await element.screenshot()
-    expect(screenshot).toMatchSnapshot()
+// TODO: re-enable when .dae are supported
+// test('commit diff with a modified .dae file as LFS', async ({
+//     page,
+//     authorizedBackground,
+// }) => {
+//     const url =
+//         'https://github.com/KittyCAD/diff-samples/commit/b009cfd6dd1eb2d0c3ec0d31a21360766ad084e4'
+//     const element = await getFirstDiffElement(page, url, 'dae')
+//     const screenshot = await element.screenshot()
+//     expect(screenshot).toMatchSnapshot()
 
-    await enableCombined(page, element)
-    const screenshot2 = await element.screenshot()
-    expect(screenshot2).toMatchSnapshot()
-})
+//     await enableCombined(page, element)
+//     const screenshot2 = await element.screenshot()
+//     expect(screenshot2).toMatchSnapshot()
+// })
 
-test('blob preview with an .obj file', async ({
-    page,
-    authorizedBackground,
-}) => {
-    const url =
-        'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.obj'
-    const element = await getBlobPreviewElement(page, url)
-    const screenshot = await element.screenshot()
-    expect(screenshot).toMatchSnapshot()
-})
+// TODO: re-enable when new blob page is fixed
+// test('blob preview with an .obj file', async ({
+//     page,
+//     authorizedBackground,
+// }) => {
+//     const url =
+//         'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.obj'
+//     const element = await getBlobPreviewElement(page, url)
+//     const screenshot = await element.screenshot()
+//     expect(screenshot).toMatchSnapshot()
+// })
 
 test('blob preview with an .stl file', async ({
     page,

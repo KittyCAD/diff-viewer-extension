@@ -16,14 +16,18 @@ import { Buffer } from 'buffer'
 export const extensionToSrcFormat: {
     [extension: string]: FileImportFormat_type
 } = {
-    dae: 'dae',
-    dxf: 'dxf',
+    // expected one of `fbx`, `gltf`, `obj`, `ply`, `sldprt`, `step`, `stl`
     fbx: 'fbx',
+    gltf: 'gltf',
     obj: 'obj',
-    stl: 'stl',
+    ply: 'ply',
+    sldprt: 'sldprt',
     stp: 'step',
     step: 'step',
-    svg: 'svg',
+    stl: 'stl',
+
+    // Disabled in new format api
+    // dae: 'dae',
 }
 
 export function isFilenameSupported(filename: string): boolean {
@@ -77,9 +81,10 @@ async function convert(
         src_format: extensionToSrcFormat[extension],
         output_format: outputFormat as FileExportFormat_type,
     })
+    const key = `source.${outputFormat}`
     if ('error_code' in response) throw response
     const { id } = response
-    let { status, output } = response
+    let { status, outputs } = response
     console.log(`File conversion id: ${id}`)
     console.log(`File conversion status: ${status}`)
     let retries = 0
@@ -95,11 +100,10 @@ async function convert(
         status = response.status
         console.log(`File conversion status: ${status} (retry #${retries})`)
         if ('outputs' in response) {
-            const outputs = response.outputs as KittycadObjOutputs
-            output = outputs['output.obj']
+            outputs = response.outputs as KittycadObjOutputs
         }
     }
-    return output
+    return outputs[key]
 }
 
 export async function getFileDiff(
