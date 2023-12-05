@@ -1762,19 +1762,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.36.1":
-  version: 1.36.1
-  resolution: "@playwright/test@npm:1.36.1"
+"@playwright/test@npm:^1.40.1":
+  version: 1.40.1
+  resolution: "@playwright/test@npm:1.40.1"
   dependencies:
-    "@types/node": "*"
-    fsevents: 2.3.2
-    playwright-core: 1.36.1
-  dependenciesMeta:
-    fsevents:
-      optional: true
+    playwright: 1.40.1
   bin:
     playwright: cli.js
-  checksum: a0127e0dccc458e7feb1b5742c90f79db0b895288b135310d056be5e3c6bb2c47c4503d5b7a584db2b1ef518f87020dafa0016c198c98fd3df719d66cd2ab7b7
+  checksum: ae094e6cb809365c0707ee2b184e42d2a2542569ada020d2d44ca5866066941262bd9a67af185f86c2fb0133c9b712ea8cb73e2959a289e4261c5fd17077283c
   languageName: node
   linkType: hard
 
@@ -4264,7 +4259,7 @@ __metadata:
     "@octokit/openapi-types": ^19.1.0
     "@octokit/rest": ^20.0.2
     "@octokit/types": ^11.1.0
-    "@playwright/test": ^1.36.1
+    "@playwright/test": ^1.40.1
     "@primer/octicons-react": ^19.8.0
     "@primer/react": ^35.26.1
     "@react-three/csg": ^3.1.0
@@ -7748,12 +7743,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.36.1":
-  version: 1.36.1
-  resolution: "playwright-core@npm:1.36.1"
+"playwright-core@npm:1.40.1":
+  version: 1.40.1
+  resolution: "playwright-core@npm:1.40.1"
   bin:
     playwright-core: cli.js
-  checksum: bbde807294053b50f0dbbc81f0dacc43fe525830ce1526e6ca74012582dd1645eae2391719cfb020051abea90704057cfabcbfe45ca530b37becc491e9459790
+  checksum: 84d92fb9b86e3c225b16b6886bf858eb5059b4e60fa1205ff23336e56a06dcb2eac62650992dede72f406c8e70a7b6a5303e511f9b4bc0b85022ede356a01ee0
+  languageName: node
+  linkType: hard
+
+"playwright@npm:1.40.1":
+  version: 1.40.1
+  resolution: "playwright@npm:1.40.1"
+  dependencies:
+    fsevents: 2.3.2
+    playwright-core: 1.40.1
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 9e36791c1b4a649c104aa365fdd9d049924eeb518c5967c0e921aa38b9b00994aa6ee54784d6c2af194b3b494b6f69772673081ef53c6c4a4b2065af9955c4ba
   languageName: node
   linkType: hard
 
