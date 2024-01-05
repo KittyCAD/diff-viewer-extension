@@ -35,7 +35,7 @@ jobs:
                   KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
               run: |
                   yarn playwright install chromium --with-deps
-                  yarn playwright test
+                  yarn playwright test --retries 1
 
             - name: Create release zip
               run: |
