@@ -1,6 +1,6 @@
 {
-    "name": "KittyCAD Diff Viewer",
-    "description": "KittyCAD Diff Viewer Chrome Extension",
+    "name": "Zoo Diff Viewer",
+    "description": "Zoo Diff Viewer Chrome Extension",
     "version": "0.7.0",
     "manifest_version": 3,
     "action": {
