@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
             RELEASE: ${{ github.event.release.name }}
-            RELEASE_ZIP: zoo_diff-viewer_${{ github.event.release.name || github.sha }}.zip
+            RELEASE_ZIP: zoo-diff-viewer-extension_${{ github.event.release.name || github.sha }}.zip
 
         steps:
             - uses: actions/checkout@v4.1.1
