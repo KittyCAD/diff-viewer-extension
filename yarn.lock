@@ -1464,6 +1464,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/types@npm:^12.4.0":
+  version: 12.4.0
+  resolution: "@octokit/types@npm:12.4.0"
+  dependencies:
+    "@octokit/openapi-types": ^19.1.0
+  checksum: 17bca450efc5433f14e1f93a24232316a0fb490aec8d886c3a430e853f10a74e6664751a44e0e199336b23c20658c4afcb3590e422ba7c155c2cb31f433ebbb7
+  languageName: node
+  linkType: hard
+
 "@oddbird/popover-polyfill@npm:^0.3.1":
   version: 0.3.7
   resolution: "@oddbird/popover-polyfill@npm:0.3.7"
@@ -3829,7 +3838,7 @@ __metadata:
     "@kittycad/lib": ^0.0.35
     "@octokit/openapi-types": ^19.1.0
     "@octokit/rest": ^20.0.2
-    "@octokit/types": ^11.1.0
+    "@octokit/types": ^12.4.0
     "@playwright/test": ^1.40.1
     "@primer/octicons-react": ^19.8.0
     "@primer/react": ^36.5.0
