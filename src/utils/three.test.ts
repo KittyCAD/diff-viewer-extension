@@ -1,3 +1,4 @@
+import 'jest-canvas-mock'
 import { BoxGeometry } from 'three'
 import { getCommonSphere, loadGeometry } from './three'
 

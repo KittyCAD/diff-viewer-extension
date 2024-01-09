@@ -14,6 +14,9 @@ global.CSS = {
     }),
 }
 
+// For jest-canvas-mock in tests, from https://github.com/hustcc/jest-canvas-mock/issues/88
+global.jest = vi
+
 // TODO: improve/replace chrome mocks
 global.chrome = {
     runtime: {
