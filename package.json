@@ -73,7 +73,7 @@
         "@playwright/test": "^1.40.1",
         "@vitejs/plugin-react": "^4.2.1",
         "dotenv": "^16.2.0",
-        "eslint": "^8.54.0",
+        "eslint": "^8.56.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-react": "^7.33.2",
         "jest-canvas-mock": "^2.5.2",
