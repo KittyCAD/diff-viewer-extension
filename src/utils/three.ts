@@ -8,7 +8,7 @@ import {
     Sphere,
     Vector3,
 } from 'three'
-import { OBJLoader } from 'three-stdlib/loaders/OBJLoader'
+import { OBJLoader } from 'three-stdlib'
 import { Buffer } from 'buffer'
 
 export function loadGeometry(file: string): BufferGeometry | undefined {

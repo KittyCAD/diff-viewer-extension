@@ -1,6 +1,6 @@
-![KittyCAD](/public/logo192.png)
+![Zoo](/public/logo192.png)
 
-## KittyCAD Diff Viewer Extension
+## Zoo Diff Viewer Extension
 
 View changes to your models directly within GitHub with our extension for all Chrome, Edge, and Chromium-powered browsers. Use the industry-standard version control platform, supercharged with a rich CAD visualizer. Open-source and powered by the KittyCAD API.
 

@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import '@react-three/fiber'
 import {
     Box,
-    Text,
     useTheme,
     TabNav,
-    StyledOcticon,
-    Button,
+    Octicon,
 } from '@primer/react'
 import { FileDiff } from '../../chrome/types'
 import { Viewer3D } from './Viewer3D'
@@ -266,7 +264,7 @@ export function CadDiff({ before, after }: FileDiff): React.ReactElement {
                             sx={{ cursor: 'pointer' }}
                         >
                             Combined
-                            <StyledOcticon
+                            <Octicon
                                 icon={BeakerIcon}
                                 color="fg.muted"
                                 sx={{ pl: 1 }}

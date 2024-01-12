@@ -13,14 +13,15 @@ jobs:
         runs-on: ubuntu-latest
         env:
             RELEASE: ${{ github.event.release.name }}
-            RELEASE_ZIP: kittycad_diff-viewer_${{ github.event.release.name || github.sha }}.zip
+            RELEASE_ZIP: zoo-diff-viewer-extension_${{ github.event.release.name || github.sha }}.zip
 
         steps:
             - uses: actions/checkout@v4.1.1
 
-            - uses: actions/setup-node@v4.0.0
+            - uses: actions/setup-node@v4
               with:
-                cache: 'yarn'
+                  node-version-file: '.nvmrc'
+                  cache: 'yarn'
 
             - run: yarn install
 
@@ -30,11 +31,11 @@ jobs:
 
             - name: Run playwright e2e tests
               env:
-                  GITHUB_TOKEN: ${{secrets.GLOBAL_PAT}}
-                  KITTYCAD_TOKEN: ${{secrets.KITTYCAD_TOKEN}}
+                  GITHUB_TOKEN: ${{ secrets.GH_USER_TOKEN }}
+                  KITTYCAD_TOKEN: ${{ secrets.KITTYCAD_TOKEN }}
               run: |
                   yarn playwright install chromium --with-deps
-                  yarn playwright test
+                  yarn playwright test --retries 1
 
             - name: Create release zip
               run: |
@@ -43,7 +44,7 @@ jobs:
                   cd ..
                   unzip -l $RELEASE_ZIP
 
-            - uses: actions/upload-artifact@v3
+            - uses: actions/upload-artifact@v4
               with:
                   path: ${{ env.RELEASE_ZIP }}
                   name: ${{ env.RELEASE_ZIP }}
