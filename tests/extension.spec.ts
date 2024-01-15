@@ -135,6 +135,18 @@ test('blob preview with an .obj file', async ({
     expect(screenshot).toMatchSnapshot()
 })
 
+
+test('blob preview with a .step file', async ({
+    page,
+    authorizedBackground,
+}) => {
+    const url =
+        'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.step'
+    const element = await getBlobPreviewElement(page, url)
+    const screenshot = await element.screenshot()
+    expect(screenshot).toMatchSnapshot()
+})
+
 test('blob preview with an .stl file', async ({
     page,
     authorizedBackground,
