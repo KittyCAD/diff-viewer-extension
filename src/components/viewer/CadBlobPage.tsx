@@ -31,7 +31,10 @@ function CadBlobPortal({
             'ul[class*=SegmentedControl]'
         )
         const toolbar = existingToggle?.parentElement
-        let blob: HTMLElement | undefined | null = element.querySelector<HTMLElement>('section')
+        let blob: HTMLElement | undefined | null =
+            element.querySelector<HTMLElement>(
+                'section[aria-labelledby*=file-name-id]'
+            )
         const isPreviewAlreadyEnabled =
             existingToggle && existingToggle.childElementCount > 2 // Preview, Code, Blame
         if (isPreviewAlreadyEnabled) {
