@@ -124,17 +124,16 @@ test('commit diff with an added .step file', async ({
 //     expect(screenshot2).toMatchSnapshot()
 // })
 
-// TODO: re-enable when new blob page is fixed
-// test('blob preview with an .obj file', async ({
-//     page,
-//     authorizedBackground,
-// }) => {
-//     const url =
-//         'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.obj'
-//     const element = await getBlobPreviewElement(page, url)
-//     const screenshot = await element.screenshot()
-//     expect(screenshot).toMatchSnapshot()
-// })
+test('blob preview with an .obj file', async ({
+    page,
+    authorizedBackground,
+}) => {
+    const url =
+        'https://github.com/KittyCAD/diff-samples/blob/fd9eec79f0464833686ea6b5b34ea07145e32734/models/box.obj'
+    const element = await getBlobPreviewElement(page, url)
+    const screenshot = await element.screenshot()
+    expect(screenshot).toMatchSnapshot()
+})
 
 test('blob preview with an .stl file', async ({
     page,
