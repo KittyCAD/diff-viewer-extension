@@ -44,20 +44,10 @@ async function injectBlob(
     filename: string,
     document: Document
 ) {
-    let classicUi = false
-    // React UI (as of 2023-06-23, for signed-in users only)
     const childWithProperClass = document.querySelector<HTMLElement>(
         '.react-blob-view-header-sticky'
     )
     let element = childWithProperClass?.parentElement
-    if (!element) {
-        // Classic UI
-        const childWithProperClass =
-            document.querySelector<HTMLElement>('.js-blob-header')
-        element = childWithProperClass?.parentElement
-        classicUi = !!element
-    }
-
     if (!element) {
         throw Error("Couldn't find blob html element to inject")
     }
@@ -70,7 +60,6 @@ async function injectBlob(
         repo,
         sha,
         filename,
-        classicUi,
         colorMode,
     })
     root.render(cadBlobPage)

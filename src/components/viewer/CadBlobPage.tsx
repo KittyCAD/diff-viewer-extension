@@ -13,14 +13,12 @@ function CadBlobPortal({
     repo,
     sha,
     filename,
-    classicUi,
 }: {
     element: HTMLElement
     owner: string
     repo: string
     sha: string
     filename: string
-    classicUi: boolean
 }): React.ReactElement {
     const [richBlob, setRichBlob] = useState<FileBlob>()
     const [richSelected, setRichSelected] = useState(true)
@@ -29,23 +27,14 @@ function CadBlobPortal({
     const [sourceElements, setSourceElements] = useState<HTMLElement[]>([])
 
     useEffect(() => {
-        let existingToggle: HTMLElement | undefined | null
-        let toolbar: HTMLElement | undefined | null
-        let blob: HTMLElement | undefined | null
-        if (classicUi) {
-            // no existing toggle
-            toolbar = element.querySelector<HTMLElement>('.js-blob-header')
-            blob = element.querySelector<HTMLElement>('.blob-wrapper')
-        } else {
-            existingToggle = element.querySelector<HTMLElement>(
-                'ul[class*=SegmentedControl]'
+        const existingToggle = element.querySelector<HTMLElement>(
+            'ul[class*=SegmentedControl]'
+        )
+        const toolbar = existingToggle?.parentElement
+        let blob: HTMLElement | undefined | null =
+            element.querySelector<HTMLElement>(
+                'section[aria-labelledby*=file-name-id]'
             )
-            toolbar = existingToggle?.parentElement
-            blob = element.querySelector<HTMLElement>(
-                'section[aria-labelledby="file-name-id"]'
-            )
-        }
-
         const isPreviewAlreadyEnabled =
             existingToggle && existingToggle.childElementCount > 2 // Preview, Code, Blame
         if (isPreviewAlreadyEnabled) {
@@ -93,7 +82,7 @@ function CadBlobPortal({
             {toolbarContainer &&
                 createPortal(
                     <SegmentedControl
-                        sx={{ mr: classicUi ? 2 : 0, order: -1 }} // prepend in flex
+                        sx={{ mr: 0, order: -1 }} // prepend in flex
                         aria-label="File view"
                         onChange={(index: number) => {
                             if (index < 2) {
@@ -114,11 +103,7 @@ function CadBlobPortal({
                         <SegmentedControl.Button selected={!richSelected}>
                             Code
                         </SegmentedControl.Button>
-                        {!classicUi && (
-                            <SegmentedControl.Button>
-                                Blame
-                            </SegmentedControl.Button>
-                        )}
+                        <SegmentedControl.Button>Blame</SegmentedControl.Button>
                     </SegmentedControl>,
                     toolbarContainer
                 )}
@@ -148,7 +133,6 @@ export type CadBlobPageProps = {
     repo: string
     sha: string
     filename: string
-    classicUi: boolean
     colorMode: ColorModeWithAuto
 }
 
@@ -158,7 +142,6 @@ export function CadBlobPage({
     repo,
     sha,
     filename,
-    classicUi,
     colorMode,
 }: CadBlobPageProps): React.ReactElement {
     return (
@@ -169,7 +152,6 @@ export function CadBlobPage({
                 repo={repo}
                 sha={sha}
                 filename={filename}
-                classicUi={classicUi}
             />
         </ThemeProvider>
     )

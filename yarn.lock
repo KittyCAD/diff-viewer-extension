@@ -2278,12 +2278,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.2.17":
-  version: 18.2.17
-  resolution: "@types/react-dom@npm:18.2.17"
+"@types/react-dom@npm:^18.2.18":
+  version: 18.2.18
+  resolution: "@types/react-dom@npm:18.2.18"
   dependencies:
     "@types/react": "*"
-  checksum: 7a4e704ed4be6e0c3ccd8a22ff69386fe548304bf4db090513f42e059ff4c65f7a427790320051524d6578a2e4c9667bb7a80a4c989b72361c019fbe851d9385
+  checksum: 8e3da404c980e2b2a76da3852f812ea6d8b9d0e7f5923fbaf3bfbbbfa1d59116ff91c129de8f68e9b7668a67ae34484fe9df74d5a7518cf8591ec07a0c4dad57
   languageName: node
   linkType: hard
 
@@ -3852,7 +3852,7 @@ __metadata:
     "@types/jest": ^29.5.11
     "@types/node": ^20.4.2
     "@types/react": ^18.2.47
-    "@types/react-dom": ^18.2.17
+    "@types/react-dom": ^18.2.18
     "@types/testing-library__jest-dom": ^5.14.8
     "@types/three": ^0.154.0
     "@vitejs/plugin-react": ^4.2.1
@@ -3865,14 +3865,14 @@ __metadata:
     isomorphic-fetch: ^3.0.0
     jest-canvas-mock: ^2.5.2
     jsdom: ^23.2.0
-    prettier: ^3.1.1
+    prettier: ^3.2.2
     react: ^18.2.0
     react-dom: ^18.2.0
     react-is: ^18.2.0
     styled-components: ^5.3.11
     three: ^0.154.0
     three-mesh-bvh: ^0.6.8
-    three-stdlib: ^2.28.12
+    three-stdlib: ^2.29.3
     typescript: ^4.9.5
     vite: ^4.4.12
     vite-plugin-node-polyfills: ^0.19.0
@@ -7296,12 +7296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "prettier@npm:3.1.1"
+"prettier@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "prettier@npm:3.2.2"
   bin:
     prettier: bin/prettier.cjs
-  checksum: e386855e3a1af86a748e16953f168be555ce66d6233f4ba54eb6449b88eb0c6b2ca79441b11eae6d28a7f9a5c96440ce50864b9d5f6356d331d39d6bb66c648e
+  checksum: b416e1e4b26c351403343ebe461feda631c0eee5c3cf316c711204a08f3c639f38a8f9177c75e98a690998ff82e8ddc80c6bc027fb4ef6cedb6a4db035b4fe9a
   languageName: node
   linkType: hard
 
@@ -8514,9 +8514,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three-stdlib@npm:^2.28.12":
-  version: 2.28.12
-  resolution: "three-stdlib@npm:2.28.12"
+"three-stdlib@npm:^2.29.3":
+  version: 2.29.3
+  resolution: "three-stdlib@npm:2.29.3"
   dependencies:
     "@types/draco3d": ^1.4.0
     "@types/offscreencanvas": ^2019.6.4
@@ -8526,7 +8526,7 @@ __metadata:
     potpack: ^1.0.1
   peerDependencies:
     three: ">=0.128.0"
-  checksum: c52f76001792f5e0f275393cd70455e86b0155f4147323c0d43e783279bf1a6acf5ef42fcfed1021ffbe7a4d57705868d641642da48c7c1e5ce563ef0537bb04
+  checksum: fcda825988350005ccb738d09f26326c17cf36929e2e17bf0d303be5333cc52eaf8a9486c6f670a1d49aa27f7d322551c95b264d9c5ae7fd0b0e56c1a71b0dfa
   languageName: node
   linkType: hard
 
