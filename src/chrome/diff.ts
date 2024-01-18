@@ -35,7 +35,7 @@ export async function downloadFile(
     repo: string,
     ref: string,
     path: string
-): Promise<string> {
+): Promise<Blob> {
     // First get some info on the blob with the Contents api
     const content = await octokit.rest.repos.getContent({
         owner,
@@ -54,15 +54,16 @@ export async function downloadFile(
     console.log(`Downloading ${contentFile.download_url}...`)
     const response = await fetch(contentFile.download_url)
     if (!response.ok) throw response
-    return await response.text()
+    return await response.blob()
 }
 
 async function convert(
     client: Client,
-    body: string,
+    blob: Blob,
     extension: string,
     outputFormat = 'obj'
 ) {
+    const body = await blob.arrayBuffer()
     if (extension === outputFormat) {
         console.log(
             'Skipping conversion, as extension is equal to outputFormat'

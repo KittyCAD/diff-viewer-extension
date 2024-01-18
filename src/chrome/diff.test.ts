@@ -22,7 +22,7 @@ describe('Function downloadFile', () => {
             'example.obj'
         )
         // TODO: add hash validation or something like that
-        expect(response).toHaveLength(37077)
+        expect(await response.text()).toHaveLength(37077)
     })
 
     it('downloads a public LFS github file', async () => {
@@ -36,6 +36,6 @@ describe('Function downloadFile', () => {
             'Part1.SLDPRT'
         )
         // TODO: add hash validation or something like that
-        expect(response).toHaveLength(70702)
+        expect(await response.text()).toHaveLength(70702)
     })
 })
