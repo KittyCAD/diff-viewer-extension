@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom'
 import { Loading } from '../Loading'
 import { CadBlob } from './CadBlob'
 import { ColorModeWithAuto } from '@primer/react/lib/ThemeProvider'
+import { ErrorMessage } from './ErrorMessage'
 
 function CadBlobPortal({
     element,
@@ -20,6 +21,7 @@ function CadBlobPortal({
     sha: string
     filename: string
 }): React.ReactElement {
+    const [loading, setLoading] = useState(true)
     const [richBlob, setRichBlob] = useState<FileBlob>()
     const [richSelected, setRichSelected] = useState(true)
     const [toolbarContainer, setToolbarContainer] = useState<HTMLElement>()
@@ -65,14 +67,17 @@ function CadBlobPortal({
 
     useEffect(() => {
         ;(async () => {
+            setLoading(true)
             const response = await chrome.runtime.sendMessage({
                 id: MessageIds.GetFileBlob,
                 data: { owner, repo, sha, filename },
             })
             if ('error' in response) {
                 console.log(response.error)
+                setLoading(false)
             } else {
                 setRichBlob(response as FileBlob)
+                setLoading(false)
             }
         })()
     }, [owner, repo, sha, filename])
@@ -115,10 +120,16 @@ function CadBlobPortal({
                             width: '100%',
                         }}
                     >
-                        {richBlob ? (
-                            <CadBlob blob={richBlob.blob} />
-                        ) : (
+                        {loading ? (
                             <Loading />
+                        ) : (
+                            <>
+                                {richBlob ? (
+                                    <CadBlob blob={richBlob.blob} />
+                                ) : (
+                                    <ErrorMessage />
+                                )}
+                            </>
                         )}
                     </Box>,
                     blobContainer
