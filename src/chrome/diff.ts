@@ -83,7 +83,7 @@ async function convert(
     console.log(`File conversion: ${id}, ${status}`)
     let retries = 0
     while (status !== 'completed' && status !== 'failed') {
-        if (retries >= 180) {
+        if (retries >= 60) {
             console.log('Async conversion took too long, aborting.')
             break
         }
