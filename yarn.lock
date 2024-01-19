@@ -1267,15 +1267,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kittycad/lib@npm:^0.0.50":
-  version: 0.0.50
-  resolution: "@kittycad/lib@npm:0.0.50"
+"@kittycad/lib@npm:^0.0.51":
+  version: 0.0.51
+  resolution: "@kittycad/lib@npm:0.0.51"
   dependencies:
     node-fetch: 3.3.2
     openapi-types: ^12.0.0
     ts-node: ^10.9.1
     tslib: ~2.4
-  checksum: 4bf0b2e675b59c18e5d861127021c87b140ae71eb4768bc84eaae8651bed83fea17299b184bf819dfdeb104ce0b14a3828edf9cd28070e316c56c0b13d9faff5
+  checksum: 4de11dd59e9e9b8263fa843020369927312e525e76e50110ef046f69248ce7610fa6500592b50dcc7b337f66cdc897cfcba8ff263090aab27eca469f376030a5
   languageName: node
   linkType: hard
 
@@ -1713,9 +1713,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/fiber@npm:^8.15.13":
-  version: 8.15.13
-  resolution: "@react-three/fiber@npm:8.15.13"
+"@react-three/fiber@npm:^8.15.14":
+  version: 8.15.14
+  resolution: "@react-three/fiber@npm:8.15.14"
   dependencies:
     "@babel/runtime": ^7.17.8
     "@types/react-reconciler": ^0.26.7
@@ -1750,7 +1750,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 95adeec87401d737259b1bf511667bb0d509dc34ad998f5a60a077be30219231a91de769e420054b33f2ae94fb1aed8875bfc6ac3f38fd0fbee0f5fbcfb10484
+  checksum: bfae40de8b8781a2edb2a4ec02cb191c9c240e578ef46378d0f73a789f361a0e3a2bf424ded647a4702424e42101481383b02f766fc769dc7c018d8c397cd892
   languageName: node
   linkType: hard
 
@@ -2430,14 +2430,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.2.47":
-  version: 18.2.47
-  resolution: "@types/react@npm:18.2.47"
+"@types/react@npm:^18.2.48":
+  version: 18.2.48
+  resolution: "@types/react@npm:18.2.48"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 49608f07f73374e535b21f99fee28e6cfd5801d887c6ed88c41b4dc701dbcee9f0c4d289d9af7b2b23114f76dbf203ffe2c9191bfb4958cf18dae5a25daedbd0
+  checksum: c9ca43ed2995389b7e09492c24e6f911a8439bb8276dd17cc66a2fbebbf0b42daf7b2ad177043256533607c2ca644d7d928fdfce37a67af1f8646d2bac988900
   languageName: node
   linkType: hard
 
@@ -3942,7 +3942,7 @@ __metadata:
     "@crxjs/vite-plugin": ^1.0.14
     "@dicebear/avatars": ^4.10.8
     "@dicebear/avatars-bottts-sprites": ^4.10.8
-    "@kittycad/lib": ^0.0.50
+    "@kittycad/lib": ^0.0.51
     "@octokit/openapi-types": ^19.1.0
     "@octokit/rest": ^20.0.2
     "@octokit/types": ^12.4.0
@@ -3951,14 +3951,14 @@ __metadata:
     "@primer/react": ^36.5.0
     "@react-three/csg": ^3.1.0
     "@react-three/drei": ^9.93.0
-    "@react-three/fiber": ^8.15.13
+    "@react-three/fiber": ^8.15.14
     "@testing-library/jest-dom": ^5.17.0
     "@testing-library/react": ^14.1.2
     "@testing-library/user-event": ^14.5.2
     "@types/chrome": ^0.0.258
     "@types/jest": ^29.5.11
     "@types/node": ^20.4.2
-    "@types/react": ^18.2.47
+    "@types/react": ^18.2.48
     "@types/react-dom": ^18.2.18
     "@types/testing-library__jest-dom": ^5.14.8
     "@types/three": ^0.154.0
@@ -3972,7 +3972,7 @@ __metadata:
     isomorphic-fetch: ^3.0.0
     jest-canvas-mock: ^2.5.2
     jsdom: ^23.2.0
-    prettier: ^3.2.2
+    prettier: ^3.2.4
     react: ^18.2.0
     react-dom: ^18.2.0
     react-is: ^18.2.0
@@ -7416,12 +7416,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.2.2":
-  version: 3.2.2
-  resolution: "prettier@npm:3.2.2"
+"prettier@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "prettier@npm:3.2.4"
   bin:
     prettier: bin/prettier.cjs
-  checksum: b416e1e4b26c351403343ebe461feda631c0eee5c3cf316c711204a08f3c639f38a8f9177c75e98a690998ff82e8ddc80c6bc027fb4ef6cedb6a4db035b4fe9a
+  checksum: 6ec9385a836e0b9bac549e585101c086d1521c31d7b882d5c8bb7d7646da0693da5f31f4fff6dc080710e5e2d34c85e6fb2f8766876b3645c8be2f33b9c3d1a3
   languageName: node
   linkType: hard
 
