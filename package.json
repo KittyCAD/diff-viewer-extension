@@ -68,7 +68,7 @@
     "devDependencies": {
         "@babel/runtime": "^7.23.8",
         "@crxjs/vite-plugin": "^1.0.14",
-        "@playwright/test": "^1.41.0",
+        "@playwright/test": "^1.41.1",
         "@vitejs/plugin-react": "^4.2.1",
         "dotenv": "^16.2.0",
         "eslint": "^8.56.0",
