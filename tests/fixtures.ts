@@ -5,7 +5,8 @@ import {
     Worker,
     type BrowserContext,
 } from '@playwright/test'
-import path from 'path'
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url';
 import * as dotenv from 'dotenv'
 dotenv.config()
 
@@ -16,6 +17,8 @@ export const test = base.extend<{
     authorizedBackground: Worker
 }>({
     context: async ({}, use) => {
+        // Due to change to type: module, https://stackoverflow.com/a/50052194
+        const __dirname = dirname(fileURLToPath(import.meta.url));
         const pathToExtension = path.join(__dirname, '..', 'build')
         const context = await chromium.launchPersistentContext('', {
             headless: false,
