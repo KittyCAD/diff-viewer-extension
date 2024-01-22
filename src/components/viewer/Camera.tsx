@@ -19,6 +19,7 @@ function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
                 position={[20, 20, 5]}
                 angle={(8 * Math.PI) / 180}
                 intensity={4 * Math.PI}
+                decay={0}
                 castShadow
                 shadow-mapSize={[1024, 1024]}
                 shadow-cameraNear={1}
@@ -28,6 +29,7 @@ function CameraLighting({ boundingSphere }: { boundingSphere?: Sphere }) {
                 position={[0, 0, 0]}
                 angle={0.8}
                 intensity={1.8 * Math.PI}
+                decay={0}
             />
         </>
     )
