@@ -1072,15 +1072,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kittycad/lib@npm:^0.0.51":
-  version: 0.0.51
-  resolution: "@kittycad/lib@npm:0.0.51"
+"@kittycad/lib@npm:^0.0.52":
+  version: 0.0.52
+  resolution: "@kittycad/lib@npm:0.0.52"
   dependencies:
     node-fetch: 3.3.2
     openapi-types: ^12.0.0
     ts-node: ^10.9.1
     tslib: ~2.4
-  checksum: 4de11dd59e9e9b8263fa843020369927312e525e76e50110ef046f69248ce7610fa6500592b50dcc7b337f66cdc897cfcba8ff263090aab27eca469f376030a5
+  checksum: ca0a08b6c7e27f40d448bfb4ca15089a3fc87a0e61f60a96b45c4c2fd7900e34d9a271985ef8ca4f7e5a82d1beeb741f768fea2eae77ba374e05ef89cb520a19
   languageName: node
   linkType: hard
 
@@ -1478,9 +1478,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.96.1":
-  version: 9.96.1
-  resolution: "@react-three/drei@npm:9.96.1"
+"@react-three/drei@npm:^9.96.4":
+  version: 9.96.4
+  resolution: "@react-three/drei@npm:9.96.4"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@mediapipe/tasks-vision": 0.10.8
@@ -1490,9 +1490,6 @@ __metadata:
     cross-env: ^7.0.3
     detect-gpu: ^5.0.28
     glsl-noise: ^0.0.0
-    lodash.clamp: ^4.0.3
-    lodash.omit: ^4.5.0
-    lodash.pick: ^4.4.0
     maath: ^0.10.7
     meshline: ^3.1.6
     react-composer: ^5.0.3
@@ -1515,13 +1512,13 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 72b05b0e9384fe250c45ec50d37790f3e7a82977b40b2b1a537ccc0a45f60f89c2fb94317334f9d6c1d6415381c0b8d219d66bd79c2132045e8141da2921b90f
+  checksum: 11d111106c337aa2dc6a5ae9617188da37d31047983322f919c8f294d9dcc9d1e35f490facc4c0ff308ab9171ee13bf75fc9d992405a1bfabe6caec237b76667
   languageName: node
   linkType: hard
 
-"@react-three/fiber@npm:^8.15.14":
-  version: 8.15.14
-  resolution: "@react-three/fiber@npm:8.15.14"
+"@react-three/fiber@npm:^8.15.15":
+  version: 8.15.15
+  resolution: "@react-three/fiber@npm:8.15.15"
   dependencies:
     "@babel/runtime": ^7.17.8
     "@types/react-reconciler": ^0.26.7
@@ -1556,7 +1553,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: bfae40de8b8781a2edb2a4ec02cb191c9c240e578ef46378d0f73a789f361a0e3a2bf424ded647a4702424e42101481383b02f766fc769dc7c018d8c397cd892
+  checksum: d14bc074b837e7d02354d70218f40ac8e2171b74f65ceece6e4d64bbfabb974c8ca3af65799ec534997a19ae0510642e5fd71f7aa3a57ff86a02e1318ec44056
   languageName: node
   linkType: hard
 
@@ -3610,7 +3607,7 @@ __metadata:
     "@crxjs/vite-plugin": ^1.0.14
     "@dicebear/avatars": ^4.10.8
     "@dicebear/avatars-bottts-sprites": ^4.10.8
-    "@kittycad/lib": ^0.0.51
+    "@kittycad/lib": ^0.0.52
     "@octokit/openapi-types": ^19.1.0
     "@octokit/rest": ^20.0.2
     "@octokit/types": ^12.4.0
@@ -3618,8 +3615,8 @@ __metadata:
     "@primer/octicons-react": ^19.8.0
     "@primer/react": ^36.5.0
     "@react-three/csg": ^3.2.0
-    "@react-three/drei": ^9.96.1
-    "@react-three/fiber": ^8.15.14
+    "@react-three/drei": ^9.96.4
+    "@react-three/fiber": ^8.15.15
     "@testing-library/react": ^14.1.2
     "@testing-library/user-event": ^14.5.2
     "@types/chrome": ^0.0.258
@@ -3629,12 +3626,12 @@ __metadata:
     "@types/three": ^0.160.0
     "@vitejs/plugin-react": ^4.2.1
     buffer: ^6.0.3
-    dotenv: ^16.3.2
+    dotenv: ^16.4.1
     eslint: ^8.56.0
     eslint-config-prettier: ^9.1.0
     eslint-plugin-react: ^7.33.2
     github-injection: ^1.1.0
-    happy-dom: ^13.2.1
+    happy-dom: ^13.3.1
     isomorphic-fetch: ^3.0.0
     jest-canvas-mock: ^2.5.2
     jsdom: ^24.0.0
@@ -3756,10 +3753,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.3.2":
-  version: 16.3.2
-  resolution: "dotenv@npm:16.3.2"
-  checksum: 917b27eeb654b95846484009326b1c52af7a7c25f7b09e2939ed49de8f98cb9895dcc04f13a39cdb078d247985e21147311ccb5bfbf2fd151afb20fa8f96de15
+"dotenv@npm:^16.4.1":
+  version: 16.4.1
+  resolution: "dotenv@npm:16.4.1"
+  checksum: a343f0a1d156deef8c60034f797969867af4dbccfacedd4ac15fad04547e7ffe0553b58fc3b27a5837950f0d977e38e9234943fbcec4aeced4e3d044309a76ab
   languageName: node
   linkType: hard
 
@@ -4787,14 +4784,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^13.2.1":
-  version: 13.2.1
-  resolution: "happy-dom@npm:13.2.1"
+"happy-dom@npm:^13.3.1":
+  version: 13.3.1
+  resolution: "happy-dom@npm:13.3.1"
   dependencies:
     entities: ^4.5.0
     webidl-conversions: ^7.0.0
     whatwg-mimetype: ^3.0.0
-  checksum: 85be72ac61f8d6c4037214d016879726dcaa6facd1cfaeaa92d199f550bed463ea64b443d79a63c158c0a6e77309ae16939be35b67139cec0d99fd3ee9ab8493
+  checksum: 149da820e0e3b079f939b9190cc303c11b6bd0f5aaaab325222febaeb45b3c3bcfc89dd8f335e65128901af225e801b7e6da02f800577fc22f4b8fc854ad54d4
   languageName: node
   linkType: hard
 
@@ -5721,13 +5718,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.clamp@npm:^4.0.3":
-  version: 4.0.3
-  resolution: "lodash.clamp@npm:4.0.3"
-  checksum: 02baa03ebb96f2ce8d9cec28b21fa3ed808c32f3b8fe54e2f990f1177779b13dcda69232db72d7285763e14a0ee64666a82a2047558eaba7198580173756c888
-  languageName: node
-  linkType: hard
-
 "lodash.isempty@npm:^4.4.0":
   version: 4.4.0
   resolution: "lodash.isempty@npm:4.4.0"
@@ -5746,20 +5736,6 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: ad580b4bdbb7ca1f7abf7e1bce63a9a0b98e370cf40194b03380a46b4ed799c9573029599caebc1b14e3f24b111aef72b96674a56cfa105e0f5ac70546cdc005
-  languageName: node
-  linkType: hard
-
-"lodash.omit@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "lodash.omit@npm:4.5.0"
-  checksum: 434645e49fe84ab315719bd5a9a3a585a0f624aa4160bc09157dd041a414bcc287c15840365c1379476a3f3eda41fbe838976c3f7bdecbbf4c5478e86c471a30
-  languageName: node
-  linkType: hard
-
-"lodash.pick@npm:^4.4.0":
-  version: 4.4.0
-  resolution: "lodash.pick@npm:4.4.0"
-  checksum: 2c36cab7da6b999a20bd3373b40e31a3ef81fa264f34a6979c852c5bc8ac039379686b27380f0cb8e3781610844fafec6949c6fbbebc059c98f8fa8570e3675f
   languageName: node
   linkType: hard
 
