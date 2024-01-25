@@ -1072,15 +1072,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kittycad/lib@npm:^0.0.51":
-  version: 0.0.51
-  resolution: "@kittycad/lib@npm:0.0.51"
+"@kittycad/lib@npm:^0.0.52":
+  version: 0.0.52
+  resolution: "@kittycad/lib@npm:0.0.52"
   dependencies:
     node-fetch: 3.3.2
     openapi-types: ^12.0.0
     ts-node: ^10.9.1
     tslib: ~2.4
-  checksum: 4de11dd59e9e9b8263fa843020369927312e525e76e50110ef046f69248ce7610fa6500592b50dcc7b337f66cdc897cfcba8ff263090aab27eca469f376030a5
+  checksum: ca0a08b6c7e27f40d448bfb4ca15089a3fc87a0e61f60a96b45c4c2fd7900e34d9a271985ef8ca4f7e5a82d1beeb741f768fea2eae77ba374e05ef89cb520a19
   languageName: node
   linkType: hard
 
@@ -3610,7 +3610,7 @@ __metadata:
     "@crxjs/vite-plugin": ^1.0.14
     "@dicebear/avatars": ^4.10.8
     "@dicebear/avatars-bottts-sprites": ^4.10.8
-    "@kittycad/lib": ^0.0.51
+    "@kittycad/lib": ^0.0.52
     "@octokit/openapi-types": ^19.1.0
     "@octokit/rest": ^20.0.2
     "@octokit/types": ^12.4.0
