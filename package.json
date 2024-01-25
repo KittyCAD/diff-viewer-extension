@@ -14,7 +14,7 @@
         "@primer/react": "^36.5.0",
         "@react-three/csg": "^3.2.0",
         "@react-three/drei": "^9.96.1",
-        "@react-three/fiber": "^8.15.14",
+        "@react-three/fiber": "^8.15.15",
         "@testing-library/react": "^14.1.2",
         "@testing-library/user-event": "^14.5.2",
         "@types/chrome": "^0.0.258",
