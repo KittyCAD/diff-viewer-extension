@@ -11,7 +11,7 @@
         "@octokit/rest": "^20.0.2",
         "@octokit/types": "^12.4.0",
         "@primer/octicons-react": "^19.8.0",
-        "@primer/react": "^36.5.0",
+        "@primer/react": "^36.6.0",
         "@react-three/csg": "^3.2.0",
         "@react-three/drei": "^9.96.4",
         "@react-three/fiber": "^8.15.15",
