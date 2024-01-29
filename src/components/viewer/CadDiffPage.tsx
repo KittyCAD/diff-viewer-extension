@@ -7,6 +7,7 @@ import { Loading } from '../Loading'
 import { CadDiff } from './CadDiff'
 import { SourceRichToggle } from './SourceRichToggle'
 import { ColorModeWithAuto } from '@primer/react/lib/ThemeProvider'
+import { ErrorMessage } from './ErrorMessage'
 
 function CadDiffPortal({
     element,
@@ -23,6 +24,7 @@ function CadDiffPortal({
     sha: string
     parentSha: string
 }): React.ReactElement {
+    const [loading, setLoading] = useState(true)
     const [richDiff, setRichDiff] = useState<FileDiff>()
     const [richSelected, setRichSelected] = useState(true)
     const [toolbarContainer, setToolbarContainer] = useState<HTMLElement>()
@@ -54,14 +56,17 @@ function CadDiffPortal({
 
     useEffect(() => {
         ;(async () => {
+            setLoading(true)
             const response = await chrome.runtime.sendMessage({
                 id: MessageIds.GetFileDiff,
                 data: { owner, repo, sha, parentSha, file },
             })
             if ('error' in response) {
                 console.log(response.error)
+                setLoading(false)
             } else {
                 setRichDiff(response as FileDiff)
+                setLoading(false)
             }
         })()
     }, [file, owner, repo, sha, parentSha])
@@ -87,13 +92,19 @@ function CadDiffPortal({
             {diffContainer &&
                 createPortal(
                     <Box sx={{ display: richSelected ? 'block' : 'none' }}>
-                        {richDiff ? (
-                            <CadDiff
-                                before={richDiff.before}
-                                after={richDiff.after}
-                            />
-                        ) : (
+                        {loading ? (
                             <Loading />
+                        ) : (
+                            <>
+                                {richDiff ? (
+                                    <CadDiff
+                                        before={richDiff.before}
+                                        after={richDiff.after}
+                                    />
+                                ) : (
+                                    <ErrorMessage />
+                                )}
+                            </>
                         )}
                     </Box>,
                     diffContainer

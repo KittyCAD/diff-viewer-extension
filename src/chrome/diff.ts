@@ -1,5 +1,5 @@
 import { Octokit } from '@octokit/rest'
-import { Client, file } from '@kittycad/lib'
+import { api_calls, Client, file } from '@kittycad/lib'
 import { ContentFile, DiffEntry, FileBlob, FileDiff } from './types'
 import {
     FileExportFormat_type,
@@ -35,7 +35,7 @@ export async function downloadFile(
     repo: string,
     ref: string,
     path: string
-): Promise<string> {
+): Promise<Blob> {
     // First get some info on the blob with the Contents api
     const content = await octokit.rest.repos.getContent({
         owner,
@@ -54,15 +54,16 @@ export async function downloadFile(
     console.log(`Downloading ${contentFile.download_url}...`)
     const response = await fetch(contentFile.download_url)
     if (!response.ok) throw response
-    return await response.text()
+    return await response.blob()
 }
 
 async function convert(
     client: Client,
-    body: string,
+    blob: Blob,
     extension: string,
     outputFormat = 'obj'
 ) {
+    const body = await blob.arrayBuffer()
     if (extension === outputFormat) {
         console.log(
             'Skipping conversion, as extension is equal to outputFormat'
@@ -76,9 +77,26 @@ async function convert(
         output_format: outputFormat as FileExportFormat_type,
     })
     const key = `source.${outputFormat}`
-    if ('error_code' in response || !response.outputs[key]) throw response
-    const { status, id, outputs } = response
+    if ('error_code' in response) throw response
+    const { id } = response
+    let { status, outputs } = response
     console.log(`File conversion: ${id}, ${status}`)
+    let retries = 0
+    while (status !== 'completed' && status !== 'failed') {
+        if (retries >= 60) {
+            console.log('Async conversion took too long, aborting.')
+            break
+        }
+        retries++
+        await new Promise(resolve => setTimeout(resolve, 1000))
+        const response = await api_calls.get_async_operation({ client, id })
+        if ('error_code' in response) throw response
+        status = response.status
+        console.log(`File conversion: ${id}, ${status} (retry #${retries})`)
+        if ('outputs' in response) {
+            outputs = response.outputs
+        }
+    }
     return outputs[key]
 }
 
