@@ -525,12 +525,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.23.8":
-  version: 7.23.8
-  resolution: "@babel/runtime@npm:7.23.8"
+"@babel/runtime@npm:^7.23.9":
+  version: 7.23.9
+  resolution: "@babel/runtime@npm:7.23.9"
   dependencies:
     regenerator-runtime: ^0.14.0
-  checksum: 0bd5543c26811153822a9f382fd39886f66825ff2a397a19008011376533747cd05c33a91f6248c0b8b0edf0448d7c167ebfba34786088f1b7eb11c65be7dfc3
+  checksum: 6bbebe8d27c0c2dd275d1ac197fc1a6c00e18dab68cc7aaff0adc3195b45862bae9c4cc58975629004b0213955b2ed91e99eccb3d9b39cabea246c657323d667
   languageName: node
   linkType: hard
 
@@ -1338,9 +1338,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/react@npm:^36.5.0":
-  version: 36.5.0
-  resolution: "@primer/react@npm:36.5.0"
+"@primer/react@npm:^36.6.0":
+  version: 36.6.0
+  resolution: "@primer/react@npm:36.6.0"
   dependencies:
     "@github/combobox-nav": ^2.1.5
     "@github/markdown-toolbar-element": ^2.1.0
@@ -1385,7 +1385,7 @@ __metadata:
       optional: true
     "@types/styled-components":
       optional: true
-  checksum: f58d46a18d603bc51a7b0f3a5447e735e9fa629449e3816283ef53bb2ed2fa010e04a31175e7bdc1dbebd87134768b0a7c5feaea2cb3813dbb7ee25d0a154bc2
+  checksum: 2be7cbf3511586a25e3e4a80159e1ddce8079a477cf630a6b968d4e795e0e9b4793f3fda17982f1f2f18b7c9dfa1f2a6601896255246577e270029d3286ab320
   languageName: node
   linkType: hard
 
@@ -1478,9 +1478,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.96.4":
-  version: 9.96.4
-  resolution: "@react-three/drei@npm:9.96.4"
+"@react-three/drei@npm:^9.96.5":
+  version: 9.96.5
+  resolution: "@react-three/drei@npm:9.96.5"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@mediapipe/tasks-vision": 0.10.8
@@ -1512,7 +1512,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: 11d111106c337aa2dc6a5ae9617188da37d31047983322f919c8f294d9dcc9d1e35f490facc4c0ff308ab9171ee13bf75fc9d992405a1bfabe6caec237b76667
+  checksum: 68ae9d9825a866004698a6b800396b262c30120f9d61a452f820df71e0ce53a3056b778d75c8f2f97658f864d03d8cf97d0c73a4e90461277ee0d1d95b6ce26b
   languageName: node
   linkType: hard
 
@@ -1962,13 +1962,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chrome@npm:^0.0.258":
-  version: 0.0.258
-  resolution: "@types/chrome@npm:0.0.258"
+"@types/chrome@npm:^0.0.259":
+  version: 0.0.259
+  resolution: "@types/chrome@npm:0.0.259"
   dependencies:
     "@types/filesystem": "*"
     "@types/har-format": "*"
-  checksum: 26aca5c46375929fee355f07d1003d8aaf9acc06e4da86d7671cbf5a615d238ac8b633b86d73fb5e009b2b432a3cd6aef8c639aa90d65382c5e7258dbe5e8449
+  checksum: 2a917511fd6a19afbd248e3eaeeaa65fcdb75a87ac2c7069a230a7e3f7c1d62347bf97283d381c27bccf78ce807ab42064fe7db8d4dc45a1dca0bff0eb1813c2
   languageName: node
   linkType: hard
 
@@ -3603,7 +3603,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "diff-viewer-extension@workspace:."
   dependencies:
-    "@babel/runtime": ^7.23.8
+    "@babel/runtime": ^7.23.9
     "@crxjs/vite-plugin": ^1.0.14
     "@dicebear/avatars": ^4.10.8
     "@dicebear/avatars-bottts-sprites": ^4.10.8
@@ -3613,13 +3613,13 @@ __metadata:
     "@octokit/types": ^12.4.0
     "@playwright/test": ^1.41.1
     "@primer/octicons-react": ^19.8.0
-    "@primer/react": ^36.5.0
+    "@primer/react": ^36.6.0
     "@react-three/csg": ^3.2.0
-    "@react-three/drei": ^9.96.4
+    "@react-three/drei": ^9.96.5
     "@react-three/fiber": ^8.15.15
     "@testing-library/react": ^14.1.2
     "@testing-library/user-event": ^14.5.2
-    "@types/chrome": ^0.0.258
+    "@types/chrome": ^0.0.259
     "@types/node": ^20.4.2
     "@types/react": ^18.2.48
     "@types/react-dom": ^18.2.18
