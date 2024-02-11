@@ -1338,9 +1338,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/react@npm:^36.6.0":
-  version: 36.6.0
-  resolution: "@primer/react@npm:36.6.0"
+"@primer/react@npm:^36.7.1":
+  version: 36.8.0
+  resolution: "@primer/react@npm:36.8.0"
   dependencies:
     "@github/combobox-nav": ^2.1.5
     "@github/markdown-toolbar-element": ^2.1.0
@@ -1385,7 +1385,7 @@ __metadata:
       optional: true
     "@types/styled-components":
       optional: true
-  checksum: 2be7cbf3511586a25e3e4a80159e1ddce8079a477cf630a6b968d4e795e0e9b4793f3fda17982f1f2f18b7c9dfa1f2a6601896255246577e270029d3286ab320
+  checksum: 060730a50abe3852ceb1175df53afe2b974c70087b8e654a292c41ada57e9c8646d25b34a9cd42811f4a1acadbd0391571c28e157012d44868e5bb1c1b1f3819
   languageName: node
   linkType: hard
 
@@ -3613,7 +3613,7 @@ __metadata:
     "@octokit/types": ^12.4.0
     "@playwright/test": ^1.41.1
     "@primer/octicons-react": ^19.8.0
-    "@primer/react": ^36.6.0
+    "@primer/react": ^36.7.1
     "@react-three/csg": ^3.2.0
     "@react-three/drei": ^9.97.3
     "@react-three/fiber": ^8.15.15
