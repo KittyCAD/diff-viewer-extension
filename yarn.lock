@@ -3645,7 +3645,7 @@ __metadata:
     three-stdlib: ^2.29.4
     typescript: ^4.9.5
     vite: ^5.0.11
-    vite-plugin-node-polyfills: ^0.19.0
+    vite-plugin-node-polyfills: ^0.21.0
     vitest: ^1.2.1
     vitest-dom: ^0.1.1
   languageName: unknown
@@ -8865,15 +8865,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-node-polyfills@npm:^0.19.0":
-  version: 0.19.0
-  resolution: "vite-plugin-node-polyfills@npm:0.19.0"
+"vite-plugin-node-polyfills@npm:^0.21.0":
+  version: 0.21.0
+  resolution: "vite-plugin-node-polyfills@npm:0.21.0"
   dependencies:
     "@rollup/plugin-inject": ^5.0.5
     node-stdlib-browser: ^1.2.0
   peerDependencies:
     vite: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
-  checksum: f01962d9c0bdb97c22c8d8994396ae950350c2bbeebcc837303e520216390fb194423cde92a47df5c835375efb86f5b33cc8ab224b0a7bf8e3e2800a66630f60
+  checksum: 923379f0205911d13ffdcdc841a6565a191a6fe199eb7c0d38b6ea1f53bbdf3d42ad12a9ae8d5f49c14e3f4e2cb56fc7ea8c24a51eeedfbe64c6ebbca4a2966a
   languageName: node
   linkType: hard
 
