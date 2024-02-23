@@ -3626,7 +3626,7 @@ __metadata:
     "@types/three": ^0.160.0
     "@vitejs/plugin-react": ^4.2.1
     buffer: ^6.0.3
-    dotenv: ^16.4.1
+    dotenv: ^16.4.5
     eslint: ^8.56.0
     eslint-config-prettier: ^9.1.0
     eslint-plugin-react: ^7.33.2
@@ -3753,10 +3753,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.4.1":
-  version: 16.4.1
-  resolution: "dotenv@npm:16.4.1"
-  checksum: a343f0a1d156deef8c60034f797969867af4dbccfacedd4ac15fad04547e7ffe0553b58fc3b27a5837950f0d977e38e9234943fbcec4aeced4e3d044309a76ab
+"dotenv@npm:^16.4.5":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 301a12c3d44fd49888b74eb9ccf9f07a1f5df43f489e7fcb89647a2edcd84c42d6bc349dc8df099cd18f07c35c7b04685c1a4f3e6a6a9e6b30f8d48c15b7f49c
   languageName: node
   linkType: hard
 

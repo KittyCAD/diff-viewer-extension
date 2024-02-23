@@ -70,7 +70,7 @@
         "@crxjs/vite-plugin": "^1.0.14",
         "@playwright/test": "^1.41.2",
         "@vitejs/plugin-react": "^4.2.1",
-        "dotenv": "^16.4.1",
+        "dotenv": "^16.4.5",
         "eslint": "^8.56.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-react": "^7.33.2",
