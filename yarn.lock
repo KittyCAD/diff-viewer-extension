@@ -3631,7 +3631,7 @@ __metadata:
     eslint-config-prettier: ^9.1.0
     eslint-plugin-react: ^7.33.2
     github-injection: ^1.1.0
-    happy-dom: ^13.3.8
+    happy-dom: ^13.4.1
     isomorphic-fetch: ^3.0.0
     jest-canvas-mock: ^2.5.2
     jsdom: ^24.0.0
@@ -4784,14 +4784,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^13.3.8":
-  version: 13.3.8
-  resolution: "happy-dom@npm:13.3.8"
+"happy-dom@npm:^13.4.1":
+  version: 13.4.1
+  resolution: "happy-dom@npm:13.4.1"
   dependencies:
     entities: ^4.5.0
     webidl-conversions: ^7.0.0
     whatwg-mimetype: ^3.0.0
-  checksum: cfdb9f80f19b0d1839c96c3b7d52f0890ab4d13fbda30081f5cdf748328c5ea1e14da10bf0531e7607c97f2196757ac0a61bf26334497285c8e29d2a6ec13a7a
+  checksum: 8ebb42e807b46544cedeabace2a16d9485dc9f4e7b119d1a6b5a44b4e3b5096f81684f4f825c49394b5133711b946190c2de8ba481afddfe1981b99266f0060b
   languageName: node
   linkType: hard
 
