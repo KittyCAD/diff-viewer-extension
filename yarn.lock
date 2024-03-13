@@ -1084,10 +1084,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lit-labs/react@npm:^1.1.1":
+"@lit-labs/react@npm:1.2.1":
   version: 1.2.1
   resolution: "@lit-labs/react@npm:1.2.1"
   checksum: d4a544c475272630bee54d78a458630ea8b5fab74c18b922ae5046563cc359c8c505188f9f7614ab55e332863f82b179d7970d8b8bd425e77acc167a01657bed
+  languageName: node
+  linkType: hard
+
+"@lit-labs/ssr-dom-shim@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@lit-labs/ssr-dom-shim@npm:1.2.0"
+  checksum: 704621c28df8d651e54a1b93f6ede8103db2dd3e7a1f02463fe5492bd28aa22de813314c7833260204fed5c8491a6bbd763f6051abc25690df537d812a508c35
   languageName: node
   linkType: hard
 
@@ -1329,6 +1336,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@primer/live-region-element@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@primer/live-region-element@npm:0.2.0"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": ^1.2.0
+  checksum: ec2a5e6b9430df64f9f9c3608afff8e9ba0855148cb6820011071b4826e20eacd2a8772906fc4f0520b2b0e0b6b191ed40758619f5d72f18572d1ceaf3a4cea4
+  languageName: node
+  linkType: hard
+
 "@primer/octicons-react@npm:^19.8.0":
   version: 19.8.0
   resolution: "@primer/octicons-react@npm:19.8.0"
@@ -1345,17 +1361,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/react@npm:^36.6.0":
-  version: 36.6.0
-  resolution: "@primer/react@npm:36.6.0"
+"@primer/react@npm:^36.11.0":
+  version: 36.11.0
+  resolution: "@primer/react@npm:36.11.0"
   dependencies:
     "@github/combobox-nav": ^2.1.5
     "@github/markdown-toolbar-element": ^2.1.0
     "@github/paste-markdown": ^1.4.0
     "@github/relative-time-element": ^4.1.2
-    "@lit-labs/react": ^1.1.1
+    "@lit-labs/react": 1.2.1
     "@oddbird/popover-polyfill": ^0.3.1
     "@primer/behaviors": ^1.5.1
+    "@primer/live-region-element": ^0.2.0
     "@primer/octicons-react": ^19.8.0
     "@primer/primitives": 7.15.3
     "@react-aria/ssr": ^3.5.0
@@ -1392,7 +1409,7 @@ __metadata:
       optional: true
     "@types/styled-components":
       optional: true
-  checksum: 2be7cbf3511586a25e3e4a80159e1ddce8079a477cf630a6b968d4e795e0e9b4793f3fda17982f1f2f18b7c9dfa1f2a6601896255246577e270029d3286ab320
+  checksum: 8b3056a14449816df388dd380b0a33de084407b479566ada6274049fca08a8277db6331bc152cec072d41c1cc02236ec0163d06f5007b562e792d5d32a326248
   languageName: node
   linkType: hard
 
@@ -3716,7 +3733,7 @@ __metadata:
     "@octokit/types": ^12.6.0
     "@playwright/test": ^1.41.2
     "@primer/octicons-react": ^19.8.0
-    "@primer/react": ^36.6.0
+    "@primer/react": ^36.11.0
     "@react-three/csg": ^3.2.0
     "@react-three/drei": ^9.99.5
     "@react-three/fiber": ^8.15.15
