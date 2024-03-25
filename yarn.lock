@@ -1522,9 +1522,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/fiber@npm:^8.15.15":
-  version: 8.15.15
-  resolution: "@react-three/fiber@npm:8.15.15"
+"@react-three/fiber@npm:^8.16.0":
+  version: 8.16.0
+  resolution: "@react-three/fiber@npm:8.16.0"
   dependencies:
     "@babel/runtime": ^7.17.8
     "@types/react-reconciler": ^0.26.7
@@ -1559,7 +1559,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: d14bc074b837e7d02354d70218f40ac8e2171b74f65ceece6e4d64bbfabb974c8ca3af65799ec534997a19ae0510642e5fd71f7aa3a57ff86a02e1318ec44056
+  checksum: c0f0cdddbc79b6f3694b2461e051a9ce141a96c9bf73b55211dcc07ec76a39f5d7b9ae627faea962b8c492833398c6eed00c4071e4548f8e12787b234414d00d
   languageName: node
   linkType: hard
 
@@ -3719,7 +3719,7 @@ __metadata:
     "@primer/react": ^36.6.0
     "@react-three/csg": ^3.2.0
     "@react-three/drei": ^9.99.5
-    "@react-three/fiber": ^8.15.15
+    "@react-three/fiber": ^8.16.0
     "@testing-library/react": ^14.2.1
     "@testing-library/user-event": ^14.5.2
     "@types/chrome": ^0.0.262
