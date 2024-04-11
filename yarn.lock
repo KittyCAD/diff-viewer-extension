@@ -3744,7 +3744,7 @@ __metadata:
     react-is: ^18.2.0
     styled-components: ^5.3.11
     three: ^0.160.0
-    three-mesh-bvh: ^0.7.1
+    three-mesh-bvh: ^0.7.4
     three-stdlib: ^2.29.4
     typescript: ^4.9.5
     vite: ^5.0.11
@@ -8602,12 +8602,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three-mesh-bvh@npm:^0.7.1":
-  version: 0.7.1
-  resolution: "three-mesh-bvh@npm:0.7.1"
+"three-mesh-bvh@npm:^0.7.4":
+  version: 0.7.4
+  resolution: "three-mesh-bvh@npm:0.7.4"
   peerDependencies:
     three: ">= 0.151.0"
-  checksum: 17fe2f67b6285e1a66dc41f7454d4557e893bfea4ed11e549d3c8469c0e0d41f3cd347a08bd04f53476a279727cd3b6076687d124246472d6159f24694052a3c
+  checksum: 02815f9daf979e6a4f952bb7c9837cca9d73bda3b4acea9f197e501477b2874808965526cd7fa4ae23ac99b97b0b7a094283901012fa6436dfcafe6c5c12914b
   languageName: node
   linkType: hard
 
