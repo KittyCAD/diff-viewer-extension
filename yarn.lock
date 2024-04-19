@@ -972,6 +972,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@github/tab-container-element@npm:4.5.0":
+  version: 4.5.0
+  resolution: "@github/tab-container-element@npm:4.5.0"
+  checksum: afff6d8d9bbf04f712a96b7158277aee1799411e65082a45200923eb53c816aa369b0ce00778fac2de2b28b101ef7ef98155482510d41adcff35bb610e17d89b
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.13":
   version: 0.11.13
   resolution: "@humanwhocodes/config-array@npm:0.11.13"
@@ -1084,10 +1091,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lit-labs/react@npm:^1.1.1":
+"@lit-labs/react@npm:1.2.1":
   version: 1.2.1
   resolution: "@lit-labs/react@npm:1.2.1"
   checksum: d4a544c475272630bee54d78a458630ea8b5fab74c18b922ae5046563cc359c8c505188f9f7614ab55e332863f82b179d7970d8b8bd425e77acc167a01657bed
+  languageName: node
+  linkType: hard
+
+"@lit-labs/ssr-dom-shim@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@lit-labs/ssr-dom-shim@npm:1.2.0"
+  checksum: 704621c28df8d651e54a1b93f6ede8103db2dd3e7a1f02463fe5492bd28aa22de813314c7833260204fed5c8491a6bbd763f6051abc25690df537d812a508c35
   languageName: node
   linkType: hard
 
@@ -1329,6 +1343,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@primer/live-region-element@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@primer/live-region-element@npm:0.2.0"
+  dependencies:
+    "@lit-labs/ssr-dom-shim": ^1.2.0
+  checksum: ec2a5e6b9430df64f9f9c3608afff8e9ba0855148cb6820011071b4826e20eacd2a8772906fc4f0520b2b0e0b6b191ed40758619f5d72f18572d1ceaf3a4cea4
+  languageName: node
+  linkType: hard
+
 "@primer/octicons-react@npm:^19.8.0":
   version: 19.8.0
   resolution: "@primer/octicons-react@npm:19.8.0"
@@ -1338,27 +1361,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@primer/primitives@npm:7.15.3":
-  version: 7.15.3
-  resolution: "@primer/primitives@npm:7.15.3"
-  checksum: 50e80bb4c2a25249482d2adeb1652d1a0345d0a75ab632566aec39b2a42c370c3ecc2652988832925a90bc6cfcdd012db51806e4f5cc892a2214be6351f97c48
+"@primer/octicons-react@npm:^19.9.0":
+  version: 19.9.0
+  resolution: "@primer/octicons-react@npm:19.9.0"
+  peerDependencies:
+    react: ">=16.3"
+  checksum: 9613a0dcc985cfdfa16f3613a0f963e14d2d25662f330bba4eefe380286cba748ed04529168653b4a8bc08c9cfbe4c4ced3e679906de3b6c91f4dd451ddac686
   languageName: node
   linkType: hard
 
-"@primer/react@npm:^36.6.0":
-  version: 36.6.0
-  resolution: "@primer/react@npm:36.6.0"
+"@primer/primitives@npm:^7.16.0":
+  version: 7.16.0
+  resolution: "@primer/primitives@npm:7.16.0"
+  checksum: c59ff573a75d54ac455314c7108188cd53d7f312c25b5e2fdbe882b49830f82b2d16a0b2f001937d185e72ec246785254a7e8ae9fbc79e34dff0d0cf53e93ef7
+  languageName: node
+  linkType: hard
+
+"@primer/react@npm:^36.15.0":
+  version: 36.15.0
+  resolution: "@primer/react@npm:36.15.0"
   dependencies:
     "@github/combobox-nav": ^2.1.5
     "@github/markdown-toolbar-element": ^2.1.0
     "@github/paste-markdown": ^1.4.0
     "@github/relative-time-element": ^4.1.2
-    "@lit-labs/react": ^1.1.1
+    "@github/tab-container-element": 4.5.0
+    "@lit-labs/react": 1.2.1
     "@oddbird/popover-polyfill": ^0.3.1
     "@primer/behaviors": ^1.5.1
-    "@primer/octicons-react": ^19.8.0
-    "@primer/primitives": 7.15.3
-    "@react-aria/ssr": ^3.5.0
+    "@primer/live-region-element": ^0.2.0
+    "@primer/octicons-react": ^19.9.0
+    "@primer/primitives": ^7.16.0
     "@styled-system/css": ^5.1.5
     "@styled-system/props": ^5.1.5
     "@styled-system/theme-get": ^5.1.2
@@ -1392,18 +1425,7 @@ __metadata:
       optional: true
     "@types/styled-components":
       optional: true
-  checksum: 2be7cbf3511586a25e3e4a80159e1ddce8079a477cf630a6b968d4e795e0e9b4793f3fda17982f1f2f18b7c9dfa1f2a6601896255246577e270029d3286ab320
-  languageName: node
-  linkType: hard
-
-"@react-aria/ssr@npm:^3.5.0":
-  version: 3.9.1
-  resolution: "@react-aria/ssr@npm:3.9.1"
-  dependencies:
-    "@swc/helpers": ^0.5.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
-  checksum: 23bd76a7963af31169396bc821eac2e58fbe1dbb81af3e5d54ec76667a8ec616b2a79e15aaa49b2270f0c5b35a6b9e46fdda20056ee0f4fda84ebf9433665355
+  checksum: 479f30906e7cd83e0f5ec7ad98e7af08e89d87555f8c2d77c912af2310722e648f9fd5a0f2be3eba7ef9ef1ddb2924c45fb51bad4f5ee82e8ac8821ceef56ca2
   languageName: node
   linkType: hard
 
@@ -1834,15 +1856,6 @@ __metadata:
     "@styled-system/core": ^5.1.2
     "@styled-system/css": ^5.1.5
   checksum: becddaa0269004bd788e25d6b5c6f92af1c87009fe31844b4c19bba5233d54e59cfc4c007f8825d812db84c8d1bade5f8a99eb744db41c9124e0c145db64b5b5
-  languageName: node
-  linkType: hard
-
-"@swc/helpers@npm:^0.5.0":
-  version: 0.5.3
-  resolution: "@swc/helpers@npm:0.5.3"
-  dependencies:
-    tslib: ^2.4.0
-  checksum: 61c3f7ccd47fc70ad91437df88be6b458cdc11e311cb331288827d7c50befffc72aa18fe913ec2a9e70fbf44e4b818bed38bfd7c329d689e1ff3c198d084cd02
   languageName: node
   linkType: hard
 
@@ -3716,7 +3729,7 @@ __metadata:
     "@octokit/types": ^12.6.0
     "@playwright/test": ^1.41.2
     "@primer/octicons-react": ^19.8.0
-    "@primer/react": ^36.6.0
+    "@primer/react": ^36.15.0
     "@react-three/csg": ^3.2.0
     "@react-three/drei": ^9.99.5
     "@react-three/fiber": ^8.15.15
@@ -8787,13 +8800,6 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 090adff1302ab20bd3486e6b4799e90f97726ed39e02b39e566f8ab674fd5bd5f727f43615debbfc580d33c6d9d1c6b1b3ce7d8e3cca3e20530a145ffa232c35
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.4.0":
-  version: 2.5.0
-  resolution: "tslib@npm:2.5.0"
-  checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
   languageName: node
   linkType: hard
 
