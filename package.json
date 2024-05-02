@@ -74,7 +74,7 @@
         "eslint": "^8.56.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-react": "^7.34.0",
-        "happy-dom": "^13.6.2",
+        "happy-dom": "^14.7.1",
         "jest-canvas-mock": "^2.5.2",
         "jsdom": "^24.0.0",
         "prettier": "^3.2.4",
