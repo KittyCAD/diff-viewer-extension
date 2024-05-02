@@ -65,7 +65,9 @@ async function initialiseWasm() {
         const fullUrl = '/wasm_lib_bg.wasm'
         const input = await fetch(fullUrl)
         const buffer = await input.arrayBuffer()
-        return await init(buffer)
+        const output = await init(buffer)
+        console.log('Wasm loaded: ', output)
+        return output
     } catch (e) {
         console.log('Error initialising WASM', e)
         throw e
