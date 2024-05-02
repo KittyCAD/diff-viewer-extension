@@ -12,8 +12,8 @@ crate-type = ["cdylib", "rlib"]
 default = ["console_error_panic_hook"]
 
 [dependencies]
-kcl-lib = "0.1.51"
-kittycad = "0.3.0"
+kcl-lib = { git = "https://github.com/kittycad/modeling-app", branch = "main" }
+kittycad = { version = "0.3.0", default-features = false, features = ["js", "requests"] }
 wasm-bindgen = "0.2.84"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
