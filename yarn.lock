@@ -1098,6 +1098,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@monogrid/gainmap-js@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "@monogrid/gainmap-js@npm:3.0.5"
+  dependencies:
+    promise-worker-transferable: ^1.0.4
+  peerDependencies:
+    three: ">= 0.159.0"
+  checksum: a4799da97912a851a8cc283c89ad27e6e71be26b7c6def76b6a69f74eec0b1191629e019bcb88e7c44cf9262c8cd5ab9433edfe09585a0b76d8232e58a7cfbb6
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -1474,18 +1485,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/drei@npm:^9.99.5":
-  version: 9.99.5
-  resolution: "@react-three/drei@npm:9.99.5"
+"@react-three/drei@npm:^9.106.0":
+  version: 9.106.0
+  resolution: "@react-three/drei@npm:9.106.0"
   dependencies:
     "@babel/runtime": ^7.11.2
     "@mediapipe/tasks-vision": 0.10.8
+    "@monogrid/gainmap-js": ^3.0.5
     "@react-spring/three": ~9.6.1
     "@use-gesture/react": ^10.2.24
     camera-controls: ^2.4.2
     cross-env: ^7.0.3
     detect-gpu: ^5.0.28
     glsl-noise: ^0.0.0
+    hls.js: 1.3.5
     maath: ^0.10.7
     meshline: ^3.1.6
     react-composer: ^5.0.3
@@ -1493,7 +1506,7 @@ __metadata:
     stats.js: ^0.17.0
     suspend-react: ^0.1.3
     three-mesh-bvh: ^0.7.0
-    three-stdlib: ^2.29.4
+    three-stdlib: ^2.29.9
     troika-three-text: ^0.49.0
     tunnel-rat: ^0.1.2
     utility-types: ^3.10.0
@@ -1507,7 +1520,7 @@ __metadata:
   peerDependenciesMeta:
     react-dom:
       optional: true
-  checksum: a6c51c65473272881cda8784e5be15403ea81a13c10ad0be49b172738c11d26bc3fef3f275bf8107de0bf191c87186e3c6b689f61ff1b82f02794540a8cb62d6
+  checksum: 1d9d8e8956a34965019b4e89589a92d2d920f94297950fa949158d2ee9b3f65533a1066128d996b9985e3cb8c7303331ae82fc77dca1bb31436e58dd7fb46d27
   languageName: node
   linkType: hard
 
@@ -3733,7 +3746,7 @@ __metadata:
     "@primer/octicons-react": ^19.8.0
     "@primer/react": ^36.6.0
     "@react-three/csg": ^3.2.0
-    "@react-three/drei": ^9.99.5
+    "@react-three/drei": ^9.106.0
     "@react-three/fiber": ^8.16.2
     "@testing-library/react": ^14.2.1
     "@testing-library/user-event": ^14.5.2
@@ -5263,6 +5276,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hls.js@npm:1.3.5":
+  version: 1.3.5
+  resolution: "hls.js@npm:1.3.5"
+  checksum: 83d62ce319a392edb432b2140e65f4e073d56b001f1f72707c5ce382cc462039f517b7c81e2b49651ee2237ca772202281e0e8358efcf61259409da2bc26ad48
+  languageName: node
+  linkType: hard
+
 "hmac-drbg@npm:^1.0.1":
   version: 1.0.1
   resolution: "hmac-drbg@npm:1.0.1"
@@ -5395,6 +5415,13 @@ __metadata:
   version: 5.2.4
   resolution: "ignore@npm:5.2.4"
   checksum: 3d4c309c6006e2621659311783eaea7ebcd41fe4ca1d78c91c473157ad6666a57a2df790fe0d07a12300d9aac2888204d7be8d59f9aaf665b1c7fcdb432517ef
+  languageName: node
+  linkType: hard
+
+"immediate@npm:~3.0.5":
+  version: 3.0.6
+  resolution: "immediate@npm:3.0.6"
+  checksum: f9b3486477555997657f70318cc8d3416159f208bec4cca3ff3442fd266bc23f50f0c9bd8547e1371a6b5e82b821ec9a7044a4f7b944798b25aa3cc6d5e63e62
   languageName: node
   linkType: hard
 
@@ -5727,6 +5754,13 @@ __metadata:
   version: 1.0.1
   resolution: "is-potential-custom-element-name@npm:1.0.1"
   checksum: ced7bbbb6433a5b684af581872afe0e1767e2d1146b2207ca0068a648fb5cab9d898495d1ac0583524faaf24ca98176a7d9876363097c2d14fee6dd324f3a1ab
+  languageName: node
+  linkType: hard
+
+"is-promise@npm:^2.1.0":
+  version: 2.2.2
+  resolution: "is-promise@npm:2.2.2"
+  checksum: 18bf7d1c59953e0ad82a1ed963fb3dc0d135c8f299a14f89a17af312fc918373136e56028e8831700e1933519630cc2fd4179a777030330fde20d34e96f40c78
   languageName: node
   linkType: hard
 
@@ -6081,6 +6115,15 @@ __metadata:
     prelude-ls: ^1.2.1
     type-check: ~0.4.0
   checksum: 12c5021c859bd0f5248561bf139121f0358285ec545ebf48bb3d346820d5c61a4309535c7f387ed7d84361cf821e124ce346c6b7cef8ee09a67c1473b46d0fc4
+  languageName: node
+  linkType: hard
+
+"lie@npm:^3.0.2":
+  version: 3.3.0
+  resolution: "lie@npm:3.3.0"
+  dependencies:
+    immediate: ~3.0.5
+  checksum: 33102302cf19766f97919a6a98d481e01393288b17a6aa1f030a3542031df42736edde8dab29ffdbf90bebeffc48c761eb1d064dc77592ca3ba3556f9fe6d2a8
   languageName: node
   linkType: hard
 
@@ -7478,6 +7521,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"promise-worker-transferable@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "promise-worker-transferable@npm:1.0.4"
+  dependencies:
+    is-promise: ^2.1.0
+    lie: ^3.0.2
+  checksum: 5c5a8da682293cc9bb27604bf1bb35659ee478df8bddb2bd5b21d030711af67710508caa1e68863be1590a6a40e45f9f60ed12bf7e314bb1e307371c3806f42c
+  languageName: node
+  linkType: hard
+
 "prop-types@npm:^15.0.0, prop-types@npm:^15.6.0, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
@@ -8790,9 +8843,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three-stdlib@npm:^2.29.4":
-  version: 2.29.4
-  resolution: "three-stdlib@npm:2.29.4"
+"three-stdlib@npm:^2.29.9":
+  version: 2.30.3
+  resolution: "three-stdlib@npm:2.30.3"
   dependencies:
     "@types/draco3d": ^1.4.0
     "@types/offscreencanvas": ^2019.6.4
@@ -8802,7 +8855,7 @@ __metadata:
     potpack: ^1.0.1
   peerDependencies:
     three: ">=0.128.0"
-  checksum: 4c8b41b937d21ca42462c60accfc1e5d782aa1f9b81cfb7563cd8cc92db26da5bbc2fb76febf4a56f1437f50759cd8e6968b0835efa9dc0db1d07549e32b1a26
+  checksum: 62d14e042bc69f58a876209127750cee74d99aeb59c8153cda4c954780cc67d8c6f1079499e19df246cf4c7e417e396e3b8dc48e5a43738653e89e0182e054d6
   languageName: node
   linkType: hard
 
