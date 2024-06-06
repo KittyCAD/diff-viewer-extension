@@ -18,7 +18,7 @@ import {
     setStorageKittycadToken,
 } from './storage'
 import { getFileBlob, getFileDiff } from './diff'
-import init from '../wasm-lib/pkg/wasm_lib'
+import init, { greet } from '../wasm-lib/pkg/wasm_lib'
 
 let github: Octokit | undefined
 let kittycad: Client | undefined
@@ -67,6 +67,7 @@ async function initialiseWasm() {
         const buffer = await input.arrayBuffer()
         const output = await init(buffer)
         console.log('Wasm loaded: ', output)
+        console.log(greet())
         return output
     } catch (e) {
         console.log('Error initialising WASM', e)

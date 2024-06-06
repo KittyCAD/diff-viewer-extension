@@ -3,11 +3,6 @@ mod utils;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-extern "C" {
-    fn alert(s: &str);
-}
-
-#[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, wasm-lib!");
+pub fn greet() -> JsValue {
+    return JsValue::from_str("hello, world");
 }
