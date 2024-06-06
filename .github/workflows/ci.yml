@@ -32,6 +32,8 @@ jobs:
 
             - run: yarn install
 
+            - run: yarn install:wasm
+
             - run: yarn build:wasm
 
             - run: yarn build
