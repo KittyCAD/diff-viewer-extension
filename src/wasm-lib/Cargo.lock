@@ -2792,6 +2792,7 @@ dependencies = [
  "kcl-lib",
  "kittycad",
  "wasm-bindgen",
+ "wasm-bindgen-futures",
  "wasm-bindgen-test",
 ]
 

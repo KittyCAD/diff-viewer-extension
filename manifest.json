@@ -19,7 +19,8 @@
         "https://github.com/",
         "https://api.github.com/",
         "https://media.githubusercontent.com/",
-        "https://api.kittycad.io/"
+        "https://api.kittycad.io/",
+        "https://api.zoo.dev/"
     ],
     "content_scripts": [
         {

@@ -36,7 +36,9 @@ async function initGithubApi() {
 
 async function initKittycadApi() {
     try {
-        kittycad = new Client(await getStorageKittycadToken())
+        const token = await getStorageKittycadToken()
+        console.log('greet(token)', await greet(token))
+        kittycad = new Client(token)
         const response = await users.get_user_self({ client: kittycad })
         if ('error_code' in response) throw response
         const { email } = response
@@ -67,7 +69,6 @@ async function initialiseWasm() {
         const buffer = await input.arrayBuffer()
         const output = await init(buffer)
         console.log('Wasm loaded: ', output)
-        console.log(greet())
         return output
     } catch (e) {
         console.log('Error initialising WASM', e)
@@ -78,9 +79,9 @@ async function initialiseWasm() {
 ; (async () => {
     // Delay to allow for external storage sets before auth, like in e2e
     await new Promise(resolve => setTimeout(resolve, 1000))
+    await initialiseWasm()
     await initKittycadApi()
     await initGithubApi()
-    await initialiseWasm()
 })()
 
 const noClientError = new Error('API client is undefined')
