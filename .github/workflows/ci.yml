@@ -11,6 +11,8 @@ on:
 jobs:
     build:
         runs-on: ubuntu-22.04
+        permissions:
+            contents: write
         env:
             RELEASE: ${{ github.event.release.name }}
             RELEASE_ZIP: zoo-diff-viewer-extension_${{ github.event.release.name || github.sha }}.zip
