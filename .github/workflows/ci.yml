@@ -51,9 +51,9 @@ jobs:
 
             - name: Upload zip to release
               if: github.event_name == 'release'
-              uses: svenstaro/upload-release-action@v2
+              uses: softprops/action-gh-release@v2
               with:
-                  file: ${{ env.RELEASE_ZIP }}
+                files: ${{ env.RELEASE_ZIP }}
 
             - name: Upload zip to Chrome Web Store
               if: github.event_name == 'release'
