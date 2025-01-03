@@ -10,7 +10,7 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         env:
             RELEASE: ${{ github.event.release.name }}
             RELEASE_ZIP: zoo-diff-viewer-extension_${{ github.event.release.name || github.sha }}.zip
