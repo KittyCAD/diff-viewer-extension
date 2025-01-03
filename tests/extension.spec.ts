@@ -147,7 +147,7 @@ test('blob preview with a .step file', async ({
     expect(screenshot).toMatchSnapshot()
 })
 
-test.fixme('blob preview with an .stl file', async ({
+test('blob preview with an .stl file', async ({
     page,
     authorizedBackground,
 }) => {
