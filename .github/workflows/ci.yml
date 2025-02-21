@@ -18,7 +18,7 @@ jobs:
             RELEASE_ZIP: zoo-diff-viewer-extension_${{ github.event.release.name || github.sha }}.zip
 
         steps:
-            - uses: actions/checkout@v4.1.7
+            - uses: actions/checkout@v4.2.2
 
             - uses: actions/setup-node@v4
               with:
