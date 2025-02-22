@@ -78,7 +78,7 @@
         "jest-canvas-mock": "^2.5.2",
         "jsdom": "^26.0.0",
         "prettier": "^3.3.3",
-        "vite": "^5.4.12",
+        "vite": "^6.0.9",
         "vite-plugin-node-polyfills": "^0.21.0",
         "vitest": "^1.6.1",
         "vitest-dom": "^0.1.1"
