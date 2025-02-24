@@ -2199,13 +2199,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chrome@npm:^0.0.268":
-  version: 0.0.268
-  resolution: "@types/chrome@npm:0.0.268"
+"@types/chrome@npm:^0.0.306":
+  version: 0.0.306
+  resolution: "@types/chrome@npm:0.0.306"
   dependencies:
     "@types/filesystem": "*"
     "@types/har-format": "*"
-  checksum: c7ae2479b225beea673681df0a6022f251e98bdf1c162c84363d52efb32edf5d26cf8007d6ed92d497837212a1c2cfa6ad9c3c1c0d0169e0a5189fa084555ee4
+  checksum: b0bb1d8d33b1acfce00c43825c9844d50c27449862212fcdc55a31e66cad7e6ef75288cdd2b68f1da3aa767d5380e47320ef6072f77937295bd043f489860500
   languageName: node
   linkType: hard
 
@@ -4037,7 +4037,7 @@ __metadata:
     "@react-three/fiber": ^8.16.2
     "@testing-library/react": ^14.2.1
     "@testing-library/user-event": ^14.5.2
-    "@types/chrome": ^0.0.268
+    "@types/chrome": ^0.0.306
     "@types/node": ^20.4.2
     "@types/react": ^18.2.48
     "@types/react-dom": ^18.2.19
