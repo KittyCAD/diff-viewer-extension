@@ -1168,15 +1168,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@kittycad/lib@npm:^0.0.52":
-  version: 0.0.52
-  resolution: "@kittycad/lib@npm:0.0.52"
+"@kittycad/lib@npm:^2.0.22":
+  version: 2.0.22
+  resolution: "@kittycad/lib@npm:2.0.22"
   dependencies:
-    node-fetch: 3.3.2
     openapi-types: ^12.0.0
     ts-node: ^10.9.1
     tslib: ~2.4
-  checksum: ca0a08b6c7e27f40d448bfb4ca15089a3fc87a0e61f60a96b45c4c2fd7900e34d9a271985ef8ca4f7e5a82d1beeb741f768fea2eae77ba374e05ef89cb520a19
+  checksum: df252ed6889bd98f0080f258b8bace957c3312af0a37a313b60f34d077ca5b376fbc2604eb5da6329431cd46b124ab518f914f5990735530a8bfc8a4d51744ce
   languageName: node
   linkType: hard
 
@@ -3727,13 +3726,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"data-uri-to-buffer@npm:^4.0.0":
-  version: 4.0.1
-  resolution: "data-uri-to-buffer@npm:4.0.1"
-  checksum: 0d0790b67ffec5302f204c2ccca4494f70b4e2d940fea3d36b09f0bb2b8539c2e86690429eb1f1dc4bcc9e4df0644193073e63d9ee48ac9fce79ec1506e4aa4c
-  languageName: node
-  linkType: hard
-
 "data-urls@npm:^5.0.0":
   version: 5.0.0
   resolution: "data-urls@npm:5.0.0"
@@ -4025,7 +4017,7 @@ __metadata:
     "@crxjs/vite-plugin": 2.0.0-beta.26
     "@dicebear/avatars": ^4.10.8
     "@dicebear/avatars-bottts-sprites": ^4.10.8
-    "@kittycad/lib": ^0.0.52
+    "@kittycad/lib": ^2.0.22
     "@octokit/openapi-types": ^19.1.0
     "@octokit/rest": ^20.1.0
     "@octokit/types": ^13.5.0
@@ -5119,16 +5111,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fetch-blob@npm:^3.1.2, fetch-blob@npm:^3.1.4":
-  version: 3.2.0
-  resolution: "fetch-blob@npm:3.2.0"
-  dependencies:
-    node-domexception: ^1.0.0
-    web-streams-polyfill: ^3.0.3
-  checksum: f19bc28a2a0b9626e69fd7cf3a05798706db7f6c7548da657cbf5026a570945f5eeaedff52007ea35c8bcd3d237c58a20bf1543bc568ab2422411d762dd3d5bf
-  languageName: node
-  linkType: hard
-
 "fflate@npm:^0.6.9, fflate@npm:~0.6.10":
   version: 0.6.10
   resolution: "fflate@npm:0.6.10"
@@ -5206,15 +5188,6 @@ __metadata:
     es-set-tostringtag: ^2.1.0
     mime-types: ^2.1.12
   checksum: e887298b22c13c7c9c5a8ba3716f295a479a13ca78bfd855ef11cbce1bcf22bc0ae2062e94808e21d46e5c667664a1a1a8a7f57d7040193c1fefbfb11af58aab
-  languageName: node
-  linkType: hard
-
-"formdata-polyfill@npm:^4.0.10":
-  version: 4.0.10
-  resolution: "formdata-polyfill@npm:4.0.10"
-  dependencies:
-    fetch-blob: ^3.1.2
-  checksum: 82a34df292afadd82b43d4a740ce387bc08541e0a534358425193017bf9fb3567875dc5f69564984b1da979979b70703aa73dee715a17b6c229752ae736dd9db
   languageName: node
   linkType: hard
 
@@ -7612,24 +7585,6 @@ __metadata:
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
-  languageName: node
-  linkType: hard
-
-"node-domexception@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "node-domexception@npm:1.0.0"
-  checksum: ee1d37dd2a4eb26a8a92cd6b64dfc29caec72bff5e1ed9aba80c294f57a31ba4895a60fd48347cf17dd6e766da0ae87d75657dfd1f384ebfa60462c2283f5c7f
-  languageName: node
-  linkType: hard
-
-"node-fetch@npm:3.3.2":
-  version: 3.3.2
-  resolution: "node-fetch@npm:3.3.2"
-  dependencies:
-    data-uri-to-buffer: ^4.0.0
-    fetch-blob: ^3.1.4
-    formdata-polyfill: ^4.0.10
-  checksum: 06a04095a2ddf05b0830a0d5302699704d59bda3102894ea64c7b9d4c865ecdff2d90fd042df7f5bc40337266961cb6183dcc808ea4f3000d024f422b462da92
   languageName: node
   linkType: hard
 
@@ -10733,13 +10688,6 @@ __metadata:
   dependencies:
     xml-name-validator: ^5.0.0
   checksum: 593acc1fdab3f3207ec39d851e6df0f3fa41a36b5809b0ace364c7a6d92e351938c53424a7618ce8e0fbaffee8be2e8e070a5734d05ee54666a8bdf1a376cc40
-  languageName: node
-  linkType: hard
-
-"web-streams-polyfill@npm:^3.0.3":
-  version: 3.2.1
-  resolution: "web-streams-polyfill@npm:3.2.1"
-  checksum: b119c78574b6d65935e35098c2afdcd752b84268e18746606af149e3c424e15621b6f1ff0b42b2676dc012fc4f0d313f964b41a4b5031e525faa03997457da02
   languageName: node
   linkType: hard
 
