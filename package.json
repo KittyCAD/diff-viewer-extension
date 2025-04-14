@@ -36,6 +36,10 @@
     },
     "scripts": {
         "start": "vite",
+        "install:rust": "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh",
+        "install:wasm": "curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh",
+        "build:wasm:dev": "(cd src/wasm-lib && wasm-pack build --dev --target web --out-dir pkg) && cp src/wasm-lib/pkg/wasm_lib_bg.wasm public",
+        "build:wasm": "(cd src/wasm-lib && wasm-pack build --target web --out-dir pkg) && cp src/wasm-lib/pkg/wasm_lib_bg.wasm public",
         "build": "vite build",
         "test": "vitest",
         "e2e": "yarn build && yarn playwright test",
