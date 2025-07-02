@@ -9,7 +9,7 @@
         "@kittycad/lib": "^0.0.52",
         "@octokit/openapi-types": "^19.1.0",
         "@octokit/rest": "^20.1.0",
-        "@octokit/types": "^13.5.0",
+        "@octokit/types": "^14.1.0",
         "@primer/octicons-react": "^19.8.0",
         "@primer/react": "^36.6.0",
         "@react-three/csg": "^3.2.0",
