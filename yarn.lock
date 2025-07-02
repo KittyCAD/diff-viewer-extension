@@ -1571,13 +1571,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-three/csg@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "@react-three/csg@npm:3.2.0"
+"@react-three/csg@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@react-three/csg@npm:4.0.0"
   dependencies:
     three-bvh-csg: ^0.0.16
     three-mesh-bvh: ^0.6.8
-  checksum: aadbc4283f12d91c98432006adf1df9356364632d68d3ebde77f5869ea290adfa4f8bc5f6868f207dec76f173722a7ca7e7ffa377bd4a6b50e39b86f9ca72f03
+  checksum: 44bb731c12bf1f1ff97c1bef01b2ebd3e264aec12610bef5ae1b6f07587db6bba94948fb7fa94957d10ce7d1f85c20e86f5b649a19bf220b3915ba023a5adff1
   languageName: node
   linkType: hard
 
@@ -4032,7 +4032,7 @@ __metadata:
     "@playwright/test": ^1.50.1
     "@primer/octicons-react": ^19.8.0
     "@primer/react": ^36.6.0
-    "@react-three/csg": ^3.2.0
+    "@react-three/csg": ^4.0.0
     "@react-three/drei": ^9.106.0
     "@react-three/fiber": ^8.16.2
     "@testing-library/react": ^14.2.1
