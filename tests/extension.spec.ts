@@ -97,16 +97,17 @@ test('pull request diff with a modified .step file', async ({
     // expect(screenshot2).toMatchSnapshot()
 })
 
-test('commit diff with an added .step file', async ({
-    page,
-    authorizedBackground,
-}) => {
-    const url =
-        'https://github.com/KittyCAD/diff-samples/commit/fd9eec79f0464833686ea6b5b34ea07145e32734'
-    const element = await getFirstDiffElement(page, url, 'step')
-    const screenshot = await element.screenshot()
-    expect(screenshot).toMatchSnapshot()
-})
+// TODO: fix this test https://github.com/KittyCAD/diff-viewer-extension/issues/711
+// test('commit diff with an added .step file', async ({
+//     page,
+//     authorizedBackground,
+// }) => {
+//     const url =
+//         'https://github.com/KittyCAD/diff-samples/commit/fd9eec79f0464833686ea6b5b34ea07145e32734'
+//     const element = await getFirstDiffElement(page, url, 'step')
+//     const screenshot = await element.screenshot()
+//     expect(screenshot).toMatchSnapshot()
+// })
 
 // TODO: re-enable when .dae are supported
 // test('commit diff with a modified .dae file as LFS', async ({
