@@ -35,3 +35,11 @@ yarn-error.log*
 /tests/extension.spec.ts-snapshots/*darwin*
 
 .env*
+
+# rust
+src/wasm-lib/target
+src/wasm-lib/bindings
+src/wasm-lib/kcl/bindings
+public/wasm_lib_bg.wasm
+src/wasm-lib/lcov.info
+src/wasm-lib/grackle/test_json_output

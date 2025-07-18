@@ -24,8 +24,19 @@ jobs:
               with:
                   node-version-file: '.nvmrc'
                   cache: 'yarn'
+            
+            - name: Setup Rust
+              uses: dtolnay/rust-toolchain@stable
+
+            - uses: Swatinem/rust-cache@v2
+              with:
+                workspaces: './src/wasm-lib'
 
             - run: yarn install
+
+            - run: yarn install:wasm
+
+            - run: yarn build:wasm
 
             - run: yarn build
 

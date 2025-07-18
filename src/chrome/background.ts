@@ -18,6 +18,7 @@ import {
     setStorageKittycadToken,
 } from './storage'
 import { getFileBlob, getFileDiff } from './diff'
+import init, { greet } from '../wasm-lib/pkg/wasm_lib'
 
 let github: Octokit | undefined
 let kittycad: Client | undefined
@@ -35,7 +36,9 @@ async function initGithubApi() {
 
 async function initKittycadApi() {
     try {
-        kittycad = new Client(await getStorageKittycadToken())
+        const token = await getStorageKittycadToken()
+        console.log('greet(token)', await greet(token))
+        kittycad = new Client(token)
         const response = await users.get_user_self({ client: kittycad })
         if ('error_code' in response) throw response
         const { email } = response
@@ -59,9 +62,24 @@ async function saveKittycadTokenAndReload(token: string): Promise<void> {
     await initKittycadApi()
 }
 
-;(async () => {
+async function initialiseWasm() {
+    try {
+        const fullUrl = '/wasm_lib_bg.wasm'
+        const input = await fetch(fullUrl)
+        const buffer = await input.arrayBuffer()
+        const output = await init(buffer)
+        console.log('Wasm loaded: ', output)
+        return output
+    } catch (e) {
+        console.log('Error initialising WASM', e)
+        throw e
+    }
+}
+
+; (async () => {
     // Delay to allow for external storage sets before auth, like in e2e
     await new Promise(resolve => setTimeout(resolve, 1000))
+    await initialiseWasm()
     await initKittycadApi()
     await initGithubApi()
 })()
