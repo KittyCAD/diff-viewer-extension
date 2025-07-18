@@ -38,6 +38,7 @@
         "start": "vite",
         "build": "vite build",
         "test": "vitest",
+        "playwright": "playwright",
         "e2e": "npm run build && npm run playwright -- test",
         "bump": "echo \"$(jq --arg v \"$VERSION\" '.version=$v' package.json --indent 4)\" > package.json && echo \"$(jq --arg v \"$VERSION\" '.version=$v' manifest.json --indent 4)\" > manifest.json"
     },
