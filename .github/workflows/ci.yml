@@ -23,21 +23,21 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version-file: '.nvmrc'
-                  cache: 'yarn'
+                  cache: 'npm'
 
-            - run: yarn install
+            - run: npm install
 
-            - run: yarn build
+            - run: npm run build
 
-            - run: yarn test
+            - run: npm run test
 
             - name: Run playwright e2e tests
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_USER_TOKEN }}
                   KITTYCAD_TOKEN: ${{ secrets.KITTYCAD_TOKEN }}
               run: |
-                  yarn playwright install chromium --with-deps
-                  yarn playwright test --retries 1
+                  npm run playwright -- install chromium --with-deps
+                  npm run playwright -- test --retries 1
 
             - name: Create release zip
               run: |

@@ -38,7 +38,8 @@
         "start": "vite",
         "build": "vite build",
         "test": "vitest",
-        "e2e": "yarn build && yarn playwright test",
+        "playwright": "playwright",
+        "e2e": "npm run build && npm run playwright -- test",
         "bump": "echo \"$(jq --arg v \"$VERSION\" '.version=$v' package.json --indent 4)\" > package.json && echo \"$(jq --arg v \"$VERSION\" '.version=$v' manifest.json --indent 4)\" > manifest.json"
     },
     "eslintConfig": {
@@ -82,9 +83,5 @@
         "vite-plugin-node-polyfills": "^0.21.0",
         "vitest": "^1.6.1",
         "vitest-dom": "^0.1.1"
-    },
-    "packageManager": "yarn@3.6.0",
-    "engines": {
-        "node": ">=18.0.0"
     }
 }
