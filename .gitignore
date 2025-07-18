@@ -3,15 +3,6 @@
 # dependencies
 /node_modules
 
-# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
 # testing
 /coverage
 
@@ -27,8 +18,7 @@
 /.vscode
 
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+npm-error.log*
 /test-results/
 /playwright-report/
 /playwright/.cache/

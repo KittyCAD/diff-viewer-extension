@@ -21,32 +21,32 @@ Live on the [Google Chrome Store](https://chrome.google.com/webstore/detail/kitt
 
 ## Running a development build
 
-The project uses Vite, with Node 18, yarn 3 as package manager and TypeScript.
+The project uses Vite, with Node 22, npm as package manager and TypeScript.
 
 From the project directory:
 
-### `yarn install`
+### `npm install`
 
 Installs all the dependencies needed to build and test the project.
 
-### `yarn build`
+### `npm run build`
 
 Builds the extension for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The generated `build` directory may then be added to Chrome with the **Load unpacked** button at [chrome://extensions](). This needs to be done everytime there's a change.
 
-### `yarn start`
+### `npm run start`
 
 Runs the extension in the development mode.
 
 The generated `build` directory may then be added to Chrome with the **Load unpacked** button at [chrome://extensions](). Background/content scripts and React views should reload as changes are made.
 
-### `yarn test`
+### `npm run test`
 
 Launches the unit tests runner in the interactive watch mode.
 
-### `yarn e2e`
+### `npm run e2e`
 
 Builds the extension and runs end-to-end tests through an automated Chromium instance.
 
