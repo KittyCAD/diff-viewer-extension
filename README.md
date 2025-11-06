@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> The extension in its current form has been temporarily unpublished from the store. A rewrite leveraging more modern Zoo APIs and integrating properly with Github's new UI is needed before it can be published again. The work for this will be tracked at https://github.com/KittyCAD/diff-viewer-extension/issues/743. Sorry for any inconvenience!
+
 ![Zoo](/public/logo192.png)
 
 ## Zoo Diff Viewer Extension
