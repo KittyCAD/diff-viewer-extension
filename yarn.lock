@@ -2301,6 +2301,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:*":
+  version: 25.0.8
+  resolution: "@types/node@npm:25.0.8"
+  dependencies:
+    undici-types: ~7.16.0
+  checksum: 26348643a121bd07048dad55b60fcda5ba2e6661708ce88b8ec13a29521d0d4bd5f374d11be2d3cec9ae306b98a245b2ae226b9166c997362b788c0b032ff333
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.0.0":
+  version: 20.19.29
+  resolution: "@types/node@npm:20.19.29"
+  dependencies:
+    undici-types: ~6.21.0
+  checksum: 326bbcb9dbc32b7bb0ff04f9b20a9d6bbc8cfcbdcffb122997d79b8945b2f17c644090aae3c68084c448d502a8c8d87b9cb367722974ea881e78356622e2b765
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^20.4.2":
   version: 20.4.2
   resolution: "@types/node@npm:20.4.2"
@@ -2465,6 +2483,22 @@ __metadata:
   version: 0.5.2
   resolution: "@types/webxr@npm:0.5.2"
   checksum: e3387c3d64c140557796a4bcececd82d912a88f73ff8e34bf51c04d44078390fbe4756b256b2844b1ae4664a883d46f96bb40913d21f12e9ab484d9d8dbc68c3
+  languageName: node
+  linkType: hard
+
+"@types/whatwg-mimetype@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@types/whatwg-mimetype@npm:3.0.2"
+  checksum: 30e2599ae02c539a6dd08b58de255aad24a41cdabeebc0293814884f1301f1328443b9915f2e990e4f484fa7f226ca8718991b63d2d387287f898c36390ef856
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:^8.18.1":
+  version: 8.18.1
+  resolution: "@types/ws@npm:8.18.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: 0331b14cde388e2805af66cad3e3f51857db8e68ed91e5b99750915e96fe7572e58296dc99999331bbcf08f0ff00a227a0bb214e991f53c2a5aca7b0e71173fa
   languageName: node
   linkType: hard
 
@@ -3042,12 +3076,12 @@ __metadata:
   linkType: hard
 
 "brace-expansion@npm:^1.1.7":
-  version: 1.1.11
-  resolution: "brace-expansion@npm:1.1.11"
+  version: 1.1.12
+  resolution: "brace-expansion@npm:1.1.12"
   dependencies:
     balanced-match: ^1.0.0
     concat-map: 0.0.1
-  checksum: faf34a7bb0c3fcf4b59c7808bc5d2a96a40988addf2e7e09dfbb67a2251800e0d14cd2bfc1aa79174f2f5095c54ff27f46fb1289fe2d77dac755b5eb3434cc07
+  checksum: 12cb6d6310629e3048cadb003e1aca4d8c9bb5c67c3c321bafdd7e7a50155de081f78ea3e0ed92ecc75a9015e784f301efc8132383132f4f7904ad1ac529c562
   languageName: node
   linkType: hard
 
@@ -4049,7 +4083,7 @@ __metadata:
     eslint-config-prettier: ^9.1.0
     eslint-plugin-react: ^7.37.4
     github-injection: ^1.1.0
-    happy-dom: ^15.10.2
+    happy-dom: ^20.0.2
     isomorphic-fetch: ^3.0.0
     jest-canvas-mock: ^2.5.2
     jsdom: ^26.0.0
@@ -4062,7 +4096,7 @@ __metadata:
     three-mesh-bvh: ^0.7.4
     three-stdlib: ^2.29.10
     typescript: ^4.9.5
-    vite: ^5.4.12
+    vite: ^5.4.21
     vite-plugin-node-polyfills: ^0.21.0
     vitest: ^1.6.1
     vitest-dom: ^0.1.1
@@ -5613,14 +5647,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"happy-dom@npm:^15.10.2":
-  version: 15.11.7
-  resolution: "happy-dom@npm:15.11.7"
+"happy-dom@npm:^20.0.2":
+  version: 20.3.0
+  resolution: "happy-dom@npm:20.3.0"
   dependencies:
-    entities: ^4.5.0
-    webidl-conversions: ^7.0.0
+    "@types/node": ^20.0.0
+    "@types/whatwg-mimetype": ^3.0.2
+    "@types/ws": ^8.18.1
     whatwg-mimetype: ^3.0.0
-  checksum: 8651ea68e6fd3ae1d0cd5076f6b172ae30a51b48503ccd139fa1d556678e918679dd4b000050f2b7a3091f706d85c514aa08a6208c0ddb113dba351653456429
+    ws: ^8.18.3
+  checksum: 5dcca7584399a66d96470032df9dc3e6480aaa821c77701782a4237a9460b8eddd40dbc8b77183eaa88470d93270ba22d3fdf8b710d75712c7257439f252acd0
   languageName: node
   linkType: hard
 
@@ -10311,6 +10347,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 46331c7d6016bf85b3e8f20c159d62f5ae471aba1eb3dc52fff35a0259d58dcc7d592d4cc4f00c5f9243fa738a11cfa48bd20203040d4a9e6bc25e807fab7ab3
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~7.16.0":
+  version: 7.16.0
+  resolution: "undici-types@npm:7.16.0"
+  checksum: 1ef68fc6c5bad200c8b6f17de8e5bc5cfdcadc164ba8d7208cd087cfa8583d922d8316a7fd76c9a658c22b4123d3ff847429185094484fbc65377d695c905857
+  languageName: node
+  linkType: hard
+
 "unified@npm:^10.0.0":
   version: 10.1.2
   resolution: "unified@npm:10.1.2"
@@ -10611,9 +10661,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.4.12":
-  version: 5.4.14
-  resolution: "vite@npm:5.4.14"
+"vite@npm:^5.4.21":
+  version: 5.4.21
+  resolution: "vite@npm:5.4.21"
   dependencies:
     esbuild: ^0.21.3
     fsevents: ~2.3.3
@@ -10650,7 +10700,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 7360661da0415809454ff8809b6666e868ffc3e5ccfbd5fc17425341546cdc3dd3d37c68fcd6ed7305252aaecd0d251ede3745b57aaebd00b8aececc30b6697b
+  checksum: 7177fa03cff6a382f225290c9889a0d0e944d17eab705bcba89b58558a6f7adfa1f47e469b88f42a044a0eb40c12a1bf68b3cb42abb5295d04f9d7d4dd320837
   languageName: node
   linkType: hard
 
@@ -11020,6 +11070,21 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: 4658357185d891bc45cc2d42a84f9e192d047e8476fb5cba25b604f7d75ca87ca0dd54cd0b2cc49aeee57c79045a741cb7d0b14501953ac60c790cd105c42f23
+  languageName: node
+  linkType: hard
+
+"ws@npm:^8.18.3":
+  version: 8.19.0
+  resolution: "ws@npm:8.19.0"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ">=5.0.2"
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: 7a426122c373e053a65a2affbcdcdbf8f643ba0265577afd4e08595397ca244c05de81570300711e2363a9dab5aea3ae644b445bc7468b1ebbb51bfe2efb20e1
   languageName: node
   linkType: hard
 

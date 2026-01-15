@@ -74,11 +74,11 @@
         "eslint": "^8.56.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-react": "^7.37.4",
-        "happy-dom": "^15.10.2",
+        "happy-dom": "^20.0.2",
         "jest-canvas-mock": "^2.5.2",
         "jsdom": "^26.0.0",
         "prettier": "^3.3.3",
-        "vite": "^5.4.12",
+        "vite": "^5.4.21",
         "vite-plugin-node-polyfills": "^0.21.0",
         "vitest": "^1.6.1",
         "vitest-dom": "^0.1.1"
